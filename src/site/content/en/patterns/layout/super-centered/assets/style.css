@@ -1,7 +1,0 @@
-.parent {
-  display: grid;
-  place-items: center;
-
-  /* Just for parent demo size */
-  height: 100vh;
-}

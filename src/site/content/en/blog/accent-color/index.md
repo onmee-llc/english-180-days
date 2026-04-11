@@ -3,8 +3,7 @@ layout: post
 title: CSS `accent-color`
 subhead: Bring your brand color to built-in HTML form inputs with one line of code.
 authors:
-  - adamargyle
-  - jarhar
+  - onmee
 description: Bring your brand color to built-in HTML form inputs with one line of code.
 date: 2021-08-11
 updated: 2022-07-25

@@ -15,7 +15,7 @@
      <a
       {% if post or card.url %} href="{{ post.url or card.url }}" {% endif %}
       class="card {% if card.cardLayout %}card-{{card.cardLayout}}{% endif %}{% if card.row %} row-{{card.row}}{% endif %}{% if card.column %} col-{{card.column}}{% endif %}{% if card.theme %} bg-{{card.theme}}{% endif %}"
-      data-category="web.dev"
+      data-category="onmee.vn"
       data-label="Topic: {{card.title or post.data.title }}"
       data-action="click"
       role="listitem"

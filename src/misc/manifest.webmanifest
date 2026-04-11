@@ -1,6 +1,6 @@
 {
-  "name": "web.dev",
-  "short_name": "web.dev",
+  "name": "onmee.vn",
+  "short_name": "onmee",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
@@ -24,7 +24,7 @@
       "type": "image/png"
     }
   ],
-  "description": "Get the web's modern capabilities on your own sites and apps with useful guidance and analysis from web.dev.",
+  "description": "Resources and guidance for developers to build modern web experiences.",
   "lang": "en",
   "categories": ["education", "news"],
   "screenshots": [

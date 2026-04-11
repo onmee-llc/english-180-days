@@ -8,13 +8,13 @@ http-203:
     ru: 'HTTP 203'
     zh: 'HTTP 203'
   description:
-    en: 'Google Developers Jake Archibald and Surma discuss their philosophies about web development and the various aspects of it, meanwhile dropping in lifehacks, lessons and some honest truths.'
-    es: 'Los desarrolladores de Google, Jake Archibald y Surma, discuten sus filosofías sobre el desarrollo web y los diversos aspectos del mismo, mientras expresan consejos prácticos, lecciones y algunas verdades honestas.'
-    ja: 'Google の開発者である Jake Archibald と Surma が、ライフハックや教訓、そして率直な事実を交えながら、Web 開発の様々な側面についてそれぞれの哲学を語り合います。'
-    ko: 'Google 개발자인 Jake Archibald와 Surma가 웹 개발과 웹 개발의 다양한 측면에 대한 자신들의 의견을 나눕니다. 생활을 편리하게 만들어주는 도구, 교훈 및 숨겨둔 진실에 대한 이야기도 함께 들어볼 수 있습니다.'
-    pt: 'Os desenvolvedores Google Jake Archibald e Surma discutem suas filosofias sobre o desenvolvimento web e seus vários aspectos, enquanto ensinam macetes, lições e algumas verdades honestas.'
-    ru: 'Разработчики Google Джейк Арчибальд и Сурма обсуждают свои взгляды на веб-разработку и различные ее аспекты, а также делятся наставлениями, откровениями и лайфхаками.'
-    zh: 'Google 开发者 Jake Archibald 和 Surma 就他们关于网络开发及其各个方面的理念展开讨论，同时还介绍了生活小窍门、经验教训和一些中肯的事实。'
+    en: 'Jake Archibald and Surma discuss their philosophies about web development and the various aspects of it, meanwhile dropping in lifehacks, lessons and some rather honest truths.'
+    es: 'Los desarrolladores Jake Archibald y Surma discuten sus filosofías sobre el desarrollo web y los diversos aspectos del mismo, mientras expresan consejos prácticos, lecciones y algunas verdades honestas.'
+    ja: 'Jake Archibald と Surma が、ライフハックや教訓、そして率直な事実を交えながら、Web 開発の様々な側面についてそれぞれの哲学を語り合います。'
+    ko: 'Jake Archibald와 Surma가 웹 개발과 웹 개발의 다양한 측면에 대한 자신들의 의견을 나눕니다. 생활을 편리하게 만들어주는 도구, 교훈 및 숨겨둔 진실에 대한 이야기도 함께 들어볼 수 있습니다.'
+    pt: 'Jake Archibald e Surma discutem suas filosofias sobre o desenvolvimento web e seus vários aspectos, enquanto ensinam macetes, lições e algumas verdades honestas.'
+    ru: 'Джейк Арчибальд и Сурма обсуждают свои взгляды на веб-разработку и различные ее аспекты, а также делятся наставлениями, откровениями и лайфхаками.'
+    zh: 'Jake Archibald 和 Surma 就他们关于网络开发及其各个方面的理念展开讨论，同时还介绍了生活小窍门、经验教训和一些中肯的事实。'
 
 mother-language-day:
   title:
@@ -100,21 +100,21 @@ designing-in-the-browser:
 
 web-dev-live-day-1:
   title:
-    en: web.dev LIVE Day 1
+    en: onmee.vn LIVE Day 1
   description:
-    en: Missed web.dev LIVE? We’ve got you covered. Watch the talks from the web.dev LIVE 2020 event on Youtube ([Day 2](/shows/web-dev-live-day-2), [Day 3](/shows/web-dev-live-day-3))
+    en: Missed onmee.vn LIVE? We’ve got you covered. Watch the talks from the onmee.vn LIVE 2020 event on Youtube ([Day 2](/shows/web-dev-live-day-2), [Day 3](/shows/web-dev-live-day-3))
 
 web-dev-live-day-2:
   title:
-    en: web.dev LIVE Day 2
+    en: onmee.vn LIVE Day 2
   description:
-    en: Missed web.dev LIVE? We’ve got you covered. Watch the talks from the web.dev LIVE 2020 event on Youtube ([Day 1](/shows/web-dev-live-day-1), [Day 3](/shows/web-dev-live-day-3))
+    en: Missed onmee.vn LIVE? We’ve got you covered. Watch the talks from the onmee.vn LIVE 2020 event on Youtube ([Day 1](/shows/web-dev-live-day-1), [Day 3](/shows/web-dev-live-day-3))
 
 web-dev-live-day-3:
   title:
-    en: web.dev LIVE Day 3
+    en: onmee.vn LIVE Day 3
   description:
-    en: Missed web.dev LIVE? We’ve got you covered. Watch the talks from the web.dev LIVE 2020 event on Youtube ([Day 1](/shows/web-dev-live-day-1), [Day 2](/shows/web-dev-live-day-2))
+    en: Missed onmee.vn LIVE? We’ve got you covered. Watch the talks from the onmee.vn LIVE 2020 event on Youtube ([Day 1](/shows/web-dev-live-day-1), [Day 2](/shows/web-dev-live-day-2))
 
 all_episodes:
   en: 'Back to all episodes'

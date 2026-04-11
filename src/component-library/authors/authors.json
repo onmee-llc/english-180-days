@@ -3,11 +3,11 @@
   "keyLinks": [
     {
       "label": "Sass Block",
-      "url": "https://github.com/GoogleChrome/web.dev/tree/main/src/scss/blocks/_author.scss"
+      "url": "https://github.com/onmee-vn/web/tree/main/src/scss/blocks/_author.scss"
     },
     {
       "label": "Avatar Utility",
-      "url": "https://github.com/GoogleChrome/web.dev/tree/main/src/scss/utilities/_avatar.scss"
+      "url": "https://github.com/onmee-vn/web/tree/main/src/scss/utilities/_avatar.scss"
     }
   ],
   "context": {

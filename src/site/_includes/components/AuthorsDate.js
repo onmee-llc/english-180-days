@@ -96,23 +96,11 @@ function renderAuthorsDate(
   {authors, date, images = 2, updated, locale = defaultLocale},
   authorsCollection = authorsCollectionFn(),
 ) {
-  const pairs = (authors || []).map((id) => {
+  const pairs = (authors || []).filter((id) => {
+    return !!authorsCollection[id];
+  }).map((id) => {
     const author = authorsCollection[id];
-    if (!author) {
-      throw new Error(
-        `Can't create Author component for "${id}" without author ` +
-          `information. Please check '_data/authorsData.json' and make sure the ` +
-          `author you provide is a key in this object.`,
-      );
-    }
-    const title = i18n(author.title, locale);
-    if (!title) {
-      throw new Error(
-        `Can't create Author "${id}" with missing title. ` +
-          `Please check '_data/authorsData.json' and make sure the ` +
-          `author has a title.`,
-      );
-    }
+    const title = i18n(author.title, locale) || id;
 
     return {
       id,

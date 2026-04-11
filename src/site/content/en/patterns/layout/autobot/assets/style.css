@@ -1,7 +1,0 @@
-.autobot {
-  display: flex;
-}
-
-.autobot > * {
-  margin: auto;
-}

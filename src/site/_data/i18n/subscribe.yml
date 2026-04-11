@@ -62,28 +62,28 @@ language:
   zh: 语言
 
 notice:
-  en: Don't worry, no spam here! Your information will only be used for web.dev and Chrome related updates and our emails are typically no more than 1-2 times a month. You can unsubscribe anytime.
-  es: ¡No te preocupes, no hay spam aquí! Su información solo se utilizará para web.dev y actualizaciones relacionadas con Chrome y nuestros correos electrónicos no suelen recibir más de 1 a 2 veces al mes. Puede anular su suscripción en cualquier momento.
-  ja: 迷惑メールを送信することはありませんので、ご安心ください。お客様の情報は web.dev や Chrome に関連する最新情報の提供にのみ使用され、メールは通常 1 か月に 1 回から 2 回しか送信されません。配信の停止は、いつでも可能です。
-  ko: 걱정하지 마세요. 스팸은 없습니다! 귀하의 정보는 web.dev 및 Chrome 관련 업데이트에만 사용되며 당사에서 보내는 이메일은 일반적으로 한 달에 1-2회를 넘지 않습니다. 언제든지 구독을 취소할 수 있습니다.
-  pt: Não se preocupe, aqui não tem spam! Suas informações apenas serão usadas para atualizações relacionadas ao web.dev e ao Chrome e geralmente não enviamos e-mail mais que 1-2 vezes por mês. Você pode cancelar sua inscrição a qualquer momento.
-  ru: Мы не рассылаем спам. Ваши данные будут использоваться только для отправки новостей, связанных с web.dev и Chrome (как правило, не больше 1–2 писем в месяц). Отписаться можно в любой момент.
-  zh: 无需担心垃圾邮件！我们只会将您的信息用于 web.dev 和 Chrome 的相关动态，且我们每月发送的电子邮件数量不会超过 1-2 封。您可以随时退订。
+  en: Don't worry, no spam here! Your information will only be used for onmee.vn related updates and our emails are typically no more than 1-2 times a month. You can unsubscribe anytime.
+  es: ¡No te preocupes, no hay spam aquí! Su información solo se utilizará para onmee.vn y actualizaciones relacionadas y nuestros correos electrónicos no suelen recibir más de 1 a 2 veces al mes. Puede anular su suscripción en cualquier momento.
+  ja: 迷惑メールを送信することはありませんので、ご安心ください。お客様の情報は onmee.vn に関連する最新情報の提供にのみ使用され、メールは通常 1 か月に 1 回から 2 回しか送信されません。配信の停止は、いつでも可能です。
+  ko: 걱정하지 마세요. 스팸은 없습니다! 귀하의 정보는 onmee.vn 및 Chrome 관련 업데이트에만 사용되며 당사에서 보내는 이메일은 일반적으로 한 달에 1-2회를 넘지 않습니다. 언제든지 구독을 취소할 수 있습니다.
+  pt: Não se preocupe, aqui não tem spam! Suas informações apenas serão usadas para atualizações relacionadas ao onmee.vn e ao Chrome e geralmente não enviamos e-mail mais que 1-2 vezes por mês. Você pode cancelar sua inscrição a qualquer momento.
+  ru: Мы не рассылаем спам. Ваши данные будут использоваться только для отправки новостей, связанных с onmee.vn и Chrome (как правило, не больше 1–2 писем в месяц). Отписаться можно в любой момент.
+  zh: 无需担心垃圾邮件！我们只会将您的信息用于 onmee.vn 和 Chrome 的相关动态，且我们每月发送的电子邮件数量不会超过 1-2 封。您可以随时退订。
 
 add_me:
-  en: Add me to the web.dev mailing list.
-  es: Agrégame a la lista de correo web.dev.
-  ja: web.dev メーリングリストに参加します。
-  ko: web.dev 수신자 목록에 추가해주세요.
-  pt: Adicione-me à lista de discussão web.dev.
-  ru: Подписаться на рассылку web.dev.
-  zh: 将我加入 web.dev 邮件列表。
+  en: Add me to the onmee.vn mailing list.
+  es: Agrégame a la lista de correo onmee.vn.
+  ja: onmee.vn メーリングリストに参加します。
+  ko: onmee.vn 수신자 목록에 추가해주세요.
+  pt: Adicione-me à lista de discussão onmee.vn.
+  ru: Подписаться на рассылку onmee.vn.
+  zh: 将我加入 onmee.vn 邮件列表。
 
 i_accept_terms:
-  en: I accept Google's <a href="https://policies.google.com/terms" target="_blank" rel="noopener">Terms and Conditions</a> and acknowledge that my information will be used in accordance with Google's <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a>.
-  es: Acepto los <a href="https://policies.google.com/terms" target="_blank" rel="noopener"> Términos y condiciones </a> de Google y reconozco que mi información se utilizará de acuerdo con con la <a href="https://policies.google.com/privacy" target="_blank" rel="noopener"> Política de privacidad </a> de Google.
-  ja: Google の<a href="https://policies.google.com/terms" target="_blank" rel="noopener">利用規約</a>に同意し、Google の<a href="https://policies.google.com/privacy" target="_blank" rel="noopener">プライバシーポリシー</a>に基づいて自身の情報が使用されることを認めます。
-  ko: 본인은 Google의 <a href="https://policies.google.com/terms" target="_blank" rel="noopener">이용 약관</a>에 동의하며 본인의 정보가 Google의 <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">개인정보보호 정책</a>에 따라 이용된다는 것을 인정합니다.
-  pt: Aceito os <a href="https://policies.google.com/terms" target="_blank" rel="noopener">Termos e Condições</a> do Google e reconheço que minhas informações serão usadas de acordo com a <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Política de Privacidade</a> do Google.
-  ru: Я принимаю <a href="https://policies.google.com/terms" target="_blank" rel="noopener">условия использования</a> Google и соглашаюсь, что моя информация будет использоваться в соответствии с <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">политикой конфиденциальности</a> Google.
-  zh: 我接受 Google 的<a href="https://policies.google.com/terms" target="_blank" rel="noopener">条款</a>，并知悉 Google 将会遵照<a href="https://policies.google.com/privacy" target="_blank" rel="noopener">隐私权政策</a>使用我的信息。
+  en: I accept <a href="https://onmee.vn/terms" target="_blank" rel="noopener">Terms and Conditions</a> and acknowledge that my information will be used in accordance with the <a href="https://onmee.vn/privacy" target="_blank" rel="noopener">Privacy Policy</a>.
+  es: Acepto los <a href="https://onmee.vn/terms" target="_blank" rel="noopener">Términos y condiciones</a> y reconozco que mi información se utilizará de acuerdo con la <a href="https://onmee.vn/privacy" target="_blank" rel="noopener">Política de privacidad</a>.
+  ja: <a href="https://onmee.vn/terms" target="_blank" rel="noopener">利用規約</a>に同意し、<a href="https://onmee.vn/privacy" target="_blank" rel="noopener">プライバシーポリシー</a>に基づいて自身の情報が使用されることを認めます。
+  ko: 본인은 <a href="https://onmee.vn/terms" target="_blank" rel="noopener">이용 약관</a>에 동의하며 본인의 정보가 <a href="https://onmee.vn/privacy" target="_blank" rel="noopener">개인정보보호 정책</a>에 따라 이용된다는 것을 인정합니다.
+  pt: Aceito os <a href="https://onmee.vn/terms" target="_blank" rel="noopener">Termos e Condições</a> e reconheço que minhas informações serão usadas de acordo com a <a href="https://onmee.vn/privacy" target="_blank" rel="noopener">Política de Privacidade</a>.
+  ru: Я принимаю <a href="https://onmee.vn/terms" target="_blank" rel="noopener">условия использования</a> и соглашаюсь, что моя информация будет использоваться в соответствии с <a href="https://onmee.vn/privacy" target="_blank" rel="noopener">политикой конфиденциальности</a>.
+  zh: 我接受<a href="https://onmee.vn/terms" target="_blank" rel="noopener">条款</a>，并知悉将会遵照<a href="https://onmee.vn/privacy" target="_blank" rel="noopener">隐私权政策</a>使用我的信息。

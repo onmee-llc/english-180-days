@@ -31,7 +31,7 @@ function latestPostByTags(_, tags) {
   for (const tag of tags) {
     // @ts-ignore
     const tagPosts = this.ctx.collections[tag];
-    if (!tagPosts.length) continue;
+    if (!tagPosts || !tagPosts.length) continue;
 
     const candidatePost = tagPosts[tagPosts.length - 1];
     if (!latestPost) {

@@ -23,9 +23,11 @@
       <content type="html" mode="escaped">{{ post.templateContent | replace("web-copy-code", "div") | htmlToAbsoluteUrls(absolutePostUrl) }}</content>
       {% for entry in post.data.authors %}
         {%- set author = collections.authors[entry] -%}
+        {% if author %}
         <author>
           <name>{{ author.title | i18n(locale) }}</name>
         </author>
+        {% endif %}
       {%- endfor %}
     </entry>
     {% endif %}

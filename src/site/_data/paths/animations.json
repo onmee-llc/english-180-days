@@ -24,7 +24,7 @@
         "prefers-reduced-motion",
         {
           "title": "Debug CSS animations with Chrome DevTools",
-          "url": "https://developers.google.com/web/tools/chrome-devtools/inspect-styles/animations"
+          "url": "#"
         },
         {
           "title": "Debug CSS animations with Firefox DevTools",

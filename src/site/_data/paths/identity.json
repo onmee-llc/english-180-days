@@ -12,12 +12,12 @@
         "sign-in-form-best-practices",
         {
           "title": "[Codelab] Use cross-platform browser features to build a sign-in form",
-          "url": "https://web.dev/codelab-sign-in-form-best-practices/"
+          "url": "https://onmee.vn/codelab-sign-in-form-best-practices/"
         },
         "sign-up-form-best-practices",
         {
           "title": "[Codelab] Sign-up form best practices codelab",
-          "url": "https://web.dev/codelab-sign-up-form-best-practices/"
+          "url": "https://onmee.vn/codelab-sign-up-form-best-practices/"
         }
       ]
     },
@@ -37,7 +37,7 @@
         },
         {
           "title": "[Codelab] Enable two-factor authentication with WebAuthn",
-          "url": "https://developers.google.com/codelabs/webauthn-2fa-key/"
+          "url": "#"
         }
       ]
     },
@@ -46,13 +46,13 @@
       "pathItems": [
         {
           "title": "Passwordless login with passkeys",
-          "url": "https://developers.google.com/identity/passkeys/"
+          "url": "#"
         },
         "passkey-registration",
         "passkey-form-autofill",
         {
           "title": "[Codelab] Set up a biometric re-authentication functionality with WebAuthn",
-          "url": "https://developers.google.com/codelabs/webauthn-reauth/"
+          "url": "#"
         }
       ]
     },
@@ -60,12 +60,12 @@
       "title": "i18n.paths.identity.topics.build_authentication_with_identity_federation",
       "pathItems": [
         {
-          "title": "Use OAuth 2.0 to access Google APIs",
-          "url": "https://developers.google.com/identity/protocols/oauth2"
+          "title": "Use OAuth 2.0",
+          "url": "#"
         },
         {
           "title": "Set up OpenID Connect compliant OAuth 2.0",
-          "url": "https://developers.google.com/identity/protocols/oauth2/openid-connect"
+          "url": "#"
         }
       ]
     },

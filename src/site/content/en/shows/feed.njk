@@ -1,14 +1,14 @@
 ---
 renderData:
   metadata:
-    author: Google Developers
+    author: onmee.vn
     category: "{{ paged.title | i18n(locale) }}"
-    icon: https://web.dev/images/social.png
-    id: https://web.dev/
-    logo: https://web.dev/images/shared/rss-banner.png
+    icon: https://onmee.vn/images/social.png
+    id: https://onmee.vn/
+    logo: https://onmee.vn/images/shared/rss-banner.png
     subtitle: "{{ paged.description | i18n(locale) }}"
-    title: "{{ paged.title | i18n(locale) }} on web.dev"
-    url: https://web.dev{{ paged.href }}feed.xml
+    title: "{{ paged.title | i18n(locale) }} on onmee.vn"
+    url: https://onmee.vn{{ paged.href }}feed.xml
 noindex: true
 permalink: "/{{lang}}{{ paged.href }}feed.xml"
 pagination:
@@ -42,9 +42,11 @@ pagination:
     <content type="html" mode="escaped">{{ post.data.description | md({linkify: true, breaks: true, xhtmlOut: true}) | safe }}</content>
     {% for entry in post.data.authors %}
     {%- set author = collections.authors[entry] -%}
+    {% if author %}
     <author>
       <name>{{ author.title | i18n(locale) }}</name>
     </author>
+    {% endif %}
     {%- endfor %}
   </entry>
   {%- endfor %}

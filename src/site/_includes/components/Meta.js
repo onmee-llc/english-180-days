@@ -161,8 +161,8 @@ module.exports = (locale, page, renderData = {}) => {
   function renderRSS() {
     const feed = pageData.rss || '/feed.xml';
     const title = pageData.rss
-      ? `${pageData.title} on web.dev`
-      : 'web.dev feed';
+      ? `${pageData.title} on onmee.vn`
+      : 'onmee.vn feed';
     return html`
       <link
         rel="alternate"
