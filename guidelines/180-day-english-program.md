@@ -1,7 +1,7 @@
 # 180-Day English Speaking Program
-**Target:** Senior Backend / AI Engineer — International Remote Job Readiness  
-**Method:** Topic-based presentation practice → muscle memory through repetition  
-**Schedule:** 30 minutes/day minimum | 2 weeks per technical topic  
+**Target:** Senior Backend / AI Engineer — International Remote Job Readiness
+**Method:** Topic-based presentation practice → muscle memory through repetition
+**Schedule:** 30 minutes/day minimum | 2 weeks per technical topic
 **Structure:** 10 Technical Topics (Week 1–20) + 6-week buffer (Week 21–26) + Topic 11 running parallel throughout all 180 days
 
 ---
@@ -393,8 +393,8 @@ Many engineers lose $500–$1,000/month by not negotiating. At $3,000/month curr
 
 ## Topic 11 — Daily English with Kids *(Parallel Track — All 180 Days)*
 
-**Format:** Not a separate 30-minute session — use these phrases naturally throughout the day  
-**Children ages:** 3 and 4 years old  
+**Format:** Not a separate 30-minute session — use these phrases naturally throughout the day
+**Children ages:** 3 and 4 years old
 **Goal:** Natural, automatic parenting English — zero hesitation
 
 ---
