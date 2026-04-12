@@ -1,20 +1,68 @@
-learn_css:
+topic_1_introduce_yourself:
   title:
-    en: Learn CSS!
-    es: ¡Aprenda CSS!
-    ja: CSS を学びましょう！
-    ko: CSS를 배우세요!
-    pt: Aprenda CSS!
-    ru: Изучаем CSS!
-    zh: 学习 CSS！
+    en: "Topic 1 — Introduce Yourself as a Senior Engineer"
   description:
-    en: "Let’s gleefully breakdown complex aspects of CSS into digestible episodes covering everything from accessibility to z-index."
-    es: "Dividamos alegremente los aspectos complejos de CSS en episodios digeribles que abarquen todo, desde la accesibilidad hasta el z-índex."
-    ja: "アクセシビリティから z-index に至るまで、CSS の難解な部分を分かりやすいエピソードに分けて楽しく解説していきます。"
-    ko: "CSS의 복잡한 측면을 접근성부터 z-인덱스까지 모든 부분을 다룬 부담 없는 다양한 에피소드로 즐겁게 꾸며 보겠습니다."
-    pt: "Vamos dividir aspectos complexos do CSS em episódios digeríveis cobrindo tudo, desde a acessibilidade até o z-index."
-    ru: "Разбор сложных аспектов CSS в рамках коротких эпизодов, охватывающих все темы, начиная с доступности и заканчивая z-index."
-    zh: "我们来愉快地将 CSS 的种种复杂方面拆解成可消化吸收的知识点，涵盖从无障碍功能到 z-index 的所有内容。"
+    en: "The most-used response in every interview. Internalize it so it feels completely natural — not memorized."
+
+topic_2_system_design:
+  title:
+    en: "Topic 2 — System Design Fundamentals"
+  description:
+    en: "Speak your architectural thinking in English. Required for senior roles at companies paying $5,000+/month."
+
+topic_3_api_microservices:
+  title:
+    en: "Topic 3 — API Architecture & Microservices"
+  description:
+    en: "REST, GraphQL, circuit breakers, service communication — explain these confidently in any interview."
+
+topic_4_cloud_infrastructure:
+  title:
+    en: "Topic 4 — Cloud Infrastructure (AWS / GCP)"
+  description:
+    en: "Talk through real cloud decisions: compute, storage, networking, IAM, cost optimization."
+
+topic_5_ai_ml_pipelines:
+  title:
+    en: "Topic 5 — AI/ML Pipelines & LLM Integration"
+  description:
+    en: "Your biggest differentiator. Speak fluently about LLM integration, prompt engineering, and production AI pipelines."
+
+topic_6_automation_workflow:
+  title:
+    en: "Topic 6 — Automation & Workflow Engineering"
+  description:
+    en: "Explain workflow automation, queue-based processing, scheduling, and content pipelines."
+
+topic_7_project_storytelling:
+  title:
+    en: "Topic 7 — Project Storytelling (STAR Method)"
+  description:
+    en: "Behavioral and project-based interviews at senior level. Master the STAR structure: Situation, Task, Action, Result."
+
+topic_8_problem_solving:
+  title:
+    en: "Topic 8 — Technical Problem Solving"
+  description:
+    en: "Think out loud, debug systematically, evaluate trade-offs, and explain root cause analysis in English."
+
+topic_9_team_communication:
+  title:
+    en: "Topic 9 — Team Communication & Code Review"
+  description:
+    en: "Daily remote work: standups, code reviews, technical proposals, async Slack communication."
+
+topic_10_salary_negotiation:
+  title:
+    en: "Topic 10 — Salary Negotiation & Offer Discussion"
+  description:
+    en: "Close the deal. State expectations, respond to offers, negotiate upward, and discuss total compensation."
+
+topic_11_daily_with_kids:
+  title:
+    en: "Topic 11 — Daily English with Kids (Parallel Track)"
+  description:
+    en: "Natural daily immersion. 8 phrase groups for parenting in English — morning routine to bedtime, every single day."
 learn_forms:
   title:
     en: Learn Forms!
@@ -124,7 +172,7 @@ image_workflows:
     en: High performance image workflows
   description:
     en: "How to integrate the advice from this course into your workflow, CMS, CDN, and automation tools."
-    
+
 example:
   title:
     en: Example course

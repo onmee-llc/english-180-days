@@ -1,0 +1,10 @@
+# Initial publish date — used to decide 'NEW' badge threshold.
+date: 2026-04-13
+url: /learn/topic-11-daily-with-kids/
+draft: false
+title: i18n.courses.topic_11_daily_with_kids.title
+description: i18n.courses.topic_11_daily_with_kids.description
+logo: '/images/courses/topic-11-daily-with-kids/logo.svg'
+background: '/images/courses/topic-11-daily-with-kids/background.svg'
+card: '/images/courses/topic-11-daily-with-kids/card.svg'
+highlight: 'green'

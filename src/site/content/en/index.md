@@ -1,49 +1,22 @@
 ---
 layout: 'homepage'
-title: 'onmee.vn'
+title: 'onmee.vn — 180-Day English Program'
 intro:
-  eyebrow: 'Welcome to onmee.vn'
-  title: "Building modern web experiences"
+  eyebrow: '180 Days to International Readiness'
+  title: "Speak English. Get the job."
   summary: |
-    Practical guidance for building fast, accessible, and modern web applications.
-  buttonText: 'About onmee.vn'
-  buttonUrl: '/about/'
+    A structured 180-day speaking program for senior backend and AI engineers
+    targeting $5k+/month international remote roles.
+    **10 technical topics. 1 parallel daily track. 30 minutes a day.**
+  buttonText: 'Start the program'
+  buttonUrl: '/learn/'
   image: '/images/lockup.svg'
   imageWidth: '333'
   imageHeight: '240'
-
-themes:
-  - category: CSS and UI
-    cards:
-      - latestPostByTags:
-          - css
-          - javascript
-          - html
-        cardLayout: 'vertical'
-      - title: 'The CSS Podcast'
-        description: Una Kravets and Adam Argyle break down complex CSS into digestible episodes covering everything from accessibility to z-index.
-        thumbnail: image/SZHNhsfjU9RbCestTGZU6N7JEWs1/VwL892KEz6bakZMlq10D.png
-        eyebrow:
-          icon: podcast
-          text: Podcast
-        cardLayout: 'horizontal'
-        theme: 'tertiary'
-        column: '2'
-        url: https://pod.link/thecsspodcast/
-      - url: /learn/css/
-        title: Learn CSS
-        description: Learn modern CSS in our course covering everything from selectors to grid layout and animation.
-        eyebrow:
-          icon: mortarboard
-          text: Learn
-        cardLayout: 'vertical'
-        column: '3'
-        row: '2'
-
-developers:
-  title: 'Modern web development'
-  summary: |
-    Explore our guides, tutorials, and patterns to build fast, accessible, and reliable web experiences.
-  primaryButtonText: 'Get started'
-  primaryButtonUrl: '/learn/'
+overview:
+  title: '11 topics. 180 days. One goal.'
+  summary: 'From self-introduction to salary negotiation — every topic a senior engineer needs to land a $5k+/month remote role, spoken fluently in English.'
+  buttonText: 'Browse all topics'
+  buttonUrl: '/learn/'
 ---
+

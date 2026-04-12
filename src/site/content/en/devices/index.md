@@ -1,6 +1,0 @@
----
-layout: collection
-override:tags: []
-date: 2020-10-15
-pathName: devices
----

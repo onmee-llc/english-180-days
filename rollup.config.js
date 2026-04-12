@@ -1,6 +1,3 @@
-const fs = require('fs');
-const {join} = require('path');
-
 // A Rollup plugin which locates modules using the Node resolution algorithm,
 // for using third party modules in node_modules
 const {nodeResolve} = require('@rollup/plugin-node-resolve');
@@ -41,13 +38,6 @@ const virtualImports = {
   },
 };
 
-// Each page type has an entrypoint js file which imports all of the custom
-// elements for that page. Most pages use the default.js entrypoint, but some
-// pages like /measure, /newsletter, etc. are special and require additional
-// elements.
-const pagesDir = './src/lib/pages/';
-const pages = fs.readdirSync(pagesDir, 'utf-8').map((p) => join(pagesDir, p));
-
 // Plugins that are common to every bundle.
 const plugins = [
   virtual(buildVirtualJSON(virtualImports)),
@@ -56,7 +46,7 @@ const plugins = [
   commonjs(),
 ];
 const devConfig = {
-  input: ['./src/lib/app.js', ...pages],
+  input: ['./src/lib/app.js'],
   output: {
     dir: 'dist/js',
     format: 'esm',
@@ -69,7 +59,7 @@ const devConfig = {
 };
 
 const productionConfig = {
-  input: ['./src/lib/app.js', ...pages],
+  input: ['./src/lib/app.js'],
   output: {
     dir: 'dist/js',
     format: 'esm',

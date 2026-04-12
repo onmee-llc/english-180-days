@@ -1,0 +1,10 @@
+# Initial publish date — used to decide 'NEW' badge threshold.
+date: 2026-04-13
+url: /learn/topic-4-cloud-infrastructure/
+draft: false
+title: i18n.courses.topic_4_cloud_infrastructure.title
+description: i18n.courses.topic_4_cloud_infrastructure.description
+logo: '/images/courses/topic-4-cloud-infrastructure/logo.svg'
+background: '/images/courses/topic-4-cloud-infrastructure/background.svg'
+card: '/images/courses/topic-4-cloud-infrastructure/card.svg'
+highlight: 'yellow'

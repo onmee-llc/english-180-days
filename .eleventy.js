@@ -19,11 +19,8 @@ const pluginRss = require('@11ty/eleventy-plugin-rss');
 const pluginSyntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
 const yaml = require('js-yaml');
 const fs = require('fs');
-const path = require('path');
 const fse = require('fs-extra');
 const fetch = require('node-fetch');
-const patterns = require('./src/lib/patterns').patterns();
-
 const markdown = require('./src/site/_plugins/markdown');
 
 // Shortcodes used in prose
@@ -42,7 +39,6 @@ const Instruction = require('./src/site/_includes/components/Instruction');
 const Label = require('./src/site/_includes/components/Label');
 const {Video} = require('./src/site/_includes/components/Video');
 const {YouTube} = require('webdev-infra/shortcodes/YouTube');
-const CodePattern = require('./src/site/_includes/components/CodePattern');
 const Widget = require('./src/site/_includes/components/Widget');
 
 // Other shortcodes
@@ -201,7 +197,6 @@ module.exports = function (config) {
   config.addShortcode('BrowserCompat', BrowserCompat);
   config.addShortcode('CodelabsCallout', CodelabsCallout);
   config.addShortcode('Codepen', Codepen);
-  config.addShortcode('CodePattern', CodePattern);
   config.addPairedShortcode('Compare', Compare);
   config.addPairedShortcode('CompareCaption', CompareCaption);
   config.addPairedShortcode('Details', Details);
@@ -249,38 +244,6 @@ module.exports = function (config) {
       );
     });
   }
-
-  // Because eleventy's passthroughFileCopy does not work with permalinks
-  // we need to manually copy general assets ourselves using gulp.
-  // https://github.com/11ty/eleventy/issues/379
-  // We make exception for CodePattern files used as standalone scripts in demos.
-  for (const patternId in patterns) {
-    const pattern = patterns[patternId];
-    if (pattern.static?.length) {
-      const src = path.join(
-        'src',
-        'site',
-        'content',
-        'en',
-        'patterns',
-        pattern.id,
-      );
-      const rewrite = {};
-      pattern.static.forEach((staticFile) => {
-        rewrite[path.join(src, staticFile)] = path.join(
-          'patterns',
-          pattern.id,
-          staticFile,
-        );
-      });
-      config.addPassthroughCopy(rewrite);
-    }
-  }
-
-  // Third party scripts and assets
-  config.addPassthroughCopy({
-    'src/site/content/en/third_party/': 'third_party',
-  });
 
   // ----------------------------------------------------------------------------
   // ALTERNATIVE BUILD FOR EXPORT

@@ -1,24 +1,11 @@
 ---
 layout: default
-pageScripts:
-  - '/js/about.js'
 ---
-{% from 'macros/icon.njk' import icon, svg with context %}
 
 <div class="about">
   <section class="bg-mid-bg hero">
     <div class="wrapper">
-      <div class="hero__columns switcher" data-direction="rev">
-        <div class="flow">
-          {% Img
-            src=banner.image,
-            width="546",
-            height="421",
-            alt=banner.title,
-            loading="lazy",
-            class="hero__decor"
-          %}
-        </div>
+      <div class="hero__columns switcher">
         <div>
           <span aria-hidden="true" class="hero__eyebrow">{{ banner.eyebrow }}</span>
           <div class="hero__content flow gap-top-size-5">
@@ -33,21 +20,41 @@ pageScripts:
   {# Intro start #}
   <section class="about__intro region bg-core-bg">
     <div class="wrapper flow" data-size='extra-narrow'>
+      <h2 class="headline__title">{{ intro.title }}</h2>
+      {% for paragraph in intro.summary %}
+        <p class="color-mid-text">{{ paragraph.paragraph | safe }}</p>
+      {% endfor %}
+      {% if intro.primaryButtonText %}
+        <div>
+          <a class="button gap-top-size-2" data-type="primary" href="{{ intro.primaryButtonUrl }}">
+            {{ intro.primaryButtonText }}
+          </a>
+        </div>
+      {% endif %}
+    </div>
+  </section>
+  {# Intro end #}
+</div>
+
+
+  {# Intro start #}
+  <section class="about__intro region bg-core-bg">
+    <div class="wrapper flow" data-size='extra-narrow'>
         <h1 class="headline__title">{{ intro.title }}</h1>
-        {% for paragraph in intro.summary %}  
+        {% for paragraph in intro.summary %}
           <p class="color-mid-text">{{ paragraph.paragraph | safe }}</p>
         {% endfor %}
     </div>
   </section>
   {# Intro end #}
-  
+
   {# The teams start #}
   <section class="about__teams region bg-core-bg">
     <div class="wrapper flow all-center">
       <h1 class="headline__title"> {{ theTeam.title }} </h1>
       <p class="color-mid-text"> {{ theTeam.subTitle }} </p>
       <div class="authors gap-top-size-2">
-        {% for author in theTeam.authors %}  
+        {% for author in theTeam.authors %}
           {% set data = collections.authors[author.name] %}
 
           {% if data %}
@@ -100,7 +107,7 @@ pageScripts:
   {# Coupled Column start #}
   <section class="region bg-core-bg">
     <div class="wrapper flow all-center">
-      <div class="about__coupled-column"> 
+      <div class="about__coupled-column">
         {% for column in coupledColumn %}
           <div>
             {% include column.icon %}
