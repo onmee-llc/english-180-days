@@ -1,5 +1,12 @@
 {
   "projects": {
-    "default": "180daysenglish"
+    "default": "dailymastery"
+  },
+  "targets": {
+    "dailymastery": {
+      "hosting": {
+        "180daysenglish": ["180daysenglish"]
+      }
+    }
   }
 }
