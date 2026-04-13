@@ -4,6 +4,7 @@ pageScripts:
   - '/js/course.js'
 inlineScripts:
   - '../../lib/components/CourseLinks/index.js'
+  - '../../lib/components/DailyProgress/index.js'
 ---
 
 {% from 'macros/audio-fab.njk' import audioFab %}
@@ -76,6 +77,10 @@ inlineScripts:
             </div>
           </main>
         </div>
+      </div>
+
+      <div class="course__lesson-complete">
+        <lesson-complete data-url="{{ page.url }}"></lesson-complete>
       </div>
 
       {% include 'partials/course-pagination.njk' %}

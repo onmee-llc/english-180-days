@@ -84,7 +84,7 @@ $course-side-vert-space: 20px;
   outline: 1px solid get-utility-value('color', 'stroke');
   max-height: 100vh;
   overflow: hidden;
-  gap: 0;
+  gap: 0; // sass-lint:disable-line no-misspelled-properties
 
   @include apply-utility('bg', 'core-bg');
 }
@@ -102,7 +102,7 @@ $course-side-vert-space: 20px;
   /// of decorative elements
   height: $course-header-height;
   padding: 0 1rem;
-  gap: 0.5rem;
+  gap: 0.5rem; // sass-lint:disable-line no-misspelled-properties
 
   /// Add a touch of top space to the close button to increase tap accuracy
   .fab {
@@ -149,6 +149,7 @@ $course-side-vert-space: 20px;
 }
 
 /// RESPONSIVE STYLES
+// sass-lint:disable no-mergeable-selectors
 .course {
   @include media-query('md') {
     &__sidebar {
@@ -162,7 +163,7 @@ $course-side-vert-space: 20px;
     --web-navigation-drawer-width: 100%;
 
     > .sidebar {
-      gap: 0;
+      gap: 0; // sass-lint:disable-line no-misspelled-properties
     }
 
     web-header {
@@ -218,12 +219,12 @@ web-search.course__search {
     /// but maintains the layout structure of its siblings. Luckily, we know how big they are,
     /// how many there are and what the spacing between them is, so it's only partially "magic numbers"
     top: #{$course-side-vert-space + $course-search-height +
-      $course-header-height};
+    $course-header-height};
     left: 0;
     bottom: 0;
     width: 100%;
     overflow-y: auto;
-    overscroll-behavior: contain;
+    overscroll-behavior: contain; // sass-lint:disable-line no-misspelled-properties
 
     @include apply-utility('bg', 'core-bg');
 
@@ -237,7 +238,9 @@ web-search.course__search {
     text-align: center;
     padding-top: get-space('size-3');
   }
+}
 
+.course {
   /// Responsive adjustments for navigation drawer
   web-navigation-drawer[type='standard'] {
     @include media-query('lg') {
@@ -256,5 +259,129 @@ web-search.course__search {
         visibility: hidden;
       }
     }
+  }
+}
+// sass-lint:enable no-mergeable-selectors
+
+// ─────────────────────────────────────────────────────────────────────────────
+// IPA phonetic transcription
+// ─────────────────────────────────────────────────────────────────────────────
+
+.ipa {
+  font-family: 'Segoe UI', 'DejaVu Sans', 'Lucida Sans Unicode', sans-serif;
+  color: var(--color-action-text, #1a73e8);
+  font-size: 0.85em;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+
+  &::before {
+    content: '/';
+    color: var(--color-mid-text, #5f6368);
+  }
+
+  &::after {
+    content: '/';
+    color: var(--color-mid-text, #5f6368);
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// DailyProgress sidebar widget
+// ─────────────────────────────────────────────────────────────────────────────
+
+daily-progress {
+  display: block;
+  padding: get-space('size-1') $global-gutter-narrow;
+  border-bottom: 1px solid var(--color-stroke);
+  margin-bottom: get-space('size-1');
+}
+
+.daily-progress {
+  &__stats {
+    display: flex;
+    gap: get-space('size-2'); // sass-lint:disable-line no-misspelled-properties
+    margin-bottom: get-space('size-1');
+  }
+
+  &__stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__value {
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--color-action-text, #1a73e8);
+  }
+
+  &__label {
+    font-size: 0.65rem;
+    color: var(--color-mid-text, #5f6368);
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+  }
+
+  &__bar-wrap {
+    height: 4px;
+    background: var(--color-stroke, #e0e0e0);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 2px;
+  }
+
+  &__bar {
+    height: 100%;
+    background: var(--color-action-text, #1a73e8);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+  }
+
+  &__percent {
+    font-size: 0.7rem;
+    color: var(--color-mid-text, #5f6368);
+    display: block;
+    text-align: right;
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// LessonComplete toggle button
+// ─────────────────────────────────────────────────────────────────────────────
+
+.course__lesson-complete {
+  margin: get-space('size-3') 0 get-space('size-2');
+}
+
+.lesson-complete__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: get-space('size-1'); // sass-lint:disable-line no-misspelled-properties
+  padding: 0.5rem 1.25rem;
+  border-radius: 999px;
+  border: 2px solid var(--color-action-text, #1a73e8);
+  color: var(--color-action-text, #1a73e8);
+  background: transparent;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+
+  &:hover,
+  &:focus-visible {
+    background: var(--color-action-text, #1a73e8);
+    color: #fff;
+    outline: none;
+  }
+
+  &.is-done {
+    background: var(--color-action-text, #1a73e8);
+    color: #fff;
   }
 }

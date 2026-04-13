@@ -212,6 +212,11 @@ module.exports = function (config) {
   config.addShortcode('Video', Video);
   config.addShortcode('YouTube', YouTube);
   config.addShortcode('YouTubePlaylist', YouTubePlaylist);
+  config.addShortcode(
+    'IPA',
+    (text) =>
+      `<span class="ipa" aria-label="pronunciation: ${text}">${text}</span>`,
+  );
   config.addShortcode('includeRaw', includeRaw);
 
   // ----------------------------------------------------------------------------
