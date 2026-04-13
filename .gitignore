@@ -82,7 +82,6 @@ entrypoint.hashmanifest.json
 .tmp
 .cache
 .firebase
-firebase.json
 src/scss/_tokens.scss
 src/scss/_themes.scss
 
