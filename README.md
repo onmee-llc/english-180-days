@@ -21,13 +21,13 @@ Version Manager (nvm)](https://github.com/nvm-sh/nvm).
 ### Clone the repo
 
 ```bash
-git clone https://github.com/GoogleChrome/web.dev.git
+git clone https://github.com/onmee-llc/english-180-days.git
 ```
 
 ### Change directory into the folder created
 
 ```bash
-cd web.dev
+cd english-180-days
 ```
 
 ### Install dependencies
@@ -104,12 +104,9 @@ of the next hour.
 
 ### Manual deploys
 
-To manually deploy the site you'll need to be a member of one of these Google teams:
+To manually deploy the site you'll need to be a member of one of these Onmee-LLC teams
 
-- web.dev-eng
-- web.dev-owners
-
-1. Navigate to [the Cloud Build Triggers page](https://console.cloud.google.com/cloud-build/triggers?project=web-dev-production-1).
+1. Navigate to [the Cloud Build Triggers page](https://console.cloud.google.com/cloud-build/triggers?project=english-180-days-prod).
 2. Click the **RUN** button for the trigger named **Deploy**.
 3. In the side drawer that opens up, click the **RUN TRIGGER** button for the trigger for the **main** branch.
 
