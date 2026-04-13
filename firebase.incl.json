@@ -27,7 +27,8 @@
     "i18n": {
       "root": "/i18n"
     },
-    "redirects": []
+    "redirects": [],
+    "target": "180daysenglish"
   },
   "emulators": {
     "hosting": {

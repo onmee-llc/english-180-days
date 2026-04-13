@@ -1,44 +1,1684 @@
 {
-  "hosting": [
-    {
-      "target": "180daysenglish",
-      "public": "dist",
-      "ignore": [
-        "firebase.json",
-        "**/.*",
-        "**/node_modules/**"
-      ],
-      "cleanUrls": true,
-      "trailingSlash": false,
-      "headers": [
-        {
-          "source": "/js/**",
-          "headers": [
-            {
-              "key": "Cache-Control",
-              "value": "public, max-age=31536000, immutable"
-            }
-          ]
-        },
-        {
-          "source": "/images/**",
-          "headers": [
-            {
-              "key": "Cache-Control",
-              "value": "public, max-age=31536000, immutable"
-            }
-          ]
-        },
-        {
-          "source": "/fonts/**",
-          "headers": [
-            {
-              "key": "Cache-Control",
-              "value": "public, max-age=31536000, immutable"
-            }
-          ]
-        }
-      ]
+  "functions": {
+    "predeploy": "npm --prefix \"$RESOURCE_DIR\" ci"
+  },
+  "hosting": {
+    "public": "dist",
+    "headers": [
+      {
+        "source": "**",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "max-age=31536000"
+          }
+        ]
+      },
+      {
+        "source": "**/!(*.*)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "max-age=0"
+          }
+        ]
+      }
+    ],
+    "i18n": {
+      "root": "/i18n"
+    },
+    "redirects": [
+      {
+        "source": "/policies",
+        "destination": "https://policies.google.com/",
+        "type": 301
+      },
+      {
+        "source": "/subscribe",
+        "destination": "/newsletter",
+        "type": 301
+      },
+      {
+        "source": "/fast/using-lighthouse-ci-to-set-a-performance-budget",
+        "destination": "/fast/using-lighthouse-bot-to-set-a-performance-budget",
+        "type": 301
+      },
+      {
+        "source": "/fast/defer-unused-css",
+        "destination": "/fast/defer-non-critical-css",
+        "type": 301
+      },
+      {
+        "source": "/reliable/http-cache/codelab-http-cache",
+        "destination": "/codelab-http-cache",
+        "type": 301
+      },
+      {
+        "source": "/fast/serve-images-webp/codelab-serve-images-webp",
+        "destination": "/codelab-serve-images-webp",
+        "type": 301
+      },
+      {
+        "source": "/security",
+        "destination": "/secure",
+        "type": 301
+      },
+      {
+        "source": "/fast/remove-unused-code/codelab-remove-unused-code",
+        "destination": "/codelab-remove-unused-code",
+        "type": 301
+      },
+      {
+        "source": "/fast/serve-responsive-images/codelab-art-direction",
+        "destination": "/codelab-art-direction",
+        "type": 301
+      },
+      {
+        "source": "/fast/serve-responsive-images/codelab-art-direction",
+        "destination": "/codelab-art-direction",
+        "type": 301
+      },
+      {
+        "source": "/secure/same-origin-policy/codelab-same-origin-fetch",
+        "destination": "/codelab-same-origin-fetch",
+        "type": 301
+      },
+      {
+        "source": "/secure/same-origin-policy/codelab-same-origin-iframe",
+        "destination": "/codelab-same-origin-iframe",
+        "type": 301
+      },
+      {
+        "source": "/fast/avoid-invisible-text/codelab-avoid-invisible-text",
+        "destination": "/codelab-avoid-invisible-text",
+        "type": 301
+      },
+      {
+        "source": "/fast/preload-critical-assets/codelab-preload-web-fonts",
+        "destination": "/codelab-preload-web-fonts",
+        "type": 301
+      },
+      {
+        "source": "/fast/serve-responsive-images/codelab-density-descriptors",
+        "destination": "/codelab-density-descriptors",
+        "type": 301
+      },
+      {
+        "source": "/discoverable/fix-http-status-codes/codelab-fix-sneaky-404",
+        "destination": "/codelab-fix-sneaky-404",
+        "type": 301
+      },
+      {
+        "source": "/installable/discover-installable/codelab-make-installable",
+        "destination": "/codelab-make-installable",
+        "type": 301
+      },
+      {
+        "source": "/fast/use-imagemin-to-compress-images/codelab-imagemin-gulp",
+        "destination": "/codelab-imagemin-gulp",
+        "type": 301
+      },
+      {
+        "source": "/fast/use-imagemin-to-compress-images/codelab-imagemin-grunt",
+        "destination": "/codelab-imagemin-grunt",
+        "type": 301
+      },
+      {
+        "source": "/fast/preload-critical-assets/codelab-preload-critical-assets",
+        "destination": "/codelab-preload-critical-assets",
+        "type": 301
+      },
+      {
+        "source": "/fast/replace-gifs-with-videos/codelab-replace-gifs-with-video",
+        "destination": "/codelab-replace-gifs-with-video",
+        "type": 301
+      },
+      {
+        "source": "/fast/use-imagemin-to-compress-images/codelab-imagemin-webpack",
+        "destination": "/codelab-imagemin-webpack",
+        "type": 301
+      },
+      {
+        "source": "/reliable/service-workers-cache-storage/codelab-service-workers",
+        "destination": "/codelab-service-workers",
+        "type": 301
+      },
+      {
+        "source": "/fast/serve-modern-code-to-modern-browsers/codelab-serve-modern-code",
+        "destination": "/codelab-serve-modern-code",
+        "type": 301
+      },
+      {
+        "source": "/fast/serve-responsive-images/codelab-specifying-multiple-slot-widths",
+        "destination": "/codelab-specifying-multiple-slot-widths",
+        "type": 301
+      },
+      {
+        "source": "/fast/reduce-javascript-payloads-with-code-splitting/codelab-code-splitting",
+        "destination": "/codelab-code-splitting",
+        "type": 301
+      },
+      {
+        "source": "/reliable/identify-resources-via-network-panel/codelab-explore-network-panel",
+        "destination": "/codelab-explore-network-panel",
+        "type": 301
+      },
+      {
+        "source": "/fast/reduce-network-payloads-using-text-compression/codelab-text-compression",
+        "destination": "/codelab-text-compression",
+        "type": 301
+      },
+      {
+        "source": "/fast/use-lazysizes-to-lazyload-images/codelab-use-lazysizes-to-lazyload-images",
+        "destination": "/codelab-use-lazysizes-to-lazyload-images",
+        "type": 301
+      },
+      {
+        "source": "/fast/serve-images-with-correct-dimensions/codelab-serve-images-correct-dimensions",
+        "destination": "/codelab-serve-images-correct-dimensions",
+        "type": 301
+      },
+      {
+        "source": "/fast/reduce-network-payloads-using-text-compression/codelab-text-compression-brotli",
+        "destination": "/codelab-text-compression-brotli",
+        "type": 301
+      },
+      {
+        "source": "/fast/incorporate-performance-budgets-into-your-build-tools/codelab-setting-performance-budgets-with-webpack",
+        "destination": "/codelab-setting-performance-budgets-with-webpack",
+        "type": 301
+      },
+      {
+        "source": "/accessible/:part",
+        "destination": "/:part",
+        "type": 301
+      },
+      {
+        "source": "/discoverable/:part",
+        "destination": "/:part",
+        "type": 301
+      },
+      {
+        "source": "/fast/:part",
+        "destination": "/:part",
+        "type": 301
+      },
+      {
+        "source": "/installable/:part",
+        "destination": "/:part",
+        "type": 301
+      },
+      {
+        "source": "/reliable/:part",
+        "destination": "/:part",
+        "type": 301
+      },
+      {
+        "source": "/secure/:part",
+        "destination": "/:part",
+        "type": 301
+      },
+      {
+        "source": "/en/:part",
+        "destination": "/:part",
+        "type": 301
+      },
+      {
+        "source": "/write-descriptive-text",
+        "destination": "/lighthouse-seo",
+        "type": 301
+      },
+      {
+        "source": "/tell-search-translated-pages-equal",
+        "destination": "/hreflang",
+        "type": 301
+      },
+      {
+        "source": "/tell-search-engine-canonical-url",
+        "destination": "/canonical",
+        "type": 301
+      },
+      {
+        "source": "/remove-code-blocking-indexing",
+        "destination": "/is-crawlable",
+        "type": 301
+      },
+      {
+        "source": "/is-crawable",
+        "destination": "/is-crawlable",
+        "type": 301
+      },
+      {
+        "source": "/fix-http-status-codes",
+        "destination": "/http-status-code",
+        "type": 301
+      },
+      {
+        "source": "/remove-browser-plugins",
+        "destination": "/plugins",
+        "type": 301
+      },
+      {
+        "source": "/fix-robot-errors",
+        "destination": "/robots-txt",
+        "type": 301
+      },
+      {
+        "source": "/fix-small-fonts",
+        "destination": "/font-size",
+        "type": 301
+      },
+      {
+        "source": "/fix-viewport-tag",
+        "destination": "/viewport",
+        "type": 301
+      },
+      {
+        "source": "/layout-instability-api",
+        "destination": "/cls",
+        "type": 301
+      },
+      {
+        "source": "/largest-contentful-paint",
+        "destination": "/lcp",
+        "type": 301
+      },
+      {
+        "source": "/web-vitals",
+        "destination": "/vitals",
+        "type": 301
+      },
+      {
+        "source": "/si",
+        "destination": "/speed-index",
+        "type": 301
+      },
+      {
+        "source": "/wasm",
+        "destination": "/webassembly/",
+        "type": 301
+      },
+      {
+        "source": "/opfs",
+        "destination": "/origin-private-file-system/",
+        "type": 301
+      },
+      {
+        "source": "/pwa",
+        "destination": "/progressive-web-apps/",
+        "type": 301
+      },
+      {
+        "source": "/installable",
+        "destination": "/progressive-web-apps/#make-it-installable",
+        "type": 301
+      },
+      {
+        "source": "/discover-installable",
+        "destination": "/progressive-web-apps/#make-it-installable",
+        "type": 301
+      },
+      {
+        "source": "/progressive-web-apps/#installable",
+        "destination": "/progressive-web-apps/#make-it-installable",
+        "type": 301
+      },
+      {
+        "source": "/push-notifications",
+        "destination": "/push-notifications-overview/",
+        "type": 301
+      },
+      {
+        "source": "/sms-receiver-api-announcement",
+        "destination": "/web-otp",
+        "type": 301
+      },
+      {
+        "source": "/android-payment-apps-overview",
+        "destination": "/android-payment-app-developers-guide",
+        "type": 301
+      },
+      {
+        "source": "/payment-request-basic-card-deprecation",
+        "destination": "https://chromestatus.com/feature/5730051011117056",
+        "type": 301
+      },
+      {
+        "source": "/image-size-responsive",
+        "destination": "/image-aspect-ratio",
+        "type": 301
+      },
+      {
+        "source": "/handbook/tags",
+        "destination": "/handbook/yaml-front-matter/#tags",
+        "type": 301
+      },
+      {
+        "source": "/image-support-for-async-clipboard",
+        "destination": "/async-clipboard",
+        "type": 301
+      },
+      {
+        "source": "/native-file-system",
+        "destination": "/file-system-access",
+        "type": 301
+      },
+      {
+        "source": "/browser-nativefs",
+        "destination": "/browser-fs-access",
+        "type": 301
+      },
+      {
+        "source": "/wakelock",
+        "destination": "/wake-lock",
+        "type": 301
+      },
+      {
+        "source": "/native-lazy-loading",
+        "destination": "/browser-level-image-lazy-loading",
+        "type": 301
+      },
+      {
+        "source": "/scale-on-web",
+        "destination": "/tags/scale-on-web",
+        "type": 301
+      },
+      {
+        "source": "/wordpress-on-wasm",
+        "destination": "/wordpress-playground",
+        "type": 301
+      },
+      {
+        "source": "/quictransport",
+        "destination": "/webtransport",
+        "type": 301
+      },
+      {
+        "source": "/aria-toggle-field-name",
+        "destination": "/aria-name",
+        "type": 301
+      },
+      {
+        "source": "/aria-input-field-name",
+        "destination": "/aria-name",
+        "type": 301
+      },
+      {
+        "source": "/cors-rfc1918-guide",
+        "destination": "/cors-rfc1918-feedback",
+        "type": 301
+      },
+      {
+        "source": "/debugging-layout-shifts",
+        "destination": "/debug-layout-shifts",
+        "type": 301
+      },
+      {
+        "source": "/learncss",
+        "destination": "/learn/css",
+        "type": 301
+      },
+      {
+        "source": "/learnCSS",
+        "destination": "/learn/css",
+        "type": 301
+      },
+      {
+        "source": "/whats-new-web-vitals-2021",
+        "destination": "/vitals",
+        "type": 302
+      },
+      {
+        "source": "/security-headers-cheat-sheet",
+        "destination": "/security-headers",
+        "type": 301
+      },
+      {
+        "source": "/media-cheat-sheet",
+        "destination": "/media-conversion",
+        "type": 301
+      },
+      {
+        "source": "/media-eme-basics",
+        "destination": "/media-eme",
+        "type": 301
+      },
+      {
+        "source": "/capturing-images",
+        "destination": "/media-capturing-images",
+        "type": 301
+      },
+      {
+        "source": "/browser-flags",
+        "destination": "https://developer.chrome.com/blog/browser-flags/",
+        "type": 301
+      },
+      {
+        "source": "/third-party-origin-trials",
+        "destination": "https://developer.chrome.com/blog/third-party-origin-trials/",
+        "type": 301
+      },
+      {
+        "source": "/fugu-status",
+        "destination": "https://developer.chrome.com/blog/fugu-status/",
+        "type": 301
+      },
+      {
+        "source": "/fugu-showcase",
+        "destination": "https://developer.chrome.com/fugu-showcase/",
+        "type": 301
+      },
+      {
+        "source": "/conversion-measurement",
+        "destination": "https://developer.chrome.com/docs/privacy-sandbox/attribution-reporting/",
+        "type": 301
+      },
+      {
+        "source": "/using-conversion-measurement",
+        "destination": "https://developer.chrome.com/docs/privacy-sandbox/attribution-reporting/",
+        "type": 301
+      },
+      {
+        "source": "/origin-trials",
+        "destination": "https://developer.chrome.com/docs/web-platform/origin-trials/",
+        "type": 301
+      },
+      {
+        "source": "/launch-handler",
+        "destination": "https://developer.chrome.com/docs/web-platform/launch-handler/",
+        "type": 301
+      },
+      {
+        "source": "/gpu",
+        "destination": "https://developer.chrome.com/docs/web-platform/webgpu/",
+        "type": 301
+      },
+      {
+        "source": "/webgpu",
+        "destination": "https://developer.chrome.com/docs/web-platform/webgpu/",
+        "type": 301
+      },
+      {
+        "source": "/storage-foundation",
+        "destination": "https://developer.chrome.com/docs/web-platform/storage-foundation/",
+        "type": 301
+      },
+      {
+        "source": "/app-history-api",
+        "destination": "https://developer.chrome.com/docs/web-platform/navigation-api/",
+        "type": 301
+      },
+      {
+        "source": "/fetch-upload-streaming",
+        "destination": "https://developer.chrome.com/articles/fetch-streaming-requests/",
+        "type": 301
+      },
+      {
+        "source": "/compute-pressure",
+        "destination": "https://developer.chrome.com/docs/web-platform/compute-pressure/",
+        "type": 301
+      },
+      {
+        "source": "/declarative-link-capturing",
+        "destination": "https://developer.chrome.com/docs/web-platform/declarative-link-capturing/",
+        "type": 301
+      },
+      {
+        "source": "/handwriting-recognition",
+        "destination": "https://developer.chrome.com/docs/web-platform/handwriting-recognition/",
+        "type": 301
+      },
+      {
+        "source": "/virtualkeyboard",
+        "destination": "https://developer.chrome.com/docs/web-platform/virtual-keyboard/",
+        "type": 301
+      },
+      {
+        "source": "/workingoffthegrid",
+        "destination": "https://developer.chrome.com/docs/workbox/service-worker-overview/",
+        "type": 301
+      },
+      {
+        "source": "/bluetooth",
+        "destination": "https://developer.chrome.com/articles/bluetooth/",
+        "type": 301
+      },
+      {
+        "source": "/usb",
+        "destination": "https://developer.chrome.com/articles/usb/",
+        "type": 301
+      },
+      {
+        "source": "/periodic-background-sync",
+        "destination": "https://developer.chrome.com/articles/periodic-background-sync/",
+        "type": 301
+      },
+      {
+        "source": "/eyedropper",
+        "destination": "https://developer.chrome.com/articles/eyedropper/",
+        "type": 301
+      },
+      {
+        "source": "/cors-rfc1918-feedback",
+        "destination": "https://developer.chrome.com/articles/cors-rfc1918-feedback/",
+        "type": 301
+      },
+      {
+        "source": "/file-handling",
+        "destination": "https://developer.chrome.com/articles/file-handling/",
+        "type": 301
+      },
+      {
+        "source": "/hid",
+        "destination": "https://developer.chrome.com/articles/hid/",
+        "type": 301
+      },
+      {
+        "source": "/isinputpending",
+        "destination": "https://developer.chrome.com/articles/isinputpending/",
+        "type": 301
+      },
+      {
+        "source": "/webcodecs",
+        "destination": "https://developer.chrome.com/articles/webcodecs",
+        "type": 301
+      },
+      {
+        "source": "/mediastreamtrack-insertable-media-processing",
+        "destination": "https://developer.chrome.com/articles/mediastreamtrack-insertable-media-processing/",
+        "type": 301
+      },
+      {
+        "source": "/pwa-url-handler",
+        "destination": "https://developer.chrome.com/articles/pwa-url-handler/",
+        "type": 301
+      },
+      {
+        "source": "/reporting-api-migration",
+        "destination": "https://developer.chrome.com/articles/reporting-api-migration/",
+        "type": 301
+      },
+      {
+        "source": "/reporting-api",
+        "destination": "https://developer.chrome.com/articles/reporting-api/",
+        "type": 301
+      },
+      {
+        "source": "/urlpattern",
+        "destination": "https://developer.chrome.com/articles/urlpattern/",
+        "type": 301
+      },
+      {
+        "source": "/contact-picker",
+        "destination": "https://developer.chrome.com/articles/contact-picker/",
+        "type": 301
+      },
+      {
+        "source": "/multi-screen-window-placement",
+        "destination": "https://developer.chrome.com/articles/multi-screen-window-placement/",
+        "type": 301
+      },
+      {
+        "source": "/shape-detection",
+        "destination": "https://developer.chrome.com/articles/shape-detection/",
+        "type": 301
+      },
+      {
+        "source": "/url-protocol-handler",
+        "destination": "https://developer.chrome.com/articles/url-protocol-handler/",
+        "type": 301
+      },
+      {
+        "source": "/websocketstream",
+        "destination": "https://developer.chrome.com/articles/websocketstream/",
+        "type": 301
+      },
+      {
+        "source": "/web-share-target",
+        "destination": "https://developer.chrome.com/articles/web-share-target/",
+        "type": 301
+      },
+      {
+        "source": "/local-fonts",
+        "destination": "https://developer.chrome.com/articles/local-fonts/",
+        "type": 301
+      },
+      {
+        "source": "/notification-triggers",
+        "destination": "https://developer.chrome.com/docs/web-platform/notification-triggers/",
+        "type": 301
+      },
+      {
+        "source": "/badging-api",
+        "destination": "https://developer.chrome.com/articles/badging-api/",
+        "type": 301
+      },
+      {
+        "source": "/content-indexing-api",
+        "destination": "https://developer.chrome.com/articles/content-indexing-api/",
+        "type": 301
+      },
+      {
+        "source": "/generic-sensor",
+        "destination": "https://developer.chrome.com/articles/generic-sensor/",
+        "type": 301
+      },
+      {
+        "source": "/idle-detection",
+        "destination": "https://developer.chrome.com/articles/idle-detection/",
+        "type": 301
+      },
+      {
+        "source": "/keyboard-lock",
+        "destination": "https://developer.chrome.com/articles/keyboard-lock/",
+        "type": 301
+      },
+      {
+        "source": "/reporting-observer",
+        "destination": "https://developer.chrome.com/articles/reporting-observer/",
+        "type": 301
+      },
+      {
+        "source": "/serial",
+        "destination": "https://developer.chrome.com/articles/serial/",
+        "type": 301
+      },
+      {
+        "source": "/wake-lock",
+        "destination": "https://developer.chrome.com/articles/wake-lock/",
+        "type": 301
+      },
+      {
+        "source": "/user-agent-client-hints",
+        "destination": "https://developer.chrome.com/articles/user-agent-client-hints/",
+        "type": 301
+      },
+      {
+        "source": "/browser-fs-access",
+        "destination": "https://developer.chrome.com/articles/browser-fs-access/",
+        "type": 301
+      },
+      {
+        "source": "/display-override",
+        "destination": "https://developer.chrome.com/articles/display-override/",
+        "type": 301
+      },
+      {
+        "source": "/file-system-access",
+        "destination": "https://developer.chrome.com/articles/file-system-access/",
+        "type": 301
+      },
+      {
+        "source": "/user-agent-client-hints",
+        "destination": "https://developer.chrome.com/articles/user-agent-client-hints/",
+        "type": 301
+      },
+      {
+        "source": "/nfc",
+        "destination": "https://developer.chrome.com/articles/nfc/",
+        "type": 301
+      },
+      {
+        "source": "/build-for-webusb",
+        "destination": "https://developer.chrome.com/articles/build-for-webusb/",
+        "type": 301
+      },
+      {
+        "source": "/aurora",
+        "destination": "https://developer.chrome.com/blog/introducing-aurora/",
+        "type": 301
+      },
+      {
+        "source": "/introducing-aurora",
+        "destination": "https://developer.chrome.com/blog/introducing-aurora/",
+        "type": 301
+      },
+      {
+        "source": "/inp-in-frameworks",
+        "destination": "https://developer.chrome.com/blog/inp-in-frameworks/",
+        "type": 301
+      },
+      {
+        "source": "/script-component",
+        "destination": "https://developer.chrome.com/blog/script-component/",
+        "type": 301
+      },
+      {
+        "source": "/image-component",
+        "destination": "https://developer.chrome.com/blog/image-component/",
+        "type": 301
+      },
+      {
+        "source": "/aurora-resource-inlining",
+        "destination": "https://developer.chrome.com/blog/aurora-resource-inlining/",
+        "type": 301
+      },
+      {
+        "source": "/conformance",
+        "destination": "https://developer.chrome.com/blog/conformance/",
+        "type": 301
+      },
+      {
+        "source": "/tags/aurora-project",
+        "destination": "https://developer.chrome.com/tags/aurora-project/",
+        "type": 301
+      },
+      {
+        "source": "/declarative-shadow-dom",
+        "destination": "https://developer.chrome.com/articles/declarative-shadow-dom/",
+        "type": 301
+      },
+      {
+        "source": "/gpu-compute",
+        "destination": "https://developer.chrome.com/articles/gpu-compute/",
+        "type": 301
+      },
+      {
+        "source": "/web-bundles",
+        "destination": "https://developer.chrome.com/docs/web-platform/web-bundles/",
+        "type": 301
+      },
+      {
+        "source": "/webtransport",
+        "destination": "https://developer.chrome.com/articles/webtransport/",
+        "type": 301
+      },
+      {
+        "source": "/web-otp",
+        "destination": "https://developer.chrome.com/articles/web-otp/",
+        "type": 301
+      },
+      {
+        "source": "/hid-examples",
+        "destination": "https://developer.chrome.com/articles/hid-examples/",
+        "type": 301
+      },
+      {
+        "source": "/design-system/component/action",
+        "destination": "/design-system/component/fab",
+        "type": 301
+      },
+      {
+        "source": "/live",
+        "destination": "/shows/web-dev-live-day-1",
+        "type": 301
+      },
+      {
+        "source": "/vitals-tools-workflow",
+        "destination": "/vitals-tools",
+        "type": 301
+      },
+      {
+        "source": "/extending-workbox",
+        "destination": "https://developer.chrome.com/docs/workbox/using-plugins/",
+        "type": 301
+      },
+      {
+        "source": "/use-lazysizes-to-lazyload-images",
+        "destination": "/browser-level-image-lazy-loading/",
+        "type": 301
+      },
+      {
+        "source": "/performance-get-started",
+        "destination": "/fast/",
+        "type": 301
+      },
+      {
+        "source": "/performance-get-started-graphicalcontent-4",
+        "destination": "/choose-the-right-image-format/",
+        "type": 301
+      },
+      {
+        "source": "/performance-get-started-httpcaching-6",
+        "destination": "/http-cache/",
+        "type": 301
+      },
+      {
+        "source": "/performance-get-started-httprequests-5",
+        "destination": "/optimizing-content-efficiency-eliminate-downloads/",
+        "type": 301
+      },
+      {
+        "source": "/performance-get-started-textcontent-3",
+        "destination": "/optimizing-content-efficiency-optimize-encoding-and-transfer/",
+        "type": 301
+      },
+      {
+        "source": "/performance-get-started-wrapup-7",
+        "destination": "/fast/",
+        "type": 301
+      },
+      {
+        "source": "/speed-txt-compression",
+        "destination": "/reduce-network-payloads-using-text-compression/",
+        "type": 301
+      },
+      {
+        "source": "/webperformance-basics",
+        "destination": "/navigation-and-resource-timing/",
+        "type": 301
+      },
+      {
+        "source": "/priority-hints",
+        "destination": "/fetch-priority/",
+        "type": 301
+      },
+      {
+        "source": "/speed-scrolling",
+        "destination": "/intersectionobserver/",
+        "type": 301
+      },
+      {
+        "source": "/learn-web-vitals",
+        "destination": "/learn-core-web-vitals/",
+        "type": 301
+      },
+      {
+        "source": "/debug-web-vitals-in-the-field",
+        "destination": "/debug-performance-in-the-field/",
+        "type": 301
+      },
+      {
+        "source": "/patterns/web-apps/audio-effects/demo.html",
+        "destination": "/patterns/media/audio-effects/demo.html",
+        "type": 301
+      },
+      {
+        "source": "/patterns/web-apps/audio-effects",
+        "destination": "/patterns/media/audio-effects",
+        "type": 301
+      },
+      {
+        "source": "/lighthouse-performance",
+        "destination": "https://developer.chrome.com/docs/lighthouse/performance/",
+        "type": 301
+      },
+      {
+        "source": "/performance-scoring",
+        "destination": "https://developer.chrome.com/docs/lighthouse/performance/performance-scoring/",
+        "type": 301
+      },
+      {
+        "source": "/bootup-time",
+        "destination": "https://developer.chrome.com/docs/lighthouse/performance/bootup-time/",
+        "type": 301
+      },
+      {
+        "source": "/critical-request-chains",
+        "destination": "https://developer.chrome.com/docs/lighthouse/performance/critical-request-chains/",
+        "type": 301
+      },
+      {
+        "source": "/dom-size",
+        "destination": "https://developer.chrome.com/docs/lighthouse/performance/dom-size/",
+        "type": 301
+      },
+      {
+        "source": "/efficient-animated-content",
+        "destination": "https://developer.chrome.com/docs/lighthouse/performance/efficient-animated-content/",
+        "type": 301
+      },
+      {
+        "source": "/first-contentful-paint",
+        "destination": "https://developer.chrome.com/docs/lighthouse/performance/first-contentful-paint/",
+        "type": 301
+      },
+      {
+        "source": "/first-cpu-idle",
+        "destination": "https://developer.chrome.com/docs/lighthouse/performance/first-cpu-idle/",
+        "type": 301
+      },
+      {
+        "source": "/first-meaningful-paint",
+        "destination": "https://developer.chrome.com/docs/lighthouse/performance/first-meaningful-paint/",
+        "type": 301
+      },
+      {
+        "source": "/font-display",
+        "destination": "https://developer.chrome.com/docs/lighthouse/performance/font-display/",
+        "type": 301
+      },
+      {
+        "source": "/interactive",
+        "destination": "https://developer.chrome.com/docs/lighthouse/performance/interactive/",
+        "type": 301
+      },
+      {
+        "source": "/lighthouse-largest-contentful-paint",
+        "destination": "https://developer.chrome.com/docs/lighthouse/performance/lighthouse-largest-contentful-paint/",
+        "type": 301
+      },
+      {
+        "source": "/lighthouse-max-potential-fid",
+        "destination": "https://developer.chrome.com/docs/lighthouse/performance/lighthouse-max-potential-fid/",
+        "type": 301
+      },
+      {
+        "source": "/lighthouse-total-blocking-time",
+        "destination": "https://developer.chrome.com/docs/lighthouse/performance/lighthouse-total-blocking-time/",
+        "type": 301
+      },
+      {
+        "source": "/mainthread-work-breakdown",
+        "destination": "https://developer.chrome.com/docs/lighthouse/performance/mainthread-work-breakdown/",
+        "type": 301
+      },
+      {
+        "source": "/non-composited-animations",
+        "destination": "https://developer.chrome.com/docs/lighthouse/performance/non-composited-animations/",
+        "type": 301
+      },
+      {
+        "source": "/offscreen-images",
+        "destination": "https://developer.chrome.com/docs/lighthouse/performance/offscreen-images/",
+        "type": 301
+      },
+      {
+        "source": "/redirects",
+        "destination": "https://developer.chrome.com/docs/lighthouse/performance/redirects/",
+        "type": 301
+      },
+      {
+        "source": "/render-blocking-resources",
+        "destination": "https://developer.chrome.com/docs/lighthouse/performance/render-blocking-resources/",
+        "type": 301
+      },
+      {
+        "source": "/resource-summary",
+        "destination": "https://developer.chrome.com/docs/lighthouse/performance/resource-summary/",
+        "type": 301
+      },
+      {
+        "source": "/speed-index",
+        "destination": "https://developer.chrome.com/docs/lighthouse/performance/speed-index/",
+        "type": 301
+      },
+      {
+        "source": "/third-party-facades",
+        "destination": "https://developer.chrome.com/docs/lighthouse/performance/third-party-facades/",
+        "type": 301
+      },
+      {
+        "source": "/third-party-summary",
+        "destination": "https://developer.chrome.com/docs/lighthouse/performance/third-party-summary/",
+        "type": 301
+      },
+      {
+        "source": "/time-to-first-byte",
+        "destination": "https://developer.chrome.com/docs/lighthouse/performance/time-to-first-byte/",
+        "type": 301
+      },
+      {
+        "source": "/total-byte-weight",
+        "destination": "https://developer.chrome.com/docs/lighthouse/performance/total-byte-weight/",
+        "type": 301
+      },
+      {
+        "source": "/unminified-css",
+        "destination": "https://developer.chrome.com/docs/lighthouse/performance/unminified-css/",
+        "type": 301
+      },
+      {
+        "source": "/unminified-javascript",
+        "destination": "https://developer.chrome.com/docs/lighthouse/performance/unminified-javascript/",
+        "type": 301
+      },
+      {
+        "source": "/unused-css-rules",
+        "destination": "https://developer.chrome.com/docs/lighthouse/performance/unused-css-rules/",
+        "type": 301
+      },
+      {
+        "source": "/unused-javascript",
+        "destination": "https://developer.chrome.com/docs/lighthouse/performance/unused-javascript/",
+        "type": 301
+      },
+      {
+        "source": "/user-timings",
+        "destination": "https://developer.chrome.com/docs/lighthouse/performance/user-timings/",
+        "type": 301
+      },
+      {
+        "source": "/uses-long-cache-ttl",
+        "destination": "https://developer.chrome.com/docs/lighthouse/performance/uses-long-cache-ttl/",
+        "type": 301
+      },
+      {
+        "source": "/uses-optimized-images",
+        "destination": "https://developer.chrome.com/docs/lighthouse/performance/uses-optimized-images/",
+        "type": 301
+      },
+      {
+        "source": "/uses-rel-preconnect",
+        "destination": "https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/",
+        "type": 301
+      },
+      {
+        "source": "/uses-rel-preload",
+        "destination": "https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preload/",
+        "type": 301
+      },
+      {
+        "source": "/uses-responsive-images",
+        "destination": "https://developer.chrome.com/docs/lighthouse/performance/uses-responsive-images/",
+        "type": 301
+      },
+      {
+        "source": "/uses-text-compression",
+        "destination": "https://developer.chrome.com/docs/lighthouse/performance/uses-text-compression/",
+        "type": 301
+      },
+      {
+        "source": "/uses-webp-images",
+        "destination": "https://developer.chrome.com/docs/lighthouse/performance/uses-webp-images/",
+        "type": 301
+      },
+      {
+        "source": "/lighthouse-accessibility",
+        "destination": "https://developer.chrome.com/docs/lighthouse/accessibility/",
+        "type": 301
+      },
+      {
+        "source": "/accessibility-scoring",
+        "destination": "https://developer.chrome.com/docs/lighthouse/accessibility/scoring/",
+        "type": 301
+      },
+      {
+        "source": "/accesskeys",
+        "destination": "https://dequeuniversity.com/rules/axe/4.4/accesskeys",
+        "type": 301
+      },
+      {
+        "source": "/bypass",
+        "destination": "https://dequeuniversity.com/rules/axe/4.4/bypass",
+        "type": 301
+      },
+      {
+        "source": "/duplicate-id-active",
+        "destination": "https://dequeuniversity.com/rules/axe/4.4/duplicate-id-active",
+        "type": 301
+      },
+      {
+        "source": "/heading-order",
+        "destination": "https://dequeuniversity.com/rules/axe/4.4/heading-order",
+        "type": 301
+      },
+      {
+        "source": "/tabindex",
+        "destination": "https://dequeuniversity.com/rules/axe/4.4/tabindex",
+        "type": 301
+      },
+      {
+        "source": "/aria-allowed-attr",
+        "destination": "https://dequeuniversity.com/rules/axe/4.4/aria-allowed-attr",
+        "type": 301
+      },
+      {
+        "source": "/aria-hidden-body",
+        "destination": "https://dequeuniversity.com/rules/axe/4.4/aria-hidden-body",
+        "type": 301
+      },
+      {
+        "source": "/aria-hidden-focus",
+        "destination": "https://dequeuniversity.com/rules/axe/4.4/aria-hidden-focus",
+        "type": 301
+      },
+      {
+        "source": "/aria-required-attr",
+        "destination": "https://dequeuniversity.com/rules/axe/4.4/aria-required-attr",
+        "type": 301
+      },
+      {
+        "source": "/aria-required-children",
+        "destination": "https://dequeuniversity.com/rules/axe/4.4/aria-required-children",
+        "type": 301
+      },
+      {
+        "source": "/aria-required-parent",
+        "destination": "https://dequeuniversity.com/rules/axe/4.4/aria-required-parent",
+        "type": 301
+      },
+      {
+        "source": "/aria-roles",
+        "destination": "https://dequeuniversity.com/rules/axe/4.4/aria-roles",
+        "type": 301
+      },
+      {
+        "source": "/aria-valid-attr-value",
+        "destination": "https://dequeuniversity.com/rules/axe/4.4/aria-valid-attr-value",
+        "type": 301
+      },
+      {
+        "source": "/aria-valid-attr",
+        "destination": "https://dequeuniversity.com/rules/axe/4.4/aria-valid-attr",
+        "type": 301
+      },
+      {
+        "source": "/duplicate-id-aria",
+        "destination": "https://dequeuniversity.com/rules/axe/4.4/duplicate-id-aria",
+        "type": 301
+      },
+      {
+        "source": "/button-name",
+        "destination": "https://dequeuniversity.com/rules/axe/4.4/button-name",
+        "type": 301
+      },
+      {
+        "source": "/document-title",
+        "destination": "https://dequeuniversity.com/rules/axe/4.4/document-title",
+        "type": 301
+      },
+      {
+        "source": "/form-field-multiple-labels",
+        "destination": "https://dequeuniversity.com/rules/axe/4.4/form-field-multiple-labels",
+        "type": 301
+      },
+      {
+        "source": "/frame-title",
+        "destination": "https://dequeuniversity.com/rules/axe/4.4/frame-title",
+        "type": 301
+      },
+      {
+        "source": "/image-alt",
+        "destination": "https://dequeuniversity.com/rules/axe/4.4/image-alt",
+        "type": 301
+      },
+      {
+        "source": "/input-image-alt",
+        "destination": "https://dequeuniversity.com/rules/axe/4.4/input-image-alt",
+        "type": 301
+      },
+      {
+        "source": "/label",
+        "destination": "https://dequeuniversity.com/rules/axe/4.4/label",
+        "type": 301
+      },
+      {
+        "source": "/link-name",
+        "destination": "https://dequeuniversity.com/rules/axe/4.4/link-name",
+        "type": 301
+      },
+      {
+        "source": "/object-alt",
+        "destination": "https://dequeuniversity.com/rules/axe/4.4/object-alt",
+        "type": 301
+      },
+      {
+        "source": "/color-contrast",
+        "destination": "https://dequeuniversity.com/rules/axe/4.4/color-contrast",
+        "type": 301
+      },
+      {
+        "source": "/definition-list",
+        "destination": "https://dequeuniversity.com/rules/axe/4.4/definition-list",
+        "type": 301
+      },
+      {
+        "source": "/dlitem",
+        "destination": "https://dequeuniversity.com/rules/axe/4.4/dlitem",
+        "type": 301
+      },
+      {
+        "source": "/list",
+        "destination": "https://dequeuniversity.com/rules/axe/4.4/list",
+        "type": 301
+      },
+      {
+        "source": "/listitem",
+        "destination": "https://dequeuniversity.com/rules/axe/4.4/listitem",
+        "type": 301
+      },
+      {
+        "source": "/layout-table",
+        "destination": "https://dequeuniversity.com/rules/axe/3.5/layout-table",
+        "type": 301
+      },
+      {
+        "source": "/td-headers-attr",
+        "destination": "https://dequeuniversity.com/rules/axe/4.4/td-headers-attr",
+        "type": 301
+      },
+      {
+        "source": "/th-has-data-cells",
+        "destination": "https://dequeuniversity.com/rules/axe/4.4/th-has-data-cells",
+        "type": 301
+      },
+      {
+        "source": "/meta-refresh",
+        "destination": "https://dequeuniversity.com/rules/axe/4.4/meta-refresh",
+        "type": 301
+      },
+      {
+        "source": "/meta-viewport",
+        "destination": "https://dequeuniversity.com/rules/axe/4.4/meta-viewport",
+        "type": 301
+      },
+      {
+        "source": "/audio-caption",
+        "destination": "https://dequeuniversity.com/rules/axe/3.5/audio-caption",
+        "type": 301
+      },
+      {
+        "source": "/video-caption",
+        "destination": "https://dequeuniversity.com/rules/axe/4.4/video-caption",
+        "type": 301
+      },
+      {
+        "source": "/video-description",
+        "destination": "https://dequeuniversity.com/rules/axe/3.3/video-description",
+        "type": 301
+      },
+      {
+        "source": "/html-has-lang",
+        "destination": "https://dequeuniversity.com/rules/axe/4.4/html-has-lang",
+        "type": 301
+      },
+      {
+        "source": "/html-lang-valid",
+        "destination": "https://dequeuniversity.com/rules/axe/4.4/html-lang-valid",
+        "type": 301
+      },
+      {
+        "source": "/valid-lang",
+        "destination": "https://dequeuniversity.com/rules/axe/4.4/valid-lang",
+        "type": 301
+      },
+      {
+        "source": "/aria-name",
+        "destination": "https://dequeuniversity.com/rules/axe/4.4",
+        "type": 301
+      },
+      {
+        "source": "/duplicate-id",
+        "destination": "https://dequeuniversity.com/rules/axe/4.4/duplicate-id-active",
+        "type": 301
+      },
+      {
+        "source": "/heading-levels",
+        "destination": "https://dequeuniversity.com/rules/axe/4.4/heading-order",
+        "type": 301
+      },
+      {
+        "source": "/logical-tab-order",
+        "destination": "https://developer.chrome.com/docs/lighthouse/accessibility/logical-tab-order/",
+        "type": 301
+      },
+      {
+        "source": "/focusable-controls",
+        "destination": "https://developer.chrome.com/docs/lighthouse/accessibility/focusable-controls/",
+        "type": 301
+      },
+      {
+        "source": "/interactive-element-affordance",
+        "destination": "https://developer.chrome.com/docs/lighthouse/accessibility/interactive-element-affordance/",
+        "type": 301
+      },
+      {
+        "source": "/managed-focus",
+        "destination": "https://developer.chrome.com/docs/lighthouse/accessibility/managed-focus/",
+        "type": 301
+      },
+      {
+        "source": "/focus-traps",
+        "destination": "https://developer.chrome.com/docs/lighthouse/accessibility/focus-traps/",
+        "type": 301
+      },
+      {
+        "source": "/custom-controls-labels",
+        "destination": "https://developer.chrome.com/docs/lighthouse/accessibility/custom-controls-labels/",
+        "type": 301
+      },
+      {
+        "source": "/custom-control-roles",
+        "destination": "https://developer.chrome.com/docs/lighthouse/accessibility/custom-control-roles/",
+        "type": 301
+      },
+      {
+        "source": "/visual-order-follows-dom",
+        "destination": "https://developer.chrome.com/docs/lighthouse/accessibility/visual-order-follows-dom/",
+        "type": 301
+      },
+      {
+        "source": "/offscreen-content-hidden",
+        "destination": "https://developer.chrome.com/docs/lighthouse/accessibility/offscreen-content-hidden/",
+        "type": 301
+      },
+      {
+        "source": "/use-landmarks",
+        "destination": "https://developer.chrome.com/docs/lighthouse/accessibility/use-landmarks/",
+        "type": 301
+      },
+      {
+        "source": "/lighthouse-best-practices",
+        "destination": "https://developer.chrome.com/docs/lighthouse/best-practices/",
+        "type": 301
+      },
+      {
+        "source": "/appcache-manifest",
+        "destination": "https://developer.chrome.com/docs/lighthouse/best-practices/appcache-manifest/",
+        "type": 301
+      },
+      {
+        "source": "/charset",
+        "destination": "https://developer.chrome.com/docs/lighthouse/best-practices/charset/",
+        "type": 301
+      },
+      {
+        "source": "/csp-xss",
+        "destination": "https://developer.chrome.com/docs/lighthouse/best-practices/csp-xss/",
+        "type": 301
+      },
+      {
+        "source": "/deprecations",
+        "destination": "https://developer.chrome.com/docs/lighthouse/best-practices/deprecations/",
+        "type": 301
+      },
+      {
+        "source": "/doctype",
+        "destination": "https://developer.chrome.com/docs/lighthouse/best-practices/doctype/",
+        "type": 301
+      },
+      {
+        "source": "/errors-in-console",
+        "destination": "https://developer.chrome.com/docs/lighthouse/best-practices/errors-in-console/",
+        "type": 301
+      },
+      {
+        "source": "/external-anchors-use-rel-noopener",
+        "destination": "https://developer.chrome.com/docs/lighthouse/best-practices/external-anchors-use-rel-noopener/",
+        "type": 301
+      },
+      {
+        "source": "/geolocation-on-start",
+        "destination": "https://developer.chrome.com/docs/lighthouse/best-practices/geolocation-on-start/",
+        "type": 301
+      },
+      {
+        "source": "/image-aspect-ratio",
+        "destination": "https://developer.chrome.com/docs/lighthouse/best-practices/image-aspect-ratio/",
+        "type": 301
+      },
+      {
+        "source": "/js-libraries",
+        "destination": "https://developer.chrome.com/docs/lighthouse/best-practices/js-libraries/",
+        "type": 301
+      },
+      {
+        "source": "/no-document-write",
+        "destination": "https://developer.chrome.com/docs/lighthouse/best-practices/no-document-write/",
+        "type": 301
+      },
+      {
+        "source": "/no-vulnerable-libraries",
+        "destination": "https://developer.chrome.com/docs/lighthouse/best-practices/no-vulnerable-libraries/",
+        "type": 301
+      },
+      {
+        "source": "/notification-on-start",
+        "destination": "https://developer.chrome.com/docs/lighthouse/best-practices/notification-on-start/",
+        "type": 301
+      },
+      {
+        "source": "/password-inputs-can-be-pasted-into",
+        "destination": "https://developer.chrome.com/docs/lighthouse/best-practices/password-inputs-can-be-pasted-into/",
+        "type": 301
+      },
+      {
+        "source": "/uses-http2",
+        "destination": "https://developer.chrome.com/docs/lighthouse/best-practices/uses-http2/",
+        "type": 301
+      },
+      {
+        "source": "/uses-passive-event-listeners",
+        "destination": "https://developer.chrome.com/docs/lighthouse/best-practices/uses-passive-event-listeners/",
+        "type": 301
+      },
+      {
+        "source": "/lighthouse-seo",
+        "destination": "https://developer.chrome.com/docs/lighthouse/seo/",
+        "type": 301
+      },
+      {
+        "source": "/canonical",
+        "destination": "https://developer.chrome.com/docs/lighthouse/seo/canonical/",
+        "type": 301
+      },
+      {
+        "source": "/font-size",
+        "destination": "https://developer.chrome.com/docs/lighthouse/seo/font-size/",
+        "type": 301
+      },
+      {
+        "source": "/hreflang",
+        "destination": "https://developer.chrome.com/docs/lighthouse/seo/hreflang/",
+        "type": 301
+      },
+      {
+        "source": "/http-status-code",
+        "destination": "https://developer.chrome.com/docs/lighthouse/seo/http-status-code/",
+        "type": 301
+      },
+      {
+        "source": "/is-crawlable",
+        "destination": "https://developer.chrome.com/docs/lighthouse/seo/is-crawlable/",
+        "type": 301
+      },
+      {
+        "source": "/link-text",
+        "destination": "https://developer.chrome.com/docs/lighthouse/seo/link-text/",
+        "type": 301
+      },
+      {
+        "source": "/meta-description",
+        "destination": "https://developer.chrome.com/docs/lighthouse/seo/meta-description/",
+        "type": 301
+      },
+      {
+        "source": "/plugins",
+        "destination": "https://developer.chrome.com/docs/lighthouse/seo/plugins/",
+        "type": 301
+      },
+      {
+        "source": "/robots-txt",
+        "destination": "https://developer.chrome.com/docs/lighthouse/seo/invalid-robots-txt/",
+        "type": 301
+      },
+      {
+        "source": "/structured-data",
+        "destination": "https://developer.chrome.com/docs/lighthouse/seo/structured-data/",
+        "type": 301
+      },
+      {
+        "source": "/tap-targets",
+        "destination": "https://developer.chrome.com/docs/lighthouse/seo/tap-targets/",
+        "type": 301
+      },
+      {
+        "source": "/lighthouse-pwa",
+        "destination": "https://developer.chrome.com/docs/lighthouse/pwa/",
+        "type": 301
+      },
+      {
+        "source": "/apple-touch-icon",
+        "destination": "https://developer.chrome.com/docs/lighthouse/pwa/apple-touch-icon/",
+        "type": 301
+      },
+      {
+        "source": "/content-width",
+        "destination": "https://developer.chrome.com/docs/lighthouse/pwa/content-width/",
+        "type": 301
+      },
+      {
+        "source": "/installable-manifest",
+        "destination": "https://developer.chrome.com/docs/lighthouse/pwa/installable-manifest/",
+        "type": 301
+      },
+      {
+        "source": "/is-on-https",
+        "destination": "https://developer.chrome.com/docs/lighthouse/pwa/is-on-https/",
+        "type": 301
+      },
+      {
+        "source": "/load-fast-enough-for-pwa",
+        "destination": "https://developer.chrome.com/docs/lighthouse/pwa/load-fast-enough-for-pwa/",
+        "type": 301
+      },
+      {
+        "source": "/maskable-icon-audit",
+        "destination": "https://developer.chrome.com/docs/lighthouse/pwa/maskable-icon-audit/",
+        "type": 301
+      },
+      {
+        "source": "/offline-start-url",
+        "destination": "https://developer.chrome.com/docs/lighthouse/pwa/offline-start-url/",
+        "type": 301
+      },
+      {
+        "source": "/pwa-cross-browser",
+        "destination": "https://developer.chrome.com/docs/lighthouse/pwa/pwa-cross-browser/",
+        "type": 301
+      },
+      {
+        "source": "/pwa-each-page-has-url",
+        "destination": "https://developer.chrome.com/docs/lighthouse/pwa/pwa-each-page-has-url/",
+        "type": 301
+      },
+      {
+        "source": "/pwa-page-transitions",
+        "destination": "https://developer.chrome.com/docs/lighthouse/pwa/pwa-page-transitions/",
+        "type": 301
+      },
+      {
+        "source": "/redirects-http",
+        "destination": "https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/",
+        "type": 301
+      },
+      {
+        "source": "/service-worker",
+        "destination": "https://developer.chrome.com/docs/lighthouse/pwa/service-worker/",
+        "type": 301
+      },
+      {
+        "source": "/splash-screen",
+        "destination": "https://developer.chrome.com/docs/lighthouse/pwa/splash-screen/",
+        "type": 301
+      },
+      {
+        "source": "/themed-omnibox",
+        "destination": "https://developer.chrome.com/docs/lighthouse/pwa/themed-omnibox/",
+        "type": 301
+      },
+      {
+        "source": "/viewport",
+        "destination": "https://developer.chrome.com/docs/lighthouse/pwa/viewport/",
+        "type": 301
+      },
+      {
+        "source": "/without-javascript",
+        "destination": "https://developer.chrome.com/docs/lighthouse/pwa/without-javascript/",
+        "type": 301
+      },
+      {
+        "source": "/works-offline",
+        "destination": "https://developer.chrome.com/docs/lighthouse/pwa/works-offline/",
+        "type": 301
+      },
+      {
+        "source": "/chrome-ux-report-api",
+        "destination": "https://developer.chrome.com/blog/chrome-ux-report-api/",
+        "type": 301
+      },
+      {
+        "source": "/chrome-ux-report-bigquery",
+        "destination": "https://developer.chrome.com/blog/chrome-ux-report-bigquery/",
+        "type": 301
+      },
+      {
+        "source": "/chrome-ux-report-data-studio-dashboard",
+        "destination": "https://developer.chrome.com/blog/chrome-ux-report-looker-studio-dashboard/",
+        "type": 301
+      },
+      {
+        "source": "/i18n/es/chrome-ux-report-data-studio-dashboard",
+        "destination": "https://developer.chrome.com/blog/es/chrome-ux-report-looker-studio-dashboard/",
+        "type": 301
+      },
+      {
+        "source": "/i18n/es/chrome-ux-report-data-studio-dashboard",
+        "destination": "https://developer.chrome.com/blog/es/chrome-ux-report-looker-studio-dashboard/",
+        "type": 301
+      },
+      {
+        "source": "/i18n/ja/chrome-ux-report-data-studio-dashboard",
+        "destination": "https://developer.chrome.com/blog/ja/chrome-ux-report-looker-studio-dashboard/",
+        "type": 301
+      },
+      {
+        "source": "/i18n/ko/chrome-ux-report-data-studio-dashboard",
+        "destination": "https://developer.chrome.com/blog/ko/chrome-ux-report-looker-studio-dashboard/",
+        "type": 301
+      },
+      {
+        "source": "/i18n/pt/chrome-ux-report-data-studio-dashboard",
+        "destination": "https://developer.chrome.com/blog/pt/chrome-ux-report-looker-studio-dashboard/",
+        "type": 301
+      },
+      {
+        "source": "/i18n/ru/chrome-ux-report-data-studio-dashboard",
+        "destination": "https://developer.chrome.com/blog/ru/chrome-ux-report-looker-studio-dashboard/",
+        "type": 301
+      },
+      {
+        "source": "/i18n/zh/chrome-ux-report-data-studio-dashboard",
+        "destination": "https://developer.chrome.com/blog/zh/chrome-ux-report-looker-studio-dashboard/",
+        "type": 301
+      },
+      {
+        "source": "/chrome-ux-report-pagespeed-insights",
+        "destination": "https://developer.chrome.com/blog/chrome-ux-report-pagespeed-insights/",
+        "type": 301
+      },
+      {
+        "source": "/blog/native-hardware-click-to-call",
+        "destination": "/blog/click-to-call",
+        "type": 301
+      },
+      {
+        "source": "/blog/native-hardware-device-orientation",
+        "destination": "/blog/device-orientation",
+        "type": 301
+      },
+      {
+        "source": "/blog/native-hardware-fullscreen",
+        "destination": "/blog/fullscreen",
+        "type": 301
+      },
+      {
+        "source": "/blog/native-hardware-user-location",
+        "destination": "/blog/user-location",
+        "type": 301
+      },
+      {
+        "source": "/speculative-prerendering",
+        "destination": "https://developer.chrome.com/blog/prerender-pages/",
+        "type": 301
+      },
+      {
+        "source": "/blog/javascript-async-functions",
+        "destination": "/blog/async-functions",
+        "type": 301
+      },
+      {
+        "source": "/blog/enabling-https-on-your-servers",
+        "destination": "/secure/enable-https",
+        "type": 301
+      }
+    ],
+    "target": "180daysenglish"
+  },
+  "emulators": {
+    "hosting": {
+      "port": 8080
     }
-  ]
+  }
 }
