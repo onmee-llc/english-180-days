@@ -1,0 +1,39 @@
+---
+title: "Day 115 — Receiving Code Review Feedback"
+description: "Respond to review comments professionally — acknowledge, ask, push back when needed."
+date: 2026-04-13
+---
+
+## Session goal
+
+Model three types of response: agreement, clarification request, and respectful pushback.
+
+## Shadowing passage
+
+> Thanks for the detailed review. Let me respond to a few points. On the generator vs list comprehension point — great catch, you are right. This collection can be large and iterating lazily is the better choice. I will update that. On the variable name: agreed, user_records is clearer. Done. On the error handling — I want to push back slightly here. I agree that separating timeout from auth failure is good practice in general, but in this specific case both errors result in the same downstream behavior: log the error, increment a counter, and retry. The difference in error type does not change the response path. That said, I do see value in having them as distinct log entries for observability. What if I keep the unified catch block but add a discriminator field to the log entry so we can filter in Datadog? Let me know if that addresses your concern. Appreciate the thorough review — the pagination feedback in particular is something I should have caught myself.
+
+---
+
+## Key phrases
+
+| Phrase | IPA | Note |
+|--------|-----|------|
+| push back slightly | /pʊʃ bæk ˈslaɪtli/ | disagree respectfully — use 'slightly' to lower the temperature |
+| discriminator field | /dɪˈskrɪmɪneɪtər fiːld/ | a field in a log entry that identifies the type of event |
+| addresses your concern | /əˈdrɛsɪz jɔːr kənˈsɜːrn/ | closes the loop — propose something that resolves their objection |
+
+## 30-minute protocol
+
+**Minutes 1–5** — Read the passage silently twice. Focus on meaning, not pronunciation.
+
+**Minutes 6–15** — Shadow aloud with the text visible. 4 full passes. Match rhythm and stress.
+
+**Minutes 16–22** — Shadow without the text. 3 passes. Accept mistakes — keep moving.
+
+**Minutes 23–28** — Record yourself once. Play it back immediately. Note one phrase to improve.
+
+**Minutes 29–30** — Write the phrase you struggled with. Say it 10 times slowly, then at full speed.
+
+## Reflection
+
+When you receive a review comment you disagree with, can you push back without sounding defensive?

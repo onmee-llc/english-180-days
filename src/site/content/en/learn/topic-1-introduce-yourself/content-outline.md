@@ -4,7 +4,7 @@ description: Core concepts and frameworks for Introduce Yourself as a Senior Eng
 date: 2026-04-13
 ---
 
-See the [program guidelines](/guidelines/180-day-english-program.md) for the full content outline for this topic.
+See the [program guidelines](/guidelines/) for the full content outline for this topic.
 
 ## How to use this module
 
