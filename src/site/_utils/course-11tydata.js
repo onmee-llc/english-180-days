@@ -2,6 +2,8 @@
  * @fileoverview This is a generator for course data.
  */
 
+const outputPermalink = require('../../build/output-permalink');
+
 /**
  * @param {string} projectKey This is used to look up the data for the course
  * in _data. e.g., a course with a key of 'a11y' would have a corresponding
@@ -17,6 +19,16 @@ module.exports = (projectKey) => {
     // Exclude course content from the /authors/ pages.
     excludeFromAuthors: true,
     eleventyComputed: {
+      // Override permalink to use clean directory URLs (e.g. /lesson-001/)
+      // so that page.url matches the trailing-slash keys built by navigation.js
+      // and Firebase Hosting can serve lesson-001/index.html correctly.
+      permalink: (data) => {
+        const base = outputPermalink(data);
+        if (base && typeof base === 'string' && base.endsWith('.html')) {
+          return base.replace(/\.html$/, '/');
+        }
+        return base;
+      },
       tags: (data) => {
         const {searchTag} = data;
         let tags = data?.courses?.[projectKey]?.meta?.tags || [];
