@@ -1,3 +1,8 @@
+---
+title: 180-Day English Speaking Program
+description: Topic-based presentation practice for Senior Backend / AI Engineer international remote job readiness.
+---
+
 # 180-Day English Speaking Program
 **Target:** Senior Backend / AI Engineer — International Remote Job Readiness
 **Method:** Topic-based presentation practice → muscle memory through repetition
