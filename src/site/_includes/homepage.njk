@@ -10,7 +10,6 @@ layout: default
         <div>
           <span aria-hidden="true" class="hero__eyebrow">{{ intro.eyebrow }}</span>
           <div class="hero__content flow">
-            <img fetchpriority="high" src="{{ intro.image }}" alt="" aria-hidden="true" class="hero__decor" width="{{ intro.imageWidth }}" height="{{ intro.imageHeight }}" />
             <h1 class="hero__title">{{ intro.title }}</h1>
             {{ intro.summary | md | safe }}
             <a class="button" data-type="primary" href="{{ intro.buttonUrl }}">{{ intro.buttonText }}</a>
