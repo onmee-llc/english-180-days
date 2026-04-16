@@ -35,3 +35,21 @@ Design the resilience layer for a service that calls an external LLM API.
 ## Reflection
 
 Describe a cascade failure that could happen in one of your current systems. Walk through it.
+
+
+## Anti-Translation Drill — Listening First *(5 min)*
+
+Close the text. Recall today's shadowing passage from memory only.
+
+1. Say the **main idea** in one English sentence out loud.
+2. Say **one specific detail** you remember.
+3. If you blank out — do NOT open the text. Describe what you vaguely remember using simple English.
+
+> Goal: Build the habit of processing English without reading — ears and memory only.
+
+## Self-Check
+
+- [ ] Shadowed ≥3 passes without text
+- [ ] Completed anti-translation drill without using Vietnamese
+- [ ] Recorded at least once today
+- **Translation habit:** 🟢 No translation / 🟡 Some translation / 🔴 Heavy translation

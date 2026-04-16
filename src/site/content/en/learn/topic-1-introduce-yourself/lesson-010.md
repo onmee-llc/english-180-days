@@ -18,7 +18,7 @@ Adjust to a corporate or large-company interview: more formal, more structured.
 
 | Phrase | IPA | Note |
 |--------|-----|------|
-| I bring X to this role | /aɪ brɪŋ ... tuː ðɪs roʊl/ | immediately frames the interview as 'what value I add' |
+| I bring X to this role | /aɪ brɪŋ … tuː ðɪs roʊl/ | immediately frames the interview as 'what value I add' |
 | compliance-sensitive workload | /kəmˈplaɪəns ˈsɛnsɪtɪv ˈwɜːrkloʊd/ | corporate precision — signals you understand regulated environments |
 | architectural leadership | /ˌɑːrkɪˈtɛktʃərəl ˈliːdərʃɪp/ | aims higher than 'I write good code' |
 
@@ -37,3 +37,21 @@ Adjust to a corporate or large-company interview: more formal, more structured.
 ## Reflection
 
 Does this version sound too stiff? Try saying it with slightly more warmth while keeping the precision.
+
+
+## Anti-Translation Drill — Listening First *(5 min)*
+
+Close the text. Recall today's shadowing passage from memory only.
+
+1. Say the **main idea** in one English sentence out loud.
+2. Say **one specific detail** you remember.
+3. If you blank out — do NOT open the text. Describe what you vaguely remember using simple English.
+
+> Goal: Build the habit of processing English without reading — ears and memory only.
+
+## Self-Check
+
+- [ ] Shadowed ≥3 passes without text
+- [ ] Completed anti-translation drill without using Vietnamese
+- [ ] Recorded at least once today
+- **Translation habit:** 🟢 No translation / 🟡 Some translation / 🔴 Heavy translation

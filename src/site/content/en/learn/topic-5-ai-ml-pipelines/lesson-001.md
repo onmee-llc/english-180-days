@@ -35,3 +35,21 @@ Give a 5-minute walkthrough of an ML pipeline you designed.
 ## Reflection
 
 What would you monitor to detect silent quality degradation in LLM outputs?
+
+
+## Anti-Translation Drill — Think in English *(5 min)*
+
+Pick **one key phrase** from today's table. Explain what it means using **only English**.
+
+- No Vietnamese. No dictionary.
+- If you don't know a word, describe it: *"It's when you…"* / *"It's similar to…"* / *"The opposite would be…"*
+- Then use the phrase in a new sentence about your own experience.
+
+> Goal: Train circumlocution — the skill of explaining anything without knowing the exact word. This is what fluent speakers actually do.
+
+## Self-Check
+
+- [ ] Shadowed ≥3 passes without text
+- [ ] Completed anti-translation drill without using Vietnamese
+- [ ] Recorded at least once today
+- **Translation habit:** 🟢 No translation / 🟡 Some translation / 🔴 Heavy translation

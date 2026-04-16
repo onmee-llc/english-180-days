@@ -35,3 +35,21 @@ Design and explain a caching strategy for a URL shortener in 90 seconds.
 ## Reflection
 
 Explain cache invalidation — the actual mechanics — in 30 seconds without notes.
+
+
+## Anti-Translation Drill — Listening First *(5 min)*
+
+Close the text. Recall today's shadowing passage from memory only.
+
+1. Say the **main idea** in one English sentence out loud.
+2. Say **one specific detail** you remember.
+3. If you blank out — do NOT open the text. Describe what you vaguely remember using simple English.
+
+> Goal: Build the habit of processing English without reading — ears and memory only.
+
+## Self-Check
+
+- [ ] Shadowed ≥3 passes without text
+- [ ] Completed anti-translation drill without using Vietnamese
+- [ ] Recorded at least once today
+- **Translation habit:** 🟢 No translation / 🟡 Some translation / 🔴 Heavy translation

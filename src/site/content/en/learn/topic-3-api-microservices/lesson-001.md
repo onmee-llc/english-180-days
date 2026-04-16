@@ -35,3 +35,21 @@ Explain REST to a non-engineer and defend your design decisions.
 ## Reflection
 
 Design the URL structure for a content scheduling API. Show me the resources and methods.
+
+
+## Anti-Translation Drill — Quick Response *(5 min)*
+
+Re-read the Reflection question above. Now answer it — **start speaking within 3 seconds**.
+
+- Use a filler phrase to buy time: *"That's a great question — I'd say…"* or *"Let me think… the key point is…"*
+- Speak for **at least 30 seconds** without stopping.
+- If you get stuck mid-sentence, do NOT pause to translate — rephrase using simpler words.
+
+> Goal: Kill the translation pause. Native speakers don't go silent — they fill gaps and keep talking.
+
+## Self-Check
+
+- [ ] Shadowed ≥3 passes without text
+- [ ] Completed anti-translation drill without using Vietnamese
+- [ ] Recorded at least once today
+- **Translation habit:** 🟢 No translation / 🟡 Some translation / 🔴 Heavy translation

@@ -35,3 +35,21 @@ Explain service mesh to a senior engineer who hasn't used one.
 ## Reflection
 
 What breaks first when a service mesh proxy crashes? Walk through the failure scenario.
+
+
+## Anti-Translation Drill — Quick Response *(5 min)*
+
+Re-read the Reflection question above. Now answer it — **start speaking within 3 seconds**.
+
+- Use a filler phrase to buy time: *"That's a great question — I'd say…"* or *"Let me think… the key point is…"*
+- Speak for **at least 30 seconds** without stopping.
+- If you get stuck mid-sentence, do NOT pause to translate — rephrase using simpler words.
+
+> Goal: Kill the translation pause. Native speakers don't go silent — they fill gaps and keep talking.
+
+## Self-Check
+
+- [ ] Shadowed ≥3 passes without text
+- [ ] Completed anti-translation drill without using Vietnamese
+- [ ] Recorded at least once today
+- **Translation habit:** 🟢 No translation / 🟡 Some translation / 🔴 Heavy translation

@@ -37,3 +37,22 @@ Practice reading offer-letter language and flagging what to negotiate or clarify
 ## Reflection
 
 Have you ever missed something in an offer letter that cost you? What would you check first now?
+
+
+## Anti-Translation Drill — Own Words *(5 min)*
+
+Retell today's shadowing passage in **your own words** — do NOT repeat the original phrasing.
+
+- Paraphrase the entire content as if explaining to a colleague who missed the meeting.
+- Speak for **60–90 seconds**.
+- Use different sentence structures, different transitions, different examples if possible.
+- If you catch yourself quoting the passage word-for-word, stop and rephrase.
+
+> Goal: Full integration — you own the knowledge when you can express it freely, not just repeat it.
+
+## Self-Check
+
+- [ ] Shadowed ≥3 passes without text
+- [ ] Completed anti-translation drill without using Vietnamese
+- [ ] Recorded at least once today
+- **Translation habit:** 🟢 No translation / 🟡 Some translation / 🔴 Heavy translation

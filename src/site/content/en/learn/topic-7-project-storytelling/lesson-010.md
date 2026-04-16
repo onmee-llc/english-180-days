@@ -35,3 +35,22 @@ Walk through a system diagram on a whiteboard — verbally and structurally.
 ## Reflection
 
 Practice drawing this diagram for 3 minutes, narrating aloud. Where did you hesitate?
+
+
+## Anti-Translation Drill — Interview Mode *(5 min)*
+
+Someone just asked you the Reflection question in a **real interview**. Answer now.
+
+- You have **60 seconds**. No pauses longer than 3 seconds.
+- Fill gaps with: *"Let me think about that…"* / *"The way I see it…"* / *"To give you a concrete example…"*
+- **Record this answer** separately from your shadowing recording.
+- Play it back. Did you sound like someone they'd hire?
+
+> Goal: Simulate interview pressure. The ability to speak under pressure without translating is what separates "good English" from "interview-ready English".
+
+## Self-Check
+
+- [ ] Shadowed ≥3 passes without text
+- [ ] Completed anti-translation drill without using Vietnamese
+- [ ] Recorded at least once today
+- **Translation habit:** 🟢 No translation / 🟡 Some translation / 🔴 Heavy translation
