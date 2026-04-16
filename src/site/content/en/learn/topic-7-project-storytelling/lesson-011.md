@@ -14,11 +14,11 @@ Set up a compensation conversation with the context of your technical impact.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| anchor your range | /ˈæŋkər jɔːr reɪndʒ/ | anchoring with market data is stronger than personal history or desire |
-| equity structure | /ˈɛkwɪti ˈstrʌktʃər/ | cliff, vesting schedule, type of stock — critical to evaluate the full package |
-| respond with data | /rɪˈspɒnd wɪð ˈdeɪtə/ | data-based negotiation is more effective and professional than emotional appeal |
+| anchor your range | [Nghe →](https://youglish.com/pronounce/anchor%20your%20range/english) | anchoring with market data is stronger than personal history or desire |
+| equity structure | [Nghe →](https://youglish.com/pronounce/equity%20structure/english) | cliff, vesting schedule, type of stock — critical to evaluate the full package |
+| respond with data | [Nghe →](https://youglish.com/pronounce/respond%20with%20data/english) | data-based negotiation is more effective and professional than emotional appeal |
 
 ## 30-minute protocol
 

@@ -16,11 +16,11 @@ Chain four different communication acts in 15 minutes — test fluency across al
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| security issue | /sɪˈkjʊərɪti ˈɪʃuː/ | never bury this — surface it immediately and clearly |
-| severity | /sɪˈvɛrɪti/ | how serious is it? Always quantify: low / medium / high / critical |
-| miss a deadline | /mɪs ə ˈdɛdlaɪn/ | communicate early, with reason and new timeline — never silently |
+| security issue | [Nghe →](https://youglish.com/pronounce/security%20issue/english) | never bury this — surface it immediately and clearly |
+| severity | [Nghe →](https://youglish.com/pronounce/severity/english) | how serious is it? Always quantify: low / medium / high / critical |
+| miss a deadline | [Nghe →](https://youglish.com/pronounce/miss%20a%20deadline/english) | communicate early, with reason and new timeline — never silently |
 
 ## 30-minute protocol
 

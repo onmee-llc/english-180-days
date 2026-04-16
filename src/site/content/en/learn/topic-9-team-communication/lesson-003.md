@@ -16,11 +16,11 @@ Model three types of response: agreement, clarification request, and respectful 
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| push back slightly | /pʊʃ bæk ˈslaɪtli/ | disagree respectfully — use 'slightly' to lower the temperature |
-| discriminator field | /dɪˈskrɪmɪneɪtər fiːld/ | a field in a log entry that identifies the type of event |
-| addresses your concern | /əˈdrɛsɪz jɔːr kənˈsɜːrn/ | closes the loop — propose something that resolves their objection |
+| push back slightly | [Nghe →](https://youglish.com/pronounce/push%20back%20slightly/english) | disagree respectfully — use 'slightly' to lower the temperature |
+| discriminator field | [Nghe →](https://youglish.com/pronounce/discriminator%20field/english) | a field in a log entry that identifies the type of event |
+| addresses your concern | [Nghe →](https://youglish.com/pronounce/addresses%20your%20concern/english) | closes the loop — propose something that resolves their objection |
 
 ## 30-minute protocol
 

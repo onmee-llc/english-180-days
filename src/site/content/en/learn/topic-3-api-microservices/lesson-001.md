@@ -14,11 +14,11 @@ Explain REST to a non-engineer and defend your design decisions.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| resource-oriented design | /rɪˈsɔːrs ˈɔːriɛntɪd dɪˈzaɪn/ | nouns in URLs, verbs as HTTP methods — the REST principle |
-| statelessness | /ˈsteɪtlɪsnɪs/ | no session memory between requests — enables horizontal scaling |
-| semantic meaning | /sɪˈmæntɪk ˈmiːnɪŋ/ | status codes aren't arbitrary — they communicate intent |
+| resource-oriented design | [Nghe →](https://youglish.com/pronounce/resource-oriented%20design/english) | nouns in URLs, verbs as HTTP methods — the REST principle |
+| statelessness | [Nghe →](https://youglish.com/pronounce/statelessness/english) | no session memory between requests — enables horizontal scaling |
+| semantic meaning | [Nghe →](https://youglish.com/pronounce/semantic%20meaning/english) | status codes aren't arbitrary — they communicate intent |
 
 ## 30-minute protocol
 

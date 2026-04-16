@@ -14,11 +14,11 @@ Present your content automation SaaS cloud architecture in 5 minutes.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| scales to zero | /skeɪlz tuː zɪroʊ/ | Cloud Run billing model — no traffic means no cost |
-| runaway spend | /ˈrʌnəweɪ spɛnd/ | unexpected cost from feedback loops or bugs — always cap instances |
-| infrastructure as code | /ˈɪnfrəstrʌktʃər æz koʊd/ | all cloud resources defined in code, versioned, and reviewed |
+| scales to zero | [Nghe →](https://youglish.com/pronounce/scales%20to%20zero/english) | Cloud Run billing model — no traffic means no cost |
+| runaway spend | [Nghe →](https://youglish.com/pronounce/runaway%20spend/english) | unexpected cost from feedback loops or bugs — always cap instances |
+| infrastructure as code | [Nghe →](https://youglish.com/pronounce/infrastructure%20as%20code/english) | all cloud resources defined in code, versioned, and reviewed |
 
 ## 30-minute protocol
 

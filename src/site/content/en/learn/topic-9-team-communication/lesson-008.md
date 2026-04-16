@@ -16,11 +16,11 @@ Practice Socratic mentoring: ask questions that lead to the answer rather than g
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| articulate the gap | /ɑːrˈtɪkjʊleɪt ðə ɡæp/ | put into words exactly what is different from expectation |
-| class of problem | /klæs əv ˈprɒbləm/ | the general category — teach to avoid all instances, not just this one |
-| deprive of the learning experience | /dɪˈpraɪv/ | when you solve for them, you take the growth opportunity |
+| articulate the gap | [Nghe →](https://youglish.com/pronounce/articulate%20the%20gap/english) | put into words exactly what is different from expectation |
+| class of problem | [Nghe →](https://youglish.com/pronounce/class%20of%20problem/english) | the general category — teach to avoid all instances, not just this one |
+| deprive of the learning experience | [Nghe →](https://youglish.com/pronounce/deprive%20of%20the%20learning%20experience/english) | when you solve for them, you take the growth opportunity |
 
 ## 30-minute protocol
 

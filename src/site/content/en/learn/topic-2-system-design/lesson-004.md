@@ -14,11 +14,11 @@ Make and defend a database choice for the URL shortener in under 2 minutes.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| hot path | /hɒt pɑːθ/ | the performance-critical execution path — design it separately |
-| tunable consistency | /ˈtjuːnəbl kənˈsɪstənsi/ | Cassandra's model — per-query consistency level |
-| match the access pattern | /mætʃ ðə ˈækses ˈpætərn/ | the right criterion for database selection |
+| hot path | [Nghe →](https://youglish.com/pronounce/hot%20path/english) | the performance-critical execution path — design it separately |
+| tunable consistency | [Nghe →](https://youglish.com/pronounce/tunable%20consistency/english) | Cassandra's model — per-query consistency level |
+| match the access pattern | [Nghe →](https://youglish.com/pronounce/match%20the%20access%20pattern/english) | the right criterion for database selection |
 
 ## 30-minute protocol
 

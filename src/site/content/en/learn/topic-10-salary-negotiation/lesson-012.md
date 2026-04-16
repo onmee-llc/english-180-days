@@ -16,11 +16,11 @@ Run the full negotiation sequence from offer call to acceptance or decline — n
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| firm | /fɜːrm/ | in negotiation: not movable. Also: confident and direct in tone |
-| hedge | /hɛdʒ/ | soften or qualify — what you do when you are uncomfortable with a direct statement |
-| assert | /əˈsɜːrt/ | state confidently without needing to justify — the goal state for negotiation |
+| firm | [Nghe →](https://youglish.com/pronounce/firm/english) | in negotiation: not movable. Also: confident and direct in tone |
+| hedge | [Nghe →](https://youglish.com/pronounce/hedge/english) | soften or qualify — what you do when you are uncomfortable with a direct statement |
+| assert | [Nghe →](https://youglish.com/pronounce/assert/english) | state confidently without needing to justify — the goal state for negotiation |
 
 ## 30-minute protocol
 

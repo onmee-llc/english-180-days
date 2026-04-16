@@ -16,11 +16,11 @@ Practice reporting progress to a manager or PM who does not know the technical d
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| on track | /ɒn træk/ | meeting the deadline — what every stakeholder wants to hear first |
-| behaves unexpectedly | /bɪˈheɪvz ˌʌnɪkˈspɛktɪdli/ | diplomatic way to say 'breaks' — lower alarm level for stakeholders |
-| come back with a clear answer | /kʌm bæk wɪð ə klɪər ˈɑːnsər/ | give a specific time, not 'soon' |
+| on track | [Nghe →](https://youglish.com/pronounce/on%20track/english) | meeting the deadline — what every stakeholder wants to hear first |
+| behaves unexpectedly | [Nghe →](https://youglish.com/pronounce/behaves%20unexpectedly/english) | diplomatic way to say 'breaks' — lower alarm level for stakeholders |
+| come back with a clear answer | [Nghe →](https://youglish.com/pronounce/come%20back%20with%20a%20clear%20answer/english) | give a specific time, not 'soon' |
 
 ## 30-minute protocol
 

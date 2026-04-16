@@ -16,11 +16,11 @@ Practice the 'new engineer on the team' first communication — humble, curious,
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| comfortable with both sides | /ˈkʌmfərtəbl wɪð boʊθ saɪdz/ | signals breadth — you are not siloed |
-| deep work | /diːp wɜːrk/ | Cal Newport term — focused, uninterrupted technical work |
-| read, not ship | /riːd nɒt ʃɪp/ | strong first 2 weeks posture — understand before changing |
+| comfortable with both sides | [Nghe →](https://youglish.com/pronounce/comfortable%20with%20both%20sides/english) | signals breadth — you are not siloed |
+| deep work | [Nghe →](https://youglish.com/pronounce/deep%20work/english) | Cal Newport term — focused, uninterrupted technical work |
+| read, not ship | [Nghe →](https://youglish.com/pronounce/read%2C%20not%20ship/english) | strong first 2 weeks posture — understand before changing |
 
 ## 30-minute protocol
 

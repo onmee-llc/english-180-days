@@ -16,11 +16,11 @@ Switch your tone for a startup culture — warmer, more informal, still precise.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| twelve-ish | /twɛlv ɪʃ/ | -ish suffix is casual English — sounds natural in startup context |
-| own the whole stack | /oʊn ðə hoʊl stæk/ | startup phrase — says you're not afraid of breadth |
-| genuinely excited | /ˈdʒɛnjʊɪnli ɪkˈsaɪtɪd/ | tests culture fit — signals you care about the team's energy |
+| twelve-ish | [Nghe →](https://youglish.com/pronounce/twelve-ish/english) | -ish suffix is casual English — sounds natural in startup context |
+| own the whole stack | [Nghe →](https://youglish.com/pronounce/own%20the%20whole%20stack/english) | startup phrase — says you're not afraid of breadth |
+| genuinely excited | [Nghe →](https://youglish.com/pronounce/genuinely%20excited/english) | tests culture fit — signals you care about the team's energy |
 
 ## 30-minute protocol
 

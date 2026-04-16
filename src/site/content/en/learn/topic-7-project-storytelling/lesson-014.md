@@ -14,11 +14,11 @@ Practice presenting this topic section fluently — aim for one complete pass wi
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| shadow mode | /ˈʃædəʊ moʊd/ | run new system in parallel without effect — validate correctness before any real impact |
-| soft launch | /sɒft lɔːntʃ/ | real traffic at small percentage with automatic fallback — controlled production validation |
-| P99 latency | /piː naɪntiˈnaɪn ˈleɪtənsi/ | 99th percentile response time — what 1 in 100 users experiences, your worst-case tail |
+| shadow mode | [Nghe →](https://youglish.com/pronounce/shadow%20mode/english) | run new system in parallel without effect — validate correctness before any real impact |
+| soft launch | [Nghe →](https://youglish.com/pronounce/soft%20launch/english) | real traffic at small percentage with automatic fallback — controlled production validation |
+| P99 latency | [Nghe →](https://youglish.com/pronounce/P99%20latency/english) | 99th percentile response time — what 1 in 100 users experiences, your worst-case tail |
 
 ## 30-minute protocol
 

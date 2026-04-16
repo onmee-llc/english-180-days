@@ -14,11 +14,11 @@ Design the AI pipeline for a content intelligence platform in 12 minutes.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| feedback loop | /ˈfiːdbæk luːp/ | performance data improves future outputs — the system gets better over time |
-| multi-step generation | /ˈmʌlti stɛp ˌdʒɛnəˈreɪʃən/ | planner + writer model calls — more reliable than single-shot complex generation |
-| quality signal | /ˈkwɒlɪti ˈsɪɡnəl/ | the metric that tells you AI output quality is changing — monitor it or be surprised |
+| feedback loop | [Nghe →](https://youglish.com/pronounce/feedback%20loop/english) | performance data improves future outputs — the system gets better over time |
+| multi-step generation | [Nghe →](https://youglish.com/pronounce/multi-step%20generation/english) | planner + writer model calls — more reliable than single-shot complex generation |
+| quality signal | [Nghe →](https://youglish.com/pronounce/quality%20signal/english) | the metric that tells you AI output quality is changing — monitor it or be surprised |
 
 ## 30-minute protocol
 

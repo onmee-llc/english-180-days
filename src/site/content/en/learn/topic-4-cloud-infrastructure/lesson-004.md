@@ -14,11 +14,11 @@ Explain the network design for a three-tier web application on AWS.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| CIDR range | /ˈsɪdər reɪndʒ/ | IP address block notation — defines the address space for your VPC |
-| NAT gateway | /næt ˈɡeɪtweɪ/ | allows private subnet resources to reach the internet without being reachable from it |
-| referencing security groups | /ˈrɛfərənsɪŋ sɪˈkjʊərɪti ɡruːps/ | attach firewall rules to groups, not IPs — more stable and scalable |
+| CIDR range | [Nghe →](https://youglish.com/pronounce/CIDR%20range/english) | IP address block notation — defines the address space for your VPC |
+| NAT gateway | [Nghe →](https://youglish.com/pronounce/NAT%20gateway/english) | allows private subnet resources to reach the internet without being reachable from it |
+| referencing security groups | [Nghe →](https://youglish.com/pronounce/referencing%20security%20groups/english) | attach firewall rules to groups, not IPs — more stable and scalable |
 
 ## 30-minute protocol
 

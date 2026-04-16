@@ -16,11 +16,11 @@ Avoid vague answers. Practice the exact sentence structure for trade-off reasoni
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| ACID transactions | /ˈeɪsɪd trænsˈækʃənz/ | Atomicity, Consistency, Isolation, Durability — PostgreSQL strength |
-| access pattern | /ˈækses ˈpætərn/ | how your application reads and writes data — DynamoDB's key constraint |
-| the deciding factor | /ðə dɪˈsaɪdɪŋ ˈfæktər/ | name the one thing that tipped the decision |
+| ACID transactions | [Nghe →](https://youglish.com/pronounce/ACID%20transactions/english) | Atomicity, Consistency, Isolation, Durability — PostgreSQL strength |
+| access pattern | [Nghe →](https://youglish.com/pronounce/access%20pattern/english) | how your application reads and writes data — DynamoDB's key constraint |
+| the deciding factor | [Nghe →](https://youglish.com/pronounce/the%20deciding%20factor/english) | name the one thing that tipped the decision |
 
 ## 30-minute protocol
 

@@ -14,11 +14,11 @@ Practice presenting this topic section fluently — aim for one complete pass wi
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| state machine | /steɪt məˈʃiːn/ | model workflow progress as explicit states with defined transitions — makes complex flows debuggable |
-| exponential backoff with jitter | /ˌɛkspəˈnɛnʃəl ˈbækɒf wɪð ˈdʒɪtər/ | retry with increasing delay plus randomness — prevents thundering herd on recovery |
-| rate limit tracking | /reɪt ˈlɪmɪt ˈtrækɪŋ/ | monitor API quota consumption proactively — pause before hitting the wall, not after |
+| state machine | [Nghe →](https://youglish.com/pronounce/state%20machine/english) | model workflow progress as explicit states with defined transitions — makes complex flows debuggable |
+| exponential backoff with jitter | [Nghe →](https://youglish.com/pronounce/exponential%20backoff%20with%20jitter/english) | retry with increasing delay plus randomness — prevents thundering herd on recovery |
+| rate limit tracking | [Nghe →](https://youglish.com/pronounce/rate%20limit%20tracking/english) | monitor API quota consumption proactively — pause before hitting the wall, not after |
 
 ## 30-minute protocol
 

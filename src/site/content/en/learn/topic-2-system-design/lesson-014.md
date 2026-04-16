@@ -14,11 +14,11 @@ Walk through a full system design of your content automation SaaS in 15 minutes.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| two hundred thousand publishes per day | /tuː ˈhʌndrəd ˈθaʊzənd ˈpʌblɪʃɪz pər deɪ/ | always state the calculated QPS — not just raw numbers |
-| consumer lag | /kənˈsjuːmər læɡ/ | how far behind the queue consumer is — key health signal |
-| easier to reason about | /ˈiːziər tuː ˈriːzən əˈbaʊt/ | simplicity is a valid engineering argument |
+| two hundred thousand publishes per day | [Nghe →](https://youglish.com/pronounce/two%20hundred%20thousand%20publishes%20per%20day/english) | always state the calculated QPS — not just raw numbers |
+| consumer lag | [Nghe →](https://youglish.com/pronounce/consumer%20lag/english) | how far behind the queue consumer is — key health signal |
+| easier to reason about | [Nghe →](https://youglish.com/pronounce/easier%20to%20reason%20about/english) | simplicity is a valid engineering argument |
 
 ## 30-minute protocol
 

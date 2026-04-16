@@ -14,11 +14,11 @@ Recommend a storage strategy for a multi-type data system.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| unstructured binary data | /ˌʌnˈstrʌktʃərd ˈbaɪnəri ˈdeɪtə/ | images, files, blobs — belong in object storage, not databases |
-| ACID guarantees | /ˈeɪsɪd ˌɡærənˈtiːz/ | atomicity, consistency, isolation, durability — relational database property |
-| single-digit millisecond | /ˈsɪŋɡl ˈdɪdʒɪt ˌmɪlɪˈsɛkənd/ | DynamoDB's latency promise for single-item reads |
+| unstructured binary data | [Nghe →](https://youglish.com/pronounce/unstructured%20binary%20data/english) | images, files, blobs — belong in object storage, not databases |
+| ACID guarantees | [Nghe →](https://youglish.com/pronounce/ACID%20guarantees/english) | atomicity, consistency, isolation, durability — relational database property |
+| single-digit millisecond | [Nghe →](https://youglish.com/pronounce/single-digit%20millisecond/english) | DynamoDB's latency promise for single-item reads |
 
 ## 30-minute protocol
 

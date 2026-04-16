@@ -14,11 +14,11 @@ Design the observability stack for a production AI pipeline service.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| three pillars | /θriː ˈpɪlərz/ | logs, metrics, traces — know all three, explain how they differ |
-| tail latency | /teɪl ˈleɪtənsi/ | slow outlier requests — p99 reveals what averages hide |
-| trace ID propagates | /treɪs aɪˈdiː ˈprɒpəɡeɪts/ | how distributed tracing links service calls together |
+| three pillars | [Nghe →](https://youglish.com/pronounce/three%20pillars/english) | logs, metrics, traces — know all three, explain how they differ |
+| tail latency | [Nghe →](https://youglish.com/pronounce/tail%20latency/english) | slow outlier requests — p99 reveals what averages hide |
+| trace ID propagates | [Nghe →](https://youglish.com/pronounce/trace%20ID%20propagates/english) | how distributed tracing links service calls together |
 
 ## 30-minute protocol
 

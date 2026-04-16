@@ -14,11 +14,11 @@ Identify and address the biggest bottleneck in your current workflow.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| median cycle time | /ˈmiːdiən ˈsaɪkəl taɪm/ | minutes or hours from starting to finishing a task — the right workflow metric |
-| context switching cost | /ˈkɒntɛkst ˈswɪtʃɪŋ kɒst/ | time lost regaining focus after an interruption — significant and underestimated |
-| batching | /ˈbætʃɪŋ/ | group similar tasks together to reduce setup and context switching overhead |
+| median cycle time | [Nghe →](https://youglish.com/pronounce/median%20cycle%20time/english) | minutes or hours from starting to finishing a task — the right workflow metric |
+| context switching cost | [Nghe →](https://youglish.com/pronounce/context%20switching%20cost/english) | time lost regaining focus after an interruption — significant and underestimated |
+| batching | [Nghe →](https://youglish.com/pronounce/batching/english) | group similar tasks together to reduce setup and context switching overhead |
 
 ## 30-minute protocol
 

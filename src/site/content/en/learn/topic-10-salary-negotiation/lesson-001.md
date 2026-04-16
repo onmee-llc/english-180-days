@@ -16,11 +16,11 @@ Deliver your salary expectation clearly, with a range, and without apology.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| anchor | /ˈæŋkər/ | set the reference point for the negotiation first |
-| total compensation package | /ˈtoʊtəl ˌkɒmpənˈseɪʃən ˈpækɪdʒ/ | base + equity + benefits + perks combined |
-| I do not know my own market value | /mɑːrkɪt ˈvæljuː/ | what you signal when you say 'flexible' or 'whatever is fair' |
+| anchor | [Nghe →](https://youglish.com/pronounce/anchor/english) | set the reference point for the negotiation first |
+| total compensation package | [Nghe →](https://youglish.com/pronounce/total%20compensation%20package/english) | base + equity + benefits + perks combined |
+| I do not know my own market value | [Nghe →](https://youglish.com/pronounce/I%20do%20not%20know%20my%20own%20market%20value/english) | what you signal when you say 'flexible' or 'whatever is fair' |
 
 ## 30-minute protocol
 

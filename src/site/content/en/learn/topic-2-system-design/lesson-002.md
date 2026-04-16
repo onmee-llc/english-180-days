@@ -14,11 +14,11 @@ Explain the progressive scaling decisions from 1,000 to 1,000,000 users.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| read replica | /riːd ˈrɛplɪkə/ | first scaling step for read-heavy systems |
-| partition by user ID modulo | /pɑːˈtɪʃən baɪ ˈjuːzər aɪˈdiː ˈmɒdjʊloʊ/ | hash-based sharding — explain the mechanism |
-| measure before you scale | /ˈmɛʒər bɪˈfɔːr juː skeɪl/ | engineering discipline — don't optimize prematurely |
+| read replica | [Nghe →](https://youglish.com/pronounce/read%20replica/english) | first scaling step for read-heavy systems |
+| partition by user ID modulo | [Nghe →](https://youglish.com/pronounce/partition%20by%20user%20ID%20modulo/english) | hash-based sharding — explain the mechanism |
+| measure before you scale | [Nghe →](https://youglish.com/pronounce/measure%20before%20you%20scale/english) | engineering discipline — don't optimize prematurely |
 
 ## 30-minute protocol
 

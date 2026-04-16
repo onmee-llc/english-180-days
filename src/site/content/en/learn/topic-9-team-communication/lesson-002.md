@@ -16,11 +16,11 @@ Practice reviewing a code change as if it were a colleague's PR — out loud.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| have you considered | /hæv juː kənˈsɪdərd/ | suggests, doesn't demand — collaborative tone |
-| doing a lot of work | /ˈduːɪŋ ə lɒt əv wɜːrk/ | overloaded variable/function — English idiom for it tries to do too much |
-| pair on that | /pɛr ɒn ðæt/ | pair programming — offer to work through it together |
+| have you considered | [Nghe →](https://youglish.com/pronounce/have%20you%20considered/english) | suggests, doesn't demand — collaborative tone |
+| doing a lot of work | [Nghe →](https://youglish.com/pronounce/doing%20a%20lot%20of%20work/english) | overloaded variable/function — English idiom for it tries to do too much |
+| pair on that | [Nghe →](https://youglish.com/pronounce/pair%20on%20that/english) | pair programming — offer to work through it together |
 
 ## 30-minute protocol
 

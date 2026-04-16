@@ -16,11 +16,11 @@ Practice mentioning a competing offer in a way that is honest, warm, and effecti
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| first preference | /fɜːrst ˈprɛfərəns/ | you want this job most — say so, it reduces friction |
-| accelerate the process | /əkˈsɛləreɪt ðə ˈproʊsɛs/ | ask for faster timeline, not just more money |
-| my constraint | /maɪ kənˈstreɪnt/ | frame the deadline as your problem, not their ultimatum |
+| first preference | [Nghe →](https://youglish.com/pronounce/first%20preference/english) | you want this job most — say so, it reduces friction |
+| accelerate the process | [Nghe →](https://youglish.com/pronounce/accelerate%20the%20process/english) | ask for faster timeline, not just more money |
+| my constraint | [Nghe →](https://youglish.com/pronounce/my%20constraint/english) | frame the deadline as your problem, not their ultimatum |
 
 ## 30-minute protocol
 

@@ -14,11 +14,11 @@ Explain your Infrastructure as Code discipline and how you structure Terraform.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| version-controlled configuration | /ˈvɜːrʒən kənˈtroʊld ˌkɒnfɪɡjʊˈreɪʃən/ | IaC stored in git — changes are auditable and reversible |
-| drift prevention | /drɪft prɪˈvɛnʃən/ | detecting manual changes that diverge from declared state — a key IaC discipline |
-| object lock | /ˈɒbdʒɪkt lɒk/ | prevents deleting state files — protects against accidental terraform destroy |
+| version-controlled configuration | [Nghe →](https://youglish.com/pronounce/version-controlled%20configuration/english) | IaC stored in git — changes are auditable and reversible |
+| drift prevention | [Nghe →](https://youglish.com/pronounce/drift%20prevention/english) | detecting manual changes that diverge from declared state — a key IaC discipline |
+| object lock | [Nghe →](https://youglish.com/pronounce/object%20lock/english) | prevents deleting state files — protects against accidental terraform destroy |
 
 ## 30-minute protocol
 

@@ -16,11 +16,11 @@ Practice the structure of an efficient help request that respects the expert's t
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| I am stuck | /aɪ æm stʌk/ | honest, direct — not a sign of weakness, a signal that help is needed |
-| paste it in the thread | /peɪst ɪt ɪn ðə θrɛd/ | keep the conversation organized in async tools |
-| schedule time properly | /ˈʃɛdjuːl taɪm ˈprɒpərli/ | respect that async debugging is not always the right tool |
+| I am stuck | [Nghe →](https://youglish.com/pronounce/I%20am%20stuck/english) | honest, direct — not a sign of weakness, a signal that help is needed |
+| paste it in the thread | [Nghe →](https://youglish.com/pronounce/paste%20it%20in%20the%20thread/english) | keep the conversation organized in async tools |
+| schedule time properly | [Nghe →](https://youglish.com/pronounce/schedule%20time%20properly/english) | respect that async debugging is not always the right tool |
 
 ## 30-minute protocol
 

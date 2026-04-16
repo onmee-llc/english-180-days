@@ -16,11 +16,11 @@ Practice the 'five whys' technique out loud until root cause is reached.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| five whys | /faɪv waɪz/ | keep asking 'why' until you hit the structural root cause |
-| downstream | /ˌdaʊnˈstriːm/ | things that depend on your data or service |
-| class of problem | /klæs əv ˈprɒbləm/ | the general failure mode, not just this specific incident |
+| five whys | [Nghe →](https://youglish.com/pronounce/five%20whys/english) | keep asking 'why' until you hit the structural root cause |
+| downstream | [Nghe →](https://youglish.com/pronounce/downstream/english) | things that depend on your data or service |
+| class of problem | [Nghe →](https://youglish.com/pronounce/class%20of%20problem/english) | the general failure mode, not just this specific incident |
 
 ## 30-minute protocol
 

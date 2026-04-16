@@ -14,11 +14,11 @@ Walk through a system diagram on a whiteboard — verbally and structurally.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| narrate as you draw | /ˈnæreɪt æz juː drɔː/ | think aloud during diagramming — interviewers assess reasoning, not just outcome |
-| single responsibility | /ˈsɪŋɡl ˌrɛspɒnsɪˈbɪlɪti/ | one job per component label — keeps diagrams clear and concepts clean |
-| annotate failure paths | /ˈænəteɪt ˈfeɪljər pɑːθs/ | show DLQ and error flows — signals operational maturity |
+| narrate as you draw | [Nghe →](https://youglish.com/pronounce/narrate%20as%20you%20draw/english) | think aloud during diagramming — interviewers assess reasoning, not just outcome |
+| single responsibility | [Nghe →](https://youglish.com/pronounce/single%20responsibility/english) | one job per component label — keeps diagrams clear and concepts clean |
+| annotate failure paths | [Nghe →](https://youglish.com/pronounce/annotate%20failure%20paths/english) | show DLQ and error flows — signals operational maturity |
 
 ## 30-minute protocol
 

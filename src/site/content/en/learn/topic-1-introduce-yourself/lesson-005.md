@@ -16,11 +16,11 @@ Answer 'Why are you looking?' with confidence and a growth narrative.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| fairly incremental | /ˈfɛərli ɪnˈkrɛmɛntəl/ | honest but professional — not negative, just flat |
-| at the center of a product | /æt ðə ˈsɛntər əv ə ˈprɒdʌkt/ | shows you want ownership, not peripheral involvement |
-| intentional about | /ɪnˈtɛnʃənəl əˈbaʊt/ | signals self-awareness and deliberate career management |
+| fairly incremental | [Nghe →](https://youglish.com/pronounce/fairly%20incremental/english) | honest but professional — not negative, just flat |
+| at the center of a product | [Nghe →](https://youglish.com/pronounce/at%20the%20center%20of%20a%20product/english) | shows you want ownership, not peripheral involvement |
+| intentional about | [Nghe →](https://youglish.com/pronounce/intentional%20about/english) | signals self-awareness and deliberate career management |
 
 ## 30-minute protocol
 

@@ -14,11 +14,11 @@ Design the error handling contract for a public API.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| machine-readable code | /məˈʃiːn ˈriːdəbl koʊd/ | error code the client can switch on — not just a human message |
-| error envelope | /ˈɛrər ˈɛnvəloʊp/ | standard wrapper for all errors — consistent shape across all endpoints |
-| stack trace exposure | /stæk treɪs ɪkˈspoʊʒər/ | returning internal error details to public API — a security vulnerability |
+| machine-readable code | [Nghe →](https://youglish.com/pronounce/machine-readable%20code/english) | error code the client can switch on — not just a human message |
+| error envelope | [Nghe →](https://youglish.com/pronounce/error%20envelope/english) | standard wrapper for all errors — consistent shape across all endpoints |
+| stack trace exposure | [Nghe →](https://youglish.com/pronounce/stack%20trace%20exposure/english) | returning internal error details to public API — a security vulnerability |
 
 ## 30-minute protocol
 

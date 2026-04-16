@@ -14,11 +14,11 @@ Design the queue layer for a content publishing system with rate-limited APIs.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| textbook case | /ˈtɛkstbʊk keɪs/ | confidently signals you recognize a classic pattern |
-| consumer concurrency | /kənˈsjuːmər kənˈkʌrənsi/ | number of parallel consumers — controls throughput and rate |
-| dead letter queue | /dɛd ˈlɛtər kjuː/ | destination for permanently failed messages — shows operational maturity |
+| textbook case | [Nghe →](https://youglish.com/pronounce/textbook%20case/english) | confidently signals you recognize a classic pattern |
+| consumer concurrency | [Nghe →](https://youglish.com/pronounce/consumer%20concurrency/english) | number of parallel consumers — controls throughput and rate |
+| dead letter queue | [Nghe →](https://youglish.com/pronounce/dead%20letter%20queue/english) | destination for permanently failed messages — shows operational maturity |
 
 ## 30-minute protocol
 

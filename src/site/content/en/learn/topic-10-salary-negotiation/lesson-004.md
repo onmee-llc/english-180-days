@@ -16,11 +16,11 @@ Do not accept the first 'no' — learn to expand the negotiation scope.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| leave no value on the table | /liːv nəʊ ˈvæljuː ɒn ðə ˈteɪbəl/ | negotiation idiom — don't give up something you could have asked for |
-| put on record | /pʊt ɒn ˈrɛkərd/ | make it formally known, even if not immediately actioned |
-| exhausted all vectors | /ɪɡˈzɔːstɪd ɔːl ˈvɛktərz/ | tried every possible angle before accepting the final answer |
+| leave no value on the table | [Nghe →](https://youglish.com/pronounce/leave%20no%20value%20on%20the%20table/english) | negotiation idiom — don't give up something you could have asked for |
+| put on record | [Nghe →](https://youglish.com/pronounce/put%20on%20record/english) | make it formally known, even if not immediately actioned |
+| exhausted all vectors | [Nghe →](https://youglish.com/pronounce/exhausted%20all%20vectors/english) | tried every possible angle before accepting the final answer |
 
 ## 30-minute protocol
 

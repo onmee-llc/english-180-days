@@ -14,11 +14,11 @@ Walk through the CI/CD pipeline for your content automation SaaS.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| commit hash tagging | /kəˈmɪt hæʃ ˈtæɡɪŋ/ | track exactly which code is running in production by hash |
-| canary release | /kəˈnɛəri rɪˈliːs/ | gradual traffic shift — catch problems before full rollout |
-| backward-compatible migrations | /ˈbækwərd kəmˈpætɪbl maɪˈɡreɪʃənz/ | DB changes must work with both the old and new app version simultaneously |
+| commit hash tagging | [Nghe →](https://youglish.com/pronounce/commit%20hash%20tagging/english) | track exactly which code is running in production by hash |
+| canary release | [Nghe →](https://youglish.com/pronounce/canary%20release/english) | gradual traffic shift — catch problems before full rollout |
+| backward-compatible migrations | [Nghe →](https://youglish.com/pronounce/backward-compatible%20migrations/english) | DB changes must work with both the old and new app version simultaneously |
 
 ## 30-minute protocol
 

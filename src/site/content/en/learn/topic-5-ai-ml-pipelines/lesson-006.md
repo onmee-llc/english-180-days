@@ -14,11 +14,11 @@ Design the safety layer for an AI content generation API.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| prompt injection | /prɒmpt ɪnˈdʒɛkʃən/ | user input designed to hijack the model's instructions — a real attack vector |
-| pre-inference filter | /priː ˈɪnfərəns ˈfɪltər/ | block dangerous requests before they reach the expensive model |
-| retroactive auditing | /ˌrɛtrəˈæktɪv ˈɔːdɪtɪŋ/ | ability to investigate past incidents from logs — requires retention strategy |
+| prompt injection | [Nghe →](https://youglish.com/pronounce/prompt%20injection/english) | user input designed to hijack the model's instructions — a real attack vector |
+| pre-inference filter | [Nghe →](https://youglish.com/pronounce/pre-inference%20filter/english) | block dangerous requests before they reach the expensive model |
+| retroactive auditing | [Nghe →](https://youglish.com/pronounce/retroactive%20auditing/english) | ability to investigate past incidents from logs — requires retention strategy |
 
 ## 30-minute protocol
 

@@ -14,11 +14,11 @@ Practice presenting this topic section fluently — aim for one complete pass wi
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| dead letter queue | /dɛd ˈlɛtər kjuː/ | messages that failed all retries — monitor depth, investigate every item |
-| canary workflow | /kəˈneəri ˈwɜːrkfloʊ/ | synthetic end-to-end test run on a schedule — catches outages before users do |
-| tail latency | /teɪl ˈleɪtənsi/ | 99th percentile response time — what slow users experience, often hides bottlenecks |
+| dead letter queue | [Nghe →](https://youglish.com/pronounce/dead%20letter%20queue/english) | messages that failed all retries — monitor depth, investigate every item |
+| canary workflow | [Nghe →](https://youglish.com/pronounce/canary%20workflow/english) | synthetic end-to-end test run on a schedule — catches outages before users do |
+| tail latency | [Nghe →](https://youglish.com/pronounce/tail%20latency/english) | 99th percentile response time — what slow users experience, often hides bottlenecks |
 
 ## 30-minute protocol
 

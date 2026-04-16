@@ -14,11 +14,11 @@ Practice presenting this topic section fluently — aim for one complete pass wi
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| gRPC | /ˌdʒiː ɑːr piː ˈsiː/ | Remote Procedure Call over HTTP/2 — typed contracts, binary encoding, streaming |
-| service mesh | /ˈsɜːrvɪs mɛʃ/ | infrastructure layer handling service-to-service communication, auth, and observability |
-| distributed tracing | /dɪˈstrɪbjʊtɪd ˈtreɪsɪŋ/ | follow a single request across multiple services — essential for debugging latency |
+| gRPC | [Nghe →](https://youglish.com/pronounce/gRPC/english) | Remote Procedure Call over HTTP/2 — typed contracts, binary encoding, streaming |
+| service mesh | [Nghe →](https://youglish.com/pronounce/service%20mesh/english) | infrastructure layer handling service-to-service communication, auth, and observability |
+| distributed tracing | [Nghe →](https://youglish.com/pronounce/distributed%20tracing/english) | follow a single request across multiple services — essential for debugging latency |
 
 ## 30-minute protocol
 

@@ -14,11 +14,11 @@ Design the disaster recovery strategy for a production SaaS system.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| Recovery Time Objective | /rɪˈkʌvəri taɪm əbˈdʒɛktɪv/ | maximum acceptable downtime — drives failover automation requirements |
-| Recovery Point Objective | /rɪˈkʌvəri pɔɪnt əbˈdʒɛktɪv/ | maximum acceptable data loss — drives replication strategy |
-| untested backup | /ˌʌnˈtɛstɪd ˈbækʌp/ | a backup you haven't restored is a false sense of security |
+| Recovery Time Objective | [Nghe →](https://youglish.com/pronounce/Recovery%20Time%20Objective/english) | maximum acceptable downtime — drives failover automation requirements |
+| Recovery Point Objective | [Nghe →](https://youglish.com/pronounce/Recovery%20Point%20Objective/english) | maximum acceptable data loss — drives replication strategy |
+| untested backup | [Nghe →](https://youglish.com/pronounce/untested%20backup/english) | a backup you haven't restored is a false sense of security |
 
 ## 30-minute protocol
 

@@ -14,11 +14,11 @@ Explain your approach to technical documentation for a production system.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| Divio documentation system | /dɪˈviːoʊ ˌdɒkjʊmɛnˈteɪʃən ˈsɪstəm/ | four-type framework: tutorial, how-to, reference, explanation |
-| documentation coverage | /ˌdɒkjʊmɛnˈteɪʃən ˈkʌvərɪdʒ/ | treat doc gaps like test gaps — require it as a PR criterion |
-| outdated documentation | /ˌaʊtˈdeɪtɪd ˌdɒkjʊmɛnˈteɪʃən/ | actively misleads — worse than no documentation at all |
+| Divio documentation system | [Nghe →](https://youglish.com/pronounce/Divio%20documentation%20system/english) | four-type framework: tutorial, how-to, reference, explanation |
+| documentation coverage | [Nghe →](https://youglish.com/pronounce/documentation%20coverage/english) | treat doc gaps like test gaps — require it as a PR criterion |
+| outdated documentation | [Nghe →](https://youglish.com/pronounce/outdated%20documentation/english) | actively misleads — worse than no documentation at all |
 
 ## 30-minute protocol
 

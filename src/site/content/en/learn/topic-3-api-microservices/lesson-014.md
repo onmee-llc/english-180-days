@@ -14,11 +14,11 @@ Practice presenting this topic section fluently — aim for one complete pass wi
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| bounded context | /ˈbaʊndɪd ˈkɒntɛkst/ | clear boundary where one model applies — core DDD concept for microservice ownership |
-| idempotency key | /aɪˈdɛmpətensi kiː/ | client-generated token ensuring duplicate requests have the same effect as one |
-| exactly-once semantics | /ɪɡˈzæktli wʌns sɪˈmæntɪks/ | guarantee that a message is processed exactly one time, even under retries |
+| bounded context | [Nghe →](https://youglish.com/pronounce/bounded%20context/english) | clear boundary where one model applies — core DDD concept for microservice ownership |
+| idempotency key | [Nghe →](https://youglish.com/pronounce/idempotency%20key/english) | client-generated token ensuring duplicate requests have the same effect as one |
+| exactly-once semantics | [Nghe →](https://youglish.com/pronounce/exactly-once%20semantics/english) | guarantee that a message is processed exactly one time, even under retries |
 
 ## 30-minute protocol
 

@@ -16,11 +16,11 @@ Deliver your self-introduction in 90 seconds — natural, not memorized.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| sits at the intersection of | /sɪts æt ði ˌɪntərˈsɛkʃən əv/ | use to describe your hybrid specialization |
-| real-world products | /ˈriːl wɜːrld ˈprɒdʌkts/ | emphasizes production, not academic work |
-| I'm particularly drawn to | /aɪm pəˈtɪkjʊlərli drɔːn tuː/ | signals genuine fit, not desperation |
+| sits at the intersection of | [Nghe →](https://youglish.com/pronounce/sits%20at%20the%20intersection%20of/english) | use to describe your hybrid specialization |
+| real-world products | [Nghe →](https://youglish.com/pronounce/real-world%20products/english) | emphasizes production, not academic work |
+| I'm particularly drawn to | [Nghe →](https://youglish.com/pronounce/I'm%20particularly%20drawn%20to/english) | signals genuine fit, not desperation |
 
 ## 30-minute protocol
 

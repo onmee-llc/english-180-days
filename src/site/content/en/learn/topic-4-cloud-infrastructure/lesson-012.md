@@ -14,11 +14,11 @@ Walk through a complete cloud design for a high-availability SaaS platform.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| active-active | /ˈæktɪv ˈæktɪv/ | both regions serve traffic simultaneously — no hot standby wait time |
-| latency routing | /ˈleɪtənsi ˈruːtɪŋ/ | direct users to nearest healthy region — reduces global response time |
-| cross-region replication | /krɒs ˈriːdʒən ˌrɛplɪˈkeɪʃən/ | data copied to second region automatically — enables regional failover |
+| active-active | [Nghe →](https://youglish.com/pronounce/active-active/english) | both regions serve traffic simultaneously — no hot standby wait time |
+| latency routing | [Nghe →](https://youglish.com/pronounce/latency%20routing/english) | direct users to nearest healthy region — reduces global response time |
+| cross-region replication | [Nghe →](https://youglish.com/pronounce/cross-region%20replication/english) | data copied to second region automatically — enables regional failover |
 
 ## 30-minute protocol
 

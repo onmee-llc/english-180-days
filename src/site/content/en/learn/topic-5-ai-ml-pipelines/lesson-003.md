@@ -14,11 +14,11 @@ Design a RAG system for a customer support knowledge base.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| vector database | /ˈvɛktər ˈdeɪtəbeɪs/ | stores embeddings and supports similarity search — the core of RAG |
-| re-ranking | /riː ˈræŋkɪŋ/ | second-pass relevance scoring after retrieval — improves answer quality |
-| nearest-neighbor search | /ˈnɪərɪst ˈneɪbər sɜːrtʃ/ | find vectors most similar to the query vector — the retrieval mechanism |
+| vector database | [Nghe →](https://youglish.com/pronounce/vector%20database/english) | stores embeddings and supports similarity search — the core of RAG |
+| re-ranking | [Nghe →](https://youglish.com/pronounce/re-ranking/english) | second-pass relevance scoring after retrieval — improves answer quality |
+| nearest-neighbor search | [Nghe →](https://youglish.com/pronounce/nearest-neighbor%20search/english) | find vectors most similar to the query vector — the retrieval mechanism |
 
 ## 30-minute protocol
 

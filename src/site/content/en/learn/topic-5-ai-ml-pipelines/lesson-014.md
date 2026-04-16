@@ -14,11 +14,11 @@ Practice presenting this topic section fluently — aim for one complete pass wi
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| feature store | /ˈfiːtʃər stɔːr/ | centralized repository for ML features — ensures training and serving use the same data |
-| validation gate | /ˌvælɪˈdeɪʃən ɡeɪt/ | automated check that blocks bad output before it reaches users or downstream systems |
-| prompt engineering | /prɒmpt ˌɛndʒɪˈnɪərɪŋ/ | crafting inputs to get consistent, high-quality outputs — a core production AI skill |
+| feature store | [Nghe →](https://youglish.com/pronounce/feature%20store/english) | centralized repository for ML features — ensures training and serving use the same data |
+| validation gate | [Nghe →](https://youglish.com/pronounce/validation%20gate/english) | automated check that blocks bad output before it reaches users or downstream systems |
+| prompt engineering | [Nghe →](https://youglish.com/pronounce/prompt%20engineering/english) | crafting inputs to get consistent, high-quality outputs — a core production AI skill |
 
 ## 30-minute protocol
 

@@ -14,11 +14,11 @@ Design the auth layer for a multi-tenant SaaS API — three explicit layers.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| asymmetric key pair | /ˌeɪsɪˈmɛtrɪk kiː pɛər/ | public/private keys — stronger than shared secret for JWT signing |
-| row-level security | /roʊ ˈlɛvəl sɪˈkjʊərɪti/ | database-enforced tenant isolation — strongest form |
-| least privilege | /liːst ˈprɪvɪlɪdʒ/ | each service gets only the permissions it requires — nothing extra |
+| asymmetric key pair | [Nghe →](https://youglish.com/pronounce/asymmetric%20key%20pair/english) | public/private keys — stronger than shared secret for JWT signing |
+| row-level security | [Nghe →](https://youglish.com/pronounce/row-level%20security/english) | database-enforced tenant isolation — strongest form |
+| least privilege | [Nghe →](https://youglish.com/pronounce/least%20privilege/english) | each service gets only the permissions it requires — nothing extra |
 
 ## 30-minute protocol
 

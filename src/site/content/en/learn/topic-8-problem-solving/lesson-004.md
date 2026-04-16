@@ -16,11 +16,11 @@ Discuss performance work with the same structure as debugging: locate, measure, 
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| profile | /ˈproʊfaɪl/ | measure where CPU or memory time is being spent |
-| EXPLAIN ANALYZE | /ɪkˈspleɪn ˈænəlaɪz/ | PostgreSQL command to see the actual query execution plan |
-| accounts for more than 50 percent | /əˈkaʊnts fɔːr/ | look for the dominant contributor, not the minor ones |
+| profile | [Nghe →](https://youglish.com/pronounce/profile/english) | measure where CPU or memory time is being spent |
+| EXPLAIN ANALYZE | [Nghe →](https://youglish.com/pronounce/EXPLAIN%20ANALYZE/english) | PostgreSQL command to see the actual query execution plan |
+| accounts for more than 50 percent | [Nghe →](https://youglish.com/pronounce/accounts%20for%20more%20than%2050%20percent/english) | look for the dominant contributor, not the minor ones |
 
 ## 30-minute protocol
 

@@ -16,11 +16,11 @@ Practice the format of a high-quality async update that does not create follow-u
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| keep you informed | /kiːp juː ɪnˈfɔːrmd/ | proactive communication — don't make them chase you |
-| escalate | /ˈɛskəleɪt/ | move the issue to a higher-priority or higher-authority channel |
-| no action needed | /noʊ ˈækʃən ˈniːdɪd/ | reduce cognitive load — tell them exactly what you need from them |
+| keep you informed | [Nghe →](https://youglish.com/pronounce/keep%20you%20informed/english) | proactive communication — don't make them chase you |
+| escalate | [Nghe →](https://youglish.com/pronounce/escalate/english) | move the issue to a higher-priority or higher-authority channel |
+| no action needed | [Nghe →](https://youglish.com/pronounce/no%20action%20needed/english) | reduce cognitive load — tell them exactly what you need from them |
 
 ## 30-minute protocol
 

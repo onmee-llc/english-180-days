@@ -14,11 +14,11 @@ Explain your full versioning strategy for an API serving multiple client types.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| additive-only changes | /ˈædɪtɪv ˈoʊnli ˈtʃeɪndʒɪz/ | safe to deploy without version bump — add, never remove |
-| sunset date | /ˈsʌnset deɪt/ | the date you will stop supporting a deprecated version |
-| contract with consumers | /ˈkɒntrækt wɪð kənˈsjuːmərz/ | frame versioning as a commitment, not a technical detail |
+| additive-only changes | [Nghe →](https://youglish.com/pronounce/additive-only%20changes/english) | safe to deploy without version bump — add, never remove |
+| sunset date | [Nghe →](https://youglish.com/pronounce/sunset%20date/english) | the date you will stop supporting a deprecated version |
+| contract with consumers | [Nghe →](https://youglish.com/pronounce/contract%20with%20consumers/english) | frame versioning as a commitment, not a technical detail |
 
 ## 30-minute protocol
 

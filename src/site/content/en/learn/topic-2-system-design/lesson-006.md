@@ -14,11 +14,11 @@ Explain CAP theorem and make a concrete consistency-availability trade-off decis
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| at most two of three | /æt moʊst tuː əv θriː/ | exact statement of CAP — not a vague claim |
-| right choice for financial systems | /raɪt tʃɔɪs fɔːr fɪˈnænʃəl ˈsɪstəmz/ | anchor the theory to real domain constraints |
-| nobody is harmed | /ˈnoʊbədi ɪz hɑːrmd/ | business framing — is stale data a real problem for THIS use case? |
+| at most two of three | [Nghe →](https://youglish.com/pronounce/at%20most%20two%20of%20three/english) | exact statement of CAP — not a vague claim |
+| right choice for financial systems | [Nghe →](https://youglish.com/pronounce/right%20choice%20for%20financial%20systems/english) | anchor the theory to real domain constraints |
+| nobody is harmed | [Nghe →](https://youglish.com/pronounce/nobody%20is%20harmed/english) | business framing — is stale data a real problem for THIS use case? |
 
 ## 30-minute protocol
 

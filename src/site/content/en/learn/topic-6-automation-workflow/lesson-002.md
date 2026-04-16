@@ -14,11 +14,11 @@ Design an automated content publishing workflow from trigger to completion.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| idempotent by design | /aɪˈdɛmpətənt baɪ dɪˈzaɪn/ | double processing has no bad side effects — essential for any retry-capable system |
-| oldest unprocessed task | /ˈoʊldɪst ˌʌnˈprɒsɛst tɑːsk/ | the age of the queue's oldest item — tells you if processing is keeping up |
-| structured logs | /ˈstrʌktʃərd lɒɡz/ | JSON-format logs with machine-queryable fields — enables fast investigation |
+| idempotent by design | [Nghe →](https://youglish.com/pronounce/idempotent%20by%20design/english) | double processing has no bad side effects — essential for any retry-capable system |
+| oldest unprocessed task | [Nghe →](https://youglish.com/pronounce/oldest%20unprocessed%20task/english) | the age of the queue's oldest item — tells you if processing is keeping up |
+| structured logs | [Nghe →](https://youglish.com/pronounce/structured%20logs/english) | JSON-format logs with machine-queryable fields — enables fast investigation |
 
 ## 30-minute protocol
 

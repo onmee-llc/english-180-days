@@ -14,11 +14,11 @@ Describe your team's git workflow and how it supports rapid iteration.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| trunk-based development | /trʌŋk beɪst dɪˈvɛləpmənt/ | merge to main frequently — reduces integration pain and keeps branches short |
-| feature flags | /ˈfiːtʃər flæɡz/ | ship code to production with the feature off — decouple deployment from release |
-| conventional commits | /kənˈvɛnʃənəl kəˈmɪts/ | structured commit message format — enables automated tooling and readable history |
+| trunk-based development | [Nghe →](https://youglish.com/pronounce/trunk-based%20development/english) | merge to main frequently — reduces integration pain and keeps branches short |
+| feature flags | [Nghe →](https://youglish.com/pronounce/feature%20flags/english) | ship code to production with the feature off — decouple deployment from release |
+| conventional commits | [Nghe →](https://youglish.com/pronounce/conventional%20commits/english) | structured commit message format — enables automated tooling and readable history |
 
 ## 30-minute protocol
 

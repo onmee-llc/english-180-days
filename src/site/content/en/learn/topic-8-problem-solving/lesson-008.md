@@ -16,11 +16,11 @@ Practice the language of respectful but confident technical pushback.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| I had not fully weighted | /aɪ hæd nɒt ˈfʊli ˈweɪtɪd/ | honest acknowledgment that their point had merit |
-| disproportionate | /ˌdɪsprəˈpɔːʃənɪt/ | the cost of the solution is too high for the problem size |
-| argue the technical merit | /ˈɑːrɡjuː ðə tɛkˈnɪkəl ˈmɛrɪt/ | keep it about the engineering, not the hierarchy |
+| I had not fully weighted | [Nghe →](https://youglish.com/pronounce/I%20had%20not%20fully%20weighted/english) | honest acknowledgment that their point had merit |
+| disproportionate | [Nghe →](https://youglish.com/pronounce/disproportionate/english) | the cost of the solution is too high for the problem size |
+| argue the technical merit | [Nghe →](https://youglish.com/pronounce/argue%20the%20technical%20merit/english) | keep it about the engineering, not the hierarchy |
 
 ## 30-minute protocol
 

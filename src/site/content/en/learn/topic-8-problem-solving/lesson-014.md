@@ -14,11 +14,11 @@ Practice presenting this topic section fluently — aim for one complete pass wi
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| decision matrix | /dɪˈsɪʒən ˈmeɪtrɪks/ | score options against weighted criteria — makes trade-offs explicit and decisions defensible |
-| non-functional requirements | /nɒn ˈfʌŋkʃənəl rɪˈkwaɪərməns/ | performance, scalability, reliability constraints — the hard part of system design |
-| validate a hypothesis | /ˈvælɪdeɪt ə haɪˈpɒθɪsɪs/ | find the smallest thing you can test to prove or disprove your theory — scientific debugging |
+| decision matrix | [Nghe →](https://youglish.com/pronounce/decision%20matrix/english) | score options against weighted criteria — makes trade-offs explicit and decisions defensible |
+| non-functional requirements | [Nghe →](https://youglish.com/pronounce/non-functional%20requirements/english) | performance, scalability, reliability constraints — the hard part of system design |
+| validate a hypothesis | [Nghe →](https://youglish.com/pronounce/validate%20a%20hypothesis/english) | find the smallest thing you can test to prove or disprove your theory — scientific debugging |
 
 ## 30-minute protocol
 

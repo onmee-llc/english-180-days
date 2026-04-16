@@ -14,11 +14,11 @@ Design a webhook system for a content automation API.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| at-least-once delivery | /æt liːst wʌns dɪˈlɪvəri/ | guarantees delivery but may send duplicates — clients must be idempotent |
-| HMAC signature | /ˌeɪtʃmæk ˈsɪɡnɪtʃər/ | hash-based message authentication — proves the webhook came from you |
-| idempotent consumer | /aɪˈdɛmpətənt kənˈsjuːmər/ | processing the same event twice has the same result as processing it once |
+| at-least-once delivery | [Nghe →](https://youglish.com/pronounce/at-least-once%20delivery/english) | guarantees delivery but may send duplicates — clients must be idempotent |
+| HMAC signature | [Nghe →](https://youglish.com/pronounce/HMAC%20signature/english) | hash-based message authentication — proves the webhook came from you |
+| idempotent consumer | [Nghe →](https://youglish.com/pronounce/idempotent%20consumer/english) | processing the same event twice has the same result as processing it once |
 
 ## 30-minute protocol
 

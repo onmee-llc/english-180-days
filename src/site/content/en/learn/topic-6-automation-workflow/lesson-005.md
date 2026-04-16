@@ -14,11 +14,11 @@ Walk through a GitHub Actions workflow for a production deployment pipeline.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| SHA tagging | /ʃɑː ˈtæɡɪŋ/ | commit hash as image tag — complete traceability from build to deployment |
-| required approval | /rɪˈkwaɪərd əˈpruːvəl/ | human gate before production — a deliberate pace control, not bureaucracy |
-| canary strategy | /kəˈnɛəri ˈstrætɪdʒi/ | gradual traffic shift with automatic rollback — catch production issues early |
+| SHA tagging | [Nghe →](https://youglish.com/pronounce/SHA%20tagging/english) | commit hash as image tag — complete traceability from build to deployment |
+| required approval | [Nghe →](https://youglish.com/pronounce/required%20approval/english) | human gate before production — a deliberate pace control, not bureaucracy |
+| canary strategy | [Nghe →](https://youglish.com/pronounce/canary%20strategy/english) | gradual traffic shift with automatic rollback — catch production issues early |
 
 ## 30-minute protocol
 

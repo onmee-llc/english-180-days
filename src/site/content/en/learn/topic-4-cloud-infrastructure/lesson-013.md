@@ -14,11 +14,11 @@ Practice presenting this topic section fluently — aim for one complete pass wi
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| right-sizing | /raɪt ˈsaɪzɪŋ/ | matching instance type to actual usage — the fastest cloud cost win |
-| Savings Plans | /ˈseɪvɪŋz plænz/ | commit to consistent usage for lower rates — 30–40% savings on baseline EC2 |
-| cross-AZ traffic | /krɒs eɪ ziː ˈtræfɪk/ | data transfer between availability zones is charged — pin services to avoid it |
+| right-sizing | [Nghe →](https://youglish.com/pronounce/right-sizing/english) | matching instance type to actual usage — the fastest cloud cost win |
+| Savings Plans | [Nghe →](https://youglish.com/pronounce/Savings%20Plans/english) | commit to consistent usage for lower rates — 30–40% savings on baseline EC2 |
+| cross-AZ traffic | [Nghe →](https://youglish.com/pronounce/cross-AZ%20traffic/english) | data transfer between availability zones is charged — pin services to avoid it |
 
 ## 30-minute protocol
 

@@ -14,11 +14,11 @@ Design the IAM structure for a multi-service application on GCP.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| blast radius | /blɑːst ˈreɪdiəs/ | scope of damage from a security incident — minimize with scoped permissions |
-| audit logging | /ˈɔːdɪt ˈlɒɡɪŋ/ | recording who did what — essential for security and compliance |
-| anomalous patterns | /əˈnɒmələs ˈpætərnz/ | unusual access that could indicate compromise — alert on this |
+| blast radius | [Nghe →](https://youglish.com/pronounce/blast%20radius/english) | scope of damage from a security incident — minimize with scoped permissions |
+| audit logging | [Nghe →](https://youglish.com/pronounce/audit%20logging/english) | recording who did what — essential for security and compliance |
+| anomalous patterns | [Nghe →](https://youglish.com/pronounce/anomalous%20patterns/english) | unusual access that could indicate compromise — alert on this |
 
 ## 30-minute protocol
 

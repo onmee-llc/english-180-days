@@ -16,11 +16,11 @@ Explain your career path as a deliberate arc, not a list of jobs.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| living with the consequences | /ˈlɪvɪŋ wɪð ðə ˈkɒnsɪkwənsɪz/ | shows accountability and growth mindset |
-| exposure to | /ɪkˈspoʊʒər tuː/ | professional way to say 'I experienced' or 'I learned from' |
-| investing my career | /ɪnˈvɛstɪŋ maɪ kəˈrɪər/ | frames career choices as intentional strategy |
+| living with the consequences | [Nghe →](https://youglish.com/pronounce/living%20with%20the%20consequences/english) | shows accountability and growth mindset |
+| exposure to | [Nghe →](https://youglish.com/pronounce/exposure%20to/english) | professional way to say 'I experienced' or 'I learned from' |
+| investing my career | [Nghe →](https://youglish.com/pronounce/investing%20my%20career/english) | frames career choices as intentional strategy |
 
 ## 30-minute protocol
 

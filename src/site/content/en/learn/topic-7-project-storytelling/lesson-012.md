@@ -14,11 +14,11 @@ Tell the complete story of your best project — polished, timed, end-to-end.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| bottleneck wasn't creativity | /ˈbɒtlnɛk ˈwɒznt kriˈeɪtɪvɪti/ | correctly identifying the real constraint — analysts did analysis, not creative work |
-| output acceptance rate | /ˈaʊtpʊt əkˈsɛptəns reɪt/ | percentage of AI outputs usable without major editing — the right quality metric for AI content |
-| improve over time | /ɪmˈpruːv ˈoʊvər taɪm/ | the evaluation loop — what makes a system compounding rather than static |
+| bottleneck wasn't creativity | [Nghe →](https://youglish.com/pronounce/bottleneck%20wasn't%20creativity/english) | correctly identifying the real constraint — analysts did analysis, not creative work |
+| output acceptance rate | [Nghe →](https://youglish.com/pronounce/output%20acceptance%20rate/english) | percentage of AI outputs usable without major editing — the right quality metric for AI content |
+| improve over time | [Nghe →](https://youglish.com/pronounce/improve%20over%20time/english) | the evaluation loop — what makes a system compounding rather than static |
 
 ## 30-minute protocol
 

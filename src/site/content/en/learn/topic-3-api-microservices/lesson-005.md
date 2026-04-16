@@ -14,11 +14,11 @@ Design a rate limiting system for a public API with tiered plans.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| token bucket | /ˈtoʊkən ˈbʌkɪt/ | allows bursts up to capacity, then throttles to refill rate |
-| atomic increment | /əˈtɒmɪk ˈɪŋkrɪmənt/ | Redis INCR — single operation, no race conditions |
-| retry-after header | /rɪˈtraɪ ˈɑːftər ˈhɛdər/ | tell clients exactly when they can retry — good API citizenship |
+| token bucket | [Nghe →](https://youglish.com/pronounce/token%20bucket/english) | allows bursts up to capacity, then throttles to refill rate |
+| atomic increment | [Nghe →](https://youglish.com/pronounce/atomic%20increment/english) | Redis INCR — single operation, no race conditions |
+| retry-after header | [Nghe →](https://youglish.com/pronounce/retry-after%20header/english) | tell clients exactly when they can retry — good API citizenship |
 
 ## 30-minute protocol
 

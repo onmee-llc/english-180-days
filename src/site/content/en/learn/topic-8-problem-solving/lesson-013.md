@@ -14,11 +14,11 @@ Practice presenting this topic section fluently — aim for one complete pass wi
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| blast radius | /blɑːst ˈreɪdiəs/ | scope of impact — narrow first before investigating cause |
-| connection pool exhaustion | /kəˈnɛkʃən puːl ɪɡˈzɔːstʃən/ | all connections are in use and new requests queue or fail — a common latency root cause |
-| rollback deploy | /ˈroʊlbæk dɪˈplɔɪ/ | revert to previous known-good version — fastest mitigation when a deploy causes an incident |
+| blast radius | [Nghe →](https://youglish.com/pronounce/blast%20radius/english) | scope of impact — narrow first before investigating cause |
+| connection pool exhaustion | [Nghe →](https://youglish.com/pronounce/connection%20pool%20exhaustion/english) | all connections are in use and new requests queue or fail — a common latency root cause |
+| rollback deploy | [Nghe →](https://youglish.com/pronounce/rollback%20deploy/english) | revert to previous known-good version — fastest mitigation when a deploy causes an incident |
 
 ## 30-minute protocol
 

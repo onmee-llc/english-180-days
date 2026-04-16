@@ -16,11 +16,11 @@ Expand naturally when the interviewer probes beyond the initial intro.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| own the entire platform architecture | /oʊn ðə ɪnˈtaɪər ˈplætfɔːrm ˈɑːrkɪtɛktʃər/ | signals real responsibility, not just contribution |
-| evaluation framework | /ɪˌvæljʊˈeɪʃən ˈfreɪmwɜːrk/ | shows you measure AI output quality systematically |
-| make the hard call | /meɪk ðə hɑːrd kɔːl/ | signals decision-making confidence under ambiguity |
+| own the entire platform architecture | [Nghe →](https://youglish.com/pronounce/own%20the%20entire%20platform%20architecture/english) | signals real responsibility, not just contribution |
+| evaluation framework | [Nghe →](https://youglish.com/pronounce/evaluation%20framework/english) | shows you measure AI output quality systematically |
+| make the hard call | [Nghe →](https://youglish.com/pronounce/make%20the%20hard%20call/english) | signals decision-making confidence under ambiguity |
 
 ## 30-minute protocol
 

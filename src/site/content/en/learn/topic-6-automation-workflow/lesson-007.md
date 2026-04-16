@@ -14,11 +14,11 @@ Describe your testing strategy for a content automation backend service.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| testing pyramid | /ˈtɛstɪŋ ˈpɪrəmɪd/ | many unit, fewer integration, few E2E — cost-effective testing strategy |
-| mutation testing | /mjuːˈteɪʃən ˈtɛstɪŋ/ | inject bugs into code to verify tests actually catch them |
-| deterministic output | /dɪˌtɜːrmɪˈnɪstɪk ˈaʊtpʊt/ | same input always produces same output — essential for reliable unit tests |
+| testing pyramid | [Nghe →](https://youglish.com/pronounce/testing%20pyramid/english) | many unit, fewer integration, few E2E — cost-effective testing strategy |
+| mutation testing | [Nghe →](https://youglish.com/pronounce/mutation%20testing/english) | inject bugs into code to verify tests actually catch them |
+| deterministic output | [Nghe →](https://youglish.com/pronounce/deterministic%20output/english) | same input always produces same output — essential for reliable unit tests |
 
 ## 30-minute protocol
 

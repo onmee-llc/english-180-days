@@ -16,11 +16,11 @@ Narrate a post-mortem as if presenting it to the team — clear, blameless, forw
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| blameless | /ˈbleɪmləs/ | no individual is blamed — the system and process are analyzed |
-| mechanism | /ˈmɛkənɪzəm/ | how the failure happened technically — not why someone made a mistake |
-| specific enough to be unambiguous | /ʌnæmˈbɪɡjʊəs/ | a good action item has exactly one possible interpretation |
+| blameless | [Nghe →](https://youglish.com/pronounce/blameless/english) | no individual is blamed — the system and process are analyzed |
+| mechanism | [Nghe →](https://youglish.com/pronounce/mechanism/english) | how the failure happened technically — not why someone made a mistake |
+| specific enough to be unambiguous | [Nghe →](https://youglish.com/pronounce/specific%20enough%20to%20be%20unambiguous/english) | a good action item has exactly one possible interpretation |
 
 ## 30-minute protocol
 

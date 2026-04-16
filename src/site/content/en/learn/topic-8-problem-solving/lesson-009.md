@@ -16,11 +16,11 @@ Practice the language of moving forward under uncertainty without sounding reckl
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| document your assumptions | /ˈdɒkjʊmɛnt jɔːr əˈsʌmpʃənz/ | make invisible decisions explicit |
-| reversible | /rɪˈvɜːrsɪbl/ | can you undo this decision cheaply if you're wrong? |
-| paralysis | /pəˈræləsɪs/ | the failure mode of waiting for certainty that will never come |
+| document your assumptions | [Nghe →](https://youglish.com/pronounce/document%20your%20assumptions/english) | make invisible decisions explicit |
+| reversible | [Nghe →](https://youglish.com/pronounce/reversible/english) | can you undo this decision cheaply if you're wrong? |
+| paralysis | [Nghe →](https://youglish.com/pronounce/paralysis/english) | the failure mode of waiting for certainty that will never come |
 
 ## 30-minute protocol
 

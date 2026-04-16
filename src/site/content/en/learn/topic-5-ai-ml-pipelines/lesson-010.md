@@ -14,11 +14,11 @@ Design the cost control architecture for a multi-tenant AI API.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| prompt compression | /prɒmpt kəmˈprɛʃən/ | reduce token count without losing information — directly reduces cost |
-| tenant-level metering | /ˈtɛnənt ˈlɛvəl ˈmiːtərɪŋ/ | track usage per customer — foundation for quotas and billing |
-| two standard deviations | /tuː ˈstændərd ˌdiːviˈeɪʃənz/ | statistical anomaly detection — usage spikes can indicate bugs or attacks |
+| prompt compression | [Nghe →](https://youglish.com/pronounce/prompt%20compression/english) | reduce token count without losing information — directly reduces cost |
+| tenant-level metering | [Nghe →](https://youglish.com/pronounce/tenant-level%20metering/english) | track usage per customer — foundation for quotas and billing |
+| two standard deviations | [Nghe →](https://youglish.com/pronounce/two%20standard%20deviations/english) | statistical anomaly detection — usage spikes can indicate bugs or attacks |
 
 ## 30-minute protocol
 

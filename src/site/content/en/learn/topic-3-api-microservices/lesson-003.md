@@ -14,11 +14,11 @@ Design the authentication strategy for a multi-tenant API platform.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| bearer token | /ˈbɛərər ˈtoʊkən/ | a token that grants access to whoever holds it — handle carefully |
-| blast radius | /blɑːst ˈreɪdiəs/ | how much damage a security incident can cause — minimize it by design |
-| authorization delegation | /ˌɔːθəraɪˈzeɪʃən ˌdɛlɪˈɡeɪʃən/ | letting a third party act on your behalf — the core OAuth2 use case |
+| bearer token | [Nghe →](https://youglish.com/pronounce/bearer%20token/english) | a token that grants access to whoever holds it — handle carefully |
+| blast radius | [Nghe →](https://youglish.com/pronounce/blast%20radius/english) | how much damage a security incident can cause — minimize it by design |
+| authorization delegation | [Nghe →](https://youglish.com/pronounce/authorization%20delegation/english) | letting a third party act on your behalf — the core OAuth2 use case |
 
 ## 30-minute protocol
 

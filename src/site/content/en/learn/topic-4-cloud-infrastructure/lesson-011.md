@@ -14,11 +14,11 @@ Walk through your incident response process for a major production outage.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| acknowledge and scope | /ækˈnɒlɪdʒ ænd skoʊp/ | first action in an incident — understand impact before diagnosing |
-| stop the bleeding | /stɒp ðə ˈbliːdɪŋ/ | containment before diagnosis — reduce impact fast |
-| blameless post-mortem | /ˈbleɪmləs ˈpoʊstˌmɔːrtɛm/ | analyze systems and processes, not blame people — psychological safety for honest reporting |
+| acknowledge and scope | [Nghe →](https://youglish.com/pronounce/acknowledge%20and%20scope/english) | first action in an incident — understand impact before diagnosing |
+| stop the bleeding | [Nghe →](https://youglish.com/pronounce/stop%20the%20bleeding/english) | containment before diagnosis — reduce impact fast |
+| blameless post-mortem | [Nghe →](https://youglish.com/pronounce/blameless%20post-mortem/english) | analyze systems and processes, not blame people — psychological safety for honest reporting |
 
 ## 30-minute protocol
 

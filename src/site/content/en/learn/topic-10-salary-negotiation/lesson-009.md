@@ -16,11 +16,11 @@ Compare contracting rates to employment salaries intelligently and articulate th
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| equivalent rate | /ɪˈkwɪvələnt reɪt/ | the contractor rate that equals a given employee salary after adjustments |
-| absorb their own downtime | /æbˈzɔːrb/ | a contractor is not paid when not working — employee is |
-| economically accurate | /ˌiːkəˈnɒmɪkli ˈækjərɪt/ | frame your logic as math, not negotiation tactics |
+| equivalent rate | [Nghe →](https://youglish.com/pronounce/equivalent%20rate/english) | the contractor rate that equals a given employee salary after adjustments |
+| absorb their own downtime | [Nghe →](https://youglish.com/pronounce/absorb%20their%20own%20downtime/english) | a contractor is not paid when not working — employee is |
+| economically accurate | [Nghe →](https://youglish.com/pronounce/economically%20accurate/english) | frame your logic as math, not negotiation tactics |
 
 ## 30-minute protocol
 

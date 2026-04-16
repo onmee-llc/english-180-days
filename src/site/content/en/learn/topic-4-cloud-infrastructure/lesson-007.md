@@ -14,11 +14,11 @@ Explain how you approach cloud cost management for a production system.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| right-sizing | /raɪt ˈsaɪzɪŋ/ | matching instance size to actual workload — eliminating over-provisioning |
-| reserved capacity | /rɪˈzɜːrvd kəˈpæsɪti/ | committed one or three year use — significant discount over on-demand |
-| auto-scaling maximum | /ˈɔːtoʊ skeɪlɪŋ ˈmæksɪməm/ | hard cap — prevents runaway cost from bugs or attacks |
+| right-sizing | [Nghe →](https://youglish.com/pronounce/right-sizing/english) | matching instance size to actual workload — eliminating over-provisioning |
+| reserved capacity | [Nghe →](https://youglish.com/pronounce/reserved%20capacity/english) | committed one or three year use — significant discount over on-demand |
+| auto-scaling maximum | [Nghe →](https://youglish.com/pronounce/auto-scaling%20maximum/english) | hard cap — prevents runaway cost from bugs or attacks |
 
 ## 30-minute protocol
 

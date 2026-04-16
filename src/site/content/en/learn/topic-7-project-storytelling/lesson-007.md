@@ -14,11 +14,11 @@ Explain a sprint to a product manager who doesn't code.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| frame as user outcomes | /freɪm æz ˈjuːzər ˈaʊtkəmz/ | translate technical work into business impact — the skill of cross-functional communication |
-| options plus recommendation | /ˈɒpʃənz plʌs ˌrɛkəmɛnˈdeɪʃən/ | present choices with a clear suggested path — not just a problem |
-| never complexity as reason | /ˈnɛvər kəmˈplɛksɪti æz ˈriːzən/ | technical complexity is internal — stakeholders need solutions, not explanations of difficulty |
+| frame as user outcomes | [Nghe →](https://youglish.com/pronounce/frame%20as%20user%20outcomes/english) | translate technical work into business impact — the skill of cross-functional communication |
+| options plus recommendation | [Nghe →](https://youglish.com/pronounce/options%20plus%20recommendation/english) | present choices with a clear suggested path — not just a problem |
+| never complexity as reason | [Nghe →](https://youglish.com/pronounce/never%20complexity%20as%20reason/english) | technical complexity is internal — stakeholders need solutions, not explanations of difficulty |
 
 ## 30-minute protocol
 

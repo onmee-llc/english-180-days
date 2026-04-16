@@ -16,11 +16,11 @@ Deliver your strongest achievement story naturally, without reading.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| became a bottleneck | /bɪˈkeɪm ə ˈbɒtəlnɛk/ | signal the problem that motivated the redesign |
-| ordering guarantees | /ˈɔːrdərɪŋ ˌɡærənˈtiːz/ | technical precision — shows you know why you made the choice |
-| the right level of complexity | /ðə raɪt ˈlɛvəl əv kəmˈplɛksɪti/ | signals engineering maturity |
+| became a bottleneck | [Nghe →](https://youglish.com/pronounce/became%20a%20bottleneck/english) | signal the problem that motivated the redesign |
+| ordering guarantees | [Nghe →](https://youglish.com/pronounce/ordering%20guarantees/english) | technical precision — shows you know why you made the choice |
+| the right level of complexity | [Nghe →](https://youglish.com/pronounce/the%20right%20level%20of%20complexity/english) | signals engineering maturity |
 
 ## 30-minute protocol
 

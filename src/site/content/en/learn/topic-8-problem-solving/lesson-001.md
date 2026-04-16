@@ -16,11 +16,11 @@ Practice running commentary on a problem you are working through live.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| out loud | /aʊt laʊd/ | crucial in interviews — say what you're thinking |
-| slow query log | /sloʊ ˈkwɪri lɒɡ/ | first tool to check for database latency |
-| my instinct says | /maɪ ˈɪnstɪŋkt sɛz/ | shows experienced judgment, not random guessing |
+| out loud | [Nghe →](https://youglish.com/pronounce/out%20loud/english) | crucial in interviews — say what you're thinking |
+| slow query log | [Nghe →](https://youglish.com/pronounce/slow%20query%20log/english) | first tool to check for database latency |
+| my instinct says | [Nghe →](https://youglish.com/pronounce/my%20instinct%20says/english) | shows experienced judgment, not random guessing |
 
 ## 30-minute protocol
 

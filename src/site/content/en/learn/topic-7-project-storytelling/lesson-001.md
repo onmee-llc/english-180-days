@@ -14,11 +14,11 @@ Tell the content automation SaaS story using STAR in 90 seconds.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| STAR method | /stɑːr ˈmɛθəd/ | structured storytelling: Situation, Task, Action, Result — the interview standard |
-| first-pass quality | /fɜːrst pɑːs ˈkwɒlɪti/ | percentage of outputs acceptable without editing — the key quality metric for AI content |
-| scale from twelve to twenty-eight | /skeɪl frəm twɛlv tuː ˈtwɛntiˈeɪt/ | business outcome — quantify the scale impact, not just time saved |
+| STAR method | [Nghe →](https://youglish.com/pronounce/STAR%20method/english) | structured storytelling: Situation, Task, Action, Result — the interview standard |
+| first-pass quality | [Nghe →](https://youglish.com/pronounce/first-pass%20quality/english) | percentage of outputs acceptable without editing — the key quality metric for AI content |
+| scale from twelve to twenty-eight | [Nghe →](https://youglish.com/pronounce/scale%20from%20twelve%20to%20twenty-eight/english) | business outcome — quantify the scale impact, not just time saved |
 
 ## 30-minute protocol
 

@@ -16,11 +16,11 @@ Adjust to a corporate or large-company interview: more formal, more structured.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| I bring X to this role | /aɪ brɪŋ … tuː ðɪs roʊl/ | immediately frames the interview as 'what value I add' |
-| compliance-sensitive workload | /kəmˈplaɪəns ˈsɛnsɪtɪv ˈwɜːrkloʊd/ | corporate precision — signals you understand regulated environments |
-| architectural leadership | /ˌɑːrkɪˈtɛktʃərəl ˈliːdərʃɪp/ | aims higher than 'I write good code' |
+| I bring X to this role | [Nghe →](https://youglish.com/pronounce/I%20bring%20X%20to%20this%20role/english) | immediately frames the interview as 'what value I add' |
+| compliance-sensitive workload | [Nghe →](https://youglish.com/pronounce/compliance-sensitive%20workload/english) | corporate precision — signals you understand regulated environments |
+| architectural leadership | [Nghe →](https://youglish.com/pronounce/architectural%20leadership/english) | aims higher than 'I write good code' |
 
 ## 30-minute protocol
 

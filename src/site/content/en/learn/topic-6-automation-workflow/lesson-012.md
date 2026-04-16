@@ -14,11 +14,11 @@ Present a full automation architecture for quarterly content planning.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| chain-of-thought on brand voice | /tʃeɪn əv θɔːt ɒn brænd vɔɪs/ | prompt technique + domain constraint — specific combination that improves creative output quality |
-| evaluation model | /ɪˌvæljʊˈeɪʃən ˈmɒdəl/ | second LLM call to score the first call's output — production quality gate |
-| total automation time | /ˈtoʊtəl ˌɔːtəˈmeɪʃən taɪm/ | end-to-end wall clock time — the metric that demonstrates automation value to stakeholders |
+| chain-of-thought on brand voice | [Nghe →](https://youglish.com/pronounce/chain-of-thought%20on%20brand%20voice/english) | prompt technique + domain constraint — specific combination that improves creative output quality |
+| evaluation model | [Nghe →](https://youglish.com/pronounce/evaluation%20model/english) | second LLM call to score the first call's output — production quality gate |
+| total automation time | [Nghe →](https://youglish.com/pronounce/total%20automation%20time/english) | end-to-end wall clock time — the metric that demonstrates automation value to stakeholders |
 
 ## 30-minute protocol
 

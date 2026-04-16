@@ -14,11 +14,11 @@ Make a clear recommendation: fine-tune or prompt engineer for a given use case.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| inference cost | /ˈɪnfərəns kɒst/ | cost per model call — scales with model size, critical at volume |
-| bake into model weights | /beɪk ˈɪntuː ˈmɒdəl weɪts/ | fine-tuning stores behavior in parameters — not in the prompt at inference time |
-| quality baseline | /ˈkwɒlɪti ˈbeɪslaɪn/ | your current system's score on the eval set — the floor to beat |
+| inference cost | [Nghe →](https://youglish.com/pronounce/inference%20cost/english) | cost per model call — scales with model size, critical at volume |
+| bake into model weights | [Nghe →](https://youglish.com/pronounce/bake%20into%20model%20weights/english) | fine-tuning stores behavior in parameters — not in the prompt at inference time |
+| quality baseline | [Nghe →](https://youglish.com/pronounce/quality%20baseline/english) | your current system's score on the eval set — the floor to beat |
 
 ## 30-minute protocol
 

@@ -16,11 +16,11 @@ Make your code quality philosophy sound mature and pragmatic, not dogmatic.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| pragmatic | /præɡˈmætɪk/ | balanced, practical — not rigid or ideological |
-| deliberate debt | /dɪˈlɪbərɪt dɛt/ | conscious, documented trade-off with a payback plan |
-| observable behavior | /əbˈzɜːrvəbl bɪˈheɪvjər/ | what the function does externally — refactoring must not change this |
+| pragmatic | [Nghe →](https://youglish.com/pronounce/pragmatic/english) | balanced, practical — not rigid or ideological |
+| deliberate debt | [Nghe →](https://youglish.com/pronounce/deliberate%20debt/english) | conscious, documented trade-off with a payback plan |
+| observable behavior | [Nghe →](https://youglish.com/pronounce/observable%20behavior/english) | what the function does externally — refactoring must not change this |
 
 ## 30-minute protocol
 

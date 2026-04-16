@@ -16,11 +16,11 @@ Practice the language of assessing technical health without being dismissive.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| blast radius | /blæst ˈreɪdiəs/ | how much of the system is affected when this component fails |
-| top three risks | /tɒp θriː rɪsks/ | triage: ignore noise, focus on what will actually cause incidents |
-| reflect the constraints | /rɪˈflɛkt ðə kənˈstreɪnts/ | empathetic framing — don't shame previous engineers |
+| blast radius | [Nghe →](https://youglish.com/pronounce/blast%20radius/english) | how much of the system is affected when this component fails |
+| top three risks | [Nghe →](https://youglish.com/pronounce/top%20three%20risks/english) | triage: ignore noise, focus on what will actually cause incidents |
+| reflect the constraints | [Nghe →](https://youglish.com/pronounce/reflect%20the%20constraints/english) | empathetic framing — don't shame previous engineers |
 
 ## 30-minute protocol
 

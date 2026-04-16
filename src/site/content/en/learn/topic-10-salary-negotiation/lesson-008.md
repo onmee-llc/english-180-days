@@ -16,11 +16,11 @@ Lock in an early review commitment before signing — this is the best time to a
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| highest-leverage moment | /ˈhaɪɪst ˈlɛvərɪdʒ ˈmoʊmənt/ | when you have the most negotiating power — use it |
-| in writing | /ɪn ˈraɪtɪŋ/ | verbal agreements in negotiation do not bind — get it documented |
-| exceed expectations | /ɪkˈsiːd ˌɛkspɛkˈteɪʃənz/ | performance standard — link it explicitly to compensation |
+| highest-leverage moment | [Nghe →](https://youglish.com/pronounce/highest-leverage%20moment/english) | when you have the most negotiating power — use it |
+| in writing | [Nghe →](https://youglish.com/pronounce/in%20writing/english) | verbal agreements in negotiation do not bind — get it documented |
+| exceed expectations | [Nghe →](https://youglish.com/pronounce/exceed%20expectations/english) | performance standard — link it explicitly to compensation |
 
 ## 30-minute protocol
 

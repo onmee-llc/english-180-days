@@ -14,11 +14,11 @@ Tell the story of a technical failure or mistake — own it, analyze it.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| compounding failures | /kəmˈpaʊndɪŋ ˈfeɪljərz/ | multiple small gaps combining into a large incident — the pattern behind most outages |
-| dead letter path | /dɛd ˈlɛtər pɑːθ/ | where failed tasks go after max retries — prevents silent data loss |
-| own it, analyze it | /oʊn ɪt ˈænəlaɪz ɪt/ | failure narrative tone — take responsibility, show learning, not excuses |
+| compounding failures | [Nghe →](https://youglish.com/pronounce/compounding%20failures/english) | multiple small gaps combining into a large incident — the pattern behind most outages |
+| dead letter path | [Nghe →](https://youglish.com/pronounce/dead%20letter%20path/english) | where failed tasks go after max retries — prevents silent data loss |
+| own it, analyze it | [Nghe →](https://youglish.com/pronounce/own%20it%2C%20analyze%20it/english) | failure narrative tone — take responsibility, show learning, not excuses |
 
 ## 30-minute protocol
 

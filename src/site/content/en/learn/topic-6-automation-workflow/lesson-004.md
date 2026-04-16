@@ -14,11 +14,11 @@ Explain your approach to scripting automation for a DevOps task.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| glue script | /ɡluː skrɪpt/ | short single-purpose automation — don't over-engineer it |
-| make failure loud | /meɪk ˈfeɪljər laʊd/ | silent failures in automation are worse than no automation |
-| non-zero exit code | /nɒn ˈzɪroʊ ˈɛɡzɪt koʊd/ | how scripts signal failure to callers — essential for reliable CI pipelines |
+| glue script | [Nghe →](https://youglish.com/pronounce/glue%20script/english) | short single-purpose automation — don't over-engineer it |
+| make failure loud | [Nghe →](https://youglish.com/pronounce/make%20failure%20loud/english) | silent failures in automation are worse than no automation |
+| non-zero exit code | [Nghe →](https://youglish.com/pronounce/non-zero%20exit%20code/english) | how scripts signal failure to callers — essential for reliable CI pipelines |
 
 ## 30-minute protocol
 

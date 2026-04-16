@@ -16,11 +16,11 @@ Practice the exact words of a salary counteroffer — firm, warm, reasoned.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| is there any flexibility | /ɪz ðɛr ˈɛni ˌflɛksɪˈbɪlɪti/ | the single most important sentence in negotiation — ask it directly |
-| stop talking | /stɒp ˈtɔːkɪŋ/ | after you name your number — silence is negotiating |
-| negotiation surface | /ˌnɛɡoʊʃɪˈeɪʃən ˈsɜːrfɪs/ | all the variables that can be adjusted, not just base salary |
+| is there any flexibility | [Nghe →](https://youglish.com/pronounce/is%20there%20any%20flexibility/english) | the single most important sentence in negotiation — ask it directly |
+| stop talking | [Nghe →](https://youglish.com/pronounce/stop%20talking/english) | after you name your number — silence is negotiating |
+| negotiation surface | [Nghe →](https://youglish.com/pronounce/negotiation%20surface/english) | all the variables that can be adjusted, not just base salary |
 
 ## 30-minute protocol
 

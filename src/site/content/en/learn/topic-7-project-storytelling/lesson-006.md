@@ -14,11 +14,11 @@ Describe a situation where you led a technical direction under uncertainty.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| defer the decision | /dɪˈfɜːr ðə dɪˈsɪʒən/ | avoiding a hard call — the temptation that leadership requires resisting |
-| compatibility shim | /ˌkɒmpæˈtɪbɪlɪti ʃɪm/ | adapter that supports both old and new API — smooth migration path |
-| owning the transition | /ˈoʊnɪŋ ðə trænˈzɪʃən/ | not just deciding the direction, but responsible for the path to get there |
+| defer the decision | [Nghe →](https://youglish.com/pronounce/defer%20the%20decision/english) | avoiding a hard call — the temptation that leadership requires resisting |
+| compatibility shim | [Nghe →](https://youglish.com/pronounce/compatibility%20shim/english) | adapter that supports both old and new API — smooth migration path |
+| owning the transition | [Nghe →](https://youglish.com/pronounce/owning%20the%20transition/english) | not just deciding the direction, but responsible for the path to get there |
 
 ## 30-minute protocol
 

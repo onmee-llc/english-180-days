@@ -14,11 +14,11 @@ Recommend the right compute option for three different workload types.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| cold start latency | /koʊld stɑːrt ˈleɪtənsi/ | delay on first request after idle — serverless penalty |
-| operational complexity budget | /ˌɒpəˈreɪʃənəl kəmˈplɛksɪti ˈbʌdʒɪt/ | how much ops overhead your team can absorb — a real constraint |
-| managed containers | /ˈmænɪdʒd kənˈteɪnərz/ | you own the app, platform owns the infrastructure — the pragmatic middle ground |
+| cold start latency | [Nghe →](https://youglish.com/pronounce/cold%20start%20latency/english) | delay on first request after idle — serverless penalty |
+| operational complexity budget | [Nghe →](https://youglish.com/pronounce/operational%20complexity%20budget/english) | how much ops overhead your team can absorb — a real constraint |
+| managed containers | [Nghe →](https://youglish.com/pronounce/managed%20containers/english) | you own the app, platform owns the infrastructure — the pragmatic middle ground |
 
 ## 30-minute protocol
 

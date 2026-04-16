@@ -14,11 +14,11 @@ Explain why you chose GCP over AWS for your content automation SaaS.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| drove the choice | /droʊv ðə tʃɔɪs/ | explain the real reasons — interviewers value honesty over perfect decisions |
-| billing granularity | /ˈbɪlɪŋ ɡrænjʊˈlærɪti/ | how finely the service meters cost — matters at low utilization |
-| solo founder constraint | /ˈsoʊloʊ ˈfaʊndər kənˈstreɪnt/ | team size and velocity are valid architectural constraints — state them explicitly |
+| drove the choice | [Nghe →](https://youglish.com/pronounce/drove%20the%20choice/english) | explain the real reasons — interviewers value honesty over perfect decisions |
+| billing granularity | [Nghe →](https://youglish.com/pronounce/billing%20granularity/english) | how finely the service meters cost — matters at low utilization |
+| solo founder constraint | [Nghe →](https://youglish.com/pronounce/solo%20founder%20constraint/english) | team size and velocity are valid architectural constraints — state them explicitly |
 
 ## 30-minute protocol
 

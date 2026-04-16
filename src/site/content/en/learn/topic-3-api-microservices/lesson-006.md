@@ -14,11 +14,11 @@ Explain when you'd choose gRPC for internal service communication and why.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| Protocol Buffers | /ˈproʊtəkɒl ˈbʌfərz/ | binary serialization format — more compact than JSON |
-| bidirectional streaming | /ˌbaɪdɪˈrɛkʃənəl ˈstriːmɪŋ/ | both client and server send messages independently over one connection |
-| compile-time errors | /kəmˈpaɪl taɪm ˈɛrərz/ | schema violations caught before deployment — not in production |
+| Protocol Buffers | [Nghe →](https://youglish.com/pronounce/Protocol%20Buffers/english) | binary serialization format — more compact than JSON |
+| bidirectional streaming | [Nghe →](https://youglish.com/pronounce/bidirectional%20streaming/english) | both client and server send messages independently over one connection |
+| compile-time errors | [Nghe →](https://youglish.com/pronounce/compile-time%20errors/english) | schema violations caught before deployment — not in production |
 
 ## 30-minute protocol
 

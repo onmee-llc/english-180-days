@@ -14,11 +14,11 @@ Design the search layer for an AI-powered content recommendation system.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| cosine similarity | /ˈkoʊsaɪn sɪˈmɪlærɪti/ | measures the angle between vectors — the standard similarity metric for embeddings |
-| BM25 | /biː ɛm tuːˈɛntɪˈfaɪv/ | classic probabilistic keyword ranking — still competitive with neural methods |
-| hybrid retriever | /ˈhaɪbrɪd rɪˈtriːvər/ | combines keyword and semantic search — better recall than either alone |
+| cosine similarity | [Nghe →](https://youglish.com/pronounce/cosine%20similarity/english) | measures the angle between vectors — the standard similarity metric for embeddings |
+| BM25 | [Nghe →](https://youglish.com/pronounce/BM25/english) | classic probabilistic keyword ranking — still competitive with neural methods |
+| hybrid retriever | [Nghe →](https://youglish.com/pronounce/hybrid%20retriever/english) | combines keyword and semantic search — better recall than either alone |
 
 ## 30-minute protocol
 

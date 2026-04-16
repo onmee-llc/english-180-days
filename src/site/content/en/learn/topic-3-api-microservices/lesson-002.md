@@ -14,11 +14,11 @@ Make a recommendation: GraphQL or REST for a given product scenario.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| over-fetching | /ˈoʊvər ˈfɛtʃɪŋ/ | REST returns all fields — GraphQL returns only what's requested |
-| N-plus-one problem | /ɛn plʌs wʌn ˈprɒbləm/ | fetching a list then querying each item individually — classic inefficiency |
-| data loader pattern | /ˈdeɪtə ˈloʊdər ˈpætərn/ | batches N queries into one — solves N+1 in GraphQL |
+| over-fetching | [Nghe →](https://youglish.com/pronounce/over-fetching/english) | REST returns all fields — GraphQL returns only what's requested |
+| N-plus-one problem | [Nghe →](https://youglish.com/pronounce/N-plus-one%20problem/english) | fetching a list then querying each item individually — classic inefficiency |
+| data loader pattern | [Nghe →](https://youglish.com/pronounce/data%20loader%20pattern/english) | batches N queries into one — solves N+1 in GraphQL |
 
 ## 30-minute protocol
 

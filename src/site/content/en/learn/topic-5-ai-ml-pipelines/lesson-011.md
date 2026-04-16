@@ -14,11 +14,11 @@ Articulate the product value of AI in your content automation SaaS.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| activation energy | /ˌæktɪˈveɪʃən ˈɛnədʒi/ | the effort required to start a behavior — AI products that reduce this win |
-| AI-assisted workflows | /eɪ aɪ əˈsɪstɪd ˈwɜːrkfloʊz/ | human-review before automation — builds trust gradually |
-| wrong is recoverable | /rɒŋ ɪz rɪˈkʌvərəbl/ | design principle: AI errors must be easy to correct — reduces user anxiety |
+| activation energy | [Nghe →](https://youglish.com/pronounce/activation%20energy/english) | the effort required to start a behavior — AI products that reduce this win |
+| AI-assisted workflows | [Nghe →](https://youglish.com/pronounce/AI-assisted%20workflows/english) | human-review before automation — builds trust gradually |
+| wrong is recoverable | [Nghe →](https://youglish.com/pronounce/wrong%20is%20recoverable/english) | design principle: AI errors must be easy to correct — reduces user anxiety |
 
 ## 30-minute protocol
 

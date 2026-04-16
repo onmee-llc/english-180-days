@@ -14,11 +14,11 @@ Design the API gateway layer for a multi-service backend.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| cross-cutting concerns | /krɒs ˈkʌtɪŋ kənˈsɜːrnz/ | shared functionality across services — canonical engineering term |
-| canary release | /kəˈnɛəri rɪˈliːs/ | gradual traffic shift to new version — reduces deployment risk |
-| token bucket algorithm | /ˈtoʊkən ˈbʌkɪt ˈælɡərɪðəm/ | standard rate limiting — explain the mechanics |
+| cross-cutting concerns | [Nghe →](https://youglish.com/pronounce/cross-cutting%20concerns/english) | shared functionality across services — canonical engineering term |
+| canary release | [Nghe →](https://youglish.com/pronounce/canary%20release/english) | gradual traffic shift to new version — reduces deployment risk |
+| token bucket algorithm | [Nghe →](https://youglish.com/pronounce/token%20bucket%20algorithm/english) | standard rate limiting — explain the mechanics |
 
 ## 30-minute protocol
 

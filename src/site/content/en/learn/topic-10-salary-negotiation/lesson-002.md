@@ -16,11 +16,11 @@ Buy yourself evaluation time while keeping the offer warm and the employer engag
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| give this the careful consideration it deserves | /ˌkɒnsɪdəˈreɪʃən/ | professional way to say 'I want to think about this' |
-| I do not anticipate any issues | /ænˈtɪsɪpeɪt/ | keeps the tone warm — signals you are likely to say yes |
-| come back to you with a response | /kʌm bæk tuː juː/ | defines a clear next step — you will reach out, not them |
+| give this the careful consideration it deserves | [Nghe →](https://youglish.com/pronounce/give%20this%20the%20careful%20consideration%20it%20deserves/english) | professional way to say 'I want to think about this' |
+| I do not anticipate any issues | [Nghe →](https://youglish.com/pronounce/I%20do%20not%20anticipate%20any%20issues/english) | keeps the tone warm — signals you are likely to say yes |
+| come back to you with a response | [Nghe →](https://youglish.com/pronounce/come%20back%20to%20you%20with%20a%20response/english) | defines a clear next step — you will reach out, not them |
 
 ## 30-minute protocol
 

@@ -14,11 +14,11 @@ Design a production-grade prompt for an AI content generation task.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| chain-of-thought | /tʃeɪn əv θɔːt/ | ask the model to reason step by step before answering — improves accuracy |
-| golden evaluation set | /ˈɡoʊldən ɪˌvæljʊˈeɪʃən sɛt/ | a curated benchmark to test prompts — the standard for production AI quality |
-| fabricate statistical claims | /ˈfæbrɪkeɪt stəˈtɪstɪkəl kleɪmz/ | hallucination guard — explicit instruction to prevent invented facts |
+| chain-of-thought | [Nghe →](https://youglish.com/pronounce/chain-of-thought/english) | ask the model to reason step by step before answering — improves accuracy |
+| golden evaluation set | [Nghe →](https://youglish.com/pronounce/golden%20evaluation%20set/english) | a curated benchmark to test prompts — the standard for production AI quality |
+| fabricate statistical claims | [Nghe →](https://youglish.com/pronounce/fabricate%20statistical%20claims/english) | hallucination guard — explicit instruction to prevent invented facts |
 
 ## 30-minute protocol
 

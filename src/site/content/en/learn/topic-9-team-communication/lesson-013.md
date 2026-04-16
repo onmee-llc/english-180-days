@@ -14,11 +14,11 @@ Practice presenting this topic section fluently — aim for one complete pass wi
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| blocking feedback | /ˈblɒkɪŋ ˈfiːdbæk/ | must be fixed before merge — distinguish clearly from suggestions to avoid confusion |
-| pair programming | /pɛr ˈproʊɡræmɪŋ/ | two engineers at one codebase — most effective for knowledge transfer and hard problem-solving |
-| process modeling | /ˈproʊsɛs ˈmɒdəlɪŋ/ | demonstrate how you think, not just what you built — the highest-value senior engineer behavior |
+| blocking feedback | [Nghe →](https://youglish.com/pronounce/blocking%20feedback/english) | must be fixed before merge — distinguish clearly from suggestions to avoid confusion |
+| pair programming | [Nghe →](https://youglish.com/pronounce/pair%20programming/english) | two engineers at one codebase — most effective for knowledge transfer and hard problem-solving |
+| process modeling | [Nghe →](https://youglish.com/pronounce/process%20modeling/english) | demonstrate how you think, not just what you built — the highest-value senior engineer behavior |
 
 ## 30-minute protocol
 

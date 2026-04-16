@@ -14,11 +14,11 @@ Give a 5-minute walkthrough of an ML pipeline you designed.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| feature vectors | /ˈfiːtʃər ˈvɛktərz/ | numerical representations of input data — what the model actually receives |
-| post-processing validation | /poʊst ˈprɒsɛsɪŋ ˌvælɪˈdeɪʃən/ | output quality gates after inference — essential for production quality |
-| idempotent pipeline stages | /aɪˈdɛmpətənt ˈpaɪplaɪn steɪdʒɪz/ | rerunning a stage produces the same result — safe to retry without side effects |
+| feature vectors | [Nghe →](https://youglish.com/pronounce/feature%20vectors/english) | numerical representations of input data — what the model actually receives |
+| post-processing validation | [Nghe →](https://youglish.com/pronounce/post-processing%20validation/english) | output quality gates after inference — essential for production quality |
+| idempotent pipeline stages | [Nghe →](https://youglish.com/pronounce/idempotent%20pipeline%20stages/english) | rerunning a stage produces the same result — safe to retry without side effects |
 
 ## 30-minute protocol
 

@@ -14,11 +14,11 @@ Explain how you approach API documentation as a production concern.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| OpenAPI specification | /ˈoʊpənˌeɪpiˌaɪ ˌspɛsɪfɪˈkeɪʃən/ | machine-readable API contract — generates code, documentation, and tests |
-| contract testing | /ˈkɒntrækt ˈtɛstɪŋ/ | verify API behavior against the spec automatically in CI |
-| documentation as a bug | /ˌdɒkjʊmɛnˈteɪʃən æz ə bʌɡ/ | framing that elevates docs to the same standard as code |
+| OpenAPI specification | [Nghe →](https://youglish.com/pronounce/OpenAPI%20specification/english) | machine-readable API contract — generates code, documentation, and tests |
+| contract testing | [Nghe →](https://youglish.com/pronounce/contract%20testing/english) | verify API behavior against the spec automatically in CI |
+| documentation as a bug | [Nghe →](https://youglish.com/pronounce/documentation%20as%20a%20bug/english) | framing that elevates docs to the same standard as code |
 
 ## 30-minute protocol
 

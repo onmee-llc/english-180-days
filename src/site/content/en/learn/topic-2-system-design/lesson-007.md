@@ -14,11 +14,11 @@ Design the load balancing layer for a high-traffic stateless API service.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| design smell | /dɪˈzaɪn smɛl/ | engineering code for 'this suggests a deeper problem in the design' |
-| rolling deployments | /ˈroʊlɪŋ dɪˈplɔɪmənts/ | gradual server updates with no downtime — requires stateless services |
-| single point of failure | /ˈsɪŋɡl pɔɪnt əv ˈfeɪljər/ | any component whose failure takes down the whole system |
+| design smell | [Nghe →](https://youglish.com/pronounce/design%20smell/english) | engineering code for 'this suggests a deeper problem in the design' |
+| rolling deployments | [Nghe →](https://youglish.com/pronounce/rolling%20deployments/english) | gradual server updates with no downtime — requires stateless services |
+| single point of failure | [Nghe →](https://youglish.com/pronounce/single%20point%20of%20failure/english) | any component whose failure takes down the whole system |
 
 ## 30-minute protocol
 

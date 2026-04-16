@@ -16,11 +16,11 @@ Deliver a crisp 30-second intro that makes someone want to learn more.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| I've built everything from X to Y | /aɪv bɪlt ˈɛvriθɪŋ frɒm/ | signals breadth of experience concisely |
-| running in production | /ˈrʌnɪŋ ɪn prəˈdʌkʃən/ | proves this is real, not theoretical |
-| something meaningful | /ˈsʌmθɪŋ ˈmiːnɪŋfʊl/ | signals values alignment, not just money |
+| I've built everything from X to Y | [Nghe →](https://youglish.com/pronounce/I've%20built%20everything%20from%20X%20to%20Y/english) | signals breadth of experience concisely |
+| running in production | [Nghe →](https://youglish.com/pronounce/running%20in%20production/english) | proves this is real, not theoretical |
+| something meaningful | [Nghe →](https://youglish.com/pronounce/something%20meaningful/english) | signals values alignment, not just money |
 
 ## 30-minute protocol
 

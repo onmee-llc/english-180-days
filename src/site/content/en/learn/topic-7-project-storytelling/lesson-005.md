@@ -14,11 +14,11 @@ Explain how AI content generation works to a client with no technical background
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| starts with the outcome | /stɑːrts wɪð ðə ˈaʊtkəm/ | non-technical audiences care about results, not implementation |
-| pattern recognition | /ˈpætərn ˌrɛkəɡˈnɪʃən/ | accessible analogy for ML — bridges technical and business language |
-| honest expectation | /ˈɒnɪst ɪkˌspɛkˈteɪʃən/ | set limits clearly — clients who understand AI limitations become better partners |
+| starts with the outcome | [Nghe →](https://youglish.com/pronounce/starts%20with%20the%20outcome/english) | non-technical audiences care about results, not implementation |
+| pattern recognition | [Nghe →](https://youglish.com/pronounce/pattern%20recognition/english) | accessible analogy for ML — bridges technical and business language |
+| honest expectation | [Nghe →](https://youglish.com/pronounce/honest%20expectation/english) | set limits clearly — clients who understand AI limitations become better partners |
 
 ## 30-minute protocol
 

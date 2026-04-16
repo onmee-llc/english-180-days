@@ -14,11 +14,11 @@ Practice presenting this topic section fluently — aim for one complete pass wi
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| market research | /ˈmɑːrkɪt rɪˈsɜːrtʃ/ | compensation data from Levels.fyi, Glassdoor, or recruiter intel — your negotiation foundation |
-| counter offer | /ˈkaʊntər ˈɒfər/ | your response to the initial offer — always make one, even if the first offer is good |
-| total compensation | /ˈtoʊtəl ˌkɒmpənˈseɪʃən/ | base + equity + bonus + benefits — always negotiate the total package, not just base |
+| market research | [Nghe →](https://youglish.com/pronounce/market%20research/english) | compensation data from Levels.fyi, Glassdoor, or recruiter intel — your negotiation foundation |
+| counter offer | [Nghe →](https://youglish.com/pronounce/counter%20offer/english) | your response to the initial offer — always make one, even if the first offer is good |
+| total compensation | [Nghe →](https://youglish.com/pronounce/total%20compensation/english) | base + equity + bonus + benefits — always negotiate the total package, not just base |
 
 ## 30-minute protocol
 

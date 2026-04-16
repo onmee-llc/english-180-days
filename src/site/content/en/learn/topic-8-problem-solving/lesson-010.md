@@ -16,11 +16,11 @@ Narrate a real or realistic incident response with technical precision and calm.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| on call | /ɒn kɔːl/ | being responsible for production systems during a time window |
-| drained traffic | /dreɪnd ˈtræfɪk/ | stopped routing requests to a specific instance |
-| file descriptor leak | /faɪl dɪˈskrɪptər liːk/ | OS-level resource not being released — causes slow degradation |
+| on call | [Nghe →](https://youglish.com/pronounce/on%20call/english) | being responsible for production systems during a time window |
+| drained traffic | [Nghe →](https://youglish.com/pronounce/drained%20traffic/english) | stopped routing requests to a specific instance |
+| file descriptor leak | [Nghe →](https://youglish.com/pronounce/file%20descriptor%20leak/english) | OS-level resource not being released — causes slow degradation |
 
 ## 30-minute protocol
 

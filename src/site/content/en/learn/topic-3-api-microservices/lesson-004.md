@@ -14,11 +14,11 @@ Explain the three most important microservices patterns in under 3 minutes.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| hardcoded addresses | /ˈhɑːrdkoʊdɪd əˈdrɛsɪz/ | static IP or hostname — breaks when services scale or move |
-| cascade failure prevention | /kæsˈkeɪd ˈfeɪljər prɪˈvɛnʃən/ | the core value of circuit breakers |
-| shift complexity | /ʃɪft kəmˈplɛksɪti/ | microservices move complexity to infrastructure — that's the trade-off |
+| hardcoded addresses | [Nghe →](https://youglish.com/pronounce/hardcoded%20addresses/english) | static IP or hostname — breaks when services scale or move |
+| cascade failure prevention | [Nghe →](https://youglish.com/pronounce/cascade%20failure%20prevention/english) | the core value of circuit breakers |
+| shift complexity | [Nghe →](https://youglish.com/pronounce/shift%20complexity/english) | microservices move complexity to infrastructure — that's the trade-off |
 
 ## 30-minute protocol
 

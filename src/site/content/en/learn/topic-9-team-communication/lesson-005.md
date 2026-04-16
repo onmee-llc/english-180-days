@@ -16,11 +16,11 @@ Structure a 3-minute verbal proposal that the team can give feedback on immediat
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| visibility into | /ˌvɪzɪˈbɪlɪti ˈɪntuː/ | the ability to observe what is happening inside a system |
-| low effort | /loʊ ˈɛfərt/ | quick to implement — use in trade-off language |
-| does anyone have concerns | /dʌz ˈɛnɪwʌn hæv kənˈsɜːrnz/ | invite pushback — signals you're not attached to your own idea |
+| visibility into | [Nghe →](https://youglish.com/pronounce/visibility%20into/english) | the ability to observe what is happening inside a system |
+| low effort | [Nghe →](https://youglish.com/pronounce/low%20effort/english) | quick to implement — use in trade-off language |
+| does anyone have concerns | [Nghe →](https://youglish.com/pronounce/does%20anyone%20have%20concerns/english) | invite pushback — signals you're not attached to your own idea |
 
 ## 30-minute protocol
 

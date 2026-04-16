@@ -14,11 +14,11 @@ Specify the core endpoints of your content scheduling API in under 10 minutes.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| cursor-based pagination | /ˈkɜːrsər beɪst ˌpædʒɪˈneɪʃən/ | use cursor instead of offset — stable under concurrent writes |
-| soft delete | /sɒft dɪˈliːt/ | mark as deleted, don't remove — preserves history and references |
-| 409 Conflict | /fɔːr oʊ naɪn ˈkɒnflɪkt/ | state machine violation — resource exists but request is invalid for its current state |
+| cursor-based pagination | [Nghe →](https://youglish.com/pronounce/cursor-based%20pagination/english) | use cursor instead of offset — stable under concurrent writes |
+| soft delete | [Nghe →](https://youglish.com/pronounce/soft%20delete/english) | mark as deleted, don't remove — preserves history and references |
+| 409 Conflict | [Nghe →](https://youglish.com/pronounce/409%20Conflict/english) | state machine violation — resource exists but request is invalid for its current state |
 
 ## 30-minute protocol
 

@@ -16,11 +16,11 @@ Give a model standup update that is specific, brief, and actionable.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| flag | /flæɡ/ | to flag something = to draw attention to it without escalating |
-| fail open gracefully | /feɪl ˈoʊpən ˈɡreɪsfʊli/ | let traffic through when the guard system is down — and do it cleanly |
-| latency profile | /ˈleɪtənsi ˈproʊfaɪl/ | characterization of how slow/fast a system responds under various conditions |
+| flag | [Nghe →](https://youglish.com/pronounce/flag/english) | to flag something = to draw attention to it without escalating |
+| fail open gracefully | [Nghe →](https://youglish.com/pronounce/fail%20open%20gracefully/english) | let traffic through when the guard system is down — and do it cleanly |
+| latency profile | [Nghe →](https://youglish.com/pronounce/latency%20profile/english) | characterization of how slow/fast a system responds under various conditions |
 
 ## 30-minute protocol
 

@@ -14,11 +14,11 @@ Design and explain a caching strategy for a URL shortener in 90 seconds.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| cache-aside | /kæʃ əˈsaɪd/ | the most common caching pattern — lazy population on miss |
-| access pattern is skewed | /ˈækses ˈpætərn ɪz skjuːd/ | Pareto distribution — justify why caching is effective here |
-| active invalidation | /ˈæktɪv ɪnˌvælɪˈdeɪʃən/ | push the eviction — don't rely on TTL expiry alone |
+| cache-aside | [Nghe →](https://youglish.com/pronounce/cache-aside/english) | the most common caching pattern — lazy population on miss |
+| access pattern is skewed | [Nghe →](https://youglish.com/pronounce/access%20pattern%20is%20skewed/english) | Pareto distribution — justify why caching is effective here |
+| active invalidation | [Nghe →](https://youglish.com/pronounce/active%20invalidation/english) | push the eviction — don't rely on TTL expiry alone |
 
 ## 30-minute protocol
 

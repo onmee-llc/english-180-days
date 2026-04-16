@@ -16,11 +16,11 @@ Choose the right 'angle' of your intro for a specific job description.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| core technical requirement | /kɔːr tɛkˈnɪkəl rɪˈkwaɪərmənt/ | the #1 skill the role is actually hiring for |
-| surface the signal | /ˈsɜːrfɪs ðə ˈsɪɡnəl/ | make the relevant information visible immediately |
-| pattern-matching for fit | /ˈpætərn ˈmætʃɪŋ fɔːr fɪt/ | how interviewers subconsciously evaluate you |
+| core technical requirement | [Nghe →](https://youglish.com/pronounce/core%20technical%20requirement/english) | the #1 skill the role is actually hiring for |
+| surface the signal | [Nghe →](https://youglish.com/pronounce/surface%20the%20signal/english) | make the relevant information visible immediately |
+| pattern-matching for fit | [Nghe →](https://youglish.com/pronounce/pattern-matching%20for%20fit/english) | how interviewers subconsciously evaluate you |
 
 ## 30-minute protocol
 

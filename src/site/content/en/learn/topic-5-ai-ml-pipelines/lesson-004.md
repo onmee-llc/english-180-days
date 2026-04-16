@@ -14,11 +14,11 @@ Explain how you measure and monitor AI system quality over time.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| ROUGE score | /ruːʒ skɔːr/ | measures overlap between generated and reference text — standard NLP metric |
-| distribution shift | /ˌdɪstrɪˈbjuːʃən ʃɪft/ | real users behave differently from your test set — models degrade when this happens |
-| LLM as a judge | /ɛl ɛl ɛm æz ə dʒʌdʒ/ | use a second model to evaluate the first — scalable quality scoring |
+| ROUGE score | [Nghe →](https://youglish.com/pronounce/ROUGE%20score/english) | measures overlap between generated and reference text — standard NLP metric |
+| distribution shift | [Nghe →](https://youglish.com/pronounce/distribution%20shift/english) | real users behave differently from your test set — models degrade when this happens |
+| LLM as a judge | [Nghe →](https://youglish.com/pronounce/LLM%20as%20a%20judge/english) | use a second model to evaluate the first — scalable quality scoring |
 
 ## 30-minute protocol
 

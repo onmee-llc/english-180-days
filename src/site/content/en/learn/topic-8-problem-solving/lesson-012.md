@@ -16,11 +16,11 @@ Think out loud through an unfamiliar problem start to finish, scoring your own s
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| hard limit vs soft limit | /hɑːrd ˈlɪmɪt/ | clarify this first — the answer changes the design |
-| fail open | /feɪl ˈoʊpən/ | allow requests through when the limiter itself fails — avoids cascading denial |
-| atomic | /əˈtɒmɪk/ | operation that cannot be interrupted — critical for correctness in concurrent systems |
+| hard limit vs soft limit | [Nghe →](https://youglish.com/pronounce/hard%20limit%20vs%20soft%20limit/english) | clarify this first — the answer changes the design |
+| fail open | [Nghe →](https://youglish.com/pronounce/fail%20open/english) | allow requests through when the limiter itself fails — avoids cascading denial |
+| atomic | [Nghe →](https://youglish.com/pronounce/atomic/english) | operation that cannot be interrupted — critical for correctness in concurrent systems |
 
 ## 30-minute protocol
 

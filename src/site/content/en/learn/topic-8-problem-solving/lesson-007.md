@@ -16,11 +16,11 @@ Practice the language of structured exploration when the answer isn't obvious.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| failure mode | /ˈfeɪljər moʊd/ | how something fails — not just that it failed |
-| deterministic vs intermittent | /dɪˌtɜːrmɪˈnɪstɪk/ | always reproducible vs random — dictates debugging approach |
-| pattern recognition | /ˈpætərn ˌrɛkəɡˈnɪʃən/ | applying experience from similar problems to new ones |
+| failure mode | [Nghe →](https://youglish.com/pronounce/failure%20mode/english) | how something fails — not just that it failed |
+| deterministic vs intermittent | [Nghe →](https://youglish.com/pronounce/deterministic%20vs%20intermittent/english) | always reproducible vs random — dictates debugging approach |
+| pattern recognition | [Nghe →](https://youglish.com/pronounce/pattern%20recognition/english) | applying experience from similar problems to new ones |
 
 ## 30-minute protocol
 

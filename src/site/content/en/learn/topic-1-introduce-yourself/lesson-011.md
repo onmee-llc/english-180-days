@@ -16,11 +16,11 @@ Speak one full paragraph from your intro with zero filler words.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| choosing your words | /ˈtʃuːzɪŋ jɔːr wɜːrdz/ | what a deliberate pause signals to the listener |
-| without any preparation | /wɪˈðaʊt ˈɛni ˌprɛpəˈreɪʃən/ | raw test — no warming up first |
-| real progress | /riːl ˈprɒɡrɛs/ | count the fillers — make the improvement measurable |
+| choosing your words | [Nghe →](https://youglish.com/pronounce/choosing%20your%20words/english) | what a deliberate pause signals to the listener |
+| without any preparation | [Nghe →](https://youglish.com/pronounce/without%20any%20preparation/english) | raw test — no warming up first |
+| real progress | [Nghe →](https://youglish.com/pronounce/real%20progress/english) | count the fillers — make the improvement measurable |
 
 ## 30-minute protocol
 

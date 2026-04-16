@@ -14,11 +14,11 @@ Explain your container strategy and how you design production-quality images.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| distroless | /dɪˈstroʊlɪs/ | Google's minimal base image — no shell, no package manager, smallest attack surface |
-| multi-stage build | /ˈmʌlti steɪdʒ bɪld/ | build in one stage, copy artifact to production stage — smaller final image |
-| readiness probe | /ˈrɛdinɪs proʊb/ | Kubernetes check: is this pod ready to receive traffic? Different from liveness |
+| distroless | [Nghe →](https://youglish.com/pronounce/distroless/english) | Google's minimal base image — no shell, no package manager, smallest attack surface |
+| multi-stage build | [Nghe →](https://youglish.com/pronounce/multi-stage%20build/english) | build in one stage, copy artifact to production stage — smaller final image |
+| readiness probe | [Nghe →](https://youglish.com/pronounce/readiness%20probe/english) | Kubernetes check: is this pod ready to receive traffic? Different from liveness |
 
 ## 30-minute protocol
 

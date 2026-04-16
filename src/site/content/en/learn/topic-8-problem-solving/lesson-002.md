@@ -16,11 +16,11 @@ Describe your debugging methodology clearly enough that a junior engineer could 
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| fault | /fɔːlt/ | engineering term for the root cause of a failure |
-| falsifiable | /ˈfɔːlsɪˌfaɪəbl/ | a good hypothesis can be proven wrong — not everything is possible |
-| prevent regression | /prɪˈvɛnt rɪˈɡrɛʃən/ | ensure the bug cannot come back silently |
+| fault | [Nghe →](https://youglish.com/pronounce/fault/english) | engineering term for the root cause of a failure |
+| falsifiable | [Nghe →](https://youglish.com/pronounce/falsifiable/english) | a good hypothesis can be proven wrong — not everything is possible |
+| prevent regression | [Nghe →](https://youglish.com/pronounce/prevent%20regression/english) | ensure the bug cannot come back silently |
 
 ## 30-minute protocol
 

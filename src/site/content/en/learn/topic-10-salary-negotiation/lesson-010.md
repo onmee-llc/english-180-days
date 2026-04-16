@@ -16,11 +16,11 @@ Practice the conversation of asking for a raise: data-first, business-case frami
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| value delivered | /ˈvæljuː dɪˈlɪvərd/ | what you produced — lead with this, not time served |
-| market rate | /ˈmɑːrkɪt reɪt/ | benchmark compensation for your skills and experience level |
-| start qualifying or apologizing | /ˈkwɒlɪfaɪɪŋ/ | the most common negotiation mistake — weakens your ask |
+| value delivered | [Nghe →](https://youglish.com/pronounce/value%20delivered/english) | what you produced — lead with this, not time served |
+| market rate | [Nghe →](https://youglish.com/pronounce/market%20rate/english) | benchmark compensation for your skills and experience level |
+| start qualifying or apologizing | [Nghe →](https://youglish.com/pronounce/start%20qualifying%20or%20apologizing/english) | the most common negotiation mistake — weakens your ask |
 
 ## 30-minute protocol
 

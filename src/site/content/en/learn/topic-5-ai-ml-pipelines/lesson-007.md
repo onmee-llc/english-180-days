@@ -14,11 +14,11 @@ Describe the LLM orchestration pattern in your content automation system.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| planner-executor architecture | /ˈplænər ˈɛɡzɪkjuːtər ˈɑːrkɪtɛktʃər/ | LLM decomposes the task; executor runs each sub-task — separation of concerns |
-| tool calling | /tuːl ˈkɔːlɪŋ/ | model invokes defined functions — grounds the model in real data |
-| checkpoint | /ˈtʃɛkpɔɪnt/ | save intermediate state — resume from failure point, not from start |
+| planner-executor architecture | [Nghe →](https://youglish.com/pronounce/planner-executor%20architecture/english) | LLM decomposes the task; executor runs each sub-task — separation of concerns |
+| tool calling | [Nghe →](https://youglish.com/pronounce/tool%20calling/english) | model invokes defined functions — grounds the model in real data |
+| checkpoint | [Nghe →](https://youglish.com/pronounce/checkpoint/english) | save intermediate state — resume from failure point, not from start |
 
 ## 30-minute protocol
 

@@ -14,11 +14,11 @@ Practice presenting this topic section fluently — aim for one complete pass wi
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| active-passive multi-region | /ˈæktɪv ˈpæsɪv ˈmʌlti ˈriːdʒən/ | primary serves traffic, standby waits — simplest DR model, RPO/RTO measured in minutes |
-| queue depth | /kjuː dɛpθ/ | number of unprocessed messages — use it as a scaling signal for consumer services |
-| zero-downtime deploy | /ˈzɪərəʊ ˈdaʊntaɪm dɪˈplɔɪ/ | blue-green or rolling update — traffic shifts only after health checks pass |
+| active-passive multi-region | [Nghe →](https://youglish.com/pronounce/active-passive%20multi-region/english) | primary serves traffic, standby waits — simplest DR model, RPO/RTO measured in minutes |
+| queue depth | [Nghe →](https://youglish.com/pronounce/queue%20depth/english) | number of unprocessed messages — use it as a scaling signal for consumer services |
+| zero-downtime deploy | [Nghe →](https://youglish.com/pronounce/zero-downtime%20deploy/english) | blue-green or rolling update — traffic shifts only after health checks pass |
 
 ## 30-minute protocol
 

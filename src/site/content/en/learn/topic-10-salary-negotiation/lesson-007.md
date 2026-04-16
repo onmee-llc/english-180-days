@@ -16,11 +16,11 @@ Write and say a decline message that is warm, direct, and decisive.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| go in a different direction | /ɡoʊ ɪn ə ˈdɪfrənt dɪˈrɛkʃən/ | polite decline — does not explain why in detail |
-| closer fit | /ˈkloʊzər fɪt/ | neutral reason — doesn't imply the declined offer is inferior |
-| be decisive and kind | /dɪˈsaɪsɪv ænd kaɪnd/ | the two traits that make a professional decline |
+| go in a different direction | [Nghe →](https://youglish.com/pronounce/go%20in%20a%20different%20direction/english) | polite decline — does not explain why in detail |
+| closer fit | [Nghe →](https://youglish.com/pronounce/closer%20fit/english) | neutral reason — doesn't imply the declined offer is inferior |
+| be decisive and kind | [Nghe →](https://youglish.com/pronounce/be%20decisive%20and%20kind/english) | the two traits that make a professional decline |
 
 ## 30-minute protocol
 

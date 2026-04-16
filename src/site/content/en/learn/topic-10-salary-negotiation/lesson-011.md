@@ -16,11 +16,11 @@ Practice reading offer-letter language and flagging what to negotiate or clarify
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| non-compete clause | /nɒn kəmˈpiːt klɔːz/ | restricts you from working for competitors after leaving |
-| IP assignment clause | /ˌaɪ ˈpiː əˈsaɪnmənt klɔːz/ | you may be assigning ownership of side project code to the employer |
-| fully diluted share count | /ˈfʊli dɪˈluːtɪd ʃɛr kaʊnt/ | total shares including all options — determines what your grant is actually worth |
+| non-compete clause | [Nghe →](https://youglish.com/pronounce/non-compete%20clause/english) | restricts you from working for competitors after leaving |
+| IP assignment clause | [Nghe →](https://youglish.com/pronounce/IP%20assignment%20clause/english) | you may be assigning ownership of side project code to the employer |
+| fully diluted share count | [Nghe →](https://youglish.com/pronounce/fully%20diluted%20share%20count/english) | total shares including all options — determines what your grant is actually worth |
 
 ## 30-minute protocol
 

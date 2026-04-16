@@ -16,11 +16,11 @@ Identify 3 key words in your intro and make them land with force.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| background information | /bækˈɡraʊnd ˌɪnfəˈmeɪʃən/ | the parts to say faster — context, not content |
-| emphasis anchors | /ˈɛmfəsɪs ˈæŋkərz/ | your 3 power words — know exactly which ones they are |
-| completely natural | /kəmˈpliːtli ˈnætʃərəl/ | target state — emphasis that sounds unrehearsed |
+| background information | [Nghe →](https://youglish.com/pronounce/background%20information/english) | the parts to say faster — context, not content |
+| emphasis anchors | [Nghe →](https://youglish.com/pronounce/emphasis%20anchors/english) | your 3 power words — know exactly which ones they are |
+| completely natural | [Nghe →](https://youglish.com/pronounce/completely%20natural/english) | target state — emphasis that sounds unrehearsed |
 
 ## 30-minute protocol
 

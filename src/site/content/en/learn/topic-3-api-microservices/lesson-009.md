@@ -14,11 +14,11 @@ Explain service mesh to a senior engineer who hasn't used one.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| sidecar proxy | /ˈsaɪdkɑːr ˈprɒksi/ | a process running alongside each service, intercepting its network traffic |
-| mutual TLS | /ˈmjuːtʃʊəl tiːˌɛlˈɛs/ | both sides authenticate — stronger than one-way TLS |
-| traffic splitting | /ˈtræfɪk ˈsplɪtɪŋ/ | routing a percentage of traffic to a new version — canary deployment mechanism |
+| sidecar proxy | [Nghe →](https://youglish.com/pronounce/sidecar%20proxy/english) | a process running alongside each service, intercepting its network traffic |
+| mutual TLS | [Nghe →](https://youglish.com/pronounce/mutual%20TLS/english) | both sides authenticate — stronger than one-way TLS |
+| traffic splitting | [Nghe →](https://youglish.com/pronounce/traffic%20splitting/english) | routing a percentage of traffic to a new version — canary deployment mechanism |
 
 ## 30-minute protocol
 

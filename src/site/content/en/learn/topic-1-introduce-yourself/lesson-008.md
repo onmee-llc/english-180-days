@@ -16,11 +16,11 @@ Answer the strength question with specificity — name it, prove it, land it.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| relatively rare | /ˈrɛlətɪvli rɛər/ | frames your combination as differentiating without bragging |
-| under ambiguity | /ˈʌndər æmˈbɪɡjʊɪti/ | senior engineers are measured on this — lead with it |
-| something clean that others can build on | /ˈsʌmθɪŋ kliːn ðæt ˈʌðərz kæn bɪld ɒn/ | signals collaborative, maintainable engineering |
+| relatively rare | [Nghe →](https://youglish.com/pronounce/relatively%20rare/english) | frames your combination as differentiating without bragging |
+| under ambiguity | [Nghe →](https://youglish.com/pronounce/under%20ambiguity/english) | senior engineers are measured on this — lead with it |
+| something clean that others can build on | [Nghe →](https://youglish.com/pronounce/something%20clean%20that%20others%20can%20build%20on/english) | signals collaborative, maintainable engineering |
 
 ## 30-minute protocol
 

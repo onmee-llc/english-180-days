@@ -14,11 +14,11 @@ Make a clear, reasoned case for your default architectural starting point.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| operational cost | /ˌɒpəˈreɪʃənəl kɒst/ | the real trade-off — not technology, but how much engineering time it consumes |
-| partial network failures | /ˈpɑːʃəl ˈnɛtwɜːrk ˈfeɪljərz/ | distributed systems failure mode that doesn't exist in monoliths |
-| very pragmatic | /ˈvɛri præɡˈmætɪk/ | experience made me practical — not dogmatic about any approach |
+| operational cost | [Nghe →](https://youglish.com/pronounce/operational%20cost/english) | the real trade-off — not technology, but how much engineering time it consumes |
+| partial network failures | [Nghe →](https://youglish.com/pronounce/partial%20network%20failures/english) | distributed systems failure mode that doesn't exist in monoliths |
+| very pragmatic | [Nghe →](https://youglish.com/pronounce/very%20pragmatic/english) | experience made me practical — not dogmatic about any approach |
 
 ## 30-minute protocol
 

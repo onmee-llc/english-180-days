@@ -14,11 +14,11 @@ Describe an MLOps pipeline for a production AI service.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| offline-online skew | /ˈɒflaɪn ˈɒnlaɪn skjuː/ | training features differ from serving features — a major source of silent quality loss |
-| feature store | /ˈfiːtʃər stɔːr/ | shared computation for features used in both training and serving |
-| reproducible training | /rɪˌprɒdjʊˈsɪbl ˈtreɪnɪŋ/ | same code + same data = same model — the foundation for debugging |
+| offline-online skew | [Nghe →](https://youglish.com/pronounce/offline-online%20skew/english) | training features differ from serving features — a major source of silent quality loss |
+| feature store | [Nghe →](https://youglish.com/pronounce/feature%20store/english) | shared computation for features used in both training and serving |
+| reproducible training | [Nghe →](https://youglish.com/pronounce/reproducible%20training/english) | same code + same data = same model — the foundation for debugging |
 
 ## 30-minute protocol
 

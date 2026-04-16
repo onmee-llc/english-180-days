@@ -16,11 +16,11 @@ Complete a 15-minute simulated interview opener without any warm-up.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| cold start | /koʊld stɑːrt/ | no warm-up — simulates real interview conditions |
-| performance under pressure | /pərˈfɔːrməns ˈʌndər ˈprɛʃər/ | the actual skill being trained |
-| stream of consciousness | /striːm əv ˈkɒnʃəsnəs/ | what rambling sounds like — avoid it |
+| cold start | [Nghe →](https://youglish.com/pronounce/cold%20start/english) | no warm-up — simulates real interview conditions |
+| performance under pressure | [Nghe →](https://youglish.com/pronounce/performance%20under%20pressure/english) | the actual skill being trained |
+| stream of consciousness | [Nghe →](https://youglish.com/pronounce/stream%20of%20consciousness/english) | what rambling sounds like — avoid it |
 
 ## 30-minute protocol
 

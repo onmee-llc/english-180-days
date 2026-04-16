@@ -14,11 +14,11 @@ Explain your release management process for a high-traffic service.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| separate deployment from release | /ˈsɛpərɪt dɪˈplɔɪmənt frəm rɪˈliːs/ | ship code first, activate feature after — decouples two risky operations |
-| automated rollback trigger | /ˈɔːtəmeɪtɪd ˈroʊlbæk ˈtrɪɡər/ | metrics threshold that automatically reverts the deployment |
-| blue-green deployment | /bluː ɡriːn dɪˈplɔɪmənt/ | two parallel environments — switch traffic, not databases |
+| separate deployment from release | [Nghe →](https://youglish.com/pronounce/separate%20deployment%20from%20release/english) | ship code first, activate feature after — decouples two risky operations |
+| automated rollback trigger | [Nghe →](https://youglish.com/pronounce/automated%20rollback%20trigger/english) | metrics threshold that automatically reverts the deployment |
+| blue-green deployment | [Nghe →](https://youglish.com/pronounce/blue-green%20deployment/english) | two parallel environments — switch traffic, not databases |
 
 ## 30-minute protocol
 

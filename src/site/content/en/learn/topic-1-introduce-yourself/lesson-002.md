@@ -16,11 +16,11 @@ Articulate exactly what 'backend AI engineer' means in concrete technical terms.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| reliable in production | /rɪˈlaɪəbl ɪn prəˈdʌkʃən/ | key phrase — always emphasize production-readiness |
-| latency budget | /ˈleɪtənsi ˈbʌdʒɪt/ | technical term — how much delay is acceptable per component |
-| familiar territory | /fəˈmɪliər ˈterɪtɔːri/ | confident way to say 'I know this well' |
+| reliable in production | [Nghe →](https://youglish.com/pronounce/reliable%20in%20production/english) | key phrase — always emphasize production-readiness |
+| latency budget | [Nghe →](https://youglish.com/pronounce/latency%20budget/english) | technical term — how much delay is acceptable per component |
+| familiar territory | [Nghe →](https://youglish.com/pronounce/familiar%20territory/english) | confident way to say 'I know this well' |
 
 ## 30-minute protocol
 

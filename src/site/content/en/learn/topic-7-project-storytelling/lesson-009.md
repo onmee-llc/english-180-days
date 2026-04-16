@@ -14,11 +14,11 @@ Explain the trade-off in a key technical decision you made this year.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| trade-off thinking | /treɪd ɒf ˈθɪŋkɪŋ/ | articulating what you give up — the mark of senior engineering judgment |
-| thread pool saturation | /θrɛd puːl ˌsætʃʊˈreɪʃən/ | when all threads are blocked waiting — the synchronous LLM failure mode |
-| both modes | /boʊθ moʊdz/ | sometimes the right answer is supporting both — designed for it explicitly |
+| trade-off thinking | [Nghe →](https://youglish.com/pronounce/trade-off%20thinking/english) | articulating what you give up — the mark of senior engineering judgment |
+| thread pool saturation | [Nghe →](https://youglish.com/pronounce/thread%20pool%20saturation/english) | when all threads are blocked waiting — the synchronous LLM failure mode |
+| both modes | [Nghe →](https://youglish.com/pronounce/both%20modes/english) | sometimes the right answer is supporting both — designed for it explicitly |
 
 ## 30-minute protocol
 

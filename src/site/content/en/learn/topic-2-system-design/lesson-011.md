@@ -14,11 +14,11 @@ Explain how to maintain consistency across services in a distributed transaction
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| business cost of stale data | /ˈbɪznɪs kɒst əv steɪl ˈdeɪtə/ | frame consistency as a business decision, not a technical preference |
-| compensating transactions | /ˈkɒmpɛnseɪtɪŋ trænsˈækʃənz/ | the undo mechanism in saga pattern |
-| reliable compensation mechanism | /rɪˈlaɪəbl ˌkɒmpɛnˈseɪʃən ˈmɛkənɪzəm/ | what you actually need instead of ACID across services |
+| business cost of stale data | [Nghe →](https://youglish.com/pronounce/business%20cost%20of%20stale%20data/english) | frame consistency as a business decision, not a technical preference |
+| compensating transactions | [Nghe →](https://youglish.com/pronounce/compensating%20transactions/english) | the undo mechanism in saga pattern |
+| reliable compensation mechanism | [Nghe →](https://youglish.com/pronounce/reliable%20compensation%20mechanism/english) | what you actually need instead of ACID across services |
 
 ## 30-minute protocol
 

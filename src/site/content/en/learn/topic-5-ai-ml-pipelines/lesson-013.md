@@ -14,11 +14,11 @@ Practice presenting this topic section fluently — aim for one complete pass wi
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| LLM-as-judge | /ɛl ɛl ɛm æz dʒʌdʒ/ | use a language model to evaluate another model's output — scalable quality assessment |
-| evaluation suite | /ɪˌvæljuˈeɪʃən swiːt/ | fixed set of test inputs and expected outputs — your regression safety net for AI |
-| silent regression | /ˈsaɪlənt rɪˈɡrɛʃən/ | quality drops without an error or alert — the failure mode unique to AI systems |
+| LLM-as-judge | [Nghe →](https://youglish.com/pronounce/LLM-as-judge/english) | use a language model to evaluate another model's output — scalable quality assessment |
+| evaluation suite | [Nghe →](https://youglish.com/pronounce/evaluation%20suite/english) | fixed set of test inputs and expected outputs — your regression safety net for AI |
+| silent regression | [Nghe →](https://youglish.com/pronounce/silent%20regression/english) | quality drops without an error or alert — the failure mode unique to AI systems |
 
 ## 30-minute protocol
 

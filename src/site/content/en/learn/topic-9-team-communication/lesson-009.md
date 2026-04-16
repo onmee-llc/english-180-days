@@ -16,11 +16,11 @@ Work through a realistic conflict scenario: misaligned expectations, async commu
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| do not react in the public channel | /rɪˈækt/ | take conflict off-stage — don't perform disagreement publicly |
-| visibility into | /ˌvɪzɪˈbɪlɪti ˈɪntuː/ | awareness of what is changing in your area of ownership |
-| implicit expectations | /ɪmˈplɪsɪt ɪkˌspɛkˈteɪʃənz/ | unwritten rules — the source of most remote team friction |
+| do not react in the public channel | [Nghe →](https://youglish.com/pronounce/do%20not%20react%20in%20the%20public%20channel/english) | take conflict off-stage — don't perform disagreement publicly |
+| visibility into | [Nghe →](https://youglish.com/pronounce/visibility%20into/english) | awareness of what is changing in your area of ownership |
+| implicit expectations | [Nghe →](https://youglish.com/pronounce/implicit%20expectations/english) | unwritten rules — the source of most remote team friction |
 
 ## 30-minute protocol
 

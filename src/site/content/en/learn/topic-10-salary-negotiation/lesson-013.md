@@ -14,11 +14,11 @@ Practice presenting this topic section fluently — aim for one complete pass wi
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| vesting schedule | /ˈvɛstɪŋ ˈʃɛdjuːl/ | timeline for earning equity — four years with one-year cliff is standard, understand it before signing |
-| unvested equity | /ʌnˈvɛstɪd ˈɛkwɪti/ | stock you'll forfeit if you leave — calculate its value and use it in signing bonus negotiation |
-| salary band ceiling | /ˈsæləri bænd ˈsiːlɪŋ/ | maximum for a given level at that company — when you hear 'band', ask about equity or title instead |
+| vesting schedule | [Nghe →](https://youglish.com/pronounce/vesting%20schedule/english) | timeline for earning equity — four years with one-year cliff is standard, understand it before signing |
+| unvested equity | [Nghe →](https://youglish.com/pronounce/unvested%20equity/english) | stock you'll forfeit if you leave — calculate its value and use it in signing bonus negotiation |
+| salary band ceiling | [Nghe →](https://youglish.com/pronounce/salary%20band%20ceiling/english) | maximum for a given level at that company — when you hear 'band', ask about equity or title instead |
 
 ## 30-minute protocol
 

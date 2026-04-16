@@ -14,11 +14,11 @@ Design the resilience layer for a service that calls an external LLM API.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| circuit opens | /ˈsɜːrkɪt ˈoʊpənz/ | the state transition — open means calls fail fast without touching downstream |
-| cascading failures | /kæsˈkeɪdɪŋ ˈfeɪljərz/ | slow upstream causing system-wide degradation — what circuit breakers prevent |
-| graceful degradation | /ˈɡreɪsfʊl ˌdɛɡrəˈdeɪʃən/ | partial functionality is better than total failure |
+| circuit opens | [Nghe →](https://youglish.com/pronounce/circuit%20opens/english) | the state transition — open means calls fail fast without touching downstream |
+| cascading failures | [Nghe →](https://youglish.com/pronounce/cascading%20failures/english) | slow upstream causing system-wide degradation — what circuit breakers prevent |
+| graceful degradation | [Nghe →](https://youglish.com/pronounce/graceful%20degradation/english) | partial functionality is better than total failure |
 
 ## 30-minute protocol
 

@@ -14,11 +14,11 @@ Design the monitoring and alerting strategy for a production service.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| SLI / SLO | /ɛs ɛl aɪ ɛs ɛl oʊ/ | service level indicator / objective — define what good looks like, then measure it |
-| error budget | /ˈɛrər ˈbʌdʒɪt/ | allowable unreliability per window — when exhausted, reliability work takes priority |
-| burn rate | /bɜːrn reɪt/ | speed at which error budget is consumed — high burn rate is the right alert trigger |
+| SLI / SLO | [Nghe →](https://youglish.com/pronounce/SLI%20%2F%20SLO/english) | service level indicator / objective — define what good looks like, then measure it |
+| error budget | [Nghe →](https://youglish.com/pronounce/error%20budget/english) | allowable unreliability per window — when exhausted, reliability work takes priority |
+| burn rate | [Nghe →](https://youglish.com/pronounce/burn%20rate/english) | speed at which error budget is consumed — high burn rate is the right alert trigger |
 
 ## 30-minute protocol
 

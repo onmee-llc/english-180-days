@@ -16,11 +16,11 @@ Practice owning the entire offer conversation, not just the base salary.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| notice period | /ˈnoʊtɪs ˈpɪəriəd/ | how long you must work after resigning — typically 2–4 weeks |
-| stipend | /ˈstaɪpɛnd/ | fixed allowance for a specific purpose — equipment, internet, etc. |
-| fully distributed | /ˈfʊli dɪˈstrɪbjʊtɪd/ | every team member works remotely always — not hybrid |
+| notice period | [Nghe →](https://youglish.com/pronounce/notice%20period/english) | how long you must work after resigning — typically 2–4 weeks |
+| stipend | [Nghe →](https://youglish.com/pronounce/stipend/english) | fixed allowance for a specific purpose — equipment, internet, etc. |
+| fully distributed | [Nghe →](https://youglish.com/pronounce/fully%20distributed/english) | every team member works remotely always — not hybrid |
 
 ## 30-minute protocol
 

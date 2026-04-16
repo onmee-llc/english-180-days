@@ -14,11 +14,11 @@ Tell your career arc as a story with a clear thesis.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| deliberate evolution | /dɪˈlɪbərɪt ˌiːvəˈluːʃən/ | intentional career moves — not random progression |
-| systems thinking | /ˈsɪstəmz ˈθɪŋkɪŋ/ | understanding how components interact — the skill that distinguishes staff engineers |
-| system leverage | /ˈsɪstəm ˈlɛvərɪdʒ/ | one person amplified by automated systems — the highest form of engineering productivity |
+| deliberate evolution | [Nghe →](https://youglish.com/pronounce/deliberate%20evolution/english) | intentional career moves — not random progression |
+| systems thinking | [Nghe →](https://youglish.com/pronounce/systems%20thinking/english) | understanding how components interact — the skill that distinguishes staff engineers |
+| system leverage | [Nghe →](https://youglish.com/pronounce/system%20leverage/english) | one person amplified by automated systems — the highest form of engineering productivity |
 
 ## 30-minute protocol
 

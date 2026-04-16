@@ -14,11 +14,11 @@ Practice presenting this topic section fluently — aim for one complete pass wi
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| rolling deployment | /ˈroʊlɪŋ dɪˈplɔɪmənt/ | gradual instance replacement — old and new code run simultaneously during rollout |
-| backward-compatible migration | /ˈbækwərd kəmˈpætɪbl maɪˈɡreɪʃən/ | schema change works with both old and new app code — safe for rolling deploys |
-| backfill job | /ˈbækfɪl dʒɒb/ | asynchronous job to repair or populate historical data after a schema or logic change |
+| rolling deployment | [Nghe →](https://youglish.com/pronounce/rolling%20deployment/english) | gradual instance replacement — old and new code run simultaneously during rollout |
+| backward-compatible migration | [Nghe →](https://youglish.com/pronounce/backward-compatible%20migration/english) | schema change works with both old and new app code — safe for rolling deploys |
+| backfill job | [Nghe →](https://youglish.com/pronounce/backfill%20job/english) | asynchronous job to repair or populate historical data after a schema or logic change |
 
 ## 30-minute protocol
 

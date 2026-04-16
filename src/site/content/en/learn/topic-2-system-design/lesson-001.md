@@ -14,11 +14,11 @@ Apply all 5 steps to URL shortener design in one fluent verbal walkthrough.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| clarify requirements | /ˈklærɪfaɪ ðə rɪˈkwaɪrəmənts/ | always first — signals senior thinking |
-| read-heavy workload | /riːd ˈhɛvi ˈwɜːrkloʊd/ | characterize the access pattern before designing |
-| make your reasoning visible | /meɪk jɔːr ˈriːzənɪŋ ˈvɪzɪbəl/ | the examiner wants to hear your thinking, not just your answer |
+| clarify requirements | [Nghe →](https://youglish.com/pronounce/clarify%20requirements/english) | always first — signals senior thinking |
+| read-heavy workload | [Nghe →](https://youglish.com/pronounce/read-heavy%20workload/english) | characterize the access pattern before designing |
+| make your reasoning visible | [Nghe →](https://youglish.com/pronounce/make%20your%20reasoning%20visible/english) | the examiner wants to hear your thinking, not just your answer |
 
 ## 30-minute protocol
 

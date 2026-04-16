@@ -14,11 +14,11 @@ Articulate your philosophy on automation and when it creates real value.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| premature automation | /prɪˈmætʃər ˌɔːtəˈmeɪʃən/ | automating before understanding the problem — common and expensive |
-| human checkpoint | /ˈhjuːmən ˈtʃɛkpɔɪnt/ | a review step before high-consequence automated actions — right pattern for uncertain inputs |
-| staged rollout | /steɪdʒd ˈroʊlaʊt/ | gradual activation of automation — reduces blast radius on failure |
+| premature automation | [Nghe →](https://youglish.com/pronounce/premature%20automation/english) | automating before understanding the problem — common and expensive |
+| human checkpoint | [Nghe →](https://youglish.com/pronounce/human%20checkpoint/english) | a review step before high-consequence automated actions — right pattern for uncertain inputs |
+| staged rollout | [Nghe →](https://youglish.com/pronounce/staged%20rollout/english) | gradual activation of automation — reduces blast radius on failure |
 
 ## 30-minute protocol
 

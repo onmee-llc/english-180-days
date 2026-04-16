@@ -14,11 +14,11 @@ Practice presenting this topic section fluently — aim for one complete pass wi
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| scope change | /skoʊp tʃeɪndʒ/ | request that expands or shifts what was agreed — needs explicit approval, not assumption |
-| write-through cache | /raɪt θruː kæʃ/ | data written to cache and database simultaneously — consistent but adds write latency |
-| escalation | /ˌɛskəˈleɪʃən/ | bring a blocker to someone with authority to unblock it — do it faster than feels comfortable |
+| scope change | [Nghe →](https://youglish.com/pronounce/scope%20change/english) | request that expands or shifts what was agreed — needs explicit approval, not assumption |
+| write-through cache | [Nghe →](https://youglish.com/pronounce/write-through%20cache/english) | data written to cache and database simultaneously — consistent but adds write latency |
+| escalation | [Nghe →](https://youglish.com/pronounce/escalation/english) | bring a blocker to someone with authority to unblock it — do it faster than feels comfortable |
 
 ## 30-minute protocol
 

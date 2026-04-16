@@ -14,11 +14,11 @@ Walk through the impact metrics for your three biggest technical projects.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| hundred-and-nineteen-to-one | /ˈhʌndrəd ænd ˈnaɪntiːn tuː wʌn/ | efficiency ratio — dramatic numbers drive home the impact of automation |
-| log the before-state | /lɒɡ ðə bɪˈfɔːr steɪt/ | measure the baseline before you build — without it you can't prove impact |
-| state my estimate clearly | /steɪt maɪ ˈɛstɪmɪt ˈklɪərli/ | honesty about estimates builds trust — say 'estimated' rather than fabricating precision |
+| hundred-and-nineteen-to-one | [Nghe →](https://youglish.com/pronounce/hundred-and-nineteen-to-one/english) | efficiency ratio — dramatic numbers drive home the impact of automation |
+| log the before-state | [Nghe →](https://youglish.com/pronounce/log%20the%20before-state/english) | measure the baseline before you build — without it you can't prove impact |
+| state my estimate clearly | [Nghe →](https://youglish.com/pronounce/state%20my%20estimate%20clearly/english) | honesty about estimates builds trust — say 'estimated' rather than fabricating precision |
 
 ## 30-minute protocol
 

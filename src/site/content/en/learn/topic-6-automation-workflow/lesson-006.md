@@ -14,11 +14,11 @@ Design the analytics data pipeline for a content automation platform.
 
 ## Key phrases
 
-| Phrase | IPA | Note |
+| Phrase | Listen | Note |
 |--------|-----|------|
-| ELT pattern | /iː ɛl tiː ˈpætərn/ | extract, load raw, transform in warehouse — preserves full data fidelity |
-| dbt models | /diː biː tiː ˈmɒdəlz/ | SQL transformations version-controlled like application code |
-| silent data loss | /ˈsaɪlənt ˈdeɪtə lɒs/ | pipeline drops events without errors — rows count monitoring catches this |
+| ELT pattern | [Nghe →](https://youglish.com/pronounce/ELT%20pattern/english) | extract, load raw, transform in warehouse — preserves full data fidelity |
+| dbt models | [Nghe →](https://youglish.com/pronounce/dbt%20models/english) | SQL transformations version-controlled like application code |
+| silent data loss | [Nghe →](https://youglish.com/pronounce/silent%20data%20loss/english) | pipeline drops events without errors — rows count monitoring catches this |
 
 ## 30-minute protocol
 
