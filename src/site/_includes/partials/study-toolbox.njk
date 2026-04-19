@@ -1,0 +1,86 @@
+{#
+  Study Toolbox — floating shortcut panel available on every page.
+  Requires: lessonSchedule (from _data/lessonSchedule.js)
+#}
+
+{# Embed compact lesson map as non-executable JSON data #}
+<script type="application/json" id="study-toolbox-data">{{ lessonSchedule.lessonMap | dump | safe }}</script>
+
+<div class="study-toolbox" id="study-toolbox" aria-label="Study Toolbox" data-program-start="{{ lessonSchedule.programStartDate }}">
+
+  {# Toggle button #}
+  <button
+    class="study-toolbox__btn"
+    id="study-toolbox-btn"
+    type="button"
+    aria-expanded="false"
+    aria-controls="study-toolbox-panel"
+    aria-label="Open study toolbox"
+  >
+    <svg class="study-toolbox__btn-icon study-toolbox__btn-icon--calendar" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M5 17V9h12v3.09c.33-.05.66-.09 1-.09.34 0 .67.04 1 .09V6c0-1.1-.9-2-2-2h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 17a2 2 0 002 2h7.09c-.05-.33-.09-.66-.09-1 0-.34.04-.67.09-1H5z"/>
+      <path d="M19 17v-3h-2v3h-3v2h3v3h2v-3h3v-2h-3z"/>
+    </svg>
+    <svg class="study-toolbox__btn-icon study-toolbox__btn-icon--close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+    <span class="study-toolbox__progress-ring" aria-hidden="true">
+      <svg width="52" height="52" viewBox="0 0 52 52">
+        <circle class="study-toolbox__progress-track" cx="26" cy="26" r="22" fill="none" stroke-width="3"/>
+        <circle class="study-toolbox__progress-fill" cx="26" cy="26" r="22" fill="none" stroke-width="3" stroke-dasharray="138.23" stroke-dashoffset="138.23" stroke-linecap="round"/>
+      </svg>
+    </span>
+  </button>
+
+  {# Popup panel #}
+  <div
+    class="study-toolbox__panel"
+    id="study-toolbox-panel"
+    role="dialog"
+    aria-label="Study Toolbox"
+    aria-modal="false"
+    hidden
+  >
+    {# Panel header #}
+    <div class="study-toolbox__panel-header">
+      <span class="study-toolbox__panel-title">Study Toolbox</span>
+      <div class="study-toolbox__progress-text" id="study-toolbox-progress" aria-live="polite"></div>
+    </div>
+
+    {# Today's lesson #}
+    <div class="study-toolbox__section" id="study-toolbox-today">
+      <p class="study-toolbox__section-label">Today</p>
+      <div class="study-toolbox__lesson-card" id="study-toolbox-today-card">
+        {# Populated by JS #}
+        <span class="study-toolbox__skeleton"></span>
+      </div>
+    </div>
+
+    {# Tomorrow preview #}
+    <div class="study-toolbox__section" id="study-toolbox-tomorrow">
+      <p class="study-toolbox__section-label">Tomorrow</p>
+      <div class="study-toolbox__lesson-mini" id="study-toolbox-tomorrow-card">
+        {# Populated by JS #}
+        <span class="study-toolbox__skeleton study-toolbox__skeleton--sm"></span>
+      </div>
+    </div>
+
+    {# Quick links #}
+    <div class="study-toolbox__links">
+      <a href="/#lesson-calendar" class="study-toolbox__link study-toolbox__link--calendar">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/>
+        </svg>
+        Full calendar
+      </a>
+      <a href="/learn/" class="study-toolbox__link study-toolbox__link--learn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 3L1 9l11 6 9-4.91V17h2V9M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/>
+        </svg>
+        All topics
+      </a>
+    </div>
+  </div>
+
+</div>

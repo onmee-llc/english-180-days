@@ -188,9 +188,22 @@ module.exports = function () {
   const scheduleMap = buildScheduleMap(topicMeta);
   const calendarMonths = buildCalendarMonths(scheduleMap);
 
+  // Compact map for client-side toolbox lookup: date → minimal lesson info
+  const lessonMap = {};
+  for (const [date, lesson] of Object.entries(scheduleMap)) {
+    lessonMap[date] = {
+      d: lesson.day,
+      u: lesson.url,
+      t: lesson.shortTitle,
+      h: lesson.topicHighlight,
+      y: lesson.topicType,
+    };
+  }
+
   return {
     calendarMonths,
     dayNames: DAY_NAMES,
     programStartDate: toISO(PROGRAM_START),
+    lessonMap,
   };
 };

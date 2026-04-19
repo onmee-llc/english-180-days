@@ -13,6 +13,7 @@ the children of an authorized script to run. #}
 {% include 'partials/load-script-func.njk' %}
 {% set loadScripts %}
   loadScript('{{ helpers.hashForProd('/js/app.js') }}', 'module');
+  loadScript('{{ helpers.hashForProd('/js/study-toolbox.js') }}', 'module');
 
   {# Add a facility for pages to declare an array of script paths. #}
   {# If no scripts are declared we will use the default page script. #}

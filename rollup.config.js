@@ -50,6 +50,7 @@ const devConfig = {
     './src/lib/app.js',
     './src/lib/lesson-calendar.js',
     './src/lib/learn-filter.js',
+    './src/lib/study-toolbox.js',
   ],
   output: {
     dir: 'dist/js',
@@ -67,6 +68,7 @@ const productionConfig = {
     './src/lib/app.js',
     './src/lib/lesson-calendar.js',
     './src/lib/learn-filter.js',
+    './src/lib/study-toolbox.js',
   ],
   output: {
     dir: 'dist/js',

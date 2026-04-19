@@ -12,5 +12,7 @@ rules:
       - 'inset'
       - 'place-items'
       - 'place-content'
+      - 'overscroll-behavior-x'
+      - 'scroll-margin-top'
   # Disable due to sass-lint crash on CSS custom properties
   property-sort-order: 0
