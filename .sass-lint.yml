@@ -1,0 +1,16 @@
+options:
+  formatter: stylish
+
+rules:
+  no-misspelled-properties:
+    - 2
+    - extra-properties:
+      - 'gap'
+      - 'row-gap'
+      - 'column-gap'
+      - 'aspect-ratio'
+      - 'inset'
+      - 'place-items'
+      - 'place-content'
+  # Disable due to sass-lint crash on CSS custom properties
+  property-sort-order: 0

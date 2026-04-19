@@ -46,7 +46,7 @@ const plugins = [
   commonjs(),
 ];
 const devConfig = {
-  input: ['./src/lib/app.js'],
+  input: ['./src/lib/app.js', './src/lib/lesson-calendar.js'],
   output: {
     dir: 'dist/js',
     format: 'esm',
@@ -59,7 +59,7 @@ const devConfig = {
 };
 
 const productionConfig = {
-  input: ['./src/lib/app.js'],
+  input: ['./src/lib/app.js', './src/lib/lesson-calendar.js'],
   output: {
     dir: 'dist/js',
     format: 'esm',

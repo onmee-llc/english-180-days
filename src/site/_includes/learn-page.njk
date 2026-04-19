@@ -16,20 +16,32 @@ pageScripts:
         <h1 class="headline__title">{{ title }}</h1>
         <p>{{ 'i18n.learn.header' | i18n(locale) }}</p>
       </div>
+      {# Filter controls #}
+      <div class="learn__filters" role="group" aria-label="Filter courses by type">
+        <button class="learn__filter-btn is-active" data-filter="all" type="button">All</button>
+        <button class="learn__filter-btn" data-filter="tech" type="button">
+          <span class="learn__filter-icon learn__filter-icon--tech" aria-hidden="true"></span>
+          Tech
+        </button>
+        <button class="learn__filter-btn" data-filter="english" type="button">
+          <span class="learn__filter-icon learn__filter-icon--english" aria-hidden="true"></span>
+          English
+        </button>
+      </div>
     </div>
   </header>
   {# Hero ends #}
 
   {# Courses start #}
   <div class="region">
-    <div class="wrapper auto-grid learn__collection">
+    <div class="wrapper auto-grid learn__collection" id="learn-collection">
       {% set coursesArr = helpers.values(courses) %}
       {% for course in coursesArr|sort(true, false, 'meta.date') %}
       {% if course.meta and not course.meta.draft and not course.meta.invisible %}
-        <a href="{{ course.meta.url }}" class="card" data-style="branded">
+        <a href="{{ course.meta.url }}" class="card" data-style="branded" data-course-type="{{ course.meta.type }}">
           <h3 class="visually-hidden">{{ course.meta.title }}</h3>
           <div class="card__header repel">
-            <p class="color-mid-text">Course</p>
+            <p class="color-mid-text learn__course-badge learn__course-badge--{{ course.meta.type }}">{{ course.meta.type | capitalize }}</p>
             <div class="counter">
               {% set pages = collections.all | navigation(course.toc) %}
               <span class="counter__content" aria-label="{{ pages.list.length }} {{ 'i18n.learn.resources' | i18n(locale) }}">{{ pages.list.length }}</span>
@@ -47,3 +59,28 @@ pageScripts:
   </div>
   {# Courses end #}
 </div>
+
+<script>
+(function () {
+  var btns = document.querySelectorAll('.learn__filter-btn');
+  var cards = document.querySelectorAll('#learn-collection [data-course-type]');
+  var saved = sessionStorage.getItem('learnFilter') || 'all';
+
+  function applyFilter(filter) {
+    btns.forEach(function (b) {
+      b.classList.toggle('is-active', b.dataset.filter === filter);
+    });
+    cards.forEach(function (card) {
+      var match = filter === 'all' || card.dataset.courseType === filter;
+      card.style.display = match ? '' : 'none';
+    });
+    sessionStorage.setItem('learnFilter', filter);
+  }
+
+  btns.forEach(function (btn) {
+    btn.addEventListener('click', function () { applyFilter(btn.dataset.filter); });
+  });
+
+  applyFilter(saved);
+}());
+</script>

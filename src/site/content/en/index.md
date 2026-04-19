@@ -1,6 +1,8 @@
 ---
 layout: 'homepage'
 title: 'onmee.vn — 180-Day English Program'
+pageScripts:
+  - '/js/lesson-calendar.js'
 intro:
   eyebrow: '180 Days to International Readiness'
   title: "Speak English. Get the job."

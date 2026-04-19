@@ -7,4 +7,5 @@ description: i18n.courses.topic_3_api_microservices.description
 logo: '/images/courses/topic-3-api-microservices/logo.svg'
 background: '/images/courses/topic-3-api-microservices/background.svg'
 card: '/images/courses/topic-3-api-microservices/card.svg'
+type: tech
 highlight: 'red'

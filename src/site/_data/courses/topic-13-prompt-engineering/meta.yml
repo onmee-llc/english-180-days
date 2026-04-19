@@ -7,4 +7,5 @@ description: i18n.courses.topic_13_prompt_engineering.description
 logo: '/images/courses/topic-13-prompt-engineering/logo.svg'
 background: '/images/courses/topic-13-prompt-engineering/background.svg'
 card: '/images/courses/topic-13-prompt-engineering/card.svg'
+type: tech
 highlight: 'teal'

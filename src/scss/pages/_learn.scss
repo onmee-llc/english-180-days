@@ -1,5 +1,5 @@
 .learn__collection {
-  .card[data-style=branded] {
+  .card[data-style='branded'] {
     min-height: 25.625rem;
     max-width: 37rem;
     min-width: auto;
@@ -9,5 +9,91 @@
 .learn__hero {
   p {
     max-width: 74ch;
+  }
+}
+
+// Filter controls
+.learn__filters {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.learn__filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 1.1rem;
+  border-radius: 2rem;
+  border: 2px solid var(--color-stroke, #d2d3d7);
+  background: var(--color-core-bg);
+  color: var(--color-mid-text);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+  font-family: inherit;
+  line-height: 1;
+
+  &:hover {
+    border-color: var(--color-core-primary, #3740ff);
+    color: var(--color-core-primary, #3740ff);
+  }
+
+  &:focus-visible {
+    outline: 3px solid var(--color-focus-ring);
+    outline-offset: 2px;
+  }
+
+  &.is-active {
+    background: var(--color-core-primary, #3740ff);
+    border-color: var(--color-core-primary, #3740ff);
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(55, 64, 255, 0.28);
+  }
+}
+
+.learn__filter-icon {
+  display: inline-block;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+
+  &--tech {
+    background: #3740ff;
+  }
+
+  &--english {
+    background: #0d652d;
+  }
+}
+
+.is-active .learn__filter-icon--tech,
+.is-active .learn__filter-icon--english {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+// Course type badge in card header
+.learn__course-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.55rem;
+  border-radius: 0.75rem;
+  line-height: 1;
+
+  &--tech {
+    color: #3740ff;
+    background: rgba(55, 64, 255, 0.1);
+  }
+
+  &--english {
+    color: #0d652d;
+    background: rgba(13, 101, 45, 0.1);
   }
 }

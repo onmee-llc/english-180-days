@@ -8,3 +8,4 @@ logo: '/images/courses/topic-1-introduce-yourself/logo.svg'
 background: '/images/courses/topic-1-introduce-yourself/background.svg'
 card: '/images/courses/topic-1-introduce-yourself/card.svg'
 highlight: 'purple'
+type: tech

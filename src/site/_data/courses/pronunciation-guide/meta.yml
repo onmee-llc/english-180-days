@@ -7,4 +7,5 @@ description: i18n.courses.pronunciation_guide.description
 logo: '/images/courses/pronunciation-guide/logo.svg'
 background: '/images/courses/pronunciation-guide/background.svg'
 card: '/images/courses/pronunciation-guide/card.svg'
+type: english
 highlight: 'orange'

@@ -1,0 +1,103 @@
+{#
+  Lesson Calendar partial
+  Requires: lessonSchedule (from _data/lessonSchedule.js)
+  Usage: {% include "partials/lesson-calendar.njk" %}
+#}
+
+<section class="lesson-calendar" aria-label="180-day program calendar">
+  <div class="wrapper">
+
+    {# Section header #}
+    <div class="lesson-calendar__header flow">
+      <h2 class="lesson-calendar__title">Your 180-Day Journey</h2>
+      <p class="lesson-calendar__subtitle">Every lesson mapped to a date — click any day to open that lesson.</p>
+    </div>
+
+    {# Calendar widget #}
+    <div class="lesson-calendar__widget" data-program-start="{{ lessonSchedule.programStartDate }}">
+
+      {# Month navigation bar #}
+      <div class="lesson-calendar__nav" role="navigation" aria-label="Calendar month navigation">
+        <button class="lesson-calendar__nav-btn lesson-calendar__prev" type="button" aria-label="Previous month" disabled>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+        <span class="lesson-calendar__month-label" aria-live="polite"></span>
+        <button class="lesson-calendar__nav-btn lesson-calendar__next" type="button" aria-label="Next month">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </div>
+
+      {# Day-of-week header row #}
+      <div class="lesson-calendar__dow-row" aria-hidden="true">
+        {% for name in lessonSchedule.dayNames %}
+          <div class="lesson-calendar__dow">{{ name }}</div>
+        {% endfor %}
+      </div>
+
+      {# All months — JS toggles visibility #}
+      {% for calMonth in lessonSchedule.calendarMonths %}
+        <div
+          class="lesson-calendar__month"
+          data-month="{{ calMonth.key }}"
+          data-label="{{ calMonth.label }}"
+          hidden
+        >
+          {% for week in calMonth.weeks %}
+            <div class="lesson-calendar__week">
+              {% for cell in week %}
+                {% if cell.outOfMonth %}
+                  <div class="lesson-calendar__cell lesson-calendar__cell--empty" aria-hidden="true"></div>
+                {% elif cell.lesson %}
+                  <a
+                    href="{{ cell.lesson.url }}"
+                    class="lesson-calendar__cell lesson-calendar__cell--lesson"
+                    data-date="{{ cell.date }}"
+                    data-topic="{{ cell.lesson.topicHighlight }}"
+                    data-type="{{ cell.lesson.topicType }}"
+                    title="Day {{ cell.lesson.day }} — {{ cell.lesson.shortTitle }}"
+                    aria-label="Day {{ cell.lesson.day }}, {{ cell.date }}: {{ cell.lesson.shortTitle }}"
+                  >
+                    <span class="lesson-calendar__day-num">{{ cell.dayOfMonth }}</span>
+                    <span class="lesson-calendar__day-badge">Day {{ cell.lesson.day }}</span>
+                    <span class="lesson-calendar__day-title">{{ cell.lesson.shortTitle | truncate(30) }}</span>
+                    <span class="lesson-calendar__type-dot lesson-calendar__type-dot--{{ cell.lesson.topicType }}" aria-hidden="true"></span>
+                  </a>
+                {% else %}
+                  <div
+                    class="lesson-calendar__cell lesson-calendar__cell--free"
+                    data-date="{{ cell.date }}"
+                    aria-label="{{ cell.date }}, no lesson"
+                  >
+                    <span class="lesson-calendar__day-num lesson-calendar__day-num--muted">{{ cell.dayOfMonth }}</span>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          {% endfor %}
+        </div>
+      {% endfor %}
+
+    </div>{# end widget #}
+
+    {# Legend #}
+    <div class="lesson-calendar__legend" aria-label="Calendar legend">
+      <span class="lesson-calendar__legend-item">
+        <span class="lesson-calendar__legend-dot lesson-calendar__legend-dot--tech"></span>
+        Tech lesson
+      </span>
+      <span class="lesson-calendar__legend-item">
+        <span class="lesson-calendar__legend-dot lesson-calendar__legend-dot--english"></span>
+        English lesson
+      </span>
+      <span class="lesson-calendar__legend-item">
+        <span class="lesson-calendar__legend-today-ring"></span>
+        Today
+      </span>
+    </div>
+
+  </div>
+</section>
