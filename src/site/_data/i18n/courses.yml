@@ -69,6 +69,36 @@ topic_11_daily_with_kids:
     en: "Topic 11 — Daily English with Kids (Parallel Track)"
   description:
     en: "Natural daily immersion. 8 phrase groups for parenting in English — morning routine to bedtime, every single day."
+topic_12_llm_system_architecture:
+  title:
+    en: "Topic 12 — LLM System Architecture"
+  description:
+    en: "KPI 1 | Days 141–154. Build the English vocabulary and technical confidence to design, document, and present an LLM-powered backend system."
+topic_13_prompt_engineering:
+  title:
+    en: "Topic 13 — Prompt Engineering"
+  description:
+    en: "KPI 2 | Days 155–168. Master the language and techniques for writing an LLM Best Practices Guide — from system prompts to eval frameworks."
+topic_14_ai_tech_talks:
+  title:
+    en: "Topic 14 — AI Tech Talks in English"
+  description:
+    en: "KPI 4 | Days 169–182. Prepare and deliver two internal tech talks on AI topics in English — Tech Talk #1 (July) and Tech Talk #2 (November)."
+topic_15_en_reading_lab:
+  title:
+    en: "Topic 15 — EN Reading Lab"
+  description:
+    en: "KPI 5 | Days 183–196. Build a weekly technical English reading habit using curated articles from ByteByteGo and Anthropic Research."
+topic_16_en_technical_writing:
+  title:
+    en: "Topic 16 — EN Technical Writing"
+  description:
+    en: "KPI 6 + KPI 7 | Days 197–210. Write and publish your first English technical article and complete 4 English speaking sessions."
+certification_prep:
+  title:
+    en: "Certification Prep — Generative AI with LLMs"
+  description:
+    en: "KPI 3 | May–September 2026. Structured study guide for the DeepLearning.AI 'Generative AI with LLMs' course on Coursera."
 learn_forms:
   title:
     en: Learn Forms!

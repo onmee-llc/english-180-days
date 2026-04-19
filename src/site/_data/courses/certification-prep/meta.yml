@@ -1,0 +1,10 @@
+# Initial publish date — used to decide 'NEW' badge threshold.
+date: 2026-04-19
+url: /learn/certification-prep/
+draft: false
+title: i18n.courses.certification_prep.title
+description: i18n.courses.certification_prep.description
+logo: '/images/courses/certification-prep/logo.svg'
+background: '/images/courses/certification-prep/background.svg'
+card: '/images/courses/certification-prep/card.svg'
+highlight: 'cyan'

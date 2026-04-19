@@ -1,0 +1,10 @@
+# Initial publish date — used to decide 'NEW' badge threshold.
+date: 2026-04-19
+url: /learn/topic-16-en-technical-writing/
+draft: false
+title: i18n.courses.topic_16_en_technical_writing.title
+description: i18n.courses.topic_16_en_technical_writing.description
+logo: '/images/courses/topic-16-en-technical-writing/logo.svg'
+background: '/images/courses/topic-16-en-technical-writing/background.svg'
+card: '/images/courses/topic-16-en-technical-writing/card.svg'
+highlight: 'amber'

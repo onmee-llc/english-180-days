@@ -1,0 +1,10 @@
+# Initial publish date — used to decide 'NEW' badge threshold.
+date: 2026-04-19
+url: /learn/topic-13-prompt-engineering/
+draft: false
+title: i18n.courses.topic_13_prompt_engineering.title
+description: i18n.courses.topic_13_prompt_engineering.description
+logo: '/images/courses/topic-13-prompt-engineering/logo.svg'
+background: '/images/courses/topic-13-prompt-engineering/background.svg'
+card: '/images/courses/topic-13-prompt-engineering/card.svg'
+highlight: 'teal'
