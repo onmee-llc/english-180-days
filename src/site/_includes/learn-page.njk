@@ -4,7 +4,7 @@ title: Learn
 description: |
   Explore our growing collection of courses on key web design and development subjects. An industry expert has written each course, helped by members of the Chrome team. Follow the modules sequentially, or dip into the topics you most want to learn about.
 pageScripts:
-  - '/js/learn.js'
+  - '/js/learn-filter.js'
 ---
 {% from 'macros/icon.njk' import icon with context %}
 
@@ -59,28 +59,3 @@ pageScripts:
   </div>
   {# Courses end #}
 </div>
-
-<script>
-(function () {
-  var btns = document.querySelectorAll('.learn__filter-btn');
-  var cards = document.querySelectorAll('#learn-collection [data-course-type]');
-  var saved = sessionStorage.getItem('learnFilter') || 'all';
-
-  function applyFilter(filter) {
-    btns.forEach(function (b) {
-      b.classList.toggle('is-active', b.dataset.filter === filter);
-    });
-    cards.forEach(function (card) {
-      var match = filter === 'all' || card.dataset.courseType === filter;
-      card.style.display = match ? '' : 'none';
-    });
-    sessionStorage.setItem('learnFilter', filter);
-  }
-
-  btns.forEach(function (btn) {
-    btn.addEventListener('click', function () { applyFilter(btn.dataset.filter); });
-  });
-
-  applyFilter(saved);
-}());
-</script>
