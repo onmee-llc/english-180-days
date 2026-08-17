@@ -1,0 +1,22 @@
+rules_version = '2';
+
+// Daily Mastery — each signed-in user can read and write only their own
+// progress document at users/{uid}. Only the household's own emails may
+// authenticate at all; everyone else is denied even with a valid Google
+// account, since this is a single-family personal app, not a public one.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isAllowedUser() {
+      return request.auth != null && request.auth.token.email in [
+        'onmeevn@gmail.com',
+        'losteras.channel@gmail.com',
+        'ngoradio.hi@gmail.com',
+        'andrew.hcmuns@gmail.com'
+      ];
+    }
+
+    match /users/{uid} {
+      allow read, write: if isAllowedUser() && request.auth.uid == uid;
+    }
+  }
+}
