@@ -38,38 +38,54 @@ onMounted(async () => {
 
 <template>
   <section class="settings">
-    <h1>Settings</h1>
+    <header class="settings__header">
+      <p class="settings__eyebrow">SETTINGS</p>
+      <h1 class="settings__title">Settings</h1>
+    </header>
 
     <div class="settings__row">
-      <button v-if="!isSignedIn" type="button" @click="handleSignIn">
+      <button
+        v-if="!isSignedIn"
+        type="button"
+        class="settings__button settings__button--primary"
+        @click="handleSignIn"
+      >
         Sign in with Google
       </button>
-      <button v-else type="button" @click="signOut">Sign out</button>
-      <p v-if="authError" class="settings__error">{{ authError }}</p>
-      <p v-else-if="signInError" class="settings__error">{{ signInError }}</p>
+      <button v-else type="button" class="settings__button settings__button--outline" @click="signOut">
+        Sign out
+      </button>
+      <p v-if="authError" class="settings__error" role="alert">{{ authError }}</p>
+      <p v-else-if="signInError" class="settings__error" role="alert">{{ signInError }}</p>
     </div>
 
     <div class="settings__row">
-      <label for="reminder-time">Daily reminder</label>
+      <label for="reminder-time" class="settings__label">Daily reminder</label>
       <input
         id="reminder-time"
         type="time"
+        class="settings__input"
         :value="time"
         @change="setTime($event.target.value)"
       />
     </div>
 
     <div class="settings__row">
-      <label for="claude-api-key">Claude API key</label>
-      <input
-        id="claude-api-key"
-        type="password"
-        v-model="apiKeyDraft"
-        placeholder="sk-ant-..."
-        autocomplete="off"
-      />
-      <button type="button" @click="saveApiKey">Save</button>
-      <span v-if="apiKeySaved" class="settings__saved">Saved</span>
+      <label for="claude-api-key" class="settings__label">Claude API key</label>
+      <div class="settings__field-group">
+        <input
+          id="claude-api-key"
+          type="password"
+          class="settings__input"
+          v-model="apiKeyDraft"
+          placeholder="sk-ant-..."
+          autocomplete="off"
+        />
+        <button type="button" class="settings__button settings__button--primary" @click="saveApiKey">
+          Save
+        </button>
+      </div>
+      <span v-if="apiKeySaved" class="settings__saved">✓ Saved</span>
       <p class="settings__hint">
         Used by the Speak tab to translate and explain sentences. Stored only
         on this device.
@@ -79,19 +95,170 @@ onMounted(async () => {
 </template>
 
 <style scoped>
+/* Hallmark · component: settings form · genre: playful (Hum register)
+ * theme: Hum — shares tokens with SpeakView.vue via global src/styles/tokens.css
+ * states: buttons — default · hover · focus-visible · active
+ *         time/password inputs — default · hover · focus · disabled(n/a)
+ */
+
+.settings {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  min-height: 100dvh;
+  padding: var(--space-xl) var(--space-lg) calc(6rem + env(safe-area-inset-bottom));
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
+
+.settings__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+}
+
+.settings__eyebrow {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-ink-2);
+}
+
+.settings__title {
+  margin: 0;
+  font-size: clamp(1.6rem, 5vw + 1rem, 2.1rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.settings__row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding: var(--space-lg);
+  border-radius: var(--radius-card);
+  background: var(--color-paper-2);
+}
+
+.settings__label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-ink-2);
+}
+
+.settings__field-group {
+  display: flex;
+  gap: var(--space-xs);
+}
+
+/* ---------- inputs ---------- */
+
+.settings__input {
+  flex: 1;
+  min-width: 0;
+  height: 2.75rem;
+  padding: 0 var(--space-md);
+  border: 1px solid oklch(20% 0.012 250 / 0.16);
+  border-radius: 14px;
+  outline: 2px solid transparent;
+  outline-offset: 1px;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: background-color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+}
+
+.settings__input::placeholder {
+  color: var(--color-ink-3);
+}
+
+@media (hover: hover) {
+  .settings__input:hover {
+    background: var(--color-paper-3);
+  }
+}
+
+.settings__input:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 1px;
+  border-color: var(--color-ink-2);
+}
+
+/* ---------- buttons ---------- */
+
+.settings__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.75rem;
+  padding: 0 1.4rem;
+  border: 0;
+  border-radius: var(--radius-pill);
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out);
+}
+
+.settings__button:active {
+  transform: translateY(1px);
+}
+
+.settings__button:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+.settings__button--primary {
+  background: var(--color-accent);
+  color: var(--color-ink);
+}
+
+@media (hover: hover) {
+  .settings__button--primary:hover {
+    background: var(--color-accent-deep);
+  }
+}
+
+.settings__button--outline {
+  border: 1.5px solid var(--color-ink-2);
+  background: transparent;
+  color: var(--color-ink);
+}
+
+@media (hover: hover) {
+  .settings__button--outline:hover {
+    background: var(--color-paper-3);
+  }
+}
+
+/* ---------- messages ---------- */
+
 .settings__error {
-  color: #e0554f;
+  margin: 0;
+  color: var(--color-accent-3-deep);
   font-size: 0.85rem;
-  margin-top: 0.5rem;
 }
+
 .settings__saved {
-  color: #2ecc71;
+  color: var(--color-accent-2);
   font-size: 0.85rem;
-  margin-left: 0.5rem;
+  font-weight: 600;
 }
+
 .settings__hint {
-  color: #999;
+  margin: 0;
+  color: var(--color-ink-3);
   font-size: 0.8rem;
-  margin-top: 0.25rem;
+  line-height: 1.5;
 }
 </style>
