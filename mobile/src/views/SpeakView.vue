@@ -7,8 +7,7 @@ import {useApiKey} from '../composables/useApiKey.js';
 import {useTranslateHistory} from '../composables/useTranslateHistory.js';
 
 const router = useRouter();
-const {isListening, partialText, startListening, stopListening} =
-  useSpeechToText();
+const {partialText, startListening, stopListening} = useSpeechToText();
 const {apiKey, init: initApiKey} = useApiKey();
 const {history, init: initHistory, addEntry} = useTranslateHistory();
 
@@ -44,7 +43,7 @@ async function handlePressEnd() {
   if (status.value !== 'recording') return;
   const text = await stopListening();
   if (!text.trim()) {
-    status.value = 'idle';
+    status.value = 'error';
     errorMessage.value = "Didn't catch that — try again.";
     return;
   }
@@ -128,6 +127,9 @@ const displayText = computed(() =>
             'speak__mic--busy': status === 'translating',
           }"
           :disabled="status === 'translating'"
+          :aria-label="
+            status === 'recording' ? 'Listening, let go to translate' : 'Hold to speak'
+          "
           @mousedown="handlePressStart"
           @mouseup="handlePressEnd"
           @mouseleave="status === 'recording' && handlePressEnd()"
