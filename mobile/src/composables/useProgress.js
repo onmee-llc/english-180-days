@@ -19,6 +19,17 @@ import {mergeProgress} from './mergeProgress.js';
 
 const PROGRESS_KEY = 'dm_progress';
 
+/**
+ * The string stored in the shared Firestore `completed` array. Must stay
+ * byte-identical to what the web app writes — Eleventy's `page.url`
+ * (`src/site/_includes/course.njk`), which is directory-style with a
+ * trailing slash. Any drift here means web and mobile completions stop
+ * reconciling and the array grows two entries per lesson.
+ */
+export function lessonKey(lesson) {
+  return `/learn/${lesson.topicSlug}/lesson-${lesson.lessonNum}/`;
+}
+
 const state = reactive({
   progress: {streak: {}, completed: []},
   isSignedIn: false,
@@ -93,9 +104,13 @@ export function useProgress() {
     await authSignOut(getAuth());
   }
 
-  async function markComplete(lessonKey) {
+  function isComplete(lesson) {
+    return !!lesson && state.progress.completed.includes(lessonKey(lesson));
+  }
+
+  async function markComplete(lesson) {
     const completed = new Set(state.progress.completed);
-    completed.add(lessonKey);
+    completed.add(lessonKey(lesson));
     const today = new Date().toISOString().slice(0, 10);
     const next = {
       ...state.progress,
@@ -108,5 +123,5 @@ export function useProgress() {
     if (user) await pushProgress(user.uid);
   }
 
-  return {...toRefs(state), init, signIn, signOut, markComplete};
+  return {...toRefs(state), init, signIn, signOut, isComplete, markComplete};
 }
