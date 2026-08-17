@@ -19,8 +19,8 @@ npx cap sync
 `mobile/ios/` and `mobile/android/` are gitignored (regenerated, not
 committed) — on a fresh clone, run `npx cap add ios` / `npx cap add android`
 before `npx cap sync`. **Re-running `cap add` regenerates these folders from
-scratch**, so steps 2, 3, and 6 below (the files/edits that live inside them)
-must be reapplied after every `cap add`, not just done once.
+scratch**, so steps 2, 3, 6, and 7 below (the files/edits that live inside
+them) must be reapplied after every `cap add`, not just done once.
 
 Google sign-in uses [`@capacitor-firebase/authentication`][plugin], which on
 iOS/Android runs through the **native** Firebase SDKs. Those SDKs read a
@@ -48,12 +48,29 @@ these are done:**
    **URL Schemes** field (this writes a `CFBundleURLTypes` entry into
    `Info.plist`). Without this, iOS Google Sign-In can't redirect back into
    the app after the user picks an account — it just fails silently.
-7. Re-run `npx cap sync`.
+7. **iOS only:** the Speak tab's speech recognition needs two usage strings in
+   `Info.plist` — add them the same way as the URL scheme in step 6 (Xcode →
+   `App` target → **Info** tab, or by editing `Info.plist` directly):
+   - `NSSpeechRecognitionUsageDescription` — e.g. "Used to transcribe what you
+     say for the Speak translation feature."
+   - `NSMicrophoneUsageDescription` — e.g. "Used to record your voice for the
+     Speak translation feature."
+
+   iOS kills the app on the first speech-recognition call if either is
+   missing. Android needs nothing here: the plugin ships its own
+   `RECORD_AUDIO` permission and Android 11+ `<queries>` entry, merged in
+   automatically.
+8. Re-run `npx cap sync`.
 
 No placeholder versions of these files exist in the repo on purpose — a fake
 one fails at runtime in a much more confusing way than a missing one.
 
 Sign-in in the browser dev server works without any of the above: on web the
 plugin falls back to the Firebase JS SDK's popup flow.
+
+The Speak tab does not: `@capacitor-community/speech-recognition` has no web
+implementation, so every call throws `Method not implemented on web.` in
+`npm run dev`. On-device speech recognition can only be tested in a native
+build.
 
 [plugin]: https://github.com/capawesome-team/capacitor-firebase/tree/main/packages/authentication
