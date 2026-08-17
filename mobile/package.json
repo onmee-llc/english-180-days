@@ -4,7 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "predev": "npm run build-content",
     "dev": "vite",
+    "prebuild": "npm run build-content",
     "build": "vite build",
     "test": "vitest run",
     "build-content": "node scripts/build-content.js"
