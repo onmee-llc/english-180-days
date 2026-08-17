@@ -31,7 +31,7 @@ const streakCount = computed(
       <ul>
         <li
           v-for="lesson in month.lessons"
-          :key="lesson.date"
+          :key="`${lesson.topicSlug}-${lesson.lessonNum}`"
           :class="{'calendar__day--done': progress.streak[lesson.date]}"
         >
           <span class="calendar__date">{{ lesson.date }}</span>
