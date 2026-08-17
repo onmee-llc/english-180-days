@@ -16,6 +16,12 @@ npx cap sync
 
 ## ⚠️ Required before native builds can sign in
 
+`mobile/ios/` and `mobile/android/` are gitignored (regenerated, not
+committed) — on a fresh clone, run `npx cap add ios` / `npx cap add android`
+before `npx cap sync`. **Re-running `cap add` regenerates these folders from
+scratch**, so steps 2, 3, and 6 below (the files/edits that live inside them)
+must be reapplied after every `cap add`, not just done once.
+
 Google sign-in uses [`@capacitor-firebase/authentication`][plugin], which on
 iOS/Android runs through the **native** Firebase SDKs. Those SDKs read a
 per-platform config file that is not in this repo and cannot be generated
@@ -36,7 +42,13 @@ these are done:**
 5. Add the Android app's **SHA-1 signing certificate fingerprint** in the
    Firebase Console (debug and release). Android Google Sign-In fails without
    it.
-6. Re-run `npx cap sync`.
+6. **iOS only:** open `GoogleService-Info.plist` and copy the
+   `REVERSED_CLIENT_ID` value. In Xcode, select the `App` target → **Info**
+   tab → **URL Types** → add one, pasting `REVERSED_CLIENT_ID` into the
+   **URL Schemes** field (this writes a `CFBundleURLTypes` entry into
+   `Info.plist`). Without this, iOS Google Sign-In can't redirect back into
+   the app after the user picks an account — it just fails silently.
+7. Re-run `npx cap sync`.
 
 No placeholder versions of these files exist in the repo on purpose — a fake
 one fails at runtime in a much more confusing way than a missing one.
