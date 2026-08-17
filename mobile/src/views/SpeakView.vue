@@ -42,8 +42,13 @@ async function handlePressStart() {
     await startListening();
   } catch (err) {
     status.value = 'error';
+    // startListening() also rejects for non-permission reasons (native start()
+    // failure, or the plugin's web stub throwing "not implemented on web" in
+    // the dev server) — showing permission copy for those misdiagnoses them.
     errorMessage.value =
-      'Microphone access is needed for this feature. Please allow it and try again.';
+      err.message === 'Microphone permission was not granted.'
+        ? 'Microphone access is needed for this feature. Please allow it and try again.'
+        : err.message || 'Could not start listening. Please try again.';
   }
 }
 
