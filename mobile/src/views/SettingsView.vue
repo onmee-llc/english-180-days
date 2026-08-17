@@ -261,4 +261,11 @@ onMounted(async () => {
   font-size: 0.8rem;
   line-height: 1.5;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .settings__button {
+    transition: background-color var(--dur-fast) linear, color var(--dur-fast) linear;
+    transform: none !important;
+  }
+}
 </style>

@@ -14,6 +14,16 @@ const topics = computed(() => {
   }
   return Object.values(byTopic);
 });
+
+// topicHighlight comes straight from course content and is mostly a real
+// CSS color keyword, but a couple of topics use Tailwind/Material names
+// (amber, emerald) that aren't valid CSS — those silently render as no
+// color at all. Map the known-invalid ones; anything else passes through
+// unchanged, same as before.
+const HIGHLIGHT_ALIASES = {amber: '#f59e0b', emerald: '#10b981'};
+function topicDotColor(highlight) {
+  return HIGHLIGHT_ALIASES[highlight] || highlight;
+}
 </script>
 
 <template>
@@ -27,7 +37,7 @@ const topics = computed(() => {
       <h2 class="courses__topic-title">
         <span
           class="courses__topic-dot"
-          :style="{background: topic.topicHighlight}"
+          :style="{background: topicDotColor(topic.topicHighlight)}"
           aria-hidden="true"
         ></span>
         {{ topic.topicTitle }}
