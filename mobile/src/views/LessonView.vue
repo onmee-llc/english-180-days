@@ -25,5 +25,35 @@ const lesson = computed(() =>
       @mark-complete="markComplete(lesson)"
     />
   </section>
-  <p v-else>Lesson not found.</p>
+  <section v-else class="lesson lesson--empty">
+    <p class="lesson__empty-text">Lesson not found.</p>
+  </section>
 </template>
+
+<style scoped>
+/* Hallmark · component: screen header + empty state · genre: playful (Hum register)
+ * theme: Hum — shares tokens with SpeakView.vue via global src/styles/tokens.css
+ */
+
+.lesson {
+  min-height: 100dvh;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
+
+.lesson--empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-xl) var(--space-lg) calc(6rem + env(safe-area-inset-bottom));
+  text-align: center;
+}
+
+.lesson__empty-text {
+  margin: 0;
+  color: var(--color-ink-2);
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+</style>

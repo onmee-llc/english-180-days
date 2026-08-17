@@ -39,8 +39,41 @@ const lesson = computed(() => today.value.lesson);
       @mark-complete="markComplete(lesson)"
     />
   </section>
-  <p v-else-if="today.status === 'complete'">
-    🎉 You've completed the program — every lesson is still in Courses.
-  </p>
-  <p v-else>No lesson scheduled for today.</p>
+  <section v-else class="today today--empty">
+    <p v-if="today.status === 'complete'" class="today__empty-text">
+      🎉 You've completed the program — every lesson is still in Courses.
+    </p>
+    <p v-else class="today__empty-text">No lesson scheduled for today.</p>
+  </section>
 </template>
+
+<style scoped>
+/* Hallmark · component: screen header + empty state · genre: playful (Hum register)
+ * theme: Hum — shares tokens with SpeakView.vue via global src/styles/tokens.css
+ * LessonDetail owns its own padding/background; the empty state mirrors it so the
+ * screen never flashes unstyled black-on-white while lesson data resolves.
+ */
+
+.today {
+  min-height: 100dvh;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
+
+.today--empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-xl) var(--space-lg) calc(6rem + env(safe-area-inset-bottom));
+  text-align: center;
+}
+
+.today__empty-text {
+  margin: 0;
+  max-width: 32ch;
+  color: var(--color-ink-2);
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+</style>
