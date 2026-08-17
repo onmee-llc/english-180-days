@@ -1,5 +1,5 @@
 <script setup>
-import {ref, onMounted, computed} from 'vue';
+import {ref, onMounted, onUnmounted, computed} from 'vue';
 import {useRouter} from 'vue-router';
 import {useSpeechToText} from '../composables/useSpeechToText.js';
 import {translateToEnglish} from '../composables/useClaudeTranslate.js';
@@ -20,6 +20,14 @@ const showHistory = ref(false);
 onMounted(async () => {
   await initApiKey();
   await initHistory();
+});
+
+// Leaving the screen mid-recording (bottom nav, back gesture) would otherwise
+// leave the native session and its module-level listener running.
+onUnmounted(() => {
+  if (status.value === 'recording') {
+    stopListening().catch(() => {});
+  }
 });
 
 async function handlePressStart() {
@@ -136,6 +144,7 @@ const displayText = computed(() =>
           @mouseleave="status === 'recording' && handlePressEnd()"
           @touchstart.prevent="handlePressStart"
           @touchend.prevent="handlePressEnd"
+          @touchcancel.prevent="handlePressEnd"
         >
           <span class="speak__mic-bars" aria-hidden="true">
             <span></span><span></span><span></span><span></span><span></span>
