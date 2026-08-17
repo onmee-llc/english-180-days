@@ -1,25 +1,27 @@
-/* Hallmark · shared design tokens · theme: Hum (cream / pear / cyan / coral, rounded sans)
- * Extracted verbatim from SpeakView.vue's `.speak` scoped token block so every screen in the
- * app reads from the same values. SpeakView.vue itself is untouched — it keeps its own
- * (identical) copy on `.speak` for scoping; this file makes the same names available globally.
+/* Daily Mastery brand tokens · DNA lifted from awenvia.com's shipped CSS (see
+ * mobile/brand/README.md for the source values and rationale). Replaces the earlier
+ * Hum theme (cream/pear/cyan/coral) — same variable names, so no template/component
+ * changes were needed anywhere, only the values below.
  */
 
 :root {
-  --color-paper: oklch(97% 0.012 95);
-  --color-paper-2: oklch(94% 0.016 95);
-  --color-paper-3: oklch(91% 0.02 95);
-  --color-ink: oklch(20% 0.012 250);
-  --color-ink-2: oklch(20% 0.012 250 / 0.68);
-  --color-ink-3: oklch(20% 0.012 250 / 0.45);
+  --color-paper: #f6f5fb;
+  --color-paper-2: #f0eefa;
+  --color-paper-3: #e8faf5;
+  --color-ink: #15112b;
+  --color-ink-2: rgb(21 17 43 / 68%);
+  --color-ink-3: rgb(21 17 43 / 45%);
 
-  --color-accent: oklch(86% 0.18 95); /* pear — primary action */
-  --color-accent-deep: oklch(68% 0.15 95);
-  --color-accent-2: oklch(66% 0.18 235); /* sky-cyan — result */
-  --color-accent-2-tint: oklch(94% 0.03 235);
-  --color-accent-3: oklch(68% 0.24 18); /* coral — error / pop */
-  --color-accent-3-deep: oklch(54% 0.2 18);
-  --color-accent-3-tint: oklch(94% 0.035 18);
-  --color-focus: oklch(58% 0.19 235);
+  --color-accent: #3d4ee8; /* indigo — primary action */
+  --color-accent-deep: #3240be;
+  --color-on-accent: #fff; /* text/icon color for anything sitting on --color-accent or
+    --color-accent-3 — both are dark, saturated fills that need light content on top. */
+  --color-accent-2: #2dd4a7; /* mint/teal — result */
+  --color-accent-2-tint: rgb(45 212 167 / 12%);
+  --color-accent-3: #b42348; /* alert / error */
+  --color-accent-3-deep: color-mix(in oklab, #b42348 85%, black);
+  --color-accent-3-tint: #fff0f3;
+  --color-focus: #3d4ee8;
 
   --radius-card: 20px;
   --radius-pill: 999px;

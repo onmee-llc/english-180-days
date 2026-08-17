@@ -1,8 +1,8 @@
 # Daily Mastery — brand kit
 
-DNA lifted from awenvia.com's actual CSS (not guessed — see values below), not applied to the
-shipped app UI yet (that's still the Hum theme from the earlier design pass). This is the
-reference for the next re-skin, plus the app icon, which *is* live now.
+DNA lifted from awenvia.com's actual CSS (not guessed — see values below). Applied to the
+shipped app UI in `mobile/src/styles/tokens.css` (replaced the earlier Hum theme, same
+variable names) and to the app icon/splash.
 
 ## Tokens
 
@@ -59,7 +59,11 @@ handoff to `@capacitor/assets` and regenerate with `magick icon.svg -resize 1024
 
 ## Applying this to the app UI
 
-Not done. Skipped: re-skinning 5 already-reviewed screens on a one-line ask. If wanted, the
-concrete next step is swapping the values in `mobile/src/styles/tokens.css` — same variable
-names the Hum theme already established, so no template changes needed, only the values.
-Say so and it's a small job; nothing here blocks it.
+Done — `mobile/src/styles/tokens.css` carries the values above under the existing variable
+names (`--color-accent`, `--color-paper`, etc.), so no template changes were needed. One
+addition: `--color-on-accent: #fff`, since the old theme's light accent worked with
+`--color-ink` text on top of it but the new dark indigo accent doesn't — every
+`background: var(--color-accent)` spot now pairs with `color: var(--color-on-accent)`
+instead. A few hardcoded old-theme `oklch(...)` literals (link underlines, shadows, glows)
+were also swapped for `color-mix(in oklab, var(--color-accent...) N%, transparent)` so they
+track the new hue instead of staying stuck on the old one.

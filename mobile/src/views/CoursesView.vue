@@ -60,7 +60,7 @@ function topicDotColor(highlight) {
 
 <style scoped>
 /* Hallmark · component: grouped list screen · genre: playful (Hum register)
- * theme: Hum — shares tokens with SpeakView.vue via global src/styles/tokens.css
+ * theme: Daily Mastery brand (awenvia DNA) — shares tokens with SpeakView.vue via global src/styles/tokens.css
  * states: lesson link — default · hover(pointer) · focus-visible · active
  */
 

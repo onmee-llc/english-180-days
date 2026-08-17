@@ -55,7 +55,7 @@ const streakCount = computed(
 
 <style scoped>
 /* Hallmark · component: streak + list screen · genre: playful (Hum register)
- * theme: Hum — shares tokens with SpeakView.vue via global src/styles/tokens.css
+ * theme: Daily Mastery brand (awenvia DNA) — shares tokens with SpeakView.vue via global src/styles/tokens.css
  * states: day row — pending · done (icon + label + colour, never colour alone)
  */
 
@@ -194,7 +194,7 @@ const streakCount = computed(
   padding: 0.15em 0.6em;
   border-radius: var(--radius-pill);
   background: var(--color-accent);
-  color: var(--color-ink);
+  color: var(--color-on-accent);
   font-size: 0.7rem;
   font-weight: 600;
 }

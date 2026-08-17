@@ -32,7 +32,7 @@ const lesson = computed(() =>
 
 <style scoped>
 /* Hallmark · component: screen header + empty state · genre: playful (Hum register)
- * theme: Hum — shares tokens with SpeakView.vue via global src/styles/tokens.css
+ * theme: Daily Mastery brand (awenvia DNA) — shares tokens with SpeakView.vue via global src/styles/tokens.css
  */
 
 .lesson {

@@ -254,54 +254,16 @@ const displayText = computed(() =>
 </template>
 
 <style scoped>
-/* Hallmark · component: mobile screen · genre: playful (Hum register, offline-adapted)
- * theme: Hum (cream / pear / cyan / coral, rounded sans) — system-font fallback in place
- * of the catalog's Google Fonts link because this is an offline-first Capacitor app with
- * no existing web-font pipeline; no other view in the codebase loads one either.
+/* component: mobile screen · theme: Daily Mastery brand (awenvia DNA — indigo/mint/gold,
+ * rounded sans; see mobile/brand/README.md), tokens shared globally via tokens.css.
  * states: mic — default · recording · busy(disabled) · focus-visible
  *         retry/history buttons — default · hover · focus-visible · active
  */
 
 .speak {
-  --color-paper: oklch(97% 0.012 95);
-  --color-paper-2: oklch(94% 0.016 95);
-  --color-paper-3: oklch(91% 0.02 95);
-  --color-ink: oklch(20% 0.012 250);
-  --color-ink-2: oklch(20% 0.012 250 / 0.68);
-  --color-ink-3: oklch(20% 0.012 250 / 0.45);
-
-  --color-accent: oklch(86% 0.18 95); /* pear — primary action */
-  --color-accent-deep: oklch(68% 0.15 95);
-  --color-accent-2: oklch(66% 0.18 235); /* sky-cyan — result */
-  --color-accent-2-tint: oklch(94% 0.03 235);
-  --color-accent-3: oklch(68% 0.24 18); /* coral — error / pop */
-  --color-accent-3-deep: oklch(54% 0.2 18);
-  --color-accent-3-tint: oklch(94% 0.035 18);
-  --color-focus: oklch(58% 0.19 235);
-
-  --radius-card: 20px;
-  --radius-pill: 999px;
-
-  --space-2xs: 0.25rem;
-  --space-xs: 0.5rem;
-  --space-sm: 0.75rem;
-  --space-md: 1rem;
-  --space-lg: 1.5rem;
-  --space-xl: 2rem;
-  --space-2xl: 3rem;
-
-  --font-display:
-    -apple-system, BlinkMacSystemFont, 'Segoe UI Variable', 'Segoe UI',
-    system-ui, sans-serif;
-  --font-body: var(--font-display);
-  --font-mono: ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, monospace;
-
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
-  --ease-snap: cubic-bezier(0.22, 1, 0.36, 1);
-  --dur-fast: 140ms;
-  --dur-med: 240ms;
-  --dur-slow: 420ms;
+  /* Color/spacing/font/motion tokens come from mobile/src/styles/tokens.css
+   * (:root, loaded globally in main.js) — no local copy here anymore, so a
+   * brand swap only ever needs to happen in one file. */
 
   display: flex;
   flex-direction: column;
@@ -379,7 +341,7 @@ const displayText = computed(() =>
 
 .speak__transcript--live {
   background: var(--color-accent-2-tint);
-  box-shadow: inset 0 0 0 1.5px oklch(66% 0.18 235 / 0.35);
+  box-shadow: inset 0 0 0 1.5px color-mix(in oklab, var(--color-accent-2) 35%, transparent);
 }
 
 .speak-fade-enter-active,
@@ -437,13 +399,13 @@ const displayText = computed(() =>
   border: 0;
   border-radius: var(--radius-pill);
   background: var(--color-accent);
-  color: var(--color-ink);
+  color: var(--color-on-accent);
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
   touch-action: none;
   box-shadow:
     0 5px 0 0 var(--color-accent-deep),
-    0 10px 24px -8px oklch(76% 0.2 95 / 0.55);
+    0 10px 24px -8px color-mix(in oklab, var(--color-accent) 55%, transparent);
   transition:
     transform var(--dur-fast) var(--ease-spring),
     box-shadow var(--dur-fast) var(--ease-spring),
@@ -454,7 +416,7 @@ const displayText = computed(() =>
   transform: translateY(3px);
   box-shadow:
     0 2px 0 0 var(--color-accent-deep),
-    0 4px 10px -4px oklch(76% 0.2 95 / 0.55);
+    0 4px 10px -4px color-mix(in oklab, var(--color-accent) 55%, transparent);
 }
 
 .speak__mic:focus-visible {
@@ -466,7 +428,7 @@ const displayText = computed(() =>
   background: var(--color-accent-3);
   box-shadow:
     0 5px 0 0 var(--color-accent-3-deep),
-    0 10px 24px -8px oklch(68% 0.24 18 / 0.55);
+    0 10px 24px -8px color-mix(in oklab, var(--color-accent-3) 55%, transparent);
   transform: translateY(2px) scale(1.03);
 }
 
@@ -697,7 +659,7 @@ const displayText = computed(() =>
   padding: 0 0.35em;
   border-radius: var(--radius-pill);
   background: var(--color-accent);
-  color: var(--color-ink);
+  color: var(--color-on-accent);
   font-family: var(--font-mono);
   font-size: 0.75rem;
 }

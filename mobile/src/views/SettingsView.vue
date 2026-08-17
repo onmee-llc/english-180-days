@@ -96,7 +96,7 @@ onMounted(async () => {
 
 <style scoped>
 /* Hallmark · component: settings form · genre: playful (Hum register)
- * theme: Hum — shares tokens with SpeakView.vue via global src/styles/tokens.css
+ * theme: Daily Mastery brand (awenvia DNA) — shares tokens with SpeakView.vue via global src/styles/tokens.css
  * states: buttons — default · hover · focus-visible · active
  *         time/password inputs — default · hover · focus · disabled(n/a)
  */
@@ -220,7 +220,7 @@ onMounted(async () => {
 
 .settings__button--primary {
   background: var(--color-accent);
-  color: var(--color-ink);
+  color: var(--color-on-accent);
 }
 
 @media (hover: hover) {

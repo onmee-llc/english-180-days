@@ -29,7 +29,7 @@ defineEmits(['mark-complete']);
 
 <style scoped>
 /* Hallmark · component: lesson reading screen · genre: playful (Hum register, offline-adapted)
- * theme: Hum — shares tokens with SpeakView.vue via global src/styles/tokens.css
+ * theme: Daily Mastery brand (awenvia DNA) — shares tokens with SpeakView.vue via global src/styles/tokens.css
  * states: mark-complete button — default · hover · focus-visible · active · disabled(done)
  * the lesson body is bundled v-html (markdown-it output + `.lesson-vi` bilingual blocks from
  * scripts/build-content.js) — its tags are styled via :deep() since they aren't scoped.
@@ -127,7 +127,7 @@ defineEmits(['mark-complete']);
 
 .lesson-detail__body :deep(a) {
   color: var(--color-accent-2);
-  text-decoration-color: oklch(66% 0.18 235 / 0.4);
+  text-decoration-color: color-mix(in oklab, var(--color-accent-2) 40%, transparent);
   text-underline-offset: 0.15em;
 }
 
@@ -262,7 +262,7 @@ defineEmits(['mark-complete']);
   border: 0;
   border-radius: var(--radius-pill);
   background: var(--color-accent);
-  color: var(--color-ink);
+  color: var(--color-on-accent);
   font-family: inherit;
   font-weight: 600;
   font-size: 0.95rem;
