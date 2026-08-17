@@ -64,16 +64,21 @@ export function useProgress() {
       state.isSignedIn = !!user;
       if (!user) return;
 
-      const snap = await getDoc(userRef(user.uid));
-      const remote = snap.exists() ? snap.data() : {};
-      const merged = mergeProgress(state.progress, remote);
-      await saveLocalProgress(merged);
-      await pushProgress(user.uid);
+      try {
+        const snap = await getDoc(userRef(user.uid));
+        const remote = snap.exists() ? snap.data() : {};
+        const merged = mergeProgress(state.progress, remote);
+        await saveLocalProgress(merged);
+        await pushProgress(user.uid);
 
-      unsubscribeSnapshot = onSnapshot(userRef(user.uid), async (s) => {
-        const r = s.exists() ? s.data() : {};
-        await saveLocalProgress(mergeProgress(state.progress, r));
-      });
+        unsubscribeSnapshot = onSnapshot(userRef(user.uid), async (s) => {
+          const r = s.exists() ? s.data() : {};
+          await saveLocalProgress(mergeProgress(state.progress, r));
+        });
+      } catch (err) {
+        console.warn('could not reconcile progress', err);
+        return;
+      }
     });
 
     state.isReady = true;
