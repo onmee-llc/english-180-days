@@ -43,6 +43,7 @@ async function handlePressEnd() {
   if (status.value !== 'recording') return;
   const text = await stopListening();
   if (!text.trim()) {
+    lastVietnameseText.value = '';
     status.value = 'error';
     errorMessage.value = "Didn't catch that — try again.";
     return;
