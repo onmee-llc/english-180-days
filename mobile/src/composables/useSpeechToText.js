@@ -26,14 +26,24 @@ export function useSpeechToText() {
     );
 
     isListening.value = true;
-    // partialResults:true means start() resolves immediately without a
-    // final result — the transcript arrives via the listener above, and
-    // whatever it last set is treated as final when stopListening() runs.
-    await SpeechRecognition.start({
-      language: 'vi-VN',
-      partialResults: true,
-      popup: false,
-    });
+    try {
+      // partialResults:true means start() resolves immediately without a
+      // final result — the transcript arrives via the listener above, and
+      // whatever it last set is treated as final when stopListening() runs.
+      await SpeechRecognition.start({
+        language: 'vi-VN',
+        partialResults: true,
+        popup: false,
+      });
+    } catch (err) {
+      // start() rejected (engine busy, hardware unavailable, ...) — roll
+      // back so a retry doesn't leak a second listener on top of a stuck
+      // isListening flag.
+      await partialListenerHandle?.remove();
+      partialListenerHandle = null;
+      isListening.value = false;
+      throw err;
+    }
   }
 
   async function stopListening() {
