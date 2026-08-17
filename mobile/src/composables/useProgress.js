@@ -37,6 +37,20 @@ import {mergeProgress} from './mergeProgress.js';
 
 const PROGRESS_KEY = 'dm_progress';
 
+// This is a single-family personal app, not a public one — only these
+// emails may use it. Mirrors the same allowlist enforced server-side in
+// firestore.rules; that rule is the real security boundary (Firestore
+// rejects reads/writes from any other account regardless of this check).
+// This client-side check exists only so a disallowed sign-in gets a clear
+// message and an immediate sign-out instead of a confusing permission-denied
+// error the first time Firestore is touched.
+const ALLOWED_EMAILS = [
+  'onmeevn@gmail.com',
+  'losteras.channel@gmail.com',
+  'ngoradio.hi@gmail.com',
+  'andrew.hcmuns@gmail.com',
+];
+
 /**
  * The string stored in the shared Firestore `completed` array. Must stay
  * byte-identical to what the web app writes — Eleventy's `page.url`
@@ -52,9 +66,19 @@ const state = reactive({
   progress: {streak: {}, completed: []},
   isSignedIn: false,
   isReady: false,
+  authError: '',
 });
 
 let unsubscribeSnapshot = () => {};
+
+async function forceSignOut() {
+  try {
+    await FirebaseAuthentication.signOut();
+  } catch (err) {
+    console.warn('native sign-out failed', err);
+  }
+  await authSignOut(getAuth());
+}
 
 async function loadLocalProgress() {
   const {value} = await Preferences.get({key: PROGRESS_KEY});
@@ -90,6 +114,15 @@ export function useProgress() {
 
     onAuthStateChanged(getAuth(), async (user) => {
       unsubscribeSnapshot();
+
+      if (user && !ALLOWED_EMAILS.includes(user.email)) {
+        state.authError = `${user.email} is not allowed to use this app.`;
+        state.isSignedIn = false;
+        await forceSignOut();
+        return;
+      }
+
+      state.authError = '';
       state.isSignedIn = !!user;
       if (!user) return;
 
@@ -133,10 +166,7 @@ export function useProgress() {
   }
 
   async function signOut() {
-    // Clears the native session; on web this is the JS SDK sign-out.
-    await FirebaseAuthentication.signOut();
-    // Native sign-out leaves the JS SDK session open, so close that too.
-    await authSignOut(getAuth());
+    await forceSignOut();
   }
 
   function isComplete(lesson) {
