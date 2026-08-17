@@ -1,6 +1,7 @@
 <script setup>
 import {computed, onMounted, onUnmounted, ref} from 'vue';
 import {useProgress} from '../composables/useProgress.js';
+import {selectTodayLesson} from '../composables/selectTodayLesson.js';
 import content from '../content/lessons.json';
 import LessonDetail from '../components/LessonDetail.vue';
 
@@ -23,11 +24,10 @@ onUnmounted(() =>
   document.removeEventListener('visibilitychange', refreshToday),
 );
 
-const lesson = computed(
-  () =>
-    content.lessons.find((l) => l.date === todayISO.value) ||
-    content.lessons.find((l) => l.date >= content.programStart),
+const today = computed(() =>
+  selectTodayLesson(content.lessons, todayISO.value),
 );
+const lesson = computed(() => today.value.lesson);
 </script>
 
 <template>
@@ -39,5 +39,8 @@ const lesson = computed(
       @mark-complete="markComplete(lesson)"
     />
   </section>
+  <p v-else-if="today.status === 'complete'">
+    🎉 You've completed the program — every lesson is still in Courses.
+  </p>
   <p v-else>No lesson scheduled for today.</p>
 </template>
