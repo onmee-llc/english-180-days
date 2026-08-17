@@ -4,6 +4,7 @@ import CalendarView from './views/CalendarView.vue';
 import CoursesView from './views/CoursesView.vue';
 import SettingsView from './views/SettingsView.vue';
 import LessonView from './views/LessonView.vue';
+import SpeakView from './views/SpeakView.vue';
 
 export const router = createRouter({
   history: createWebHistory(),
@@ -17,5 +18,6 @@ export const router = createRouter({
       name: 'lesson',
       component: LessonView,
     },
+    {path: '/speak', name: 'speak', component: SpeakView},
   ],
 });

@@ -6,6 +6,7 @@
     <router-link to="/calendar">Calendar</router-link>
     <router-link to="/courses">Courses</router-link>
     <router-link to="/settings">Settings</router-link>
+    <router-link to="/speak">Speak</router-link>
   </nav>
 </template>
 
