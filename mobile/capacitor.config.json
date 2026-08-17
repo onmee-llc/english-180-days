@@ -1,5 +1,11 @@
 {
   "appId": "vn.onmee.dailymastery",
   "appName": "Daily Mastery",
-  "webDir": "dist"
+  "webDir": "dist",
+  "plugins": {
+    "FirebaseAuthentication": {
+      "skipNativeAuth": false,
+      "providers": ["google.com"]
+    }
+  }
 }

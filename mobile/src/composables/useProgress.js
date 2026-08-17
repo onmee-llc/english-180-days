@@ -2,7 +2,7 @@ import {reactive, toRefs} from 'vue';
 import {
   getAuth,
   GoogleAuthProvider,
-  signInWithPopup,
+  signInWithCredential,
   signOut as authSignOut,
   onAuthStateChanged,
 } from 'firebase/auth';
@@ -14,8 +14,26 @@ import {
   onSnapshot,
 } from 'firebase/firestore';
 import {Preferences} from '@capacitor/preferences';
+import {Capacitor} from '@capacitor/core';
+import {FirebaseAuthentication} from '@capacitor-firebase/authentication';
 import {ensureFirebaseApp} from '../firebase.js';
 import {mergeProgress} from './mergeProgress.js';
+
+// ── NATIVE BUILD PREREQUISITE (manual, Firebase Console owner only) ─────────
+// Google sign-in below runs through the native Firebase SDKs on iOS/Android.
+// Those SDKs read a per-platform config file that is NOT in this repo and
+// cannot be generated here. Before `npx cap run ios|android` will
+// authenticate, the owner of the `aevo-labs` Firebase project must:
+//   1. Register an iOS app and an Android app in the Firebase Console with
+//      bundle ID / package name `vn.onmee.dailymastery` (must match `appId`
+//      in mobile/capacitor.config.json).
+//   2. Download `GoogleService-Info.plist` → place in `mobile/ios/App/App/`.
+//   3. Download `google-services.json`     → place in `mobile/android/app/`.
+//   4. Enable Google as a sign-in provider in Firebase Auth, and add the
+//      Android app's SHA-1 signing certificate fingerprint (Android's Google
+//      Sign-In fails without it).
+// Until then sign-in only works in the browser dev server. See mobile/README.md.
+// ───────────────────────────────────────────────────────────────────────────
 
 const PROGRESS_KEY = 'dm_progress';
 
@@ -97,10 +115,27 @@ export function useProgress() {
 
   async function signIn() {
     ensureFirebaseApp();
-    await signInWithPopup(getAuth(), new GoogleAuthProvider());
+    // signInWithPopup() cannot work in a WKWebView/Android WebView (no
+    // opener to postMessage back to, and Google rejects OAuth in embedded
+    // WebViews). The plugin uses the native Google SDK on device and falls
+    // back to the JS SDK's popup on web.
+    const result = await FirebaseAuthentication.signInWithGoogle();
+    // On web the plugin drives getAuth() itself, so it's already signed in.
+    // On native it only signs into the *native* Firebase SDK — the JS SDK
+    // session that onAuthStateChanged/Firestore depend on has to be opened
+    // separately with the credential the native flow returned.
+    if (Capacitor.isNativePlatform()) {
+      const credential = GoogleAuthProvider.credential(
+        result.credential?.idToken,
+      );
+      await signInWithCredential(getAuth(), credential);
+    }
   }
 
   async function signOut() {
+    // Clears the native session; on web this is the JS SDK sign-out.
+    await FirebaseAuthentication.signOut();
+    // Native sign-out leaves the JS SDK session open, so close that too.
     await authSignOut(getAuth());
   }
 
