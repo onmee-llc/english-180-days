@@ -54,7 +54,18 @@ async function handlePressStart() {
 
 async function handlePressEnd() {
   if (status.value !== 'recording') return;
-  const text = await stopListening();
+  let text = '';
+  try {
+    text = await stopListening();
+  } catch (err) {
+    // Mirrors handlePressStart's catch — without this, a rejecting
+    // stopListening() (e.g. the web stub, or native stop() with nothing
+    // running) becomes an unhandled rejection and leaves status stuck at
+    // 'recording' with no way out of the UI.
+    status.value = 'error';
+    errorMessage.value = err.message || 'Could not stop listening. Please try again.';
+    return;
+  }
   if (!text.trim()) {
     lastVietnameseText.value = '';
     status.value = 'error';
