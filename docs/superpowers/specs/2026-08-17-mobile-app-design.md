@@ -100,10 +100,12 @@ push infrastructure needed — purely local/on-device scheduling.
   `npx cap run ios` / `npx cap run android` — this is a single-user personal
   app, not covered by the existing Percy/Karma/Mocha suites, which stay
   scoped to the Eleventy site.
-- `build-content.js` gets one assert-based self-check comparing the number
-  of generated lesson entries in `lessons.json` against the number of
-  `lesson-*.md` files under `src/site/content/en/learn/**`, so a silent
-  parsing failure (e.g. a malformed frontmatter) is caught at build time.
+- `build-content.js` gets one assert-based self-check: it hard-fails only
+  when zero lessons parse (a real breakage, e.g. a wrong content path). A
+  lesson file whose title has no "Day N" prefix is warned and skipped, not
+  treated as a failure — that's expected for supplementary content that
+  isn't part of the day-by-day schedule (matching how
+  `lessonSchedule.js` already treats such files on the web).
 
 ## Visual design
 
