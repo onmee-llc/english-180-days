@@ -3,6 +3,7 @@ import {computed} from 'vue';
 import {useRoute} from 'vue-router';
 import {useProgress} from '../composables/useProgress.js';
 import content from '../content/lessons.json';
+import LessonDetail from '../components/LessonDetail.vue';
 
 const route = useRoute();
 const {progress, markComplete} = useProgress();
@@ -24,16 +25,11 @@ const isComplete = computed(() =>
 
 <template>
   <section v-if="lesson" class="lesson">
-    <p class="lesson__day">Day {{ lesson.day }} · {{ lesson.topicTitle }}</p>
-    <h1>{{ lesson.shortTitle }}</h1>
-    <div class="lesson__body" v-html="lesson.bodyHtml"></div>
-    <button
-      type="button"
-      :disabled="isComplete"
-      @click="markComplete(lessonKey)"
-    >
-      {{ isComplete ? 'Completed ✓' : 'Mark complete' }}
-    </button>
+    <LessonDetail
+      :lesson="lesson"
+      :is-complete="isComplete"
+      @mark-complete="markComplete(lessonKey)"
+    />
   </section>
   <p v-else>Lesson not found.</p>
 </template>
