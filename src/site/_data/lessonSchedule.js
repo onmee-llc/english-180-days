@@ -6,7 +6,7 @@ const matter = require('gray-matter');
 const yaml = require('js-yaml');
 
 // Day 1 of the 180-day program
-const PROGRAM_START = new Date('2026-04-13');
+const PROGRAM_START = new Date('2026-08-22');
 
 const CONTENT_DIR = path.join(__dirname, '../content/en/learn');
 const COURSES_DATA_DIR = path.join(__dirname, 'courses');
@@ -27,16 +27,15 @@ const MONTH_NAMES = [
   'December',
 ];
 
-// Calendar range: April 2026 → November 2026 (covers all 210 scheduled days + buffer)
+// Calendar range: August 2026 → February 2027 (Day 1 = 2026-08-22; 180 days end ~2027-02-17)
 const CALENDAR_RANGE = [
-  {year: 2026, month: 3}, // April (0-indexed)
-  {year: 2026, month: 4},
-  {year: 2026, month: 5},
-  {year: 2026, month: 6},
-  {year: 2026, month: 7},
-  {year: 2026, month: 8},
-  {year: 2026, month: 9},
+  {year: 2026, month: 7}, // August (0-indexed)
+  {year: 2026, month: 8}, // September
+  {year: 2026, month: 9}, // October
   {year: 2026, month: 10}, // November
+  {year: 2026, month: 11}, // December
+  {year: 2027, month: 0}, // January
+  {year: 2027, month: 1}, // February
 ];
 
 function addDays(date, days) {

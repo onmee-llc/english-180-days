@@ -10,8 +10,12 @@ const DATA_ID = 'study-toolbox-data';
 const PROGRESS_ID = 'study-toolbox-progress';
 const TODAY_CARD_ID = 'study-toolbox-today-card';
 const TOMORROW_CARD_ID = 'study-toolbox-tomorrow-card';
+const SIGNIN_ID = 'study-toolbox-signin';
+const SIGNIN_STATUS_ID = 'study-toolbox-signin-status';
 
-const PROGRAM_START = new Date('2026-04-13');
+// Fallback only — the real Day 1 comes from the toolbox `data-program-start`
+// attribute, fed by _data/lessonSchedule.js so both stay in sync.
+const DEFAULT_PROGRAM_START = '2026-08-22';
 const TOTAL_DAYS = 180;
 const CIRCUMFERENCE = 2 * Math.PI * 22; // r=22 → ~138.23
 
@@ -49,10 +53,10 @@ function renderMiniLesson(lesson, container) {
   `;
 }
 
-function updateProgressRing(toolbox, todayDate) {
+function updateProgressRing(toolbox, todayDate, programStart) {
   const daysPassed = Math.max(
     0,
-    Math.floor((todayDate - PROGRAM_START) / 86400000),
+    Math.floor((todayDate - programStart) / 86400000),
   );
   const progress = Math.min(daysPassed / TOTAL_DAYS, 1);
   const offset = CIRCUMFERENCE * (1 - progress);
@@ -83,6 +87,58 @@ function close(toolbox, btn, panel) {
   panel.setAttribute('hidden', '');
 }
 
+/**
+ * Wire the "Sign in to sync" button. Firebase is loaded lazily (only on click)
+ * via a dynamic import so it never enters the main bundle or blocks bfcache.
+ * The signed-in label is restored from a localStorage flag set by fb.js, so we
+ * can show the right state without loading Firebase on every page.
+ */
+function initSignin() {
+  const btn = document.getElementById(SIGNIN_ID);
+  const status = document.getElementById(SIGNIN_STATUS_ID);
+  if (!btn) return;
+
+  let signedIn = false;
+  try {
+    signedIn = Boolean(localStorage['webdev_isSignedIn']);
+  } catch (_) {
+    // localStorage unavailable
+  }
+
+  const paint = () => {
+    btn.textContent = signedIn ? 'Sign out' : 'Sign in to sync';
+    if (status) {
+      status.textContent = signedIn ? 'Synced across devices ✓' : '';
+    }
+  };
+  paint();
+
+  btn.addEventListener('click', async () => {
+    btn.disabled = true;
+    try {
+      const fb = await import('./fb');
+      if (signedIn) {
+        await fb.signOut();
+        signedIn = false;
+      } else {
+        const user = await fb.signIn();
+        signedIn = Boolean(user);
+      }
+    } catch (err) {
+      console.error('study-toolbox sign-in failed', err);
+    } finally {
+      btn.disabled = false;
+      paint();
+    }
+  });
+
+  // fb.js fires this after it reconciles local ↔ remote progress.
+  window.addEventListener('dm-progress-synced', () => {
+    signedIn = true;
+    paint();
+  });
+}
+
 function init() {
   const toolbox = document.getElementById(TOOLBOX_ID);
   const btn = document.getElementById(BTN_ID);
@@ -111,7 +167,12 @@ function init() {
   if (todayCard) renderLessonCard(todayLesson, todayCard);
   if (tomorrowCard) renderMiniLesson(tomorrowLesson, tomorrowCard);
 
-  updateProgressRing(toolbox, today);
+  const programStart = new Date(
+    toolbox.dataset.programStart || DEFAULT_PROGRAM_START,
+  );
+  updateProgressRing(toolbox, today, programStart);
+
+  initSignin();
 
   btn.addEventListener('click', () => {
     if (toolbox.classList.contains('is-open')) {

@@ -1,126 +1,68 @@
-# web.dev [Archived]
+# Daily Mastery
 
-**Note:** This site is migrated to a new platform and this repository is available in a read-only mode. **We will not be merging new pull requests**. Please raise content issues in the new [issue tracker](https://issuetracker.google.com/issues/new?component=1400680&pli=1&template=1857359).
+A personal **180-day self-upgrade program** for a senior backend / AI engineer, built as a
+static site (Eleventy + Gulp + Rollup + SCSS) and deployed to Firebase Hosting.
 
-web.dev is the ultimate resource for developers of all backgrounds to learn,
-create, and solve on the web. It's meant to not only educate developers, but
-help them apply what they've learned to any site they work on, be it personal or
-business.
+Three parallel tracks, taught **bilingually (English + Tiếng Việt)** and tracked day by day:
 
------
-# [Archived README]
+- **English** — communication for work and daily conversation (including with kids).
+- **AI / LLM / ML** — a hands-on engineering roadmap with cost-tagged resources.
+- **Finance & Career** — practical personal-finance skills for engineers.
+
+The program starts **22 August 2026** and runs for 180 days. Sign in (Google) to track your
+streak and completed lessons across devices.
+
+> Originally forked from the archived [web.dev](https://github.com/GoogleChrome/web.dev)
+> codebase; the publishing pipeline and course system are reused as-is.
 
 ## Building the site 🏗
 
-You'll need a recent version of [Node](https://nodejs.org/): v14 (LTS) or higher.
-To check your node version run `node -v` in your terminal.
-
-If you don't have node, or if you need to upgrade, we recommend using the [Node
-Version Manager (nvm)](https://github.com/nvm-sh/nvm).
-
-### Clone the repo
+Requires [Node](https://nodejs.org/) v14 (LTS) or higher (`node -v`). Use
+[nvm](https://github.com/nvm-sh/nvm) if you need to manage versions.
 
 ```bash
-git clone https://github.com/onmee-llc/english-180-days.git
-```
-
-### Change directory into the folder created
-
-```bash
-cd english-180-days
-```
-
-### Install dependencies
-
-```bash
+git clone https://github.com/onmee-llc/daily-mastery.git
+cd daily-mastery
 npm ci
-```
-
-### Start a local server to preview the site
-
-```bash
 npm run dev
 ```
 
-Open `http://localhost:8080/` to see the site locally. Changes to assets will
-rebuild the site. Refresh to see your changes.
+Open `http://localhost:8080/` to preview locally. Changes to assets rebuild the site —
+refresh to see them.
 
-### Set up build flags
+### Speeding up builds
 
-Building the entire site can take a while because it's around one thousand pages.
-If you want to _massively_ speed up your build times, we suggest setting some
-build flags to ignore certain sections.
-
-- Create a `.env` file at the root of your project
-- Add the following:
+Building everything is slow. Create a `.env` file at the project root to scope the build:
 
 ```text
 # Ignore ALL site content
 ELEVENTY_IGNORE=true
 
-# Only build the directories you're working on.
-# Note, this is a JSON string so you must use double quotes.
-ELEVENTY_INCLUDE=["blog", "vitals"]
+# Only build the directories you're working on (JSON string — use double quotes).
+ELEVENTY_INCLUDE=["learn"]
 ```
 
 ## Environments 🌳
 
-Set `ELEVENTY_ENV=prod` to force production builds. This is the default when
-running "stage" or "deploy". No other options for `ELEVENTY_ENV` are supported,
-although our Eleventy site config will default to 'dev' if unspecified.
-
-The production build currently requires a _lot_ of memory, to the point where
-`node` might exit with errors along the line of
-
-```sh
-FATAL ERROR: Ineffective mark-compacts near heap limit Allocation failed - JavaScript heap out of memory
-
-v8::internal::V8::FatalProcessOutOfMemory(v8::internal::Isolate*, char const*, bool) [node]
-```
-
-The exact amount of heap space required varies from computer to computer and version
-of `node`. If you need a local production build, but run out of memory, you can
-increase the heap size by adding `--node-options '--max_old_space_size=8192'` (to
-[assign 8gb of heap space](https://stackoverflow.com/questions/48387040/how-do-i-determine-the-correct-max-old-space-size-for-node-js/48392705#48392705))
-to the [`npm` command](https://docs.npmjs.com/cli/v8/using-npm/config#node-options),
-prior to `run`. For instance:
+Set `ELEVENTY_ENV=prod` to force a production build (default for `stage`/`deploy`). If the
+build runs out of memory, raise the heap size:
 
 ```sh
 ELEVENTY_ENV=prod npm --node-options '--max_old_space_size=8192' run build
 ```
 
-## Staging 🕺
+## Deploying 🚀
 
-When you send in a pull request it will be automatically staged for you. Keep an
-eye out for the netlify bot to comment on the pull request with your unique URL.
+```sh
+npm run build && firebase deploy --only hosting
+# plus --only firestore:rules when auth/tracking is enabled
+```
 
-## Deploying the site 🚀
-
-### Automatic deploys
-
-The site will build and deploy the main branch automatically every hour,
-Mon-Fri. If you've just merged an article then it should go live at the top
-of the next hour.
-
-### Manual deploys
-
-To manually deploy the site you'll need to be a member of one of these Onmee-LLC teams
-
-1. Navigate to [the Cloud Build Triggers page](https://console.cloud.google.com/cloud-build/triggers?project=english-180-days-prod).
-2. Click the **RUN** button for the trigger named **Deploy**.
-3. In the side drawer that opens up, click the **RUN TRIGGER** button for the trigger for the **main** branch.
-
-*NOTE: web.dev auto deploys every hour if there is a new commit in the `main` branch. Manual deploys should only occur when a build fails or if auto deploys are disabled.*
+Firebase project: `dailymastery`. Auth uses Google sign-in; per-user progress is stored in
+Firestore under `users/{uid}`.
 
 ## Debugging 🐛
 
-If you need to debug the site's build process:
-
-1. Add a `debugger` statement to `.eleventy.js`
-1. Run `npm run debug:eleventy`
-1. Go to `about://inspect` to attach to the running process.
-
-<img
-  width="295"
-  alt="The Chrome inspect page showing the inspect button"
-  src="https://user-images.githubusercontent.com/1066253/61085691-bf125a00-a3e5-11e9-9151-58bd8a50d404.png">
+1. Add a `debugger` statement to `.eleventy.js`.
+2. Run `npm run debug:eleventy`.
+3. Open `about://inspect` to attach to the running process.
