@@ -158,4 +158,41 @@ describe('useSpeakSession', () => {
     expect(result.value).toBe(null);
     expect(transcribeAndTranslate).toHaveBeenCalledTimes(1);
   });
+
+  it('does not let a stale handlePressEnd overwrite state after a fast re-press', async () => {
+    let resolveStop;
+    const pendingStop = new Promise((resolve) => {
+      resolveStop = resolve;
+    });
+    stopRecording.mockReturnValueOnce(pendingStop);
+
+    const {useSpeakSession} = await import('./useSpeakSession.js');
+    const {
+      handlePressStart,
+      handlePressEnd,
+      status,
+      result,
+      lastVietnameseText,
+    } = useSpeakSession();
+
+    await handlePressStart();
+    const staleEnd = handlePressEnd(); // awaiting stopRecording, resolves later
+
+    // Fast re-press lands while the first attempt is still awaiting
+    // stopRecording() — this is the race the reviewer flagged.
+    await handlePressStart();
+    expect(status.value).toBe('recording');
+
+    // Now let the stale (first) attempt's stopRecording resolve with real
+    // audio, well after the second attempt claimed a new turn.
+    resolveStop(fakeRecording);
+    await staleEnd;
+
+    // The stale attempt must bail instead of clobbering the newer attempt's
+    // state (status/result) or claiming its turn for translation.
+    expect(status.value).toBe('recording');
+    expect(result.value).toBe(null);
+    expect(lastVietnameseText.value).toBe('');
+    expect(transcribeAndTranslate).not.toHaveBeenCalled();
+  });
 });

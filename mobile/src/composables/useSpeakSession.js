@@ -57,15 +57,21 @@ async function runTranslate(deps, myTurn) {
 
 async function handlePressEnd(deps) {
   if (status.value !== 'recording') return;
+  // Captured before the awaits below so a fast re-press (handlePressStart
+  // bumping `turn` while this attempt is still stopping/initializing) is
+  // detected instead of this stale attempt claiming the new turn.
+  const myTurn = turn;
   let recording = null;
   try {
     recording = await stopRecording();
   } catch (err) {
+    if (myTurn !== turn) return;
     status.value = 'error';
     errorMessage.value =
       err.message || 'Could not stop recording. Please try again.';
     return;
   }
+  if (myTurn !== turn) return;
   if (!recording) {
     lastVietnameseText.value = '';
     status.value = 'error';
@@ -77,7 +83,8 @@ async function handlePressEnd(deps) {
   lastAudioMimeType = recording.mimeType;
   status.value = 'translating';
   await deps.initHistory();
-  await runTranslate(deps, turn);
+  if (myTurn !== turn) return;
+  await runTranslate(deps, myTurn);
 }
 
 export function useSpeakSession() {
