@@ -124,4 +124,38 @@ describe('useSpeakSession', () => {
     expect(result.value.englishSentence).toBe('Where are your shoes?');
     expect(transcribeAndTranslate).toHaveBeenCalledTimes(2);
   });
+
+  it('does not replay a prior successful translation when a second attempt fails', async () => {
+    stopRecording.mockResolvedValue(fakeRecording);
+    const {useSpeakSession} = await import('./useSpeakSession.js');
+    const {
+      handlePressStart,
+      handlePressEnd,
+      retry,
+      status,
+      errorMessage,
+      result,
+    } = useSpeakSession();
+
+    // First attempt succeeds and leaves a real translation in place.
+    await handlePressStart();
+    await handlePressEnd();
+    expect(status.value).toBe('result');
+    expect(transcribeAndTranslate).toHaveBeenCalledTimes(1);
+
+    // Second attempt fails before any new audio is captured.
+    stopRecording.mockResolvedValue(null);
+    await handlePressStart();
+    await handlePressEnd();
+    expect(status.value).toBe('error');
+    expect(errorMessage.value).toMatch(/Didn't catch that/);
+
+    // Retrying after the second, audio-less failure must not resurrect the
+    // first attempt's stale blob/result.
+    await retry();
+
+    expect(status.value).toBe('idle');
+    expect(result.value).toBe(null);
+    expect(transcribeAndTranslate).toHaveBeenCalledTimes(1);
+  });
 });

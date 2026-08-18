@@ -86,6 +86,8 @@ export function useSpeakSession() {
     errorMessage.value = '';
     result.value = null;
     lastVietnameseText.value = '';
+    lastAudioBlob = null;
+    lastAudioMimeType = '';
     status.value = 'recording';
     try {
       await startRecording();
