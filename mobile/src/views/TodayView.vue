@@ -5,7 +5,7 @@ import {selectTodayLesson} from '../composables/selectTodayLesson.js';
 import content from '../content/lessons.json';
 import LessonDetail from '../components/LessonDetail.vue';
 
-const {isSignedIn, isComplete, markComplete} = useProgress();
+const {isComplete, markComplete} = useProgress();
 
 // A Capacitor app stays resident across midnight, so the date can't be read
 // once at setup time — refresh it whenever the app comes back to the
@@ -35,7 +35,6 @@ const lesson = computed(() => today.value.lesson);
     <LessonDetail
       :lesson="lesson"
       :is-complete="isComplete(lesson)"
-      :show-sign-in-hint="!isSignedIn"
       @mark-complete="markComplete(lesson)"
     />
   </section>

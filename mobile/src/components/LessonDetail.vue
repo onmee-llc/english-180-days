@@ -2,7 +2,6 @@
 defineProps({
   lesson: {type: Object, required: true},
   isComplete: {type: Boolean, required: true},
-  showSignInHint: {type: Boolean, default: false},
 });
 defineEmits(['mark-complete']);
 </script>
@@ -21,9 +20,6 @@ defineEmits(['mark-complete']);
     >
       {{ isComplete ? 'Completed ✓' : 'Mark complete' }}
     </button>
-    <p v-if="showSignInHint" class="lesson-detail__hint">
-      Sign in from Settings to sync progress across devices.
-    </p>
   </section>
 </template>
 
@@ -299,16 +295,6 @@ defineEmits(['mark-complete']);
   color: var(--color-ink-2);
   box-shadow: none;
   opacity: 0.85;
-}
-
-/* ---------- sign-in hint ---------- */
-
-.lesson-detail__hint {
-  margin: 0;
-  padding-top: var(--space-sm);
-  border-top: 1px solid oklch(20% 0.012 250 / 0.08);
-  color: var(--color-ink-3);
-  font-size: 0.85rem;
 }
 
 @media (prefers-reduced-motion: reduce) {
