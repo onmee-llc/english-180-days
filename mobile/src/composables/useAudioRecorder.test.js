@@ -57,6 +57,21 @@ describe('useAudioRecorder', () => {
     expect(stopTrack).toHaveBeenCalled();
   });
 
+  it('accepts a recording exactly at the minimum duration boundary', async () => {
+    const dateSpy = vi.spyOn(Date, 'now');
+    dateSpy.mockReturnValueOnce(1000); // startedAt
+    dateSpy.mockReturnValueOnce(1300); // stop, exactly 300ms later
+
+    const {useAudioRecorder} = await import('./useAudioRecorder.js');
+    const {startRecording, stopRecording} = useAudioRecorder();
+
+    await startRecording();
+    const result = await stopRecording();
+
+    expect(result).not.toBeNull();
+    expect(result.blob).toBeInstanceOf(Blob);
+  });
+
   it('returns the recorded blob and mimeType once past the minimum duration', async () => {
     const dateSpy = vi.spyOn(Date, 'now');
     dateSpy.mockReturnValueOnce(1000); // startedAt

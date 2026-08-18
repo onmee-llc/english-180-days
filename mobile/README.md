@@ -55,7 +55,7 @@ these are done:**
    `Info.plist`). Without this, iOS Google Sign-In can't redirect back into
    the app after the user picks an account — it just fails silently.
 8. **iOS only:** the Speak tab's audio recording needs a usage string in
-   `Info.plist` — add it the same way as the URL scheme in step 6 (Xcode →
+   `Info.plist` — add it the same way as the URL scheme in step 7 (Xcode →
    `App` target → **Info** tab, or by editing `Info.plist` directly):
    - `NSMicrophoneUsageDescription` — e.g. "Used to record your voice for the
      Speak translation feature."

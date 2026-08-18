@@ -123,7 +123,6 @@ onUnmounted(() => {
           “{{ lastVietnameseText }}”
         </p>
         <button
-          v-if="lastVietnameseText"
           type="button"
           class="btn btn--outline btn--coral"
           @click="retry"

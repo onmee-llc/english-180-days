@@ -20,13 +20,21 @@ const {startRecording, stopRecording} = useAudioRecorder();
 let lastAudioBlob = null;
 let lastAudioMimeType = '';
 
-async function runTranslate(deps) {
+// Incremented at the start of every fresh attempt (handlePressStart) and
+// every resend (retry()). runTranslate() captures the turn it was started
+// for and, right before writing any shared state, checks it's still the
+// current turn — so a stale in-flight translate from an abandoned attempt
+// can't stomp on a newer recording/retry that started while it was pending.
+let turn = 0;
+
+async function runTranslate(deps, myTurn) {
   try {
     const translated = await transcribeAndTranslate(
       lastAudioBlob,
       lastAudioMimeType,
       deps.apiKey.value,
     );
+    if (myTurn !== turn) return;
     lastVietnameseText.value = translated.vietnameseText;
     result.value = {
       englishSentence: translated.englishSentence,
@@ -41,6 +49,7 @@ async function runTranslate(deps) {
       explanation: translated.explanation,
     });
   } catch (err) {
+    if (myTurn !== turn) return;
     status.value = 'error';
     errorMessage.value = err.message || 'Translation failed. Please try again.';
   }
@@ -68,7 +77,7 @@ async function handlePressEnd(deps) {
   lastAudioMimeType = recording.mimeType;
   status.value = 'translating';
   await deps.initHistory();
-  await runTranslate(deps);
+  await runTranslate(deps, turn);
 }
 
 export function useSpeakSession() {
@@ -83,6 +92,7 @@ export function useSpeakSession() {
       router.push({name: 'settings'});
       return false;
     }
+    turn += 1;
     errorMessage.value = '';
     result.value = null;
     lastVietnameseText.value = '';
@@ -107,9 +117,10 @@ export function useSpeakSession() {
 
   function retry() {
     if (lastAudioBlob) {
+      turn += 1;
       status.value = 'translating';
       errorMessage.value = '';
-      return runTranslate(deps);
+      return runTranslate(deps, turn);
     }
     status.value = 'idle';
     errorMessage.value = '';

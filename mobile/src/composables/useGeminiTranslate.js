@@ -79,9 +79,15 @@ export async function transcribeAndTranslate(audioBlob, mimeType, apiKey) {
   }
   const client = new GoogleGenAI({apiKey});
   const data = arrayBufferToBase64(await audioBlob.arrayBuffer());
+  // Gemini's inline-audio MIME types don't take a ";codecs=..." parameter —
+  // strip it here rather than at the recorder, which reports the accurate
+  // browser mimeType for other (potential) uses.
+  const baseMimeType = mimeType.split(';')[0];
   const response = await client.models.generateContent({
     model: MODEL,
-    contents: [{role: 'user', parts: [{inlineData: {mimeType, data}}]}],
+    contents: [
+      {role: 'user', parts: [{inlineData: {mimeType: baseMimeType, data}}]},
+    ],
     config: {
       systemInstruction: SYSTEM_PROMPT,
       responseMimeType: 'application/json',

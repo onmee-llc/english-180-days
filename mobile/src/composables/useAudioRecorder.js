@@ -5,7 +5,9 @@ function pickMimeType() {
   if (typeof MediaRecorder === 'undefined' || !MediaRecorder.isTypeSupported) {
     return '';
   }
-  return MIME_CANDIDATES.find((type) => MediaRecorder.isTypeSupported(type)) || '';
+  return (
+    MIME_CANDIDATES.find((type) => MediaRecorder.isTypeSupported(type)) || ''
+  );
 }
 
 let stream = null;
@@ -16,14 +18,23 @@ let startPromise = null;
 
 async function doStart() {
   stream = await navigator.mediaDevices.getUserMedia({audio: true});
-  const mimeType = pickMimeType();
-  recorder = mimeType ? new MediaRecorder(stream, {mimeType}) : new MediaRecorder(stream);
-  chunks = [];
-  recorder.addEventListener('dataavailable', (event) => {
-    if (event.data.size > 0) chunks.push(event.data);
-  });
-  startedAt = Date.now();
-  recorder.start();
+  try {
+    const mimeType = pickMimeType();
+    recorder = mimeType
+      ? new MediaRecorder(stream, {mimeType})
+      : new MediaRecorder(stream);
+    chunks = [];
+    recorder.addEventListener('dataavailable', (event) => {
+      if (event.data.size > 0) chunks.push(event.data);
+    });
+    startedAt = Date.now();
+    recorder.start();
+  } catch (err) {
+    stream.getTracks().forEach((track) => track.stop());
+    stream = null;
+    recorder = null;
+    throw err;
+  }
 }
 
 export function useAudioRecorder() {
@@ -47,18 +58,19 @@ export function useAudioRecorder() {
     const duration = Date.now() - startedAt;
     const activeRecorder = recorder;
     const activeStream = stream;
+    const activeChunks = chunks;
     recorder = null;
     stream = null;
 
     return new Promise((resolve) => {
       activeRecorder.addEventListener('stop', () => {
         activeStream.getTracks().forEach((track) => track.stop());
-        if (duration < MIN_DURATION_MS || chunks.length === 0) {
+        if (duration < MIN_DURATION_MS || activeChunks.length === 0) {
           resolve(null);
           return;
         }
         resolve({
-          blob: new Blob(chunks, {type: activeRecorder.mimeType}),
+          blob: new Blob(activeChunks, {type: activeRecorder.mimeType}),
           mimeType: activeRecorder.mimeType,
         });
       });
