@@ -4,6 +4,7 @@ import {extractTranslateResult} from './useGeminiTranslate.js';
 describe('extractTranslateResult', () => {
   it('returns the parsed JSON when text is present', () => {
     const parsed = {
+      vietnameseText: 'giày của con đâu rồi',
       englishSentence: 'Where are your shoes?',
       ipa: '/wɛərz jʊər ʃuz/',
       explanation: 'Dùng "where are" vì hỏi vị trí của vật.',

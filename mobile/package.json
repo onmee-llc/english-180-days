@@ -12,7 +12,6 @@
     "build-content": "node scripts/build-content.js"
   },
   "dependencies": {
-    "@capacitor-community/speech-recognition": "6.0.1",
     "@capacitor-firebase/authentication": "^6.3.1",
     "@capacitor/core": "^6.0.0",
     "@capacitor/local-notifications": "^6.0.0",

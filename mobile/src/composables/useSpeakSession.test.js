@@ -1,19 +1,18 @@
 import {describe, it, expect, vi, beforeEach} from 'vitest';
-import {ref} from 'vue';
 
-const partialText = ref('');
-const startListening = vi.fn(async () => {});
-const stopListening = vi.fn(async () => '');
-vi.mock('./useSpeechToText.js', () => ({
-  useSpeechToText: () => ({partialText, startListening, stopListening}),
+const startRecording = vi.fn(async () => {});
+const stopRecording = vi.fn(async () => null);
+vi.mock('./useAudioRecorder.js', () => ({
+  useAudioRecorder: () => ({startRecording, stopRecording}),
 }));
 
-const translateToEnglish = vi.fn(async () => ({
+const transcribeAndTranslate = vi.fn(async () => ({
+  vietnameseText: 'xin chào',
   englishSentence: 'Where are your shoes?',
   ipa: '/x/',
   explanation: 'vi',
 }));
-vi.mock('./useGeminiTranslate.js', () => ({translateToEnglish}));
+vi.mock('./useGeminiTranslate.js', () => ({transcribeAndTranslate}));
 
 const apiKey = {value: 'test-key'};
 const initApiKey = vi.fn(async () => {});
@@ -34,13 +33,14 @@ vi.mock('./useTranslateHistory.js', () => ({
 const push = vi.fn();
 vi.mock('vue-router', () => ({useRouter: () => ({push})}));
 
+const fakeRecording = {blob: new Blob(['audio']), mimeType: 'audio/webm'};
+
 beforeEach(() => {
   vi.resetModules();
-  partialText.value = '';
   apiKey.value = 'test-key';
-  startListening.mockClear();
-  stopListening.mockReset().mockResolvedValue('');
-  translateToEnglish.mockClear();
+  startRecording.mockClear();
+  stopRecording.mockReset().mockResolvedValue(null);
+  transcribeAndTranslate.mockClear();
   initApiKey.mockClear();
   addEntry.mockClear();
   initHistory.mockClear();
@@ -57,7 +57,7 @@ describe('useSpeakSession', () => {
 
     expect(started).toBe(false);
     expect(push).toHaveBeenCalledWith({name: 'settings'});
-    expect(startListening).not.toHaveBeenCalled();
+    expect(startRecording).not.toHaveBeenCalled();
     expect(status.value).toBe('idle');
   });
 
@@ -71,8 +71,8 @@ describe('useSpeakSession', () => {
     expect(fromSpeakView.status.value).toBe('recording');
   });
 
-  it('shows a retry-able error when nothing was transcribed', async () => {
-    stopListening.mockResolvedValue('   ');
+  it('shows a retry-able error when nothing was recorded', async () => {
+    stopRecording.mockResolvedValue(null);
     const {useSpeakSession} = await import('./useSpeakSession.js');
     const {handlePressStart, handlePressEnd, status, errorMessage} =
       useSpeakSession();
@@ -82,22 +82,117 @@ describe('useSpeakSession', () => {
 
     expect(status.value).toBe('error');
     expect(errorMessage.value).toMatch(/Didn't catch that/);
-    expect(translateToEnglish).not.toHaveBeenCalled();
+    expect(transcribeAndTranslate).not.toHaveBeenCalled();
   });
 
-  it('translates the transcript and records history on a successful hold', async () => {
-    stopListening.mockResolvedValue('xin chào');
+  it('transcribes, translates, and records history on a successful hold', async () => {
+    stopRecording.mockResolvedValue(fakeRecording);
     const {useSpeakSession} = await import('./useSpeakSession.js');
-    const {handlePressStart, handlePressEnd, status, result} =
-      useSpeakSession();
+    const {
+      handlePressStart,
+      handlePressEnd,
+      status,
+      result,
+      lastVietnameseText,
+    } = useSpeakSession();
 
     await handlePressStart();
     await handlePressEnd();
 
     expect(status.value).toBe('result');
+    expect(lastVietnameseText.value).toBe('xin chào');
     expect(result.value.englishSentence).toBe('Where are your shoes?');
     expect(addEntry).toHaveBeenCalledWith(
       expect.objectContaining({vietnameseText: 'xin chào'}),
     );
+  });
+
+  it('retries with the same audio instead of asking the user to re-record', async () => {
+    stopRecording.mockResolvedValue(fakeRecording);
+    transcribeAndTranslate.mockRejectedValueOnce(new Error('network down'));
+    const {useSpeakSession} = await import('./useSpeakSession.js');
+    const {handlePressStart, handlePressEnd, retry, status, result} =
+      useSpeakSession();
+
+    await handlePressStart();
+    await handlePressEnd();
+    expect(status.value).toBe('error');
+
+    await retry();
+
+    expect(status.value).toBe('result');
+    expect(result.value.englishSentence).toBe('Where are your shoes?');
+    expect(transcribeAndTranslate).toHaveBeenCalledTimes(2);
+  });
+
+  it('does not replay a prior successful translation when a second attempt fails', async () => {
+    stopRecording.mockResolvedValue(fakeRecording);
+    const {useSpeakSession} = await import('./useSpeakSession.js');
+    const {
+      handlePressStart,
+      handlePressEnd,
+      retry,
+      status,
+      errorMessage,
+      result,
+    } = useSpeakSession();
+
+    // First attempt succeeds and leaves a real translation in place.
+    await handlePressStart();
+    await handlePressEnd();
+    expect(status.value).toBe('result');
+    expect(transcribeAndTranslate).toHaveBeenCalledTimes(1);
+
+    // Second attempt fails before any new audio is captured.
+    stopRecording.mockResolvedValue(null);
+    await handlePressStart();
+    await handlePressEnd();
+    expect(status.value).toBe('error');
+    expect(errorMessage.value).toMatch(/Didn't catch that/);
+
+    // Retrying after the second, audio-less failure must not resurrect the
+    // first attempt's stale blob/result.
+    await retry();
+
+    expect(status.value).toBe('idle');
+    expect(result.value).toBe(null);
+    expect(transcribeAndTranslate).toHaveBeenCalledTimes(1);
+  });
+
+  it('does not let a stale handlePressEnd overwrite state after a fast re-press', async () => {
+    let resolveStop;
+    const pendingStop = new Promise((resolve) => {
+      resolveStop = resolve;
+    });
+    stopRecording.mockReturnValueOnce(pendingStop);
+
+    const {useSpeakSession} = await import('./useSpeakSession.js');
+    const {
+      handlePressStart,
+      handlePressEnd,
+      status,
+      result,
+      lastVietnameseText,
+    } = useSpeakSession();
+
+    await handlePressStart();
+    const staleEnd = handlePressEnd(); // awaiting stopRecording, resolves later
+
+    // Fast re-press lands while the first attempt is still awaiting
+    // stopRecording() — this is the race the reviewer flagged.
+    await handlePressStart();
+    expect(status.value).toBe('recording');
+
+    // Now let the stale (first) attempt's stopRecording resolve with real
+    // audio, well after the second attempt claimed a new turn.
+    resolveStop(fakeRecording);
+    await staleEnd;
+
+    // The stale attempt must bail instead of clobbering the newer attempt's
+    // state (status/result) or claiming its turn for translation.
+    expect(status.value).toBe('recording');
+    expect(result.value).toBe(null);
+    expect(lastVietnameseText.value).toBe('');
+    expect(transcribeAndTranslate).not.toHaveBeenCalled();
   });
 });

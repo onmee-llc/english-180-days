@@ -3,10 +3,10 @@
 // same session from any screen, and SpeakView.vue picks up wherever it
 // left off when it mounts (a fresh instance, since navigation happens
 // after the press ends).
-import {ref, watch} from 'vue';
+import {ref} from 'vue';
 import {useRouter} from 'vue-router';
-import {useSpeechToText} from './useSpeechToText.js';
-import {translateToEnglish} from './useGeminiTranslate.js';
+import {useAudioRecorder} from './useAudioRecorder.js';
+import {transcribeAndTranslate} from './useGeminiTranslate.js';
 import {useApiKey} from './useApiKey.js';
 import {useTranslateHistory} from './useTranslateHistory.js';
 
@@ -15,37 +15,41 @@ const errorMessage = ref('');
 const lastVietnameseText = ref('');
 const result = ref(null); // {englishSentence, ipa, explanation}
 
-const {partialText, startListening, stopListening} = useSpeechToText();
+const {startRecording, stopRecording} = useAudioRecorder();
 
-// Android's on-device recognizer doesn't reliably signal end-of-speech back
-// to this plugin — waiting on it silently loses the transcript. So we own
-// silence detection: 3s with no new partial while recording ends the turn.
-const SILENCE_MS = 3000;
-let silenceTimer = null;
-function resetSilenceTimer() {
-  clearTimeout(silenceTimer);
-  silenceTimer = setTimeout(() => {
-    if (status.value === 'recording') handlePressEnd();
-  }, SILENCE_MS);
-}
-function clearSilenceTimer() {
-  clearTimeout(silenceTimer);
-  silenceTimer = null;
-}
-// Module scope, not inside useSpeakSession(): registering this once for the
-// app's lifetime — instead of once per caller (BottomNav + SpeakView both
-// call useSpeakSession()) — avoids duplicate watchers on the same singleton.
-watch(partialText, () => {
-  if (status.value === 'recording') resetSilenceTimer();
-});
+let lastAudioBlob = null;
+let lastAudioMimeType = '';
 
-async function runTranslate(text, apiKey, addEntry) {
+// Incremented at the start of every fresh attempt (handlePressStart) and
+// every resend (retry()). runTranslate() captures the turn it was started
+// for and, right before writing any shared state, checks it's still the
+// current turn — so a stale in-flight translate from an abandoned attempt
+// can't stomp on a newer recording/retry that started while it was pending.
+let turn = 0;
+
+async function runTranslate(deps, myTurn) {
   try {
-    const translated = await translateToEnglish(text, apiKey);
-    result.value = translated;
+    const translated = await transcribeAndTranslate(
+      lastAudioBlob,
+      lastAudioMimeType,
+      deps.apiKey.value,
+    );
+    if (myTurn !== turn) return;
+    lastVietnameseText.value = translated.vietnameseText;
+    result.value = {
+      englishSentence: translated.englishSentence,
+      ipa: translated.ipa,
+      explanation: translated.explanation,
+    };
     status.value = 'result';
-    await addEntry({vietnameseText: text, ...translated});
+    await deps.addEntry({
+      vietnameseText: translated.vietnameseText,
+      englishSentence: translated.englishSentence,
+      ipa: translated.ipa,
+      explanation: translated.explanation,
+    });
   } catch (err) {
+    if (myTurn !== turn) return;
     status.value = 'error';
     errorMessage.value = err.message || 'Translation failed. Please try again.';
   }
@@ -53,27 +57,34 @@ async function runTranslate(text, apiKey, addEntry) {
 
 async function handlePressEnd(deps) {
   if (status.value !== 'recording') return;
-  clearSilenceTimer();
-  let text = '';
+  // Captured before the awaits below so a fast re-press (handlePressStart
+  // bumping `turn` while this attempt is still stopping/initializing) is
+  // detected instead of this stale attempt claiming the new turn.
+  const myTurn = turn;
+  let recording = null;
   try {
-    text = await stopListening();
+    recording = await stopRecording();
   } catch (err) {
+    if (myTurn !== turn) return;
     status.value = 'error';
     errorMessage.value =
-      err.message || 'Could not stop listening. Please try again.';
+      err.message || 'Could not stop recording. Please try again.';
     return;
   }
-  if (!text.trim()) {
+  if (myTurn !== turn) return;
+  if (!recording) {
     lastVietnameseText.value = '';
     status.value = 'error';
     errorMessage.value = "Didn't catch that — try again.";
     return;
   }
 
-  lastVietnameseText.value = text;
+  lastAudioBlob = recording.blob;
+  lastAudioMimeType = recording.mimeType;
   status.value = 'translating';
   await deps.initHistory();
-  await runTranslate(text, deps.apiKey.value, deps.addEntry);
+  if (myTurn !== turn) return;
+  await runTranslate(deps, myTurn);
 }
 
 export function useSpeakSession() {
@@ -88,34 +99,39 @@ export function useSpeakSession() {
       router.push({name: 'settings'});
       return false;
     }
+    turn += 1;
     errorMessage.value = '';
     result.value = null;
+    lastVietnameseText.value = '';
+    lastAudioBlob = null;
+    lastAudioMimeType = '';
     status.value = 'recording';
     try {
-      await startListening();
-      resetSilenceTimer();
+      await startRecording();
     } catch (err) {
       status.value = 'error';
-      // startListening() also rejects for non-permission reasons (native start()
-      // failure, or the plugin's web stub throwing "not implemented on web" in
-      // the dev server) — showing permission copy for those misdiagnoses them.
+      // getUserMedia rejects with a DOMException — NotAllowedError means the
+      // user (or OS) denied mic access; anything else (no device, dev-server
+      // quirks, ...) gets its own message instead of misdiagnosing as a
+      // permission problem.
       errorMessage.value =
-        err.message === 'Microphone permission was not granted.'
+        err.name === 'NotAllowedError'
           ? 'Microphone access is needed for this feature. Please allow it and try again.'
-          : err.message || 'Could not start listening. Please try again.';
+          : err.message || 'Could not start recording. Please try again.';
     }
     return true;
   }
 
   function retry() {
-    if (lastVietnameseText.value) {
+    if (lastAudioBlob) {
+      turn += 1;
       status.value = 'translating';
       errorMessage.value = '';
-      runTranslate(lastVietnameseText.value, apiKey.value, addEntry);
-    } else {
-      status.value = 'idle';
-      errorMessage.value = '';
+      return runTranslate(deps, turn);
     }
+    status.value = 'idle';
+    errorMessage.value = '';
+    return undefined;
   }
 
   return {
@@ -123,7 +139,6 @@ export function useSpeakSession() {
     errorMessage,
     lastVietnameseText,
     result,
-    partialText,
     history,
     initHistory,
     handlePressStart,
