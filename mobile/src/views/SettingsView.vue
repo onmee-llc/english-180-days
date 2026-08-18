@@ -5,37 +5,32 @@ import {useReminder} from '../composables/useReminder.js';
 import {useApiKey} from '../composables/useApiKey.js';
 import {getBadges} from '../composables/useBadges.js';
 
-const {isSignedIn, authError, user, progress, signIn, signOut} = useProgress();
+// This screen is only ever reached signed-in (the router's authGuard
+// guarantees it), so there's no sign-in button or auth-error branch here
+// anymore — that lives in LoginView.vue now.
+const {user, progress, signOut} = useProgress();
 const {time, init: initReminder, setTime} = useReminder();
 const {apiKey, init: initApiKey, setApiKey} = useApiKey();
 
-// Same streak-count reading as CalendarView.vue: distinct days marked, not a
-// consecutive-run calculation.
 const streakCount = computed(() => Object.keys(progress.value.streak || {}).length);
 const completedCount = computed(() => progress.value.completed.length);
 const badges = computed(() =>
   getBadges({streakCount: streakCount.value, completedCount: completedCount.value}),
 );
 
-const signInError = ref('');
 const apiKeyDraft = ref('');
 const apiKeySaved = ref(false);
+const apiKeyError = ref('');
 
-async function handleSignIn() {
-  signInError.value = '';
+async function handleApiKeyBlur() {
+  apiKeyError.value = '';
   try {
-    await signIn();
+    await setApiKey(apiKeyDraft.value.trim());
+    apiKeySaved.value = true;
+    setTimeout(() => (apiKeySaved.value = false), 2000);
   } catch (err) {
-    // Most commonly the user closed the Google account picker — not a bug,
-    // just needs a visible message instead of a silently dead button.
-    signInError.value = 'Sign-in was cancelled or failed. Please try again.';
+    apiKeyError.value = 'Could not save the key. Please try again.';
   }
-}
-
-async function saveApiKey() {
-  await setApiKey(apiKeyDraft.value.trim());
-  apiKeySaved.value = true;
-  setTimeout(() => (apiKeySaved.value = false), 2000);
 }
 
 onMounted(async () => {
@@ -52,7 +47,7 @@ onMounted(async () => {
       <h1 class="settings__title">Settings</h1>
     </header>
 
-    <div v-if="isSignedIn && user" class="settings__row settings__profile">
+    <div v-if="user" class="settings__row settings__profile">
       <img
         v-if="user.photoURL"
         :src="user.photoURL"
@@ -83,18 +78,12 @@ onMounted(async () => {
 
     <div class="settings__row">
       <button
-        v-if="!isSignedIn"
         type="button"
-        class="settings__button settings__button--primary"
-        @click="handleSignIn"
+        class="settings__button settings__button--outline"
+        @click="signOut"
       >
-        Sign in with Google
-      </button>
-      <button v-else type="button" class="settings__button settings__button--outline" @click="signOut">
         Sign out
       </button>
-      <p v-if="authError" class="settings__error" role="alert">{{ authError }}</p>
-      <p v-else-if="signInError" class="settings__error" role="alert">{{ signInError }}</p>
     </div>
 
     <div class="settings__row">
@@ -110,21 +99,22 @@ onMounted(async () => {
 
     <div class="settings__row">
       <label for="gemini-api-key" class="settings__label">Gemini API key</label>
-      <div class="settings__field-group">
-        <input
-          id="gemini-api-key"
-          type="password"
-          class="settings__input"
-          v-model="apiKeyDraft"
-          placeholder="AIza..."
-          autocomplete="off"
-        />
-        <button type="button" class="settings__button settings__button--primary" @click="saveApiKey">
-          Save
-        </button>
-      </div>
+      <input
+        id="gemini-api-key"
+        type="password"
+        class="settings__input"
+        v-model="apiKeyDraft"
+        placeholder="AIza..."
+        autocomplete="off"
+        :aria-invalid="!!apiKeyError"
+        aria-describedby="gemini-api-key-hint"
+        @blur="handleApiKeyBlur"
+      />
       <span v-if="apiKeySaved" class="settings__saved">✓ Saved</span>
-      <p class="settings__hint">
+      <p v-if="apiKeyError" id="gemini-api-key-hint" class="settings__error">
+        {{ apiKeyError }}
+      </p>
+      <p v-else id="gemini-api-key-hint" class="settings__hint">
         Used by the Speak tab to translate and explain sentences. Stored only
         on this device.
       </p>
@@ -255,11 +245,6 @@ onMounted(async () => {
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--color-ink-2);
-}
-
-.settings__field-group {
-  display: flex;
-  gap: var(--space-xs);
 }
 
 /* ---------- inputs ---------- */
