@@ -54,19 +54,23 @@ these are done:**
    **URL Schemes** field (this writes a `CFBundleURLTypes` entry into
    `Info.plist`). Without this, iOS Google Sign-In can't redirect back into
    the app after the user picks an account — it just fails silently.
-8. **iOS only:** the Speak tab's speech recognition needs two usage strings in
-   `Info.plist` — add them the same way as the URL scheme in step 6 (Xcode →
+8. **iOS only:** the Speak tab's audio recording needs a usage string in
+   `Info.plist` — add it the same way as the URL scheme in step 6 (Xcode →
    `App` target → **Info** tab, or by editing `Info.plist` directly):
-   - `NSSpeechRecognitionUsageDescription` — e.g. "Used to transcribe what you
-     say for the Speak translation feature."
    - `NSMicrophoneUsageDescription` — e.g. "Used to record your voice for the
      Speak translation feature."
 
-   iOS kills the app on the first speech-recognition call if either is
-   missing. Android needs nothing here: the plugin ships its own
-   `RECORD_AUDIO` permission and Android 11+ `<queries>` entry, merged in
-   automatically.
-9. Re-run `npx cap sync`.
+   iOS kills the app on the first microphone-recording call if this is
+   missing.
+9. **Android only:** open `mobile/android/app/src/main/AndroidManifest.xml`
+   and add, as a direct child of `<manifest>`:
+   ```xml
+   <uses-permission android:name="android.permission.RECORD_AUDIO" />
+   ```
+   The Speak tab records audio directly via the browser's `getUserMedia`
+   API now (no plugin auto-merging this permission) — without it,
+   `getUserMedia()` rejects on Android the moment recording starts.
+10. Re-run `npx cap sync`.
 
 No placeholder versions of these files exist in the repo on purpose — a fake
 one fails at runtime in a much more confusing way than a missing one.
@@ -74,9 +78,8 @@ one fails at runtime in a much more confusing way than a missing one.
 Sign-in in the browser dev server works without any of the above: on web the
 plugin falls back to the Firebase JS SDK's popup flow.
 
-The Speak tab does not: `@capacitor-community/speech-recognition` has no web
-implementation, so every call throws `Method not implemented on web.` in
-`npm run dev`. On-device speech recognition can only be tested in a native
-build.
+The Speak tab also works in `npm run dev`: it records audio with the
+standard `MediaRecorder`/`getUserMedia` Web APIs (no native plugin), so the
+browser will prompt for mic access the same way it would for any other site.
 
 [plugin]: https://github.com/capawesome-team/capacitor-firebase/tree/main/packages/authentication
