@@ -1,7 +1,7 @@
 import {ref} from 'vue';
 import {SecureStoragePlugin} from 'capacitor-secure-storage-plugin';
 
-const API_KEY_STORAGE_KEY = 'dm_claude_api_key';
+const API_KEY_STORAGE_KEY = 'dm_gemini_api_key';
 
 const apiKey = ref('');
 const isLoaded = ref(false);

@@ -1,12 +1,21 @@
 <script setup>
-import {onMounted, ref} from 'vue';
+import {onMounted, ref, computed} from 'vue';
 import {useProgress} from '../composables/useProgress.js';
 import {useReminder} from '../composables/useReminder.js';
 import {useApiKey} from '../composables/useApiKey.js';
+import {getBadges} from '../composables/useBadges.js';
 
-const {isSignedIn, authError, signIn, signOut} = useProgress();
+const {isSignedIn, authError, user, progress, signIn, signOut} = useProgress();
 const {time, init: initReminder, setTime} = useReminder();
 const {apiKey, init: initApiKey, setApiKey} = useApiKey();
+
+// Same streak-count reading as CalendarView.vue: distinct days marked, not a
+// consecutive-run calculation.
+const streakCount = computed(() => Object.keys(progress.value.streak || {}).length);
+const completedCount = computed(() => progress.value.completed.length);
+const badges = computed(() =>
+  getBadges({streakCount: streakCount.value, completedCount: completedCount.value}),
+);
 
 const signInError = ref('');
 const apiKeyDraft = ref('');
@@ -43,6 +52,35 @@ onMounted(async () => {
       <h1 class="settings__title">Settings</h1>
     </header>
 
+    <div v-if="isSignedIn && user" class="settings__row settings__profile">
+      <img
+        v-if="user.photoURL"
+        :src="user.photoURL"
+        :alt="user.displayName || user.email"
+        class="settings__avatar"
+      />
+      <div class="settings__profile-info">
+        <p class="settings__profile-name">{{ user.displayName || user.email }}</p>
+        <p class="settings__profile-email">{{ user.email }}</p>
+      </div>
+      <div class="settings__profile-stats">
+        <span>🔥 {{ streakCount }} {{ streakCount === 1 ? 'day' : 'days' }}</span>
+        <span>📚 {{ completedCount }} done</span>
+      </div>
+      <ul class="settings__badges">
+        <li
+          v-for="badge in badges"
+          :key="badge.id"
+          class="settings__badge"
+          :class="{'settings__badge--earned': badge.earned}"
+          :title="badge.label"
+        >
+          <span aria-hidden="true">{{ badge.icon }}</span>
+          <span class="settings__badge-label">{{ badge.label }}</span>
+        </li>
+      </ul>
+    </div>
+
     <div class="settings__row">
       <button
         v-if="!isSignedIn"
@@ -71,14 +109,14 @@ onMounted(async () => {
     </div>
 
     <div class="settings__row">
-      <label for="claude-api-key" class="settings__label">Claude API key</label>
+      <label for="gemini-api-key" class="settings__label">Gemini API key</label>
       <div class="settings__field-group">
         <input
-          id="claude-api-key"
+          id="gemini-api-key"
           type="password"
           class="settings__input"
           v-model="apiKeyDraft"
-          placeholder="sk-ant-..."
+          placeholder="AIza..."
           autocomplete="off"
         />
         <button type="button" class="settings__button settings__button--primary" @click="saveApiKey">
@@ -142,6 +180,75 @@ onMounted(async () => {
   padding: var(--space-lg);
   border-radius: var(--radius-card);
   background: var(--color-paper-2);
+}
+
+/* ---------- profile ---------- */
+
+.settings__profile {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-sm) var(--space-md);
+}
+
+.settings__avatar {
+  grid-row: span 2;
+  width: 3rem;
+  height: 3rem;
+  border-radius: var(--radius-pill);
+  object-fit: cover;
+}
+
+.settings__profile-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.settings__profile-name {
+  margin: 0;
+  font-weight: 600;
+}
+
+.settings__profile-email {
+  margin: 0;
+  color: var(--color-ink-2);
+  font-size: 0.8rem;
+}
+
+.settings__profile-stats {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: var(--space-md);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.settings__badges {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.settings__badge {
+  display: flex;
+  align-items: center;
+  gap: 0.35em;
+  padding: 0.4rem 0.7rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-paper-3);
+  color: var(--color-ink-3);
+  font-size: 0.78rem;
+  opacity: 0.55;
+}
+
+.settings__badge--earned {
+  background: var(--color-accent-2-tint);
+  color: var(--color-ink);
+  opacity: 1;
 }
 
 .settings__label {

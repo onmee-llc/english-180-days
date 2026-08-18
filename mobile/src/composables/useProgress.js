@@ -67,6 +67,7 @@ const state = reactive({
   isSignedIn: false,
   isReady: false,
   authError: '',
+  user: null, // {displayName, email, photoURL} from Firebase Auth — Settings/Profile
 });
 
 let unsubscribeSnapshot = () => {};
@@ -118,12 +119,15 @@ export function useProgress() {
       if (user && !ALLOWED_EMAILS.includes(user.email)) {
         state.authError = `${user.email} is not allowed to use this app.`;
         state.isSignedIn = false;
+        state.user = null;
         await forceSignOut();
         return;
       }
 
       state.authError = '';
       state.isSignedIn = !!user;
+      const {displayName, email, photoURL} = user || {};
+      state.user = user ? {displayName, email, photoURL} : null;
       if (!user) return;
 
       try {

@@ -1,4 +1,45 @@
-<script setup></script>
+<script setup>
+import {useRouter} from 'vue-router';
+import {useSpeakSession} from '../composables/useSpeakSession.js';
+import {createPressGesture} from '../composables/useLongPress.js';
+
+const router = useRouter();
+const {status, handlePressStart, handlePressEnd} = useSpeakSession();
+
+// Long-press the Speak tab from any screen to start recording immediately,
+// without navigating there first. A quick tap still navigates normally.
+// Rendered via router-link's `custom` slot (not a plain @click on
+// router-link) so we own the click entirely — no relying on event-listener
+// ordering between our handler and router-link's internal navigate-on-click.
+const LONG_PRESS_MS = 250;
+let suppressNextClick = false;
+const gesture = createPressGesture({
+  thresholdMs: LONG_PRESS_MS,
+  onLongPress: handlePressStart,
+});
+
+function onPressStart() {
+  gesture.start();
+}
+
+function onPressEnd() {
+  suppressNextClick = gesture.end();
+  if (!suppressNextClick) return; // plain tap — let the click navigate
+  handlePressEnd().then(() => router.push({name: 'speak'}));
+}
+
+function onClick(event, navigate) {
+  event.preventDefault(); // we always decide navigation ourselves below
+  if (suppressNextClick) {
+    suppressNextClick = false;
+    return; // long press already navigated once handlePressEnd() finished
+  }
+  // Called with no args on purpose: navigate()'s own internal guard bails
+  // out when the event it's passed already has defaultPrevented set — which
+  // we just did above — so passing `event` here would silently no-op.
+  navigate();
+}
+</script>
 
 <template>
   <nav class="bottom-nav">
@@ -30,13 +71,28 @@
       </svg>
       <span class="bottom-nav__label">Settings</span>
     </router-link>
-    <router-link to="/speak" class="bottom-nav__link">
-      <svg class="bottom-nav__icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Z" />
-        <path d="M19 11a7 7 0 0 1-14 0" />
-        <line x1="12" y1="18" x2="12" y2="22" />
-      </svg>
-      <span class="bottom-nav__label">Speak</span>
+    <router-link to="/speak" custom v-slot="{navigate, isActive, href}">
+      <a
+        :href="href"
+        class="bottom-nav__link"
+        :class="{
+          'router-link-exact-active': isActive,
+          'bottom-nav__link--recording': status === 'recording',
+        }"
+        @mousedown="onPressStart"
+        @mouseup="onPressEnd"
+        @touchstart="onPressStart"
+        @touchend="onPressEnd"
+        @touchcancel="gesture.cancel()"
+        @click="onClick($event, navigate)"
+      >
+        <svg class="bottom-nav__icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Z" />
+          <path d="M19 11a7 7 0 0 1-14 0" />
+          <line x1="12" y1="18" x2="12" y2="22" />
+        </svg>
+        <span class="bottom-nav__label">Speak</span>
+      </a>
     </router-link>
   </nav>
 </template>
@@ -114,11 +170,32 @@
   font-weight: 700;
 }
 
+/* recording via long-press, from any screen — mirrors SpeakView's own
+ * recording state (--color-accent-3) so the two read as the same mode. */
+.bottom-nav__link--recording {
+  color: var(--color-on-accent);
+  background: var(--color-accent-3);
+  animation: bottom-nav-pulse 1s var(--ease-out) infinite;
+}
+
+@keyframes bottom-nav-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .bottom-nav__link,
   .bottom-nav__icon {
     transition: color var(--dur-fast) linear;
     transform: none !important;
+  }
+  .bottom-nav__link--recording {
+    animation: none;
   }
 }
 </style>

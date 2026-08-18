@@ -1,105 +1,31 @@
 <script setup>
 import {ref, onMounted, onUnmounted, computed} from 'vue';
-import {useRouter} from 'vue-router';
-import {useSpeechToText} from '../composables/useSpeechToText.js';
-import {translateToEnglish} from '../composables/useClaudeTranslate.js';
-import {useApiKey} from '../composables/useApiKey.js';
-import {useTranslateHistory} from '../composables/useTranslateHistory.js';
+import {useSpeakSession} from '../composables/useSpeakSession.js';
 
-const router = useRouter();
-const {partialText, startListening, stopListening} = useSpeechToText();
-const {apiKey, init: initApiKey} = useApiKey();
-const {history, init: initHistory, addEntry} = useTranslateHistory();
+const {
+  status,
+  errorMessage,
+  lastVietnameseText,
+  result,
+  partialText,
+  history,
+  initHistory,
+  handlePressStart,
+  handlePressEnd,
+  retry,
+} = useSpeakSession();
 
-const status = ref('idle'); // idle | recording | translating | result | error
-const errorMessage = ref('');
-const lastVietnameseText = ref('');
-const result = ref(null); // {englishSentence, ipa, explanation}
 const showHistory = ref(false);
 
-onMounted(async () => {
-  await initApiKey();
-  await initHistory();
-});
+onMounted(initHistory);
 
 // Leaving the screen mid-recording (bottom nav, back gesture) would otherwise
-// leave the native session and its module-level listener running.
+// leave the native session running with nothing to ever stop it. Treat it
+// like releasing the mic button: finish the turn (stop, translate, save) in
+// the shared session so the result is there if the user comes back.
 onUnmounted(() => {
-  if (status.value === 'recording') {
-    stopListening().catch(() => {});
-  }
+  if (status.value === 'recording') handlePressEnd();
 });
-
-async function handlePressStart() {
-  if (!apiKey.value) {
-    router.push({name: 'settings'});
-    return;
-  }
-  errorMessage.value = '';
-  result.value = null;
-  status.value = 'recording';
-  try {
-    await startListening();
-  } catch (err) {
-    status.value = 'error';
-    // startListening() also rejects for non-permission reasons (native start()
-    // failure, or the plugin's web stub throwing "not implemented on web" in
-    // the dev server) — showing permission copy for those misdiagnoses them.
-    errorMessage.value =
-      err.message === 'Microphone permission was not granted.'
-        ? 'Microphone access is needed for this feature. Please allow it and try again.'
-        : err.message || 'Could not start listening. Please try again.';
-  }
-}
-
-async function handlePressEnd() {
-  if (status.value !== 'recording') return;
-  let text = '';
-  try {
-    text = await stopListening();
-  } catch (err) {
-    // Mirrors handlePressStart's catch — without this, a rejecting
-    // stopListening() (e.g. the web stub, or native stop() with nothing
-    // running) becomes an unhandled rejection and leaves status stuck at
-    // 'recording' with no way out of the UI.
-    status.value = 'error';
-    errorMessage.value = err.message || 'Could not stop listening. Please try again.';
-    return;
-  }
-  if (!text.trim()) {
-    lastVietnameseText.value = '';
-    status.value = 'error';
-    errorMessage.value = "Didn't catch that — try again.";
-    return;
-  }
-
-  lastVietnameseText.value = text;
-  status.value = 'translating';
-  await runTranslate(text);
-}
-
-async function runTranslate(text) {
-  try {
-    const translated = await translateToEnglish(text, apiKey.value);
-    result.value = translated;
-    status.value = 'result';
-    await addEntry({vietnameseText: text, ...translated});
-  } catch (err) {
-    status.value = 'error';
-    errorMessage.value = err.message || 'Translation failed. Please try again.';
-  }
-}
-
-function retry() {
-  if (lastVietnameseText.value) {
-    status.value = 'translating';
-    errorMessage.value = '';
-    runTranslate(lastVietnameseText.value);
-  } else {
-    status.value = 'idle';
-    errorMessage.value = '';
-  }
-}
 
 const displayText = computed(() =>
   status.value === 'recording' ? partialText.value : lastVietnameseText.value,
