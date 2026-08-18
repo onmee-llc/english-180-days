@@ -1,4 +1,5 @@
 import {createRouter, createWebHistory} from 'vue-router';
+import {authGuard} from './authGuard.js';
 import TodayView from './views/TodayView.vue';
 
 export const router = createRouter({
@@ -30,5 +31,12 @@ export const router = createRouter({
       name: 'speak',
       component: () => import('./views/SpeakView.vue'),
     },
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import('./views/LoginView.vue'),
+    },
   ],
 });
+
+router.beforeEach(authGuard);
