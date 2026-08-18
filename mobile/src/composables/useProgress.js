@@ -1,4 +1,4 @@
-import {reactive, toRefs} from 'vue';
+import {reactive, ref, toRefs} from 'vue';
 import {
   getAuth,
   GoogleAuthProvider,
@@ -70,6 +70,17 @@ const state = reactive({
   user: null, // {displayName, email, photoURL} from Firebase Auth — Settings/Profile
 });
 
+// isReady (above) only means "the onAuthStateChanged listener is registered" —
+// it flips true synchronously in init(), before Firebase has actually reported
+// whether a session exists. authResolved is the real signal: true only once
+// the listener's callback has fired at least once, so isSignedIn can be trusted.
+// The router guard and App.vue's splash gate key off this, never isReady.
+const authResolved = ref(false);
+let resolveAuthResolved;
+const authResolvedPromise = new Promise((resolve) => {
+  resolveAuthResolved = resolve;
+});
+
 let unsubscribeSnapshot = () => {};
 
 async function forceSignOut() {
@@ -115,6 +126,11 @@ export function useProgress() {
 
     onAuthStateChanged(getAuth(), async (user) => {
       unsubscribeSnapshot();
+
+      if (!authResolved.value) {
+        authResolved.value = true;
+        resolveAuthResolved();
+      }
 
       if (user && !ALLOWED_EMAILS.includes(user.email)) {
         state.authError = `${user.email} is not allowed to use this app.`;
@@ -192,5 +208,14 @@ export function useProgress() {
     if (user) await pushProgress(user.uid);
   }
 
-  return {...toRefs(state), init, signIn, signOut, isComplete, markComplete};
+  return {
+    ...toRefs(state),
+    authResolved,
+    whenAuthResolved: () => authResolvedPromise,
+    init,
+    signIn,
+    signOut,
+    isComplete,
+    markComplete,
+  };
 }
