@@ -2,12 +2,14 @@
 import {onMounted} from 'vue';
 import {useProgress} from './composables/useProgress.js';
 import BottomNav from './components/BottomNav.vue';
+import SplashView from './views/SplashView.vue';
 
-const {init} = useProgress();
+const {init, authResolved, isSignedIn} = useProgress();
 onMounted(init);
 </script>
 
 <template>
-  <router-view />
-  <BottomNav />
+  <SplashView v-if="!authResolved" />
+  <router-view v-else />
+  <BottomNav v-if="authResolved && isSignedIn" />
 </template>
