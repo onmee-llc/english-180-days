@@ -1,5 +1,5 @@
 <script setup>
-import {ref, onMounted, onUnmounted, computed} from 'vue';
+import {ref, onMounted, onUnmounted} from 'vue';
 import {useSpeakSession} from '../composables/useSpeakSession.js';
 
 const {
@@ -7,7 +7,6 @@ const {
   errorMessage,
   lastVietnameseText,
   result,
-  partialText,
   history,
   initHistory,
   handlePressStart,
@@ -20,16 +19,12 @@ const showHistory = ref(false);
 onMounted(initHistory);
 
 // Leaving the screen mid-recording (bottom nav, back gesture) would otherwise
-// leave the native session running with nothing to ever stop it. Treat it
-// like releasing the mic button: finish the turn (stop, translate, save) in
-// the shared session so the result is there if the user comes back.
+// leave the mic recording with nothing to ever stop it. Treat it like
+// releasing the mic button: finish the turn (stop, transcribe, translate,
+// save) in the shared session so the result is there if the user comes back.
 onUnmounted(() => {
   if (status.value === 'recording') handlePressEnd();
 });
-
-const displayText = computed(() =>
-  status.value === 'recording' ? partialText.value : lastVietnameseText.value,
-);
 </script>
 
 <template>
@@ -45,16 +40,15 @@ const displayText = computed(() =>
     <div class="speak__stage">
       <Transition name="speak-fade" mode="out-in">
         <p
-          v-if="displayText"
-          :key="status === 'recording' ? 'live' : 'held'"
+          v-if="lastVietnameseText"
+          key="held"
           class="speak__transcript"
-          :class="{'speak__transcript--live': status === 'recording'}"
           aria-live="polite"
         >
-          {{ displayText }}
+          {{ lastVietnameseText }}
         </p>
         <p v-else class="speak__transcript speak__transcript--placeholder">
-          Your Vietnamese will appear here while you hold the mic.
+          We'll show what you said once you let go of the mic.
         </p>
       </Transition>
 
@@ -263,11 +257,6 @@ const displayText = computed(() =>
 .speak__transcript--placeholder {
   color: var(--color-ink-3);
   font-style: normal;
-}
-
-.speak__transcript--live {
-  background: var(--color-accent-2-tint);
-  box-shadow: inset 0 0 0 1.5px color-mix(in oklab, var(--color-accent-2) 35%, transparent);
 }
 
 .speak-fade-enter-active,
