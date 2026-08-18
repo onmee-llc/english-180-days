@@ -86,4 +86,21 @@ describe('useAudioRecorder', () => {
     await startPromise;
     expect(result.blob).toBeInstanceOf(Blob);
   });
+
+  it('stops a prior recording before starting a new one if startRecording() is called again', async () => {
+    const dateSpy = vi.spyOn(Date, 'now');
+    dateSpy.mockReturnValueOnce(1000); // first startedAt
+    dateSpy.mockReturnValueOnce(1500); // stop, 500ms later (triggers cleanup)
+    dateSpy.mockReturnValueOnce(2000); // second startedAt
+
+    const {useAudioRecorder} = await import('./useAudioRecorder.js');
+    const {startRecording} = useAudioRecorder();
+
+    await startRecording();
+    stopTrack.mockClear();
+
+    await startRecording();
+
+    expect(stopTrack).toHaveBeenCalled();
+  });
 });

@@ -28,6 +28,9 @@ async function doStart() {
 
 export function useAudioRecorder() {
   async function startRecording() {
+    if (startPromise || recorder) {
+      await stopRecording().catch(() => {});
+    }
     startPromise = doStart();
     return startPromise;
   }
