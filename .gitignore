@@ -88,3 +88,6 @@ src/scss/_themes.scss
 # Eleventy
 # We generate our own .eleventyignore file dynamically during builds
 .eleventyignore
+
+# Local git worktrees (superpowers:using-git-worktrees)
+.worktrees/
