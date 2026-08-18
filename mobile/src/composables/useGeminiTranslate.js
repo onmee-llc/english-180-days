@@ -6,23 +6,28 @@ const MODEL = 'gemini-3.1-flash-lite';
 
 const SYSTEM_PROMPT = `You are helping a Vietnamese parent with limited
 English vocabulary say things to their children in natural English. You
-will receive a Vietnamese sentence — possibly a rough speech-to-text
-transcription that may contain minor recognition errors. Infer the
-parent's likely intent charitably (there is nothing grammatically wrong
-with the Vietnamese; any oddness is transcription noise, not a mistake to
+will receive a short audio recording of the parent speaking Vietnamese —
+the recording may have background noise or be hard to make out in places.
+Infer the parent's likely intent charitably (there is nothing grammatically
+wrong with the Vietnamese; any oddness is recording noise, not a mistake to
 correct in Vietnamese).
 
 Produce:
-1. A short, natural English sentence a parent would actually say out loud
+1. A literal transcription of the Vietnamese audio.
+2. A short, natural English sentence a parent would actually say out loud
    to a child in that situation — not a stiff textbook translation.
-2. Its IPA phonetic transcription.
-3. A short explanation, written in Vietnamese, of any notable word choice
+3. Its IPA phonetic transcription.
+4. A short explanation, written in Vietnamese, of any notable word choice
    or phrasing decision — something that helps the parent learn, not just
    a restatement of the sentence.`;
 
 const RESPONSE_SCHEMA = {
   type: 'object',
   properties: {
+    vietnameseText: {
+      type: 'string',
+      description: 'Literal transcription of the Vietnamese audio.',
+    },
     englishSentence: {
       type: 'string',
       description:
@@ -39,7 +44,7 @@ const RESPONSE_SCHEMA = {
         'Short Vietnamese-language explanation of the translation or phrasing choice.',
     },
   },
-  required: ['englishSentence', 'ipa', 'explanation'],
+  required: ['vietnameseText', 'englishSentence', 'ipa', 'explanation'],
 };
 
 /**
@@ -58,14 +63,25 @@ export function extractTranslateResult(response) {
   return JSON.parse(response.text);
 }
 
-export async function translateToEnglish(vietnameseText, apiKey) {
+function arrayBufferToBase64(buffer) {
+  let binary = '';
+  const bytes = new Uint8Array(buffer);
+  const chunkSize = 0x8000;
+  for (let i = 0; i < bytes.length; i += chunkSize) {
+    binary += String.fromCharCode(...bytes.subarray(i, i + chunkSize));
+  }
+  return btoa(binary);
+}
+
+export async function transcribeAndTranslate(audioBlob, mimeType, apiKey) {
   if (!apiKey) {
     throw new Error('No Gemini API key configured.');
   }
   const client = new GoogleGenAI({apiKey});
+  const data = arrayBufferToBase64(await audioBlob.arrayBuffer());
   const response = await client.models.generateContent({
     model: MODEL,
-    contents: vietnameseText,
+    contents: [{role: 'user', parts: [{inlineData: {mimeType, data}}]}],
     config: {
       systemInstruction: SYSTEM_PROMPT,
       responseMimeType: 'application/json',
