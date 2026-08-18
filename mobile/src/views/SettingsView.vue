@@ -310,17 +310,6 @@ onMounted(async () => {
   outline-offset: 3px;
 }
 
-.settings__button--primary {
-  background: var(--color-accent);
-  color: var(--color-on-accent);
-}
-
-@media (hover: hover) {
-  .settings__button--primary:hover {
-    background: var(--color-accent-deep);
-  }
-}
-
 .settings__button--outline {
   border: 1.5px solid var(--color-ink-2);
   background: transparent;
