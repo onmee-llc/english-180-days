@@ -118,52 +118,55 @@ async function pushProgress(uid) {
   }
 }
 
+let initPromise;
+
 export function useProgress() {
-  async function init() {
-    if (state.isReady) return;
-    ensureFirebaseApp();
-    state.progress = await loadLocalProgress();
+  function init() {
+    return (initPromise ??= (async () => {
+      ensureFirebaseApp();
+      state.progress = await loadLocalProgress();
 
-    onAuthStateChanged(getAuth(), async (user) => {
-      unsubscribeSnapshot();
+      onAuthStateChanged(getAuth(), async (user) => {
+        unsubscribeSnapshot();
 
-      if (!authResolved.value) {
-        authResolved.value = true;
-        resolveAuthResolved();
-      }
+        if (!authResolved.value) {
+          authResolved.value = true;
+          resolveAuthResolved();
+        }
 
-      if (user && !ALLOWED_EMAILS.includes(user.email)) {
-        state.authError = `${user.email} is not allowed to use this app.`;
-        state.isSignedIn = false;
-        state.user = null;
-        await forceSignOut();
-        return;
-      }
+        if (user && !ALLOWED_EMAILS.includes(user.email)) {
+          state.authError = `${user.email} is not allowed to use this app.`;
+          state.isSignedIn = false;
+          state.user = null;
+          await forceSignOut();
+          return;
+        }
 
-      state.authError = '';
-      state.isSignedIn = !!user;
-      const {displayName, email, photoURL} = user || {};
-      state.user = user ? {displayName, email, photoURL} : null;
-      if (!user) return;
+        if (user) state.authError = '';
+        state.isSignedIn = !!user;
+        const {displayName, email, photoURL} = user || {};
+        state.user = user ? {displayName, email, photoURL} : null;
+        if (!user) return;
 
-      try {
-        const snap = await getDoc(userRef(user.uid));
-        const remote = snap.exists() ? snap.data() : {};
-        const merged = mergeProgress(state.progress, remote);
-        await saveLocalProgress(merged);
-        await pushProgress(user.uid);
+        try {
+          const snap = await getDoc(userRef(user.uid));
+          const remote = snap.exists() ? snap.data() : {};
+          const merged = mergeProgress(state.progress, remote);
+          await saveLocalProgress(merged);
+          await pushProgress(user.uid);
 
-        unsubscribeSnapshot = onSnapshot(userRef(user.uid), async (s) => {
-          const r = s.exists() ? s.data() : {};
-          await saveLocalProgress(mergeProgress(state.progress, r));
-        });
-      } catch (err) {
-        console.warn('could not reconcile progress', err);
-        return;
-      }
-    });
+          unsubscribeSnapshot = onSnapshot(userRef(user.uid), async (s) => {
+            const r = s.exists() ? s.data() : {};
+            await saveLocalProgress(mergeProgress(state.progress, r));
+          });
+        } catch (err) {
+          console.warn('could not reconcile progress', err);
+          return;
+        }
+      });
 
-    state.isReady = true;
+      state.isReady = true;
+    })());
   }
 
   async function signIn() {

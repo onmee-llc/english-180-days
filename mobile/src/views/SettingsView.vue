@@ -1,5 +1,6 @@
 <script setup>
 import {onMounted, ref, computed} from 'vue';
+import {useRouter} from 'vue-router';
 import {useProgress} from '../composables/useProgress.js';
 import {useReminder} from '../composables/useReminder.js';
 import {useApiKey} from '../composables/useApiKey.js';
@@ -9,6 +10,7 @@ import {getBadges} from '../composables/useBadges.js';
 // guarantees it), so there's no sign-in button or auth-error branch here
 // anymore — that lives in LoginView.vue now.
 const {user, progress, signOut} = useProgress();
+const router = useRouter();
 const {time, init: initReminder, setTime} = useReminder();
 const {apiKey, init: initApiKey, setApiKey} = useApiKey();
 
@@ -23,6 +25,7 @@ const apiKeySaved = ref(false);
 const apiKeyError = ref('');
 
 async function handleApiKeyBlur() {
+  if (apiKeyDraft.value.trim() === apiKey.value) return;
   apiKeyError.value = '';
   try {
     await setApiKey(apiKeyDraft.value.trim());
@@ -31,6 +34,11 @@ async function handleApiKeyBlur() {
   } catch (err) {
     apiKeyError.value = 'Could not save the key. Please try again.';
   }
+}
+
+async function handleSignOut() {
+  await signOut();
+  router.push({name: 'login'});
 }
 
 onMounted(async () => {
@@ -80,7 +88,7 @@ onMounted(async () => {
       <button
         type="button"
         class="settings__button settings__button--outline"
-        @click="signOut"
+        @click="handleSignOut"
       >
         Sign out
       </button>
@@ -110,7 +118,7 @@ onMounted(async () => {
         aria-describedby="gemini-api-key-hint"
         @blur="handleApiKeyBlur"
       />
-      <span v-if="apiKeySaved" class="settings__saved">✓ Saved</span>
+      <span v-if="apiKeySaved" class="settings__saved" role="status">✓ Saved</span>
       <p v-if="apiKeyError" id="gemini-api-key-hint" class="settings__error">
         {{ apiKeyError }}
       </p>

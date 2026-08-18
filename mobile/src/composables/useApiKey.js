@@ -20,7 +20,6 @@ export function useApiKey() {
   }
 
   async function setApiKey(newKey) {
-    apiKey.value = newKey;
     if (newKey) {
       await SecureStoragePlugin.set({key: API_KEY_STORAGE_KEY, value: newKey});
     } else {
@@ -28,6 +27,7 @@ export function useApiKey() {
         () => {},
       );
     }
+    apiKey.value = newKey;
   }
 
   return {apiKey, isLoaded, init, setApiKey};
