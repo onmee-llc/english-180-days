@@ -25,19 +25,26 @@ const hintId = `${props.id}-hint`;
       class="text-field__input"
       :value="modelValue"
       :aria-invalid="!!error"
-      :aria-describedby="hint || error ? hintId : undefined"
+      :aria-describedby="hintId"
       v-bind="$attrs"
       @input="$emit('update:modelValue', $event.target.value)"
     />
-    <span v-if="success" class="text-field__success" role="status">{{
-      success
-    }}</span>
-    <p v-if="error" :id="hintId" class="text-field__error">{{ error }}</p>
-    <p v-else-if="hint" :id="hintId" class="text-field__hint">{{ hint }}</p>
+    <span class="text-field__success" role="status">{{ success }}</span>
+    <p
+      :id="hintId"
+      class="text-field__hint"
+      :class="{'text-field__hint--error': error}"
+    >
+      {{ error || hint }}
+    </p>
   </div>
 </template>
 
 <style scoped>
+/* Hallmark · component: TextField · genre: playful (Hum register)
+ * theme: Daily Mastery brand (awenvia DNA) — shares tokens with SpeakView.vue via global src/styles/tokens.css
+ * states: default · hover · focus-visible · error · success
+ */
 .text-field {
   display: flex;
   flex-direction: column;
@@ -83,21 +90,21 @@ const hintId = `${props.id}-hint`;
 }
 
 .text-field__success {
+  min-height: 1lh;
   color: var(--color-accent-2);
   font-size: 0.85rem;
   font-weight: 600;
 }
 
-.text-field__error {
-  margin: 0;
-  color: var(--color-accent-3-deep);
-  font-size: 0.85rem;
-}
-
 .text-field__hint {
   margin: 0;
+  min-height: 1lh;
   color: var(--color-ink-3);
   font-size: 0.8rem;
   line-height: 1.5;
+}
+
+.text-field__hint--error {
+  color: var(--color-accent-3-deep);
 }
 </style>

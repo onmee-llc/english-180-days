@@ -28,6 +28,10 @@ defineProps({
 </template>
 
 <style scoped>
+/* Hallmark · component: BaseButton · genre: playful (Hum register)
+ * theme: Daily Mastery brand (awenvia DNA) — shares tokens with SpeakView.vue via global src/styles/tokens.css
+ * states: default · hover · focus-visible · active · disabled(loading)
+ */
 .base-button {
   display: inline-flex;
   align-items: center;
@@ -85,13 +89,13 @@ defineProps({
   }
 }
 
-.base-button--coral {
+.base-button--outline.base-button--coral {
   border-color: var(--color-accent-3-deep);
   color: var(--color-accent-3-deep);
 }
 
 @media (hover: hover) {
-  .base-button--coral:hover:not(:disabled) {
+  .base-button--outline.base-button--coral:hover:not(:disabled) {
     background: var(--color-accent-3);
     color: var(--color-ink);
   }

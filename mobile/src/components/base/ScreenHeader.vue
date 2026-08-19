@@ -15,6 +15,10 @@ defineProps({
 </template>
 
 <style scoped>
+/* Hallmark · component: ScreenHeader · genre: playful (Hum register)
+ * theme: Daily Mastery brand (awenvia DNA) — shares tokens with SpeakView.vue via global src/styles/tokens.css
+ * states: static only — no interactive elements
+ */
 .screen-header {
   display: flex;
   flex-direction: column;

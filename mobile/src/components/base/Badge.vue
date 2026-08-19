@@ -14,6 +14,10 @@ defineProps({
 </template>
 
 <style scoped>
+/* Hallmark · component: Badge · genre: playful (Hum register)
+ * theme: Daily Mastery brand (awenvia DNA) — shares tokens with SpeakView.vue via global src/styles/tokens.css
+ * states: default · earned
+ */
 .badge {
   display: flex;
   align-items: center;
