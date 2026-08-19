@@ -53,7 +53,8 @@ describe('useAudioRecorder', () => {
     await startRecording();
     const result = await stopRecording();
 
-    expect(result).toBeNull();
+    expect(result.blob).toBeNull();
+    expect(result.reason).toMatch(/100ms/);
     expect(stopTrack).toHaveBeenCalled();
   });
 

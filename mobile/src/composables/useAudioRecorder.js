@@ -53,7 +53,7 @@ export function useAudioRecorder() {
       await startPromise.catch(() => {});
       startPromise = null;
     }
-    if (!recorder) return null;
+    if (!recorder) return {blob: null, reason: 'no active recorder'};
 
     const duration = Date.now() - startedAt;
     const activeRecorder = recorder;
@@ -65,8 +65,21 @@ export function useAudioRecorder() {
     return new Promise((resolve) => {
       activeRecorder.addEventListener('stop', () => {
         activeStream.getTracks().forEach((track) => track.stop());
-        if (duration < MIN_DURATION_MS || activeChunks.length === 0) {
-          resolve(null);
+        // ponytail: temporary diagnostic split (was one silent `null` for
+        // both cases) — remove once the on-device "no audio captured"
+        // report is root-caused, collapse back to a single not-recording
+        // check.
+        if (duration < MIN_DURATION_MS) {
+          resolve({blob: null, reason: `held for only ${duration}ms`});
+          return;
+        }
+        if (activeChunks.length === 0) {
+          resolve({
+            blob: null,
+            reason: `no audio data captured (${duration}ms, mimeType=${
+              activeRecorder.mimeType || 'default'
+            })`,
+          });
           return;
         }
         resolve({

@@ -1,7 +1,8 @@
 import {describe, it, expect, vi, beforeEach} from 'vitest';
 
+const noAudio = {blob: null, reason: 'no audio data captured (100ms)'};
 const startRecording = vi.fn(async () => {});
-const stopRecording = vi.fn(async () => null);
+const stopRecording = vi.fn(async () => noAudio);
 vi.mock('./useAudioRecorder.js', () => ({
   useAudioRecorder: () => ({startRecording, stopRecording}),
 }));
@@ -39,7 +40,7 @@ beforeEach(() => {
   vi.resetModules();
   apiKey.value = 'test-key';
   startRecording.mockClear();
-  stopRecording.mockReset().mockResolvedValue(null);
+  stopRecording.mockReset().mockResolvedValue(noAudio);
   transcribeAndTranslate.mockClear();
   initApiKey.mockClear();
   addEntry.mockClear();
@@ -72,7 +73,7 @@ describe('useSpeakSession', () => {
   });
 
   it('shows a retry-able error when nothing was recorded', async () => {
-    stopRecording.mockResolvedValue(null);
+    stopRecording.mockResolvedValue(noAudio);
     const {useSpeakSession} = await import('./useSpeakSession.js');
     const {handlePressStart, handlePressEnd, status, errorMessage} =
       useSpeakSession();
@@ -144,7 +145,7 @@ describe('useSpeakSession', () => {
     expect(transcribeAndTranslate).toHaveBeenCalledTimes(1);
 
     // Second attempt fails before any new audio is captured.
-    stopRecording.mockResolvedValue(null);
+    stopRecording.mockResolvedValue(noAudio);
     await handlePressStart();
     await handlePressEnd();
     expect(status.value).toBe('error');

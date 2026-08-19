@@ -72,10 +72,13 @@ async function handlePressEnd(deps) {
     return;
   }
   if (myTurn !== turn) return;
-  if (!recording) {
+  if (!recording.blob) {
     lastVietnameseText.value = '';
     status.value = 'error';
-    errorMessage.value = "Didn't catch that — try again.";
+    // ponytail: temporary diagnostic detail appended to the reason from
+    // useAudioRecorder.js — remove once root-caused, see the matching note
+    // there.
+    errorMessage.value = `Didn't catch that — try again. (${recording.reason})`;
     return;
   }
 
