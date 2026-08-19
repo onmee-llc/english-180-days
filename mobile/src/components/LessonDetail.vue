@@ -1,4 +1,6 @@
 <script setup>
+import ScreenHeader from './base/ScreenHeader.vue';
+
 defineProps({
   lesson: {type: Object, required: true},
   isComplete: {type: Boolean, required: true},
@@ -8,8 +10,10 @@ defineEmits(['mark-complete']);
 
 <template>
   <section class="lesson-detail">
-    <p class="lesson-detail__day">Day {{ lesson.day }} · {{ lesson.topicTitle }}</p>
-    <h1 class="lesson-detail__title">{{ lesson.shortTitle }}</h1>
+    <ScreenHeader
+      :eyebrow="`Day ${lesson.day} · ${lesson.topicTitle}`"
+      :title="lesson.shortTitle"
+    />
     <div class="lesson-detail__body" v-html="lesson.bodyHtml"></div>
     <button
       type="button"
@@ -41,24 +45,6 @@ defineEmits(['mark-complete']);
   background: var(--color-paper);
   color: var(--color-ink);
   font-family: var(--font-body);
-}
-
-.lesson-detail__day {
-  margin: 0;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-ink-2);
-}
-
-.lesson-detail__title {
-  margin: 0 0 var(--space-xs);
-  font-size: clamp(1.6rem, 5vw + 1rem, 2.1rem);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
 }
 
 /* ---------- lesson body (v-html) ---------- */
