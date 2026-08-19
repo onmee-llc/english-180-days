@@ -84,7 +84,7 @@ function topicDotColor(highlight) {
   align-items: center;
   gap: var(--space-xs);
   margin: 0;
-  font-size: 1.05rem;
+  font-size: var(--text-md);
   font-weight: 700;
   letter-spacing: -0.01em;
 }
@@ -111,7 +111,7 @@ function topicDotColor(highlight) {
   align-items: center;
   gap: var(--space-sm);
   padding: var(--space-sm) var(--space-md);
-  border-radius: 14px;
+  border-radius: var(--radius-input);
   background: var(--color-paper-2);
   color: var(--color-ink);
   text-decoration: none;
@@ -137,14 +137,14 @@ function topicDotColor(highlight) {
 .courses__link-day {
   flex: none;
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: var(--text-xs);
   color: var(--color-ink-3);
 }
 
 .courses__link-title {
   flex: 1;
   min-width: 0;
-  font-size: 0.95rem;
+  font-size: var(--text-base);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -153,7 +153,7 @@ function topicDotColor(highlight) {
 .courses__link-chevron {
   flex: none;
   color: var(--color-ink-3);
-  font-size: 1.1rem;
+  font-size: var(--text-md);
   line-height: 1;
 }
 </style>
