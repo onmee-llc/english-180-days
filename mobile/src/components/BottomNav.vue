@@ -128,7 +128,7 @@ function onClick(event, navigate) {
   min-width: 0;
   min-height: 44px;
   padding: 0.3rem 0.25rem;
-  border-radius: 14px;
+  border-radius: var(--radius-input);
   color: var(--color-ink-3);
   text-decoration: none;
   transition: color var(--dur-fast) var(--ease-out), background-color var(--dur-fast) var(--ease-out);
@@ -151,7 +151,7 @@ function onClick(event, navigate) {
 }
 
 .bottom-nav__label {
-  font-size: 0.68rem;
+  font-size: var(--text-2xs);
   font-weight: 500;
   letter-spacing: 0.01em;
   white-space: nowrap;
