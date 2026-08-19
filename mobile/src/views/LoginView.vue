@@ -2,6 +2,7 @@
 import {ref, watch} from 'vue';
 import {useRouter} from 'vue-router';
 import {useProgress} from '../composables/useProgress.js';
+import ScreenHeader from '../components/base/ScreenHeader.vue';
 
 const router = useRouter();
 const {authError, isSignedIn, signIn} = useProgress();
@@ -36,11 +37,11 @@ async function handleSignIn() {
 <template>
   <section class="login">
     <div class="login__card">
-      <p class="login__eyebrow">SIGN IN</p>
-      <h1 class="login__title">Daily Mastery</h1>
-      <p class="login__subtitle">
-        Sign in with your Google account to start today's lesson.
-      </p>
+      <ScreenHeader
+        eyebrow="SIGN IN"
+        title="Daily Mastery"
+        subtitle="Sign in with your Google account to start today's lesson."
+      />
 
       <button
         type="button"
@@ -108,30 +109,6 @@ async function handleSignIn() {
   border-radius: var(--radius-card);
   background: var(--color-paper-2);
   text-align: center;
-}
-
-.login__eyebrow {
-  margin: 0;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-ink-2);
-}
-
-.login__title {
-  margin: 0;
-  font-size: clamp(1.6rem, 5vw + 1rem, 2.1rem);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-}
-
-.login__subtitle {
-  margin: 0;
-  color: var(--color-ink-2);
-  font-size: 0.95rem;
-  line-height: 1.5;
 }
 
 .login__button {
