@@ -107,7 +107,33 @@ these are done:**
    together and only calling `grant()` if both succeed — `RECORD_AUDIO`
    alone is not enough, even if the user has allowed microphone access in
    the system app-permissions screen.
-10. Re-run `npx cap sync`.
+10. **Android only:** open
+    `mobile/android/app/src/main/java/vn/onmee/dailymastery/MainActivity.java`
+    and override `onCreate` to keep the screen on:
+    ```java
+    package vn.onmee.dailymastery;
+
+    import android.os.Bundle;
+    import android.view.WindowManager;
+    import com.getcapacitor.BridgeActivity;
+
+    public class MainActivity extends BridgeActivity {
+      @Override
+      protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+      }
+    }
+    ```
+    Android backgrounds (pauses/stops) the app the instant its screen
+    auto-locks, and backgrounding kills an in-progress Speak recording —
+    there's no foreground service keeping mic access alive. This was
+    silently breaking Speak turns whenever a screen timeout landed mid-turn.
+    `navigator.wakeLock` from the WebView side (see
+    `mobile/src/composables/useWakeLock.js`) didn't reliably prevent this on
+    a real device, so the screen is held on natively instead — belt and
+    suspenders with the JS wake lock, not a replacement for it.
+11. Re-run `npx cap sync`.
 
 No placeholder versions of these files exist in the repo on purpose — a fake
 one fails at runtime in a much more confusing way than a missing one.
