@@ -96,7 +96,7 @@ const streakCount = computed(
 
 .calendar__streak-label {
   color: var(--color-ink-2);
-  font-size: 0.95rem;
+  font-size: var(--text-base);
 }
 
 /* ---------- month groups ---------- */
@@ -110,7 +110,7 @@ const streakCount = computed(
 .calendar__month-title {
   margin: 0;
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: var(--text-xs);
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -131,7 +131,7 @@ const streakCount = computed(
   align-items: center;
   gap: var(--space-sm);
   padding: var(--space-sm) var(--space-md);
-  border-radius: 14px;
+  border-radius: var(--radius-input);
   background: var(--color-paper-2);
   transition: background-color var(--dur-fast) var(--ease-out);
 }
@@ -151,14 +151,14 @@ const streakCount = computed(
 .calendar__date {
   flex: none;
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: var(--text-xs);
   color: var(--color-ink-3);
 }
 
 .calendar__title-text {
   flex: 1;
   min-width: 0;
-  font-size: 0.95rem;
+  font-size: var(--text-base);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -170,7 +170,7 @@ const streakCount = computed(
   border-radius: var(--radius-pill);
   background: var(--color-accent);
   color: var(--color-on-accent);
-  font-size: 0.7rem;
+  font-size: var(--text-2xs);
   font-weight: 600;
 }
 
