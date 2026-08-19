@@ -1,6 +1,6 @@
 <script setup>
 defineProps({
-  variant: {type: String, default: 'primary'}, // 'primary' | 'outline'
+  variant: {type: String, default: 'primary'}, // 'primary' | 'outline' | 'ghost'
   tone: {type: String, default: 'default'}, // 'default' | 'coral'
   loading: {type: Boolean, default: false},
   loadingLabel: {type: String, default: 'Loading…'},
@@ -43,7 +43,7 @@ defineProps({
   border-radius: var(--radius-pill);
   font-family: inherit;
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: var(--text-base);
   cursor: pointer;
   transition:
     transform var(--dur-fast) var(--ease-out),
@@ -98,6 +98,22 @@ defineProps({
   .base-button--outline.base-button--coral:hover:not(:disabled) {
     background: var(--color-accent-3);
     color: var(--color-ink);
+  }
+}
+
+.base-button--ghost {
+  height: auto;
+  width: 100%;
+  gap: var(--space-xs);
+  padding: var(--space-sm) var(--space-md);
+  background: var(--color-paper-2);
+  color: var(--color-ink);
+  font-weight: 500;
+}
+
+@media (hover: hover) {
+  .base-button--ghost:hover:not(:disabled) {
+    background: var(--color-paper-3);
   }
 }
 

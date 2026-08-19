@@ -17,6 +17,11 @@ describe('BaseButton', () => {
     expect(wrapper.classes()).toContain('base-button--coral');
   });
 
+  it('applies the ghost variant class', () => {
+    const wrapper = mount(BaseButton, {props: {variant: 'ghost'}});
+    expect(wrapper.classes()).toContain('base-button--ghost');
+  });
+
   it('disables the button and swaps to loadingLabel while loading', () => {
     const wrapper = mount(BaseButton, {
       props: {loading: true, loadingLabel: 'Signing in…'},
