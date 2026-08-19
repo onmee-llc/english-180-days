@@ -1,6 +1,7 @@
 <script setup>
 import {computed} from 'vue';
 import {useProgress} from '../composables/useProgress.js';
+import ScreenHeader from '../components/base/ScreenHeader.vue';
 import content from '../content/lessons.json';
 
 const {progress} = useProgress();
@@ -23,10 +24,7 @@ const streakCount = computed(
 
 <template>
   <section class="calendar">
-    <header class="calendar__header">
-      <p class="calendar__eyebrow">CALENDAR</p>
-      <h1 class="calendar__title">Your streak</h1>
-    </header>
+    <ScreenHeader eyebrow="CALENDAR" title="Your streak" />
 
     <div class="calendar__streak">
       <span class="calendar__streak-flame" aria-hidden="true">🔥</span>
@@ -70,29 +68,6 @@ const streakCount = computed(
   font-family: var(--font-body);
 }
 
-.calendar__header {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2xs);
-}
-
-.calendar__eyebrow {
-  margin: 0;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-ink-2);
-}
-
-.calendar__title {
-  margin: 0;
-  font-size: clamp(1.6rem, 5vw + 1rem, 2.1rem);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-}
-
 /* ---------- streak badge — the motivating number ---------- */
 
 .calendar__streak {
@@ -102,7 +77,7 @@ const streakCount = computed(
   padding: var(--space-lg);
   border-radius: var(--radius-card);
   background: var(--color-accent-3-tint);
-  box-shadow: 0 12px 32px -18px oklch(20% 0.012 250 / 0.25);
+  box-shadow: 0 12px 32px -18px var(--color-shadow-soft);
 }
 
 .calendar__streak-flame {
