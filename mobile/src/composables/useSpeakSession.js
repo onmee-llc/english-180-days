@@ -9,6 +9,7 @@ import {useAudioRecorder} from './useAudioRecorder.js';
 import {transcribeAndTranslate} from './useGeminiTranslate.js';
 import {useApiKey} from './useApiKey.js';
 import {useTranslateHistory} from './useTranslateHistory.js';
+import {useWakeLock} from './useWakeLock.js';
 
 const status = ref('idle'); // idle | recording | translating | result | error
 const errorMessage = ref('');
@@ -16,6 +17,7 @@ const lastVietnameseText = ref('');
 const result = ref(null); // {englishSentence, ipa, explanation}
 
 const {startRecording, stopRecording} = useAudioRecorder();
+const {acquire: acquireWakeLock, release: releaseWakeLock} = useWakeLock();
 
 let lastAudioBlob = null;
 let lastAudioMimeType = '';
@@ -48,10 +50,12 @@ async function runTranslate(deps, myTurn) {
       ipa: translated.ipa,
       explanation: translated.explanation,
     });
+    await releaseWakeLock();
   } catch (err) {
     if (myTurn !== turn) return;
     status.value = 'error';
     errorMessage.value = err.message || 'Translation failed. Please try again.';
+    await releaseWakeLock();
   }
 }
 
@@ -69,6 +73,7 @@ async function handlePressEnd(deps) {
     status.value = 'error';
     errorMessage.value =
       err.message || 'Could not stop recording. Please try again.';
+    await releaseWakeLock();
     return;
   }
   if (myTurn !== turn) return;
@@ -79,6 +84,7 @@ async function handlePressEnd(deps) {
     // useAudioRecorder.js — remove once root-caused, see the matching note
     // there.
     errorMessage.value = `Didn't catch that — try again. (${recording.reason})`;
+    await releaseWakeLock();
     return;
   }
 
@@ -109,6 +115,7 @@ export function useSpeakSession() {
     lastAudioBlob = null;
     lastAudioMimeType = '';
     status.value = 'recording';
+    await acquireWakeLock();
     try {
       await startRecording();
     } catch (err) {
@@ -121,15 +128,17 @@ export function useSpeakSession() {
         err.name === 'NotAllowedError'
           ? 'Microphone access is needed for this feature. Please allow it and try again.'
           : err.message || 'Could not start recording. Please try again.';
+      await releaseWakeLock();
     }
     return true;
   }
 
-  function retry() {
+  async function retry() {
     if (lastAudioBlob) {
       turn += 1;
       status.value = 'translating';
       errorMessage.value = '';
+      await acquireWakeLock();
       return runTranslate(deps, turn);
     }
     status.value = 'idle';
