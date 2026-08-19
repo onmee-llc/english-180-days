@@ -52,7 +52,7 @@ const hintId = `${props.id}-hint`;
 }
 
 .text-field__label {
-  font-size: 0.85rem;
+  font-size: var(--text-sm);
   font-weight: 600;
   color: var(--color-ink-2);
 }
@@ -61,13 +61,13 @@ const hintId = `${props.id}-hint`;
   height: 2.75rem;
   padding: 0 var(--space-md);
   border: 1px solid var(--color-border);
-  border-radius: 14px;
+  border-radius: var(--radius-input);
   outline: 2px solid transparent;
   outline-offset: 1px;
   background: var(--color-paper);
   color: var(--color-ink);
   font-family: inherit;
-  font-size: 0.95rem;
+  font-size: var(--text-base);
   transition:
     background-color var(--dur-fast) var(--ease-out),
     border-color var(--dur-fast) var(--ease-out);
@@ -92,7 +92,7 @@ const hintId = `${props.id}-hint`;
 .text-field__success {
   min-height: 1lh;
   color: var(--color-accent-2);
-  font-size: 0.85rem;
+  font-size: var(--text-sm);
   font-weight: 600;
 }
 
@@ -100,7 +100,7 @@ const hintId = `${props.id}-hint`;
   margin: 0;
   min-height: 1lh;
   color: var(--color-ink-3);
-  font-size: 0.8rem;
+  font-size: var(--text-sm);
   line-height: 1.5;
 }
 

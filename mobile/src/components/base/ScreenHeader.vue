@@ -28,7 +28,7 @@ defineProps({
 .screen-header__eyebrow {
   margin: 0;
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: var(--text-2xs);
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -37,7 +37,7 @@ defineProps({
 
 .screen-header__title {
   margin: 0;
-  font-size: clamp(1.6rem, 5vw + 1rem, 2.1rem);
+  font-size: var(--text-display);
   font-weight: 700;
   letter-spacing: -0.02em;
 }
@@ -45,7 +45,7 @@ defineProps({
 .screen-header__subtitle {
   margin: 0;
   color: var(--color-ink-2);
-  font-size: 0.95rem;
+  font-size: var(--text-base);
   line-height: 1.5;
 }
 </style>

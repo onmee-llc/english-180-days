@@ -26,7 +26,7 @@ defineProps({
   border-radius: var(--radius-pill);
   background: var(--color-paper-3);
   color: var(--color-ink-3);
-  font-size: 0.78rem;
+  font-size: var(--text-xs);
   opacity: 0.55;
 }
 
