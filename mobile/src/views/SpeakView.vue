@@ -2,6 +2,7 @@
 import {ref, onMounted, onUnmounted} from 'vue';
 import {useSpeakSession} from '../composables/useSpeakSession.js';
 import ScreenHeader from '../components/base/ScreenHeader.vue';
+import BaseButton from '../components/base/BaseButton.vue';
 
 const {
   status,
@@ -121,13 +122,9 @@ onUnmounted(() => {
         <p v-if="lastVietnameseText" class="speak__error-transcript">
           “{{ lastVietnameseText }}”
         </p>
-        <button
-          type="button"
-          class="btn btn--outline btn--coral"
-          @click="retry"
-        >
+        <BaseButton variant="outline" tone="coral" @click="retry">
           Try again
-        </button>
+        </BaseButton>
       </div>
     </Transition>
 
@@ -462,43 +459,6 @@ onUnmounted(() => {
   transform: translateY(-6px);
 }
 
-/* ---------- buttons ---------- */
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5em;
-  padding: 0.7rem 1.3rem;
-  border-radius: var(--radius-pill);
-  font-family: inherit;
-  font-weight: 600;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition:
-    transform var(--dur-fast) var(--ease-out),
-    background-color var(--dur-fast) var(--ease-out),
-    color var(--dur-fast) var(--ease-out);
-}
-.btn:active {
-  transform: translateY(1px);
-}
-.btn:focus-visible {
-  outline: 3px solid var(--color-focus);
-  outline-offset: 3px;
-}
-
-.btn--outline {
-  border: 1.5px solid currentColor;
-  background: transparent;
-}
-.btn--coral {
-  color: var(--color-accent-3-deep);
-}
-.btn--coral:hover {
-  background: var(--color-accent-3);
-  color: var(--color-ink);
-}
 
 /* ---------- history ---------- */
 
