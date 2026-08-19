@@ -1,6 +1,7 @@
 <script setup>
 import {ref, onMounted, onUnmounted} from 'vue';
 import {useSpeakSession} from '../composables/useSpeakSession.js';
+import ScreenHeader from '../components/base/ScreenHeader.vue';
 
 const {
   status,
@@ -29,13 +30,11 @@ onUnmounted(() => {
 
 <template>
   <section class="speak">
-    <header class="speak__header">
-      <p class="speak__eyebrow">SPEAK · VI → EN</p>
-      <h1 class="speak__title">Say it in Vietnamese</h1>
-      <p class="speak__subtitle">
-        Hold the mic, speak naturally — get the English back.
-      </p>
-    </header>
+    <ScreenHeader
+      eyebrow="SPEAK · VI → EN"
+      title="Say it in Vietnamese"
+      subtitle="Hold the mic, speak naturally — get the English back."
+    />
 
     <div class="speak__stage">
       <Transition name="speak-fade" mode="out-in">
@@ -196,38 +195,6 @@ onUnmounted(() => {
 
 .speak * {
   box-sizing: border-box;
-}
-
-/* ---------- header ---------- */
-
-.speak__header {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2xs);
-}
-
-.speak__eyebrow {
-  margin: 0;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-ink-2);
-}
-
-.speak__title {
-  margin: 0;
-  font-size: clamp(1.7rem, 5vw + 1rem, 2.25rem);
-  font-weight: 600;
-  letter-spacing: -0.025em;
-  line-height: 1.15;
-}
-
-.speak__subtitle {
-  margin: 0;
-  color: var(--color-ink-2);
-  font-size: 0.95rem;
 }
 
 /* ---------- stage: transcript + mic ---------- */
