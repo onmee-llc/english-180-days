@@ -66,10 +66,16 @@ these are done:**
    and add, as a direct child of `<manifest>`:
    ```xml
    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+   <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
    ```
    The Speak tab records audio directly via the browser's `getUserMedia`
-   API now (no plugin auto-merging this permission) — without it,
-   `getUserMedia()` rejects on Android the moment recording starts.
+   API now (no plugin auto-merging this permission) — without both, it
+   rejects on Android the moment recording starts. Capacitor's built-in
+   `BridgeWebChromeClient` grants a WebView `getUserMedia({audio: true})`
+   request by requesting `RECORD_AUDIO` *and* `MODIFY_AUDIO_SETTINGS`
+   together and only calling `grant()` if both succeed — `RECORD_AUDIO`
+   alone is not enough, even if the user has allowed microphone access in
+   the system app-permissions screen.
 10. Re-run `npx cap sync`.
 
 No placeholder versions of these files exist in the repo on purpose — a fake
