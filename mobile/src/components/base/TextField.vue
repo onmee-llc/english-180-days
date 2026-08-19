@@ -53,7 +53,7 @@ const hintId = `${props.id}-hint`;
 .text-field__input {
   height: 2.75rem;
   padding: 0 var(--space-md);
-  border: 1px solid oklch(20% 0.012 250 / 0.16);
+  border: 1px solid var(--color-border);
   border-radius: 14px;
   outline: 2px solid transparent;
   outline-offset: 1px;

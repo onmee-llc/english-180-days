@@ -11,6 +11,7 @@
   --color-ink: #15112b;
   --color-ink-2: rgb(21 17 43 / 68%);
   --color-ink-3: rgb(21 17 43 / 45%);
+  --color-border: oklch(20% 0.012 250 / 0.16);
 
   --color-accent: #3d4ee8; /* indigo — primary action */
   --color-accent-deep: #3240be;
