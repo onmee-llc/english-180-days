@@ -10,6 +10,7 @@ import BaseButton from '../components/base/BaseButton.vue';
 import Badge from '../components/base/Badge.vue';
 import TextField from '../components/base/TextField.vue';
 import Card from '../components/base/Card.vue';
+import {version as appVersion} from '../../package.json';
 
 // This screen is only ever reached signed-in (the router's authGuard
 // guarantees it), so there's no sign-in button or auth-error branch here
@@ -115,6 +116,8 @@ onMounted(async () => {
         @blur="handleApiKeyBlur"
       />
     </Card>
+
+    <p class="settings__version">Daily Mastery v{{ appVersion }}</p>
   </section>
 </template>
 
@@ -193,4 +196,10 @@ onMounted(async () => {
   padding: 0;
 }
 
+.settings__version {
+  margin: 0;
+  color: var(--color-ink-3);
+  font-size: 0.8rem;
+  text-align: center;
+}
 </style>
