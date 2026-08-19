@@ -138,15 +138,14 @@ onUnmounted(() => {
     </Transition>
 
     <div class="speak__history-section">
-      <button
-        type="button"
-        class="speak__history-toggle"
+      <BaseButton
+        variant="ghost"
         :aria-expanded="showHistory"
         @click="showHistory = !showHistory"
       >
         <span>{{ showHistory ? 'Hide history' : 'Show history' }}</span>
         <span class="speak__history-count">{{ history.length }}</span>
-      </button>
+      </BaseButton>
 
       <Transition name="speak-collapse">
         <ul v-if="showHistory" class="speak__history">
@@ -212,7 +211,7 @@ onUnmounted(() => {
   border-radius: var(--radius-card);
   background: var(--color-paper-2);
   color: var(--color-ink);
-  font-size: 1.05rem;
+  font-size: var(--text-md);
   line-height: 1.5;
   text-align: center;
 }
@@ -367,7 +366,7 @@ onUnmounted(() => {
 
 .speak__mic-label {
   margin: 0;
-  font-size: 0.85rem;
+  font-size: var(--text-sm);
   font-weight: 500;
   color: var(--color-ink-2);
 }
@@ -392,7 +391,7 @@ onUnmounted(() => {
 .speak__error-transcript {
   margin: 0;
   color: var(--color-ink-2);
-  font-size: 0.9rem;
+  font-size: var(--text-base);
 }
 
 /* ---------- result card ---------- */
@@ -404,13 +403,13 @@ onUnmounted(() => {
   padding: var(--space-lg);
   border-radius: var(--radius-card);
   background: var(--color-accent-2-tint);
-  box-shadow: 0 12px 32px -18px oklch(20% 0.012 250 / 0.25);
+  box-shadow: 0 12px 32px -18px var(--color-shadow-soft);
 }
 
 .speak__result-label {
   margin: 0;
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: var(--text-2xs);
   font-weight: 500;
   letter-spacing: 0.1em;
   color: var(--color-accent-2);
@@ -418,7 +417,7 @@ onUnmounted(() => {
 
 .speak__english {
   margin: 0;
-  font-size: 1.35rem;
+  font-size: var(--text-lg);
   font-weight: 600;
   letter-spacing: -0.01em;
   line-height: 1.3;
@@ -427,16 +426,16 @@ onUnmounted(() => {
 .speak__ipa {
   margin: 0;
   font-family: var(--font-mono);
-  font-size: 0.9rem;
+  font-size: var(--text-base);
   color: var(--color-ink-2);
 }
 
 .speak__explanation {
   margin: var(--space-xs) 0 0;
   padding-top: var(--space-sm);
-  border-top: 1px solid oklch(20% 0.012 250 / 0.1);
+  border-top: 1px solid var(--color-hairline);
   color: var(--color-ink-2);
-  font-size: 0.9rem;
+  font-size: var(--text-base);
   line-height: 1.55;
 }
 
@@ -464,32 +463,7 @@ onUnmounted(() => {
 .speak__history-section {
   margin-top: auto;
   padding-top: var(--space-md);
-  border-top: 1px solid oklch(20% 0.012 250 / 0.08);
-}
-
-.speak__history-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-xs);
-  width: 100%;
-  padding: var(--space-sm) var(--space-md);
-  border: 0;
-  border-radius: var(--radius-pill);
-  background: var(--color-paper-2);
-  color: var(--color-ink);
-  font-family: inherit;
-  font-weight: 500;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: background-color var(--dur-fast) var(--ease-out);
-}
-.speak__history-toggle:hover {
-  background: var(--color-paper-3);
-}
-.speak__history-toggle:focus-visible {
-  outline: 3px solid var(--color-focus);
-  outline-offset: 2px;
+  border-top: 1px solid var(--color-hairline);
 }
 
 .speak__history-count {
@@ -501,7 +475,7 @@ onUnmounted(() => {
   background: var(--color-accent);
   color: var(--color-on-accent);
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: var(--text-xs);
 }
 
 .speak__history {
@@ -519,30 +493,30 @@ onUnmounted(() => {
   flex-direction: column;
   gap: 0.15rem;
   padding: var(--space-sm) var(--space-md);
-  border-radius: 14px;
+  border-radius: var(--radius-input);
   background: var(--color-paper-2);
 }
 
 .speak__history-vi {
   font-weight: 500;
-  font-size: 0.9rem;
+  font-size: var(--text-base);
 }
 
 .speak__history-en {
   color: var(--color-ink-2);
-  font-size: 0.85rem;
+  font-size: var(--text-sm);
 }
 
 .speak__history-ipa {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: var(--text-xs);
   color: var(--color-ink-3);
 }
 
 .speak__history-empty {
   padding: var(--space-sm) var(--space-md);
   color: var(--color-ink-3);
-  font-size: 0.85rem;
+  font-size: var(--text-sm);
   text-align: center;
 }
 
