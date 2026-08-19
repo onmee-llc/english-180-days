@@ -53,7 +53,7 @@ const lesson = computed(() =>
 .lesson__empty-text {
   margin: 0;
   color: var(--color-ink-2);
-  font-size: 1.05rem;
+  font-size: var(--text-md);
   line-height: 1.5;
 }
 </style>

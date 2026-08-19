@@ -72,7 +72,7 @@ const lesson = computed(() => today.value.lesson);
   margin: 0;
   max-width: 32ch;
   color: var(--color-ink-2);
-  font-size: 1.05rem;
+  font-size: var(--text-md);
   line-height: 1.5;
 }
 </style>
