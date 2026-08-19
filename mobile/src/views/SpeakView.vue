@@ -459,7 +459,6 @@ onUnmounted(() => {
   transform: translateY(-6px);
 }
 
-
 /* ---------- history ---------- */
 
 .speak__history-section {
