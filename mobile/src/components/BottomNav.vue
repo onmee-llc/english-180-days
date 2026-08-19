@@ -114,8 +114,8 @@ function onClick(event, navigate) {
   gap: var(--space-2xs);
   padding: var(--space-xs) var(--space-xs) calc(var(--space-xs) + env(safe-area-inset-bottom));
   background: var(--color-paper);
-  border-top: 1px solid oklch(20% 0.012 250 / 0.1);
-  box-shadow: 0 -8px 24px -16px oklch(20% 0.012 250 / 0.25);
+  border-top: 1px solid var(--color-hairline);
+  box-shadow: 0 -8px 24px -16px var(--color-shadow-soft);
 }
 
 .bottom-nav__link {
