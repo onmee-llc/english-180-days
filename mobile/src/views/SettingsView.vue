@@ -175,14 +175,14 @@ onMounted(async () => {
 .settings__profile-email {
   margin: 0;
   color: var(--color-ink-2);
-  font-size: 0.8rem;
+  font-size: var(--text-sm);
 }
 
 .settings__profile-stats {
   grid-column: 1 / -1;
   display: flex;
   gap: var(--space-md);
-  font-size: 0.9rem;
+  font-size: var(--text-base);
   font-weight: 500;
 }
 
@@ -199,7 +199,7 @@ onMounted(async () => {
 .settings__version {
   margin: 0;
   color: var(--color-ink-3);
-  font-size: 0.8rem;
+  font-size: var(--text-sm);
   text-align: center;
 }
 </style>
