@@ -51,7 +51,7 @@ defineEmits(['mark-complete']);
 
 .lesson-detail__body {
   line-height: 1.65;
-  font-size: 1rem;
+  font-size: var(--text-base);
 }
 
 .lesson-detail__body :deep(> :first-child) {
@@ -60,7 +60,7 @@ defineEmits(['mark-complete']);
 
 .lesson-detail__body :deep(h2) {
   margin: var(--space-xl) 0 var(--space-xs);
-  font-size: 1.3rem;
+  font-size: var(--text-lg);
   font-weight: 700;
   letter-spacing: -0.015em;
   line-height: 1.25;
@@ -68,7 +68,7 @@ defineEmits(['mark-complete']);
 
 .lesson-detail__body :deep(h3) {
   margin: var(--space-lg) 0 var(--space-2xs);
-  font-size: 1.1rem;
+  font-size: var(--text-md);
   font-weight: 600;
   letter-spacing: -0.01em;
   line-height: 1.3;
@@ -76,7 +76,7 @@ defineEmits(['mark-complete']);
 
 .lesson-detail__body :deep(h4) {
   margin: var(--space-md) 0 var(--space-2xs);
-  font-size: 0.95rem;
+  font-size: var(--text-base);
   font-weight: 600;
   color: var(--color-ink-2);
 }
@@ -143,7 +143,7 @@ defineEmits(['mark-complete']);
 .lesson-detail__body :deep(hr) {
   margin: var(--space-lg) 0;
   border: 0;
-  border-top: 1px solid oklch(20% 0.012 250 / 0.1);
+  border-top: 1px solid var(--color-hairline);
 }
 
 .lesson-detail__body :deep(img) {
@@ -171,7 +171,7 @@ defineEmits(['mark-complete']);
   width: 100%;
   margin: 0 0 var(--space-md);
   border-collapse: collapse;
-  font-size: 0.9rem;
+  font-size: var(--text-base);
 }
 
 .lesson-detail__body :deep(th),
@@ -179,12 +179,12 @@ defineEmits(['mark-complete']);
   padding: var(--space-xs) var(--space-sm);
   text-align: left;
   vertical-align: top;
-  border-bottom: 1px solid oklch(20% 0.012 250 / 0.1);
+  border-bottom: 1px solid var(--color-hairline);
 }
 
 .lesson-detail__body :deep(th) {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: var(--text-xs);
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -216,7 +216,7 @@ defineEmits(['mark-complete']);
   display: inline-block;
   margin-bottom: var(--space-2xs);
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: var(--text-2xs);
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
