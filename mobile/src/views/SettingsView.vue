@@ -5,6 +5,7 @@ import {useProgress} from '../composables/useProgress.js';
 import {useReminder} from '../composables/useReminder.js';
 import {useApiKey} from '../composables/useApiKey.js';
 import {getBadges} from '../composables/useBadges.js';
+import ScreenHeader from '../components/base/ScreenHeader.vue';
 
 // This screen is only ever reached signed-in (the router's authGuard
 // guarantees it), so there's no sign-in button or auth-error branch here
@@ -50,10 +51,7 @@ onMounted(async () => {
 
 <template>
   <section class="settings">
-    <header class="settings__header">
-      <p class="settings__eyebrow">SETTINGS</p>
-      <h1 class="settings__title">Settings</h1>
-    </header>
+    <ScreenHeader eyebrow="SETTINGS" title="Settings" />
 
     <div v-if="user" class="settings__row settings__profile">
       <img
@@ -146,29 +144,6 @@ onMounted(async () => {
   background: var(--color-paper);
   color: var(--color-ink);
   font-family: var(--font-body);
-}
-
-.settings__header {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2xs);
-}
-
-.settings__eyebrow {
-  margin: 0;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-ink-2);
-}
-
-.settings__title {
-  margin: 0;
-  font-size: clamp(1.6rem, 5vw + 1rem, 2.1rem);
-  font-weight: 700;
-  letter-spacing: -0.02em;
 }
 
 .settings__row {
