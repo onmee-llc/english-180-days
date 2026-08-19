@@ -1,5 +1,6 @@
 <script setup>
 import {computed} from 'vue';
+import ScreenHeader from '../components/base/ScreenHeader.vue';
 import content from '../content/lessons.json';
 
 const topics = computed(() => {
@@ -28,10 +29,7 @@ function topicDotColor(highlight) {
 
 <template>
   <section class="courses">
-    <header class="courses__header">
-      <p class="courses__eyebrow">COURSES</p>
-      <h1 class="courses__title">All topics</h1>
-    </header>
+    <ScreenHeader eyebrow="COURSES" title="All topics" />
 
     <article v-for="topic in topics" :key="topic.topicSlug" class="courses__topic">
       <h2 class="courses__topic-title">
@@ -73,29 +71,6 @@ function topicDotColor(highlight) {
   background: var(--color-paper);
   color: var(--color-ink);
   font-family: var(--font-body);
-}
-
-.courses__header {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2xs);
-}
-
-.courses__eyebrow {
-  margin: 0;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-ink-2);
-}
-
-.courses__title {
-  margin: 0;
-  font-size: clamp(1.6rem, 5vw + 1rem, 2.1rem);
-  font-weight: 700;
-  letter-spacing: -0.02em;
 }
 
 .courses__topic {
