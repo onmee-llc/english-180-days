@@ -2,10 +2,12 @@ import {ref, computed} from 'vue';
 import {AgentRuntime} from '../agent-core/AgentRuntime.js';
 import {playTtsAudio, stopTtsAudio} from './useSpeechAudio.js';
 import {useAudioRecorder} from './useAudioRecorder.js';
+import {useApiKey} from './useApiKey.js';
+import {transcribeAndTranslate} from './useGeminiTranslate.js';
 
 // Global Singleton State for Alex Live Call & Co-Pilot
 const isFullScreen = ref(true); // Full screen live call by default upon app open
-const isAudioMuted = ref(true); // Muted by default upon app open
+const isAudioMuted = ref(false); // Unmuted for natural conversational voice interaction
 const callState = ref('idle'); // 'idle' | 'listening' | 'thinking' | 'speaking'
 const currentTranscript = ref('');
 const alexResponseText = ref('Xin chào Robert! Hôm nay chúng ta cần giải quyết những việc gì?');
@@ -61,20 +63,36 @@ function getSpeechRecognition() {
 
 export function useAlexLiveCall() {
   const {startRecording, stopRecording} = useAudioRecorder();
+  const {apiKey, init: initApiKey} = useApiKey();
 
-  function initRuntime(apiKey = '', contentLessons = [], masteryStore = null) {
+  async function getEffectiveApiKey() {
+    await initApiKey();
+    if (apiKey.value) return apiKey.value;
+    if (typeof localStorage !== 'undefined') {
+      return localStorage.getItem('dm_gemini_api_key') || localStorage.getItem('gemini_api_key') || '';
+    }
+    return '';
+  }
+
+  async function initRuntime(providedKey = '', contentLessons = [], masteryStore = null) {
     if (!runtimeInstance.value) {
+      const effectiveKey = providedKey || (await getEffectiveApiKey());
       runtimeInstance.value = new AgentRuntime({
-        apiKey,
+        apiKey: effectiveKey,
         contentLessons,
         masteryStore,
       });
+    } else if (providedKey) {
+      runtimeInstance.value.setApiKey(providedKey);
     }
     return runtimeInstance.value;
   }
 
   function openFullScreenCall() {
     isFullScreen.value = true;
+    if (!isAudioMuted.value && callState.value === 'idle') {
+      speakAlexResponse(alexResponseText.value);
+    }
   }
 
   function minimizeToTopDock() {
@@ -86,6 +104,8 @@ export function useAlexLiveCall() {
     isAudioMuted.value = !isAudioMuted.value;
     if (isAudioMuted.value) {
       stopAlexSpeaking();
+    } else if (callState.value === 'idle') {
+      speakAlexResponse(alexResponseText.value);
     }
   }
 
@@ -163,17 +183,20 @@ export function useAlexLiveCall() {
       }
     }
 
+    const effectiveKey = await getEffectiveApiKey();
     if (!runtimeInstance.value) {
-      initRuntime();
+      await initRuntime(effectiveKey);
+    } else if (effectiveKey) {
+      runtimeInstance.value.setApiKey(effectiveKey);
     }
 
     try {
       await runtimeInstance.value.sendPrompt({
         channelId: 'companion',
         prompt: trimmed,
-        onChunk: (chunk) => {
-          if (chunk.text) {
-            alexResponseText.value = chunk.text;
+        onToken: (token, accumulated) => {
+          if (accumulated) {
+            alexResponseText.value = accumulated;
           }
         },
         onComplete: (msg) => {
@@ -193,10 +216,12 @@ export function useAlexLiveCall() {
     // If Alex is speaking, immediately interrupt/stop speech
     await stopAlexSpeaking();
 
+    // Engaging in voice talk enables audio response
+    isAudioMuted.value = false;
     callState.value = 'listening';
     currentTranscript.value = 'Đang lắng nghe Robert...';
 
-    // 1. Try SpeechRecognition for live Vietnamese transcription
+    // 1. Try Web SpeechRecognition for live transcription
     speechRecognitionInstance = getSpeechRecognition();
     if (speechRecognitionInstance) {
       speechRecognitionInstance.onresult = (event) => {
@@ -214,7 +239,7 @@ export function useAlexLiveCall() {
       } catch (_) {}
     }
 
-    // 2. Also start AudioRecorder for waveform / mic capture
+    // 2. Also start AudioRecorder for waveform & multimodal audio STT capture
     try {
       await startRecording();
     } catch (_) {}
@@ -231,15 +256,46 @@ export function useAlexLiveCall() {
       speechRecognitionInstance = null;
     }
 
+    let recording = null;
     try {
-      await stopRecording().catch(() => {});
+      recording = await stopRecording();
     } catch (_) {}
 
-    const captured = currentTranscript.value && currentTranscript.value !== 'Đang lắng nghe Robert...'
-      ? currentTranscript.value.trim()
-      : 'Alex, hãy báo cáo tóm tắt 3 việc quan trọng hôm nay cho Robert.';
+    let capturedText = '';
+    if (currentTranscript.value && currentTranscript.value !== 'Đang lắng nghe Robert...') {
+      capturedText = currentTranscript.value.trim();
+    }
 
-    await handleSendPrompt(captured, router);
+    // If Web SpeechRecognition didn't catch text (e.g. Android WebView) and audio was recorded,
+    // transcribe audio with precision via Gemini Multimodal STT!
+    if (!capturedText && recording && recording.blob && recording.blob.size > 200) {
+      currentTranscript.value = 'Đang nhận diện giọng nói của Robert...';
+      try {
+        const effectiveKey = await getEffectiveApiKey();
+        if (effectiveKey) {
+          const transResult = await transcribeAndTranslate(recording.blob, recording.mimeType, effectiveKey);
+          if (transResult && transResult.vietnameseText && !transResult.vietnameseText.includes('Không nhận diện được')) {
+            capturedText = transResult.vietnameseText.trim();
+            currentTranscript.value = capturedText;
+          }
+        }
+      } catch (sttErr) {
+        console.warn('Multimodal audio STT fallback error:', sttErr);
+      }
+    }
+
+    // If still no speech detected, prompt Robert
+    if (!capturedText) {
+      callState.value = 'idle';
+      currentTranscript.value = '';
+      alexResponseText.value = 'Tôi chưa nghe rõ câu nói của Robert. Bạn có thể bấm lại nút mic hoặc gõ tin nhắn để tôi hỗ trợ nhé.';
+      if (!isAudioMuted.value) {
+        speakAlexResponse(alexResponseText.value);
+      }
+      return;
+    }
+
+    await handleSendPrompt(capturedText, router);
   }
 
   return {

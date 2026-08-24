@@ -185,31 +185,31 @@ export class LLMClient {
   }
 
   _generateSimulatedResponse(prompt, systemInstruction, errorNotice) {
-    const p = prompt.toLowerCase();
+    const p = (prompt || '').toLowerCase().trim();
     let prefix = errorNotice ? `*(Offline mode / API Key required for live cloud models)*\n\n` : '';
 
-    if (p.includes('kế hoạch') || p.includes('plan') || p.includes('today') || p.includes('hôm nay')) {
-      return prefix + `Chào Robert! Tôi là Alex. Tôi đã phân tích kế hoạch và mục tiêu hôm nay trong chương trình Daily Mastery 180 ngày:\n\n` +
-        `### [Mục Tiêu Trọng Tâm Hôm Nay]\n` +
-        `1. **AI / LLM Track:** Hoàn thành bài học kiến trúc Agent Core và cơ chế Streaming SSE.\n` +
-        `2. **English Practice:** Luyện nói 5 phút về chủ đề *System Architecture & Scalability*.\n` +
-        `3. **Finance & Execution:** Review danh mục đầu tư và chốt tiến độ sprint tuần.\n\n` +
-        `Tôi đã sẵn sàng hỗ trợ Robert thực hiện các bước trên.`;
+    if (p.includes('hello') || p.includes('hi') || p.includes('chào') || p.includes('say hello') || p.includes('hey')) {
+      return prefix + `Chào Robert! Tôi là Alex. Rất vui được trò chuyện cùng bạn. Hôm nay công việc và cuộc sống của bạn thế nào? Bạn muốn chúng ta cùng xử lý mục tiêu nào trước?`;
     }
 
-    if (p.includes('english') || p.includes('tiếng anh') || p.includes('speak') || p.includes('nói')) {
-      return prefix + `Hello Robert! I am Alex, your English Coach. Let's practice speaking and technical English.\n\n` +
-        `**Today's Collocation:** *"Decoupled Architecture"* (Kiến trúc phân tách độc lập)\n` +
-        `**Sample Sentence:** *"By decoupling the agent runtime from the presentation layer, we ensure sub-second response times and high concurrency."*\n\n` +
-        `Robert có thể sử dụng nút ghi âm bên dưới để phát âm và nhận phân tích ngay.`;
+    if (p.includes('kế hoạch') || p.includes('plan') || p.includes('today') || p.includes('hôm nay') || p.includes('báo cáo')) {
+      return prefix + `Chào Robert! Tôi đã tổng hợp kế hoạch và 3 mục tiêu trọng tâm hôm nay trong hành trình Daily Mastery của bạn:\n\n` +
+        `1. AI & Kỹ thuật: Hoàn thành bài học kiến trúc hệ thống Agent Core và cơ chế Streaming.\n` +
+        `2. Luyện nói tiếng Anh: 5 phút thực hành chủ đề System Architecture & Scalability.\n` +
+        `3. Quản trị & Điều hành: Review tiến độ các dự án và chốt các việc cần quyết định.\n\n` +
+        `Tôi đã sẵn sàng đồng hành cùng Robert.`;
+    }
+
+    if (p.includes('english') || p.includes('tiếng anh') || p.includes('speak') || p.includes('luyện nói')) {
+      return prefix + `Chào Robert! Tôi là Alex. Chúng ta hãy cùng luyện nói tiếng Anh chuyên ngành hôm nay nhé.\n\n` +
+        `Mẫu câu kỹ thuật hôm nay: "By decoupling the agent runtime from the presentation layer, we ensure sub-second response times and high concurrency."\n\n` +
+        `Robert có thể nhấn vào nút mic để luyện phát âm bất kỳ lúc nào.`;
     }
 
     if (p.includes('code') || p.includes('system') || p.includes('kiến trúc') || p.includes('task')) {
-      return prefix + `Chào Robert, Alex đây. Tôi sẵn sàng cùng bạn xử lý tác vụ kỹ thuật!\n\n` +
-        `\`\`\`javascript\n// Concurrency Engine: Dispatch background task\nconst task = await taskEngine.dispatch({\n  title: 'Audit System Latency',\n  type: 'ANALYSIS',\n  priority: 'HIGH'\n});\n\`\`\`\n\n` +
-        `Hệ thống Agent Core hiện đã sẵn sàng điều phối đa tác vụ song song. Robert cần tôi phân tích sâu phần nào?`;
+      return prefix + `Chào Robert, Alex đã sẵn sàng cùng bạn giải quyết bài toán kỹ thuật. Hệ thống Agent Core hiện đang hoạt động ổn định và sẵn sàng điều phối đa tác vụ. Bạn cần tôi phân tích sâu phần nào?`;
     }
 
-    return prefix + `Tôi là Alex - Trợ lý AI cá nhân Daily Mastery của Robert. Tôi luôn sẵn sàng cùng bạn lên kế hoạch, giải quyết công việc kỹ thuật, luyện giao tiếp tiếng Anh và theo dõi hành trình 180 ngày hoàn thiện bản thân.\n\nRobert muốn chúng ta bắt đầu với nhiệm vụ nào hôm nay?`;
+    return prefix + `Chào Robert! Tôi đã nhận thông tin: "${prompt}". Tôi là Alex - Trợ lý AI đồng hành của bạn. Tôi luôn sẵn sàng hỗ trợ bạn lập kế hoạch, giải quyết công việc kỹ thuật và theo dõi tiến độ mỗi ngày. Robert muốn chúng ta triển khai bước tiếp theo như thế nào?`;
   }
 }

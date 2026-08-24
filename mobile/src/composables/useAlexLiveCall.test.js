@@ -3,14 +3,15 @@ import {useAlexLiveCall, convertTextToNaturalSpokenVietnamese} from './useAlexLi
 
 describe('useAlexLiveCall', () => {
   beforeEach(() => {
-    const {openFullScreenCall} = useAlexLiveCall();
+    const {openFullScreenCall, isAudioMuted} = useAlexLiveCall();
     openFullScreenCall();
+    isAudioMuted.value = false;
   });
 
-  it('starts in full screen call mode and muted by default', () => {
+  it('starts in full screen call mode and ready for conversational voice', () => {
     const {isFullScreen, isAudioMuted} = useAlexLiveCall();
     expect(isFullScreen.value).toBe(true);
-    expect(isAudioMuted.value).toBe(true);
+    expect(isAudioMuted.value).toBe(false);
   });
 
   it('minimizes to top dock and expands back to full screen', () => {
@@ -25,13 +26,13 @@ describe('useAlexLiveCall', () => {
 
   it('toggles audio mute state cleanly', () => {
     const {isAudioMuted, toggleAudioMute} = useAlexLiveCall();
+    isAudioMuted.value = false;
+
+    toggleAudioMute();
     expect(isAudioMuted.value).toBe(true);
 
     toggleAudioMute();
     expect(isAudioMuted.value).toBe(false);
-
-    toggleAudioMute();
-    expect(isAudioMuted.value).toBe(true);
   });
 
   it('converts structured markdown text into natural spoken conversational Vietnamese', () => {
