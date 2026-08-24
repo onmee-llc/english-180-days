@@ -4,7 +4,7 @@ import {LLMClient} from './LLMClient.js';
 describe('LLMClient', () => {
   it('initializes with default model and mock mode', () => {
     const client = new LLMClient({mockMode: true});
-    expect(client.defaultModel).toBe('gemini-2.5-flash');
+    expect(client.defaultModel).toBe('gemini-2.0-flash');
     expect(client.mockMode).toBe(true);
   });
 

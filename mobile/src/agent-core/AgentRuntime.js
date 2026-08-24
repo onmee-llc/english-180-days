@@ -106,7 +106,8 @@ export class AgentRuntime {
    */
   async sendPrompt({
     channelId = 'companion',
-    prompt,
+    prompt = '',
+    audioPart = null,
     mode = 'stream', // 'stream' | 'background'
     onToken,
     onThinking,
@@ -114,15 +115,15 @@ export class AgentRuntime {
     onComplete,
     onError,
   }) {
-    if (!prompt || !prompt.trim()) return;
+    const trimmedPrompt = (prompt || '').trim();
+    if (!trimmedPrompt && !audioPart) return null;
 
-    const trimmedPrompt = prompt.trim();
     const persona = AGENT_PERSONAS[channelId] || AGENT_PERSONAS.companion;
 
     // 1. Save user message to thread
     const userMsg = this.memory.addMessage(channelId, {
       role: 'user',
-      content: trimmedPrompt,
+      content: trimmedPrompt || '(Voice input recorded)',
     });
 
     // 2. Handle Background Task Mode (Async Job)
@@ -243,6 +244,7 @@ export class AgentRuntime {
 
       for await (const chunk of this.llm.stream({
         prompt: trimmedPrompt,
+        audioPart,
         systemInstruction,
         history: threadHistory,
         signal: this.activeController.signal,

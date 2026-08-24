@@ -33,12 +33,11 @@ const featureShortcuts = [
 ];
 
 const displayResponse = computed(() => {
-  const natural = convertTextToNaturalSpokenVietnamese(alexResponseText.value);
-  return natural || 'Xin chào Robert! Hôm nay chúng ta cần giải quyết những việc gì?';
+  return alexResponseText.value || 'Hello Robert! I am Alex, your AI Co-pilot and English Speaking Coach. How can I help you today?';
 });
 
 const displayLiveSpeech = computed(() => {
-  return convertTextToNaturalSpokenVietnamese(currentTranscript.value);
+  return currentTranscript.value;
 });
 
 function handleOrbClick() {
@@ -157,8 +156,8 @@ function handleSendText() {
           <div class="alex-live-call__interaction-hint">
             <span v-if="callState === 'idle'">Chạm Mic để nói chuyện với Alex</span>
             <span v-else-if="callState === 'listening'">Đang nghe... Chạm lại khi nói xong</span>
-            <span v-else-if="callState === 'thinking'">Alex đang suy luận...</span>
-            <span v-else-if="callState === 'speaking'">Đang trả lời • Chạm để ngắt lời</span>
+            <span v-else-if="callState === 'thinking'">Alex đang phản hồi...</span>
+            <span v-else-if="callState === 'speaking'">Alex đang trả lời bằng tiếng Anh • Chạm để ngắt lời</span>
           </div>
 
           <!-- Explicit Stop Speech Pill When Alex Is Speaking -->

@@ -1,6 +1,6 @@
 import {GoogleGenAI} from '@google/genai';
 
-export const DEFAULT_MODEL = 'gemini-2.5-flash';
+export const DEFAULT_MODEL = 'gemini-2.0-flash';
 
 /**
  * High-performance streaming client for Gemini models with latency telemetry,
@@ -36,7 +36,8 @@ export class LLMClient {
   /**
    * Stream tokens from Gemini or Mock Provider with telemetry.
    * @param {Object} params
-   * @param {string} params.prompt
+   * @param {string} [params.prompt]
+   * @param {Object} [params.audioPart] - { mimeType: string, data: string }
    * @param {string} [params.systemInstruction]
    * @param {Array<Object>} [params.history] - [{role: 'user'|'model', parts: [{text: ''}]}]
    * @param {string} [params.model]
@@ -46,6 +47,7 @@ export class LLMClient {
    */
   async *stream({
     prompt,
+    audioPart,
     systemInstruction,
     history = [],
     model = this.defaultModel,
@@ -65,9 +67,19 @@ export class LLMClient {
 
     try {
       const client = this.getClient();
+      const userParts = [];
+      if (audioPart && audioPart.data) {
+        userParts.push({inlineData: {mimeType: audioPart.mimeType || 'audio/webm', data: audioPart.data}});
+      }
+      if (prompt) {
+        userParts.push({text: prompt});
+      } else if (userParts.length > 0) {
+        userParts.push({text: 'Please listen to my speech, understand what I said, answer me conversationally in natural English as Alex, and add Vietnamese reading notes and speaking tips.'});
+      }
+
       const contents = [
         ...history,
-        {role: 'user', parts: [{text: prompt}]},
+        {role: 'user', parts: userParts.length > 0 ? userParts : [{text: prompt || 'Hello Alex'}]},
       ];
 
       const config = {};

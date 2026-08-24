@@ -1,9 +1,8 @@
-import {ref, computed} from 'vue';
+import {ref} from 'vue';
 import {AgentRuntime} from '../agent-core/AgentRuntime.js';
 import {playTtsAudio, stopTtsAudio} from './useSpeechAudio.js';
 import {useAudioRecorder} from './useAudioRecorder.js';
 import {useApiKey} from './useApiKey.js';
-import {fastTranscribeAudio} from './useGeminiTranslate.js';
 
 // Global Singleton State for Alex Live Call & Co-Pilot
 const isFullScreen = ref(true); // Full screen live call by default upon app open
@@ -17,10 +16,10 @@ const runtimeInstance = ref(null);
 let speechRecognitionInstance = null;
 
 /**
- * Converts formatted text / markdown into natural, warm, conversational spoken English.
- * Strips all robotic markdown tokens, bullet points, numbers, symbols, and code.
+ * Extracts ONLY natural English speech for TTS audio playback.
+ * Strips all Vietnamese translation notes, parentheses, brackets, markdown tokens, and code.
  */
-export function convertTextToNaturalSpokenVietnamese(text) {
+export function extractSpokenEnglishOnly(text) {
   if (!text) return '';
   return text
     // 1. Remove markdown links [text](url) -> text
@@ -33,18 +32,37 @@ export function convertTextToNaturalSpokenVietnamese(text) {
     .replace(/\*([^*]+)\*/g, '$1')
     // 4. Remove headings ### Heading -> Heading
     .replace(/#{1,6}\s*([^\n]+)/g, '$1')
-    // 5. Convert numbered/bullet lists "1. Item" or "- Item" into natural spoken sentences
+    // 5. Remove bullet markers
     .replace(/^\s*[-*+]\s+/gm, '')
     .replace(/^\s*\d+\.\s+/gm, '')
-    // 6. Remove quotes and brackets
+    // 6. Remove explicit Vietnamese translation blocks e.g. (Tiếng Việt: ...) or (Dịch: ...)
+    .replace(/\((?:Tiếng Việt|Dịch|Nghĩa là|Bản dịch|Gợi ý)[^)]*\)/gi, '')
+    .replace(/\[(?:Tiếng Việt|Dịch|Nghĩa là|Bản dịch|Gợi ý)[^\]]*\]/gi, '')
+    // 7. Filter out Vietnamese-only lines from audio playback
+    .split('\n')
+    .filter((line) => {
+      const trimmed = line.trim();
+      if (!trimmed) return false;
+      if (/^(?:tiếng việt|dịch nghĩa|nghĩa tiếng việt|lưu ý|chú thích|hướng dẫn):/i.test(trimmed)) {
+        return false;
+      }
+      return true;
+    })
+    .join('. ')
+    // 8. Strip any remaining Vietnamese accented characters so TTS only pronounces English
+    .replace(/[àáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]/gi, '')
+    // 9. Remove remaining special characters and normalize whitespace
     .replace(/[>~|_#^]/g, ' ')
-    // 7. Normalize multiple newlines and spaces to natural conversational pauses
-    .replace(/\n+/g, '. ')
     .replace(/\s+/g, ' ')
     .replace(/[:;]\s*\./g, '.')
     .replace(/(\.\s*)+/g, '. ')
     .trim();
 }
+
+/**
+ * Backward compatibility alias for existing tests
+ */
+export const convertTextToNaturalSpokenVietnamese = extractSpokenEnglishOnly;
 
 function getSpeechRecognition() {
   if (typeof window === 'undefined') return null;
@@ -59,6 +77,18 @@ function getSpeechRecognition() {
   } catch (_) {
     return null;
   }
+}
+
+async function blobToBase64(blob) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      const base64 = (reader.result || '').split(',')[1] || '';
+      resolve(base64);
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(blob);
+  });
 }
 
 export function useAlexLiveCall() {
@@ -124,9 +154,9 @@ export function useAlexLiveCall() {
       return;
     }
 
-    // Convert raw structured text into warm, natural conversational speech
-    const naturalSpeech = convertTextToNaturalSpokenVietnamese(text);
-    if (!naturalSpeech) {
+    // Extract ONLY fluent English sentences for TTS audio output
+    const spokenEnglish = extractSpokenEnglishOnly(text);
+    if (!spokenEnglish) {
       callState.value = 'idle';
       return;
     }
@@ -134,7 +164,7 @@ export function useAlexLiveCall() {
     callState.value = 'speaking';
     try {
       await playTtsAudio(
-        naturalSpeech,
+        spokenEnglish,
         1.0,
         () => {
           if (callState.value === 'speaking') {
@@ -152,31 +182,33 @@ export function useAlexLiveCall() {
     }
   }
 
-  async function handleSendPrompt(promptText, router = null) {
-    if (!promptText || !promptText.trim()) return;
-    const trimmed = promptText.trim();
-    currentTranscript.value = trimmed;
+  async function handleSendPrompt(promptText, router = null, audioPart = null) {
+    if (!promptText && !audioPart) return;
+    const trimmed = (promptText || '').trim();
+    if (trimmed) {
+      currentTranscript.value = trimmed;
+    }
     callState.value = 'thinking';
 
     // Stop ongoing speech before processing new user turn
     await stopAlexSpeaking();
 
-    // Only minimize and navigate if the user EXPLICITLY requested navigation via specific keywords
+    // Check for explicit navigation keywords
     const lower = trimmed.toLowerCase();
-    if (router) {
-      if (lower.startsWith('mở màn hình bài học') || lower.startsWith('chuyển sang bài học')) {
+    if (router && trimmed) {
+      if (lower.startsWith('mở màn hình bài học') || lower.startsWith('chuyển sang bài học') || lower.includes('open lesson')) {
         minimizeToTopDock();
         router.push('/today-lesson');
         return;
-      } else if (lower.startsWith('mở màn hình luyện nói') || lower.startsWith('chuyển sang luyện nói')) {
+      } else if (lower.startsWith('mở màn hình luyện nói') || lower.startsWith('chuyển sang luyện nói') || lower.includes('open speaking')) {
         minimizeToTopDock();
         router.push('/speak');
         return;
-      } else if (lower.startsWith('mở màn hình khóa học') || lower.startsWith('chuyển sang khóa học')) {
+      } else if (lower.startsWith('mở màn hình khóa học') || lower.startsWith('chuyển sang khóa học') || lower.includes('open courses')) {
         minimizeToTopDock();
         router.push('/courses');
         return;
-      } else if (lower.startsWith('mở màn hình cài đặt') || lower.startsWith('mở vault')) {
+      } else if (lower.startsWith('mở màn hình cài đặt') || lower.startsWith('mở vault') || lower.includes('open settings')) {
         minimizeToTopDock();
         router.push('/settings');
         return;
@@ -194,9 +226,10 @@ export function useAlexLiveCall() {
       await runtimeInstance.value.sendPrompt({
         channelId: 'companion',
         prompt: trimmed,
-        onToken: (token, accumulated) => {
-          if (accumulated) {
-            alexResponseText.value = accumulated;
+        audioPart,
+        onToken: (token) => {
+          if (token && token.accumulated) {
+            alexResponseText.value = token.accumulated;
           }
         },
         onComplete: (msg) => {
@@ -219,9 +252,9 @@ export function useAlexLiveCall() {
     // Engaging in voice talk enables audio response
     isAudioMuted.value = false;
     callState.value = 'listening';
-    currentTranscript.value = 'Đang lắng nghe Robert...';
+    currentTranscript.value = 'Listening to Robert...';
 
-    // 1. Try Web SpeechRecognition for live transcription
+    // 1. Try Web SpeechRecognition for live real-time transcription
     speechRecognitionInstance = getSpeechRecognition();
     if (speechRecognitionInstance) {
       speechRecognitionInstance.onresult = (event) => {
@@ -239,7 +272,7 @@ export function useAlexLiveCall() {
       } catch (_) {}
     }
 
-    // 2. Also start AudioRecorder for waveform & direct audio capture
+    // 2. Also start AudioRecorder for high-fidelity audio capture
     try {
       await startRecording();
     } catch (_) {}
@@ -262,40 +295,39 @@ export function useAlexLiveCall() {
     } catch (_) {}
 
     let capturedText = '';
-    if (currentTranscript.value && currentTranscript.value !== 'Đang lắng nghe Robert...') {
+    if (currentTranscript.value && currentTranscript.value !== 'Listening to Robert...') {
       capturedText = currentTranscript.value.trim();
     }
 
-    // If Web SpeechRecognition didn't catch text and audio was recorded,
-    // transcribe audio with ultra-fast direct Gemini STT (< 300ms)!
-    if (!capturedText && recording && recording.blob && recording.blob.size > 200) {
-      currentTranscript.value = 'Đang nhận diện giọng nói của Robert...';
+    // Direct single-roundtrip multimodal streaming:
+    // If text was recognized, stream directly with text.
+    // If text was empty but audio exists, stream directly with audioPart in a single request!
+    if (capturedText) {
+      await handleSendPrompt(capturedText, router);
+      return;
+    }
+
+    if (recording && recording.blob && recording.blob.size > 200) {
+      currentTranscript.value = 'Understanding Robert...';
       try {
-        const effectiveKey = await getEffectiveApiKey();
-        if (effectiveKey) {
-          const directText = await fastTranscribeAudio(recording.blob, recording.mimeType, effectiveKey);
-          if (directText && !directText.toLowerCase().includes('không nhận diện')) {
-            capturedText = directText.trim();
-            currentTranscript.value = capturedText;
-          }
-        }
-      } catch (sttErr) {
-        console.warn('Fast audio STT fallback error:', sttErr);
+        const base64Audio = await blobToBase64(recording.blob);
+        await handleSendPrompt('', router, {
+          mimeType: recording.mimeType || 'audio/webm',
+          data: base64Audio,
+        });
+        return;
+      } catch (err) {
+        console.warn('Direct multimodal audio streaming error:', err);
       }
     }
 
     // If still no speech detected, prompt Robert
-    if (!capturedText) {
-      callState.value = 'idle';
-      currentTranscript.value = '';
-      alexResponseText.value = 'Tôi chưa nghe rõ câu nói của Robert. Bạn có thể bấm lại nút mic hoặc gõ tin nhắn để tôi hỗ trợ nhé.';
-      if (!isAudioMuted.value) {
-        speakAlexResponse(alexResponseText.value);
-      }
-      return;
+    callState.value = 'idle';
+    currentTranscript.value = '';
+    alexResponseText.value = 'I did not catch that, Robert. Please tap the mic again to speak, or type a message.';
+    if (!isAudioMuted.value) {
+      speakAlexResponse(alexResponseText.value);
     }
-
-    await handleSendPrompt(capturedText, router);
   }
 
   return {

@@ -35,20 +35,19 @@ describe('useAlexLiveCall', () => {
     expect(isAudioMuted.value).toBe(false);
   });
 
-  it('converts structured markdown text into natural spoken conversational Vietnamese', () => {
-    const raw = `### 3 Việc quan trọng hôm nay:
-- **Ưu tiên 1**: Review pull request \`auth-guard.ts\`.
-- **Ưu tiên 2**: Luyện tập [bài học hôm nay](https://example.com).
-1. Uu tiên 3: Hoàn thành deadline.`;
+  it('extracts pure spoken English and strips Vietnamese translation notes from audio TTS', () => {
+    const raw = `Hello Robert! I am doing great today.
+(Tiếng Việt: Chào Robert! Hôm nay tôi rất khỏe.)
+- **Tip**: Practice saying "Decoupled Architecture".`;
 
     const spoken = convertTextToNaturalSpokenVietnamese(raw);
     expect(spoken).not.toContain('###');
     expect(spoken).not.toContain('**');
     expect(spoken).not.toContain('`');
-    expect(spoken).not.toContain('[');
-    expect(spoken).not.toContain('http');
-    expect(spoken).toContain('3 Việc quan trọng hôm nay');
-    expect(spoken).toContain('Ưu tiên 1: Review pull request');
+    expect(spoken).not.toContain('Chào Robert');
+    expect(spoken).toContain('Hello Robert');
+    expect(spoken).toContain('Practice saying');
+    expect(spoken).toContain('Decoupled Architecture');
   });
 
   it('stops Alex speaking immediately when stopAlexSpeaking is invoked', async () => {
