@@ -119,3 +119,38 @@ export async function transcribeAndTranslate(audioBlob, mimeType, apiKey) {
 
   return extractTranslateResult(response);
 }
+
+/**
+ * Ultra-fast direct verbatim audio transcription for conversational voice assistant turns.
+ * Returns raw spoken text in < 300ms without JSON schema overhead.
+ */
+export async function fastTranscribeAudio(audioBlob, mimeType, apiKey) {
+  if (!apiKey || !audioBlob) return '';
+  try {
+    const client = new GoogleGenAI({apiKey});
+    const data = arrayBufferToBase64(await audioBlob.arrayBuffer());
+    const rawMime = (mimeType || 'audio/webm').split(';')[0].trim();
+    const baseMimeType = rawMime || 'audio/webm';
+
+    const response = await client.models.generateContent({
+      model: MODEL,
+      contents: [
+        {
+          role: 'user',
+          parts: [
+            {inlineData: {mimeType: baseMimeType, data}},
+            {
+              text: 'Transcribe the spoken Vietnamese audio verbatim into plain text only. Do not add markdown, quotes, explanations or extra words. If silent or empty, return empty string.',
+            },
+          ],
+        },
+      ],
+    });
+
+    const text = response?.text ? response.text.trim() : '';
+    return text.replace(/^["'>`]+|["'>`]+$/g, '').trim();
+  } catch (err) {
+    console.warn('fastTranscribeAudio error:', err);
+    return '';
+  }
+}

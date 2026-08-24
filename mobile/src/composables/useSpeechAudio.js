@@ -163,8 +163,8 @@ export async function playTtsAudio(text, rate = 1.0, onEnd = null, onError = nul
   const thisId = currentUtteranceId;
   const cleanText = text.trim();
 
-  // Pitch: Male voice for Alex uses pitch 0.72 (deep, warm, masculine baritone); English lesson female voice uses 1.0
-  const pitch = gender === 'male' ? 0.72 : 1.0;
+  // Pitch: Normal pitch 1.0 for natural human tone across all voices
+  const pitch = 1.0;
 
   // 1. Check if running in native Capacitor (Android/iOS)
   const isNative = typeof Capacitor !== 'undefined' && Capacitor.isNativePlatform && Capacitor.isNativePlatform();

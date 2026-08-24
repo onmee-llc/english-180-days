@@ -3,7 +3,7 @@ import {AgentRuntime} from '../agent-core/AgentRuntime.js';
 import {playTtsAudio, stopTtsAudio} from './useSpeechAudio.js';
 import {useAudioRecorder} from './useAudioRecorder.js';
 import {useApiKey} from './useApiKey.js';
-import {transcribeAndTranslate} from './useGeminiTranslate.js';
+import {fastTranscribeAudio} from './useGeminiTranslate.js';
 
 // Global Singleton State for Alex Live Call & Co-Pilot
 const isFullScreen = ref(true); // Full screen live call by default upon app open
@@ -239,7 +239,7 @@ export function useAlexLiveCall() {
       } catch (_) {}
     }
 
-    // 2. Also start AudioRecorder for waveform & multimodal audio STT capture
+    // 2. Also start AudioRecorder for waveform & direct audio capture
     try {
       await startRecording();
     } catch (_) {}
@@ -266,21 +266,21 @@ export function useAlexLiveCall() {
       capturedText = currentTranscript.value.trim();
     }
 
-    // If Web SpeechRecognition didn't catch text (e.g. Android WebView) and audio was recorded,
-    // transcribe audio with precision via Gemini Multimodal STT!
+    // If Web SpeechRecognition didn't catch text and audio was recorded,
+    // transcribe audio with ultra-fast direct Gemini STT (< 300ms)!
     if (!capturedText && recording && recording.blob && recording.blob.size > 200) {
       currentTranscript.value = 'Đang nhận diện giọng nói của Robert...';
       try {
         const effectiveKey = await getEffectiveApiKey();
         if (effectiveKey) {
-          const transResult = await transcribeAndTranslate(recording.blob, recording.mimeType, effectiveKey);
-          if (transResult && transResult.vietnameseText && !transResult.vietnameseText.includes('Không nhận diện được')) {
-            capturedText = transResult.vietnameseText.trim();
+          const directText = await fastTranscribeAudio(recording.blob, recording.mimeType, effectiveKey);
+          if (directText && !directText.toLowerCase().includes('không nhận diện')) {
+            capturedText = directText.trim();
             currentTranscript.value = capturedText;
           }
         }
       } catch (sttErr) {
-        console.warn('Multimodal audio STT fallback error:', sttErr);
+        console.warn('Fast audio STT fallback error:', sttErr);
       }
     }
 

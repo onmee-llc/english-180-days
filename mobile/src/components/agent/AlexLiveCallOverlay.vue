@@ -153,6 +153,14 @@ function handleSendText() {
             {{ displayLiveSpeech }}
           </p>
 
+          <!-- Interaction Hint Status -->
+          <div class="alex-live-call__interaction-hint">
+            <span v-if="callState === 'idle'">Chạm Mic để nói chuyện với Alex</span>
+            <span v-else-if="callState === 'listening'">Đang nghe... Chạm lại khi nói xong</span>
+            <span v-else-if="callState === 'thinking'">Alex đang suy luận...</span>
+            <span v-else-if="callState === 'speaking'">Đang trả lời • Chạm để ngắt lời</span>
+          </div>
+
           <!-- Explicit Stop Speech Pill When Alex Is Speaking -->
           <button
             v-if="callState === 'speaking'"
@@ -488,6 +496,13 @@ function handleSendText() {
   font-size: 12px;
   color: #f97316;
   font-weight: 600;
+}
+
+.alex-live-call__interaction-hint {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.55);
+  font-weight: 500;
+  letter-spacing: 0.2px;
 }
 
 .alex-live-call__stop-speech-btn {
