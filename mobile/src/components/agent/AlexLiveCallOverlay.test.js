@@ -17,7 +17,7 @@ describe('AlexLiveCallOverlay', () => {
     const wrapper = mount(AlexLiveCallOverlay);
     expect(wrapper.find('.alex-live-call').exists()).toBe(true);
     expect(wrapper.text()).toContain('Alex Live');
-    expect(wrapper.text()).toContain('Xin chào Robert! Hôm nay chúng ta cần giải quyết những việc gì?');
+    expect(wrapper.text()).toContain('Hello Robert! I am Alex');
     expect(wrapper.find('.alex-live-call__orb').exists()).toBe(true);
   });
 

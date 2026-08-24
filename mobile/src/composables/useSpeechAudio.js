@@ -63,12 +63,26 @@ async function findNativeVoiceIndex(lang, gender) {
     }
 
     if (lang && lang.startsWith('en')) {
-      const enIdx = cachedNativeVoices.findIndex((v) => {
-        const l = (v.lang || '').toLowerCase();
-        const n = (v.name || '').toLowerCase();
-        return (l === 'en-us' || l.startsWith('en')) && (n.includes('samantha') || n.includes('female') || n.includes('google'));
-      });
-      if (enIdx !== -1) return enIdx;
+      if (gender === 'male') {
+        const maleEnIdx = cachedNativeVoices.findIndex((v) => {
+          const l = (v.lang || '').toLowerCase();
+          const n = (v.name || '').toLowerCase();
+          const uri = (v.voiceURI || '').toLowerCase();
+          const isEn = l === 'en-us' || l.startsWith('en') || uri.includes('en-us');
+          const isMale = n.includes('male') || n.includes('david') || n.includes('guy') || n.includes('mark') || n.includes('aaron') || n.includes('daniel') || n.includes('iom') || n.includes('sfg') || uri.includes('iom') || uri.includes('sfg');
+          return isEn && isMale;
+        });
+        if (maleEnIdx !== -1) return maleEnIdx;
+      } else {
+        const femaleEnIdx = cachedNativeVoices.findIndex((v) => {
+          const l = (v.lang || '').toLowerCase();
+          const n = (v.name || '').toLowerCase();
+          return (l === 'en-us' || l.startsWith('en')) && (n.includes('samantha') || n.includes('female') || n.includes('victoria') || n.includes('karen') || n.includes('google'));
+        });
+        if (femaleEnIdx !== -1) return femaleEnIdx;
+      }
+      const anyEnIdx = cachedNativeVoices.findIndex((v) => (v.lang || '').toLowerCase().startsWith('en'));
+      if (anyEnIdx !== -1) return anyEnIdx;
     }
 
     return undefined;
@@ -101,10 +115,23 @@ export function getPreferredVoice(lang = 'en-US', gender = 'female') {
     }
 
     if (lang.startsWith('en')) {
-      const preferredFemaleEn = ['Samantha', 'Google US English', 'Victoria', 'Karen', 'Zira', 'Moira'];
-      for (const name of preferredFemaleEn) {
-        const match = voices.find((v) => v.name.includes(name) && v.lang.startsWith('en'));
-        if (match) return match;
+      if (gender === 'male') {
+        const preferredMaleEn = ['David', 'Mark', 'Guy', 'Alex', 'Aaron', 'James', 'Daniel', 'Tom', 'George', 'Google US English'];
+        for (const name of preferredMaleEn) {
+          const match = voices.find((v) => {
+            const n = v.name.toLowerCase();
+            return n.includes(name.toLowerCase()) && v.lang.startsWith('en') && !n.includes('female') && !n.includes('samantha') && !n.includes('victoria') && !n.includes('karen') && !n.includes('zira') && !n.includes('moira');
+          });
+          if (match) return match;
+        }
+        const anyMaleEn = voices.find((v) => v.lang.startsWith('en') && !v.name.toLowerCase().includes('female') && !v.name.toLowerCase().includes('samantha'));
+        if (anyMaleEn) return anyMaleEn;
+      } else {
+        const preferredFemaleEn = ['Samantha', 'Google US English', 'Victoria', 'Karen', 'Zira', 'Moira'];
+        for (const name of preferredFemaleEn) {
+          const match = voices.find((v) => v.name.includes(name) && v.lang.startsWith('en'));
+          if (match) return match;
+        }
       }
 
       const usVoice = voices.find((v) => v.lang === 'en-US' || v.lang === 'en_US');

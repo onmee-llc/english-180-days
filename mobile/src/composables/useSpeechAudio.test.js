@@ -10,6 +10,7 @@ describe('useSpeechAudio', () => {
     mockVoices = [
       {name: 'Google US English', lang: 'en-US'},
       {name: 'Samantha', lang: 'en-US'},
+      {name: 'David', lang: 'en-US'},
       {name: 'Google Tiếng Việt Nam', lang: 'vi-VN'},
     ];
 
@@ -93,10 +94,14 @@ describe('useSpeechAudio', () => {
     expect(currentRate.value).toBe(1.0);
   });
 
-  it('selects preferred standard English female voice for learning and male voice for Alex', () => {
-    const enVoice = getPreferredVoice('en-US', 'female');
-    expect(enVoice).not.toBeNull();
-    expect(enVoice.name).toBe('Samantha');
+  it('selects preferred standard English female voice for learning and English male voice for Alex', () => {
+    const enFemaleVoice = getPreferredVoice('en-US', 'female');
+    expect(enFemaleVoice).not.toBeNull();
+    expect(enFemaleVoice.name).toBe('Samantha');
+
+    const enMaleVoice = getPreferredVoice('en-US', 'male');
+    expect(enMaleVoice).not.toBeNull();
+    expect(enMaleVoice.name).toBe('David');
 
     const viVoice = getPreferredVoice('vi-VN', 'male');
     expect(viVoice).not.toBeNull();

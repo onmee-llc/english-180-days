@@ -14,7 +14,7 @@ describe('AgentPromptBar', () => {
 
     const chips = wrapper.findAll('.agent-prompt-bar__chip');
     expect(chips.length).toBeGreaterThan(0);
-    expect(chips[0].text()).toContain('Lập kế hoạch');
+    expect(chips[0].text()).toContain("Today's Priorities");
   });
 
   it('emits send-prompt when submitting input', async () => {

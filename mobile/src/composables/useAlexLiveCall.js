@@ -10,14 +10,14 @@ const isFullScreen = ref(true); // Full screen live call by default upon app ope
 const isAudioMuted = ref(false); // Unmuted for natural conversational voice interaction
 const callState = ref('idle'); // 'idle' | 'listening' | 'thinking' | 'speaking'
 const currentTranscript = ref('');
-const alexResponseText = ref('Xin chào Robert! Hôm nay chúng ta cần giải quyết những việc gì?');
+const alexResponseText = ref('Hello Robert! I am Alex, your AI Co-pilot and English Speaking Coach. How can I help you today?');
 const isKeyboardOpen = ref(false);
 const runtimeInstance = ref(null);
 
 let speechRecognitionInstance = null;
 
 /**
- * Converts formatted text / markdown into natural, warm, conversational spoken Vietnamese.
+ * Converts formatted text / markdown into natural, warm, conversational spoken English.
  * Strips all robotic markdown tokens, bullet points, numbers, symbols, and code.
  */
 export function convertTextToNaturalSpokenVietnamese(text) {
@@ -54,7 +54,7 @@ function getSpeechRecognition() {
     const recognition = new RecognitionClass();
     recognition.continuous = false;
     recognition.interimResults = true;
-    recognition.lang = 'vi-VN';
+    recognition.lang = 'en-US';
     return recognition;
   } catch (_) {
     return null;
@@ -144,7 +144,7 @@ export function useAlexLiveCall() {
         () => {
           callState.value = 'idle';
         },
-        'vi-VN',
+        'en-US',
         'male',
       );
     } catch (_) {

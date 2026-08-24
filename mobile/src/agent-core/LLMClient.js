@@ -189,27 +189,32 @@ export class LLMClient {
     let prefix = errorNotice ? `*(Offline mode / API Key required for live cloud models)*\n\n` : '';
 
     if (p.includes('hello') || p.includes('hi') || p.includes('chào') || p.includes('say hello') || p.includes('hey')) {
-      return prefix + `Chào Robert! Tôi là Alex. Rất vui được trò chuyện cùng bạn. Hôm nay công việc và cuộc sống của bạn thế nào? Bạn muốn chúng ta cùng xử lý mục tiêu nào trước?`;
+      return prefix + `Hello Robert! Great to hear from you. I am Alex, your AI Co-pilot and English Speaking Coach.\n\n` +
+        `How is your day going? What would you like us to work on today?\n\n` +
+        `💡 *English Speaking Tip:* You can say: *"Alex, let's review today's technical priorities."*`;
     }
 
     if (p.includes('kế hoạch') || p.includes('plan') || p.includes('today') || p.includes('hôm nay') || p.includes('báo cáo')) {
-      return prefix + `Chào Robert! Tôi đã tổng hợp kế hoạch và 3 mục tiêu trọng tâm hôm nay trong hành trình Daily Mastery của bạn:\n\n` +
-        `1. AI & Kỹ thuật: Hoàn thành bài học kiến trúc hệ thống Agent Core và cơ chế Streaming.\n` +
-        `2. Luyện nói tiếng Anh: 5 phút thực hành chủ đề System Architecture & Scalability.\n` +
-        `3. Quản trị & Điều hành: Review tiến độ các dự án và chốt các việc cần quyết định.\n\n` +
-        `Tôi đã sẵn sàng đồng hành cùng Robert.`;
+      return prefix + `Hello Robert! Here is your daily plan (kế hoạch) and top 3 priorities for today:\n\n` +
+        `1. AI & Engineering: Complete the Agent Core architecture and low-latency streaming pipeline.\n` +
+        `2. English Speaking: 5-minute technical discussion on system scalability and decoupled architecture.\n` +
+        `3. Strategic Execution: Review project milestones and decision logs.\n\n` +
+        `💡 *Natural English Phrasing:* *"Alex, let's break down today's most important milestones."*`;
     }
 
     if (p.includes('english') || p.includes('tiếng anh') || p.includes('speak') || p.includes('luyện nói')) {
-      return prefix + `Chào Robert! Tôi là Alex. Chúng ta hãy cùng luyện nói tiếng Anh chuyên ngành hôm nay nhé.\n\n` +
-        `Mẫu câu kỹ thuật hôm nay: "By decoupling the agent runtime from the presentation layer, we ensure sub-second response times and high concurrency."\n\n` +
-        `Robert có thể nhấn vào nút mic để luyện phát âm bất kỳ lúc nào.`;
+      return prefix + `Hello Robert! I am Alex. Let's practice technical English communication.\n\n` +
+        `Today's key collocation: "Decoupled Architecture" (/diːˈkʌpld ˈɑːrkɪtektʃər/).\n` +
+        `Sample sentence: "By decoupling the agent runtime from the presentation layer, we ensure sub-second response times and high concurrency."\n\n` +
+        `💡 *Pronunciation Tip:* Stress the first syllable in "Decoupled" and "Architecture".`;
     }
 
     if (p.includes('code') || p.includes('system') || p.includes('kiến trúc') || p.includes('task')) {
-      return prefix + `Chào Robert, Alex đã sẵn sàng cùng bạn giải quyết bài toán kỹ thuật. Hệ thống Agent Core hiện đang hoạt động ổn định và sẵn sàng điều phối đa tác vụ. Bạn cần tôi phân tích sâu phần nào?`;
+      return prefix + `Hi Robert, Alex here. I am ready to dive into system architecture and engineering tasks with you. What specific module would you like to analyze?`;
     }
 
-    return prefix + `Chào Robert! Tôi đã nhận thông tin: "${prompt}". Tôi là Alex - Trợ lý AI đồng hành của bạn. Tôi luôn sẵn sàng hỗ trợ bạn lập kế hoạch, giải quyết công việc kỹ thuật và theo dõi tiến độ mỗi ngày. Robert muốn chúng ta triển khai bước tiếp theo như thế nào?`;
+    return prefix + `Hello Robert! I received your query: "${prompt}".\n\n` +
+      `I am Alex, your AI Assistant and English Mentor. I am ready to help you plan, code, and level up your English fluency.\n\n` +
+      `💡 *In Natural English:* You can ask me: *"Alex, what is the best strategy to implement this?"*`;
   }
 }
