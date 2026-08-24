@@ -1,5 +1,5 @@
 {
-  "name": "onmee.vn",
+  "name": "daily-mastery",
   "version": "3.0.0",
   "scripts": {
     "algolia": "node ./run-algolia.js",

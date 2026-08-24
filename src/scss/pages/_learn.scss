@@ -70,10 +70,20 @@
   &--english {
     background: #0d652d;
   }
+
+  &--ai-ml {
+    background: #8430ce;
+  }
+
+  &--finance {
+    background: #b06000;
+  }
 }
 
 .is-active .learn__filter-icon--tech,
-.is-active .learn__filter-icon--english {
+.is-active .learn__filter-icon--english,
+.is-active .learn__filter-icon--ai-ml,
+.is-active .learn__filter-icon--finance {
   background: rgba(255, 255, 255, 0.8);
 }
 
@@ -95,5 +105,15 @@
   &--english {
     color: #0d652d;
     background: rgba(13, 101, 45, 0.1);
+  }
+
+  &--ai-ml {
+    color: #8430ce;
+    background: rgba(132, 48, 206, 0.1);
+  }
+
+  &--finance {
+    color: #b06000;
+    background: rgba(176, 96, 0, 0.1);
   }
 }

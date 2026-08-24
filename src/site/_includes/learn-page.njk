@@ -17,15 +17,23 @@ pageScripts:
         <p>{{ 'i18n.learn.header' | i18n(locale) }}</p>
       </div>
       {# Filter controls #}
-      <div class="learn__filters" role="group" aria-label="Filter courses by type">
+      <div class="learn__filters" role="group" aria-label="Filter courses by category">
         <button class="learn__filter-btn is-active" data-filter="all" type="button">All</button>
+        <button class="learn__filter-btn" data-filter="english" type="button">
+          <span class="learn__filter-icon learn__filter-icon--english" aria-hidden="true"></span>
+          English
+        </button>
+        <button class="learn__filter-btn" data-filter="ai-ml" type="button">
+          <span class="learn__filter-icon learn__filter-icon--ai-ml" aria-hidden="true"></span>
+          AI/ML
+        </button>
         <button class="learn__filter-btn" data-filter="tech" type="button">
           <span class="learn__filter-icon learn__filter-icon--tech" aria-hidden="true"></span>
           Tech
         </button>
-        <button class="learn__filter-btn" data-filter="english" type="button">
-          <span class="learn__filter-icon learn__filter-icon--english" aria-hidden="true"></span>
-          English
+        <button class="learn__filter-btn" data-filter="finance" type="button">
+          <span class="learn__filter-icon learn__filter-icon--finance" aria-hidden="true"></span>
+          Finance
         </button>
       </div>
     </div>
@@ -36,12 +44,13 @@ pageScripts:
   <div class="region">
     <div class="wrapper auto-grid learn__collection" id="learn-collection">
       {% set coursesArr = helpers.values(courses) %}
+      {% set typeLabels = {'english': 'English', 'ai-ml': 'AI/ML', 'tech': 'Tech', 'finance': 'Finance'} %}
       {% for course in coursesArr|sort(true, false, 'meta.date') %}
       {% if course.meta and not course.meta.draft and not course.meta.invisible %}
         <a href="{{ course.meta.url }}" class="card" data-style="branded" data-course-type="{{ course.meta.type }}">
           <h3 class="visually-hidden">{{ course.meta.title }}</h3>
           <div class="card__header repel">
-            <p class="color-mid-text learn__course-badge learn__course-badge--{{ course.meta.type }}">{{ course.meta.type | capitalize }}</p>
+            <p class="color-mid-text learn__course-badge learn__course-badge--{{ course.meta.type }}">{{ typeLabels[course.meta.type] or (course.meta.type | capitalize) }}</p>
             <div class="counter">
               {% set pages = collections.all | navigation(course.toc) %}
               <span class="counter__content" aria-label="{{ pages.list.length }} {{ 'i18n.learn.resources' | i18n(locale) }}">{{ pages.list.length }}</span>

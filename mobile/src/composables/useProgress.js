@@ -95,9 +95,23 @@ async function forceSignOut() {
 async function loadLocalProgress() {
   const {value} = await Preferences.get({key: PROGRESS_KEY});
   try {
-    return value ? JSON.parse(value) : {streak: {}, completed: []};
+    const data = value ? JSON.parse(value) : {streak: {}, completed: []};
+    return {
+      streak: {},
+      completed: [],
+      dailyGoal: 1,
+      weeklyGoalDays: 5,
+      speakCount: 0,
+      ...data,
+    };
   } catch (_) {
-    return {streak: {}, completed: []};
+    return {
+      streak: {},
+      completed: [],
+      dailyGoal: 1,
+      weeklyGoalDays: 5,
+      speakCount: 0,
+    };
   }
 }
 
@@ -196,6 +210,54 @@ export function useProgress() {
     return !!lesson && state.progress.completed.includes(lessonKey(lesson));
   }
 
+  function getLessonExamResult(lesson) {
+    if (!lesson) return null;
+    return state.progress.examResults?.[lessonKey(lesson)] || null;
+  }
+
+  function hasPassedLesson(lesson) {
+    if (!lesson) return false;
+    const result = getLessonExamResult(lesson);
+    return isComplete(lesson) || !!result?.passed;
+  }
+
+  async function saveExamResult(lesson, {quizScore = 0, speakingScore = 0, passed = false}) {
+    if (!lesson) return;
+    const key = lessonKey(lesson);
+    const prevResults = state.progress.examResults || {};
+    const existing = prevResults[key] || {};
+
+    const updatedResult = {
+      quizScore: Math.max(existing.quizScore || 0, quizScore),
+      speakingScore: Math.max(existing.speakingScore || 0, speakingScore),
+      passed: !!(existing.passed || passed),
+      timestamp: Date.now(),
+    };
+
+    const examResults = {
+      ...prevResults,
+      [key]: updatedResult,
+    };
+
+    const completed = new Set(state.progress.completed);
+    if (updatedResult.passed) {
+      completed.add(key);
+    }
+
+    const today = new Date().toISOString().slice(0, 10);
+    const next = {
+      ...state.progress,
+      examResults,
+      completed: [...completed],
+      streak: {...state.progress.streak, [today]: true},
+      firstVisit: state.progress.firstVisit || today,
+    };
+
+    await saveLocalProgress(next);
+    const user = getAuth().currentUser;
+    if (user) await pushProgress(user.uid);
+  }
+
   async function markComplete(lesson) {
     const completed = new Set(state.progress.completed);
     completed.add(lessonKey(lesson));
@@ -211,6 +273,36 @@ export function useProgress() {
     if (user) await pushProgress(user.uid);
   }
 
+  async function setDailyGoal(goal) {
+    const next = {
+      ...state.progress,
+      dailyGoal: Math.max(1, Math.min(5, Number(goal) || 1)),
+    };
+    await saveLocalProgress(next);
+    const user = getAuth().currentUser;
+    if (user) await pushProgress(user.uid);
+  }
+
+  async function setWeeklyGoalDays(days) {
+    const next = {
+      ...state.progress,
+      weeklyGoalDays: Math.max(1, Math.min(7, Number(days) || 5)),
+    };
+    await saveLocalProgress(next);
+    const user = getAuth().currentUser;
+    if (user) await pushProgress(user.uid);
+  }
+
+  async function incrementSpeakCount() {
+    const next = {
+      ...state.progress,
+      speakCount: (state.progress.speakCount || 0) + 1,
+    };
+    await saveLocalProgress(next);
+    const user = getAuth().currentUser;
+    if (user) await pushProgress(user.uid);
+  }
+
   return {
     ...toRefs(state),
     authResolved,
@@ -219,6 +311,13 @@ export function useProgress() {
     signIn,
     signOut,
     isComplete,
+    hasPassedLesson,
+    getLessonExamResult,
+    saveExamResult,
     markComplete,
+    setDailyGoal,
+    setWeeklyGoalDays,
+    incrementSpeakCount,
   };
 }
+

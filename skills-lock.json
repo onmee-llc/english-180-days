@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "skills": {
+    "analyzing-android-malware-with-apktool": {
+      "source": "mukul975/Anthropic-Cybersecurity-Skills",
+      "sourceType": "github",
+      "skillPath": "skills/analyzing-android-malware-with-apktool/SKILL.md",
+      "computedHash": "fed6309a280756014c9f88ef27df4dca228400141f9d89b2061e6f83e926bbd3"
+    },
+    "analyzing-cloud-storage-access-patterns": {
+      "source": "mukul975/Anthropic-Cybersecurity-Skills",
+      "sourceType": "github",
+      "skillPath": "skills/analyzing-cloud-storage-access-patterns/SKILL.md",
+      "computedHash": "882f5f3dc4045ddaa06c3e3edba2034fa8f172f8844c157fbcd7cec22348a0a3"
+    },
+    "analyzing-cyber-kill-chain": {
+      "source": "mukul975/Anthropic-Cybersecurity-Skills",
+      "sourceType": "github",
+      "skillPath": "skills/analyzing-cyber-kill-chain/SKILL.md",
+      "computedHash": "fe451c7c2c578282ea6c03408afa3216b4825d5a1da5f40dbfe9562a8972163f"
+    },
+    "analyzing-ios-app-security-with-objection": {
+      "source": "mukul975/Anthropic-Cybersecurity-Skills",
+      "sourceType": "github",
+      "skillPath": "skills/analyzing-ios-app-security-with-objection/SKILL.md",
+      "computedHash": "92cefa3c9427cb22723dfafe41368fbb0d9973d41eaa3a708202b3df97b4e2cb"
+    }
+  }
+}

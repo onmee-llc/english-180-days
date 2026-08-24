@@ -1,0 +1,34 @@
+/// Bilingual Vietnamese block, rendered by the `{% vi %}` paired shortcode.
+/// English content sits above; this block carries the Vietnamese translation
+/// directly beneath it so a returning learner can always follow along.
+
+.lesson-vi {
+  margin-block: 0.75rem 1.25rem;
+  padding: 0.65rem 0.9rem;
+  border-inline-start: 3px solid #b06000;
+  border-radius: 0 0.4rem 0.4rem 0;
+  background: rgba(176, 96, 0, 0.06);
+
+  &__label {
+    display: inline-block;
+    margin-block-end: 0.35rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #b06000;
+  }
+
+  &__body {
+    color: var(--color-mid-text, inherit);
+
+    // Tighten nested prose so the translation reads as a compact aside.
+    > :first-child {
+      margin-block-start: 0;
+    }
+
+    > :last-child {
+      margin-block-end: 0;
+    }
+  }
+}

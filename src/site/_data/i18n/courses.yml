@@ -215,3 +215,22 @@ example:
   description:
     en: This page is used for visual testing of the courses layout and also showcases it's capabilities"
 
+topic_17_finance_career:
+  title:
+    en: "Finance & Career — Tài chính & Sự nghiệp"
+  description:
+    en: "Practical personal finance for engineers — savings, emergency fund, compensation, negotiation, freelance income, and investing. · Tài chính cá nhân thực dụng cho kỹ sư: tiết kiệm, quỹ khẩn cấp, đãi ngộ, đàm phán, thu nhập freelance, và đầu tư."
+
+topic_18_ai_ml_roadmap:
+  title:
+    en: "AI / LLM / ML Roadmap — Lộ trình thực chiến"
+  description:
+    en: "A hands-on 180-day roadmap from ML foundations to shipping a production LLM service, with cost-tagged resources (FREE / $ / $$). · Lộ trình 180 ngày từ nền tảng ML đến triển khai dịch vụ LLM production, tài nguyên gắn nhãn chi phí."
+
+topic_19_ai_ml_security:
+  title:
+    en: "Topic 19 — AI/ML Security & LLM Red Teaming"
+  description:
+    en: "Master English for AI Security: Prompt Injection, OWASP Top 10 for LLMs, Data Poisoning, Model Inversion, Agent Sandboxing, and NIST AI RMF. · Bảo mật AI/ML thực chiến, phòng chống tấn công Prompt Injection và thẩm định hệ thống LLM."
+
+

@@ -1,47 +1,56 @@
 import {GoogleGenAI} from '@google/genai';
 
-// Cost-sensitive, high-volume tier — swapped in for real-time conversational
-// latency after claude-haiku-4-5 was lagging under repeated Speak use.
-const MODEL = 'gemini-3.1-flash-lite';
+// Fast, high-throughput multimodal model for real-time conversational latency
+const MODEL = 'gemini-2.5-flash';
 
-const SYSTEM_PROMPT = `You are helping a Vietnamese parent with limited
-English vocabulary say things to their children in natural English. You
-will receive a short audio recording of the parent speaking Vietnamese —
-the recording may have background noise or be hard to make out in places.
-Infer the parent's likely intent charitably (there is nothing grammatically
-wrong with the Vietnamese; any oddness is recording noise, not a mistake to
-correct in Vietnamese).
+const SYSTEM_PROMPT = `You are a precision speech-to-text transcriber and professional English-Vietnamese translator.
+You MUST listen to the user's audio input and perform VERBATIM SPEECH-TO-TEXT transcription and faithful translation.
 
-Produce:
-1. A literal transcription of the Vietnamese audio.
-2. A short, natural English sentence a parent would actually say out loud
-   to a child in that situation — not a stiff textbook translation.
-3. Its IPA phonetic transcription.
-4. A short explanation, written in Vietnamese, of any notable word choice
-   or phrasing decision — something that helps the parent learn, not just
-   a restatement of the sentence.`;
+MANDATORY INSTRUCTIONS:
+1. VERBATIM SPEECH TRANSCRIPTION:
+   - Carefully transcribe EXACTLY the words spoken in the audio without modifying, dropping, or adding words.
+   - NEVER hallucinate, guess, or output pre-fabricated conversational templates.
+
+2. LANGUAGE DIRECTION:
+   - If the audio is in VIETNAMESE:
+     * "vietnameseText": Exact verbatim transcription of what the user said in Vietnamese.
+     * "englishSentence": Accurate, natural, high-level English translation of that exact sentence.
+   - If the audio is in ENGLISH:
+     * "englishSentence": Exact verbatim transcription of what the user said in English.
+     * "vietnameseText": Accurate, natural Vietnamese translation of that exact sentence.
+
+3. PHONETICS & EXPLANATION:
+   - "ipa": Full IPA phonetic transcription for "englishSentence".
+   - "explanation": Concise Vietnamese explanation highlighting useful vocabulary, idioms, grammar, or natural phrasing for this sentence.
+
+4. NO SPEECH DETECTED:
+   - If the audio is completely silent or only contains inaudible noise:
+     * "vietnameseText": "Không nhận diện được giọng nói"
+     * "englishSentence": "No speech detected"
+     * "ipa": ""
+     * "explanation": "Vui lòng giữ nút mic và nói to, rõ ràng hơn."`;
 
 const RESPONSE_SCHEMA = {
   type: 'object',
   properties: {
     vietnameseText: {
       type: 'string',
-      description: 'Literal transcription of the Vietnamese audio.',
+      description: 'Verbatim transcription of Vietnamese audio or Vietnamese translation of English audio.',
     },
     englishSentence: {
       type: 'string',
       description:
-        'A short, natural spoken English sentence for a parent to say to their child.',
+        'Natural, accurate spoken English sentence (technical or daily communication).',
     },
     ipa: {
       type: 'string',
       description:
-        'IPA phonetic transcription of englishSentence, e.g. "/wɛərz jʊər ʃuz/".',
+        'IPA phonetic transcription of englishSentence.',
     },
     explanation: {
       type: 'string',
       description:
-        'Short Vietnamese-language explanation of the translation or phrasing choice.',
+        'Short Vietnamese-language explanation of vocabulary, grammar, or phrasing.',
     },
   },
   required: ['vietnameseText', 'englishSentence', 'ipa', 'explanation'],
@@ -54,13 +63,19 @@ const RESPONSE_SCHEMA = {
  * screen.
  */
 export function extractTranslateResult(response) {
-  if (!response.text) {
-    const finishReason = response.candidates?.[0]?.finishReason || 'unknown';
+  if (!response || !response.text) {
+    const finishReason = response?.candidates?.[0]?.finishReason || 'unknown';
     throw new Error(
       `Gemini did not return a structured translation (finishReason: ${finishReason}).`,
     );
   }
-  return JSON.parse(response.text);
+  let raw = response.text.trim();
+  if (raw.startsWith('```json')) {
+    raw = raw.replace(/^```json\s*/i, '').replace(/```\s*$/, '').trim();
+  } else if (raw.startsWith('```')) {
+    raw = raw.replace(/^```\s*/i, '').replace(/```\s*$/, '').trim();
+  }
+  return JSON.parse(raw);
 }
 
 function arrayBufferToBase64(buffer) {
@@ -75,18 +90,25 @@ function arrayBufferToBase64(buffer) {
 
 export async function transcribeAndTranslate(audioBlob, mimeType, apiKey) {
   if (!apiKey) {
-    throw new Error('No Gemini API key configured.');
+    throw new Error('Chưa cấu hình Gemini API key trong Cài đặt.');
   }
   const client = new GoogleGenAI({apiKey});
   const data = arrayBufferToBase64(await audioBlob.arrayBuffer());
-  // Gemini's inline-audio MIME types don't take a ";codecs=..." parameter —
-  // strip it here rather than at the recorder, which reports the accurate
-  // browser mimeType for other (potential) uses.
-  const baseMimeType = mimeType.split(';')[0];
+  const rawMime = (mimeType || 'audio/webm').split(';')[0].trim();
+  const baseMimeType = rawMime || 'audio/webm';
+
   const response = await client.models.generateContent({
     model: MODEL,
     contents: [
-      {role: 'user', parts: [{inlineData: {mimeType: baseMimeType, data}}]},
+      {
+        role: 'user',
+        parts: [
+          {inlineData: {mimeType: baseMimeType, data}},
+          {
+            text: 'Listen to the audio recording. Transcribe the exact words spoken verbatim into "vietnameseText" (if spoken in Vietnamese) or "englishSentence" (if spoken in English), and provide the translation and IPA. Do not invent sentences.'
+          }
+        ]
+      },
     ],
     config: {
       systemInstruction: SYSTEM_PROMPT,
@@ -94,5 +116,6 @@ export async function transcribeAndTranslate(audioBlob, mimeType, apiKey) {
       responseJsonSchema: RESPONSE_SCHEMA,
     },
   });
+
   return extractTranslateResult(response);
 }

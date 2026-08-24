@@ -315,3 +315,38 @@ $toolbox-z: 50;
     opacity: .45;
   }
 }
+
+.study-toolbox__signin {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 10px;
+  padding-top: 12px;
+  border-top: 1px solid var(--color-mid-bg);
+}
+
+.study-toolbox__signin-btn {
+  appearance: none;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 600;
+  padding: 8px 12px;
+  border: 1px solid var(--color-mid-bg);
+  border-radius: $global-radius-base;
+  background: var(--color-mid-bg);
+  color: var(--color-primary-text, inherit);
+
+  &:hover {
+    filter: brightness(0.97);
+  }
+
+  &:disabled {
+    opacity: .6;
+    cursor: wait;
+  }
+}
+
+.study-toolbox__signin-status {
+  font-size: .75rem;
+  color: var(--color-mid-text);
+}

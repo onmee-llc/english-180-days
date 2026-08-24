@@ -19,6 +19,20 @@
 const STORAGE_KEY = 'dm_progress';
 const TOTAL_DAYS = 180;
 
+// Emitted when local progress changes (fb.js mirrors it to Firestore when
+// signed in). Listened to when a remote sync updates local storage.
+const CHANGED_EVENT = 'dm-progress-changed';
+const SYNCED_EVENT = 'dm-progress-synced';
+
+/** Notify any signed-in Firebase listener that local progress changed. */
+function notifyChanged() {
+  try {
+    window.dispatchEvent(new CustomEvent(CHANGED_EVENT));
+  } catch (e) {
+    // CustomEvent unavailable — non-fatal.
+  }
+}
+
 /** @returns {string} Today as YYYY-MM-DD */
 function today() {
   return new Date().toISOString().slice(0, 10);
@@ -92,6 +106,17 @@ class DailyProgress extends HTMLElement {
     data = recordToday(data);
     saveProgress(data);
     this.render(data);
+    notifyChanged();
+
+    // Re-render when a remote sync (another device) updates local progress.
+    this._onSynced = () => this.render(loadProgress());
+    window.addEventListener(SYNCED_EVENT, this._onSynced);
+  }
+
+  disconnectedCallback() {
+    if (this._onSynced) {
+      window.removeEventListener(SYNCED_EVENT, this._onSynced);
+    }
   }
 
   render(data) {
@@ -164,6 +189,7 @@ class LessonComplete extends HTMLElement {
     }
     saveProgress(data);
     this._render();
+    notifyChanged();
 
     // Sync the course-links sidebar checkmark for this url
     document

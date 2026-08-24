@@ -25,6 +25,7 @@ const markdown = require('./src/site/_plugins/markdown');
 
 // Shortcodes used in prose
 const Aside = require('./src/site/_includes/components/Aside');
+const Vi = require('./src/site/_includes/components/Vi');
 const {Blockquote} = require('webdev-infra/shortcodes/Blockquote');
 const {BrowserCompat} = require('webdev-infra/shortcodes/BrowserCompat');
 const {Codepen} = require('webdev-infra/shortcodes/Codepen');
@@ -189,6 +190,7 @@ module.exports = function (config) {
   // SHORTCODES
   // ----------------------------------------------------------------------------
   config.addPairedShortcode('Aside', Aside);
+  config.addPairedShortcode('vi', Vi);
   config.addShortcode('Assessment', Assessment);
   config.addShortcode('Author', Author);
   config.addShortcode('AuthorsDate', AuthorsDate);

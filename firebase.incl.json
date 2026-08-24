@@ -28,7 +28,10 @@
       "root": "/i18n"
     },
     "redirects": [],
-    "target": "180daysenglish"
+    "target": "daily-mastery"
+  },
+  "firestore": {
+    "rules": "firestore.rules"
   },
   "emulators": {
     "hosting": {

@@ -8,9 +8,17 @@ date: 2026-04-13
 
 Deliver your self-introduction in 90 seconds — natural, not memorized.
 
+{% vi %}
+**Mục tiêu buổi học:** Trình bày phần tự giới thiệu trong 90 giây — tự nhiên, không học vẹt.
+{% endvi %}
+
 ## Shadowing passage
 
 > I'm Robert, a backend and AI engineer with over twelve years of experience. I specialize in building scalable backend systems and integrating AI capabilities into real-world products — things like automation workflows, content generation pipelines, and LLM-powered tools. Most recently, I built a cloud-based SaaS platform that auto-generates niche content and schedules it to Pinterest using the Claude API. The system handles the entire lifecycle: from prompt design through image generation to automated publishing. Before that, I spent several years at a fintech company architecting the transaction orchestration layer — one of the more complex distributed systems I've worked on. I'm now looking for a senior remote role where I can bring both deep backend experience and hands-on AI integration skills to a strong engineering team. I'm particularly drawn to companies that ship real AI features — not just talk about them.
+
+{% vi %}
+Tôi là Robert, một kỹ sư backend và AI với hơn mười hai năm kinh nghiệm. Tôi chuyên xây dựng các hệ thống backend có khả năng mở rộng và tích hợp năng lực AI vào sản phẩm thực tế — như các luồng tự động hóa, pipeline sinh nội dung, và công cụ chạy bằng LLM. Gần đây nhất, tôi đã xây một nền tảng SaaS trên cloud tự động sinh nội dung ngách và lên lịch đăng lên Pinterest bằng Claude API. Hệ thống xử lý toàn bộ vòng đời: từ thiết kế prompt, sinh ảnh, đến tự động đăng bài. Trước đó, tôi có vài năm ở một công ty fintech thiết kế tầng điều phối giao dịch — một trong những hệ phân tán phức tạp nhất tôi từng làm. Hiện tôi đang tìm một vị trí senior làm remote, nơi tôi có thể mang cả kinh nghiệm backend sâu lẫn kỹ năng tích hợp AI thực chiến vào một đội kỹ thuật vững mạnh. Tôi đặc biệt hứng thú với các công ty thực sự ship tính năng AI — chứ không chỉ nói về chúng.
+{% endvi %}
 
 ---
 
@@ -37,6 +45,10 @@ Deliver your self-introduction in 90 seconds — natural, not memorized.
 ## Reflection
 
 Record yourself. Does your specialization land clearly in the first 30 seconds?
+
+{% vi %}
+**Tự ngẫm:** Hãy ghi âm lại. Chuyên môn của bạn có được nói rõ ràng ngay trong 30 giây đầu không?
+{% endvi %}
 
 
 ## Anti-Translation Drill — Listening First *(5 min)*

@@ -1,11 +1,22 @@
 import {createRouter, createWebHistory} from 'vue-router';
 import {authGuard} from './authGuard.js';
 import TodayView from './views/TodayView.vue';
+import AlexTalkHomeView from './views/AlexTalkHomeView.vue';
 
 export const router = createRouter({
   history: createWebHistory(),
   routes: [
-    {path: '/', name: 'today', component: TodayView},
+    {path: '/', name: 'home', component: TodayView},
+    {
+      path: '/agent',
+      name: 'agent',
+      component: AlexTalkHomeView,
+    },
+    {
+      path: '/today-lesson',
+      name: 'today-lesson',
+      component: TodayView,
+    },
     {
       path: '/calendar',
       name: 'calendar',
@@ -30,6 +41,11 @@ export const router = createRouter({
       path: '/speak',
       name: 'speak',
       component: () => import('./views/SpeakView.vue'),
+    },
+    {
+      path: '/workspace',
+      name: 'workspace',
+      component: () => import('./views/AgentWorkspaceView.vue'),
     },
     {
       path: '/login',

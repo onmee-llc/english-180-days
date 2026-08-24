@@ -11,6 +11,14 @@
           {
             "key": "Cache-Control",
             "value": "max-age=31536000"
+          },
+          {
+            "key": "Content-Security-Policy",
+            "value": "script-src 'strict-dynamic' 'sha256-iR+zIq3+42MzYNhV/+cXP1NlBRyjqhG+O6r/6GLk8ng=' 'sha256-3D6kNPLeYmZ5rD8cB2F6Frr5codPJr+yOHwGa0sc9YE=' 'sha256-HJXHQiKDQ4bwtBWA+ZvowIjJ0LOws6i22QUoOnRu1KI=' 'sha256-kgIaIdidrKf9s50tTQchdYGnqAsEml1siuR55g1DRUE=' 'sha256-K0397Z/kCFyqUYybjCrR30wAZ5xRRd+S8CWeKS+3Jcc=' 'sha256-khWmSXB9eR6B5FKnR0pVxvlC8d3VEV7RZFkr9umDWJk=' 'sha256-u4Wn/MfXRgxqamj4MrLehf1oKnIomI5PAVQW5D6gcpM=' 'sha256-z4V6Yoikb8m/I0Khe3/+sB2Es1Kz0ojhG/RjvEqemds=' 'sha256-JaSAA7kqhDQIm87P82WMorgxd/uM54EYrVKTNJBZxLk=' 'sha256-mXeSX/m4ACkZHlFzCgSTfWr9CYZFyCLgE3oIYV1gL/0=' 'sha256-S4C5pnOnTKETd0O5XCV3FEgJT3F/xU/pb4M8mjdF9+E=' 'unsafe-inline' http: https:; object-src 'none'; base-uri 'self'; frame-ancestors 'self'; report-uri https://daily-mastery.web.app/csp/report"
+          },
+          {
+            "key": "X-Frame-Options",
+            "value": "SAMEORIGIN"
           }
         ]
       },
@@ -1674,7 +1682,10 @@
         "type": 301
       }
     ],
-    "target": "180daysenglish"
+    "target": "daily-mastery"
+  },
+  "firestore": {
+    "rules": "firestore.rules"
   },
   "emulators": {
     "hosting": {

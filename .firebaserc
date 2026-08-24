@@ -1,11 +1,11 @@
 {
   "projects": {
-    "default": "dailymastery"
+    "default": "aevo-labs"
   },
   "targets": {
-    "dailymastery": {
+    "aevo-labs": {
       "hosting": {
-        "180daysenglish": ["180daysenglish"]
+        "daily-mastery": ["daily-mastery"]
       }
     }
   }
