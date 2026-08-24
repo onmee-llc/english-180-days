@@ -76,6 +76,7 @@ dist
 .idea
 entrypoint.hashmanifest.json
 .vscode
+.claude/
 
 # Temporary files
 .cache

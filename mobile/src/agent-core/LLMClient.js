@@ -43,6 +43,7 @@ export class LLMClient {
    * @param {string} [params.model]
    * @param {AbortSignal} [params.signal]
    * @param {Array<Object>} [params.tools]
+   * @param {string} [params.interactionMode] - 'voice' | 'text'
    * @returns {AsyncGenerator<{text: string, isFinal: boolean, telemetry?: Object}>}
    */
   async *stream({
@@ -53,15 +54,17 @@ export class LLMClient {
     model = this.defaultModel,
     signal,
     tools = [],
+    interactionMode = 'text',
   }) {
     const startTime = performance.now();
     let firstTokenTime = null;
     let accumulatedText = '';
     let tokenCountEstimate = 0;
+    const isVoice = interactionMode === 'voice' || (systemInstruction && systemInstruction.includes('voice call'));
 
     // Fallback to mock mode if explicitly enabled or no API key available
     if (this.mockMode || !this.apiKey) {
-      yield* this._mockStream({prompt, systemInstruction, signal, startTime});
+      yield* this._mockStream({prompt, systemInstruction, signal, startTime, isVoice});
       return;
     }
 
@@ -74,7 +77,11 @@ export class LLMClient {
       if (prompt) {
         userParts.push({text: prompt});
       } else if (userParts.length > 0) {
-        userParts.push({text: 'Please listen to my speech, understand what I said, answer me conversationally in natural English as Alex, and add Vietnamese reading notes and speaking tips.'});
+        if (isVoice) {
+          userParts.push({text: 'Please listen to my speech and reply conversationally in 1-2 spoken sentences as Alex without any markdown or bullet points.'});
+        } else {
+          userParts.push({text: 'Please listen to my speech, understand what I said, answer me conversationally in natural English as Alex, and add Vietnamese reading notes and speaking tips.'});
+        }
       }
 
       const contents = [
@@ -88,6 +95,11 @@ export class LLMClient {
       }
       if (tools && tools.length > 0) {
         config.tools = tools;
+      }
+      if (isVoice) {
+        // Limit max tokens for voice calls to ensure ultra-low latency & conversational brevity
+        config.maxOutputTokens = 150;
+        config.temperature = 0.7;
       }
 
       const responseStream = await client.models.generateContentStream({
@@ -145,15 +157,15 @@ export class LLMClient {
       }
       // If network/auth fails, fallback to intelligent assistant response
       console.warn('LLMClient stream failed, using resilient fallback:', err);
-      yield* this._mockStream({prompt, systemInstruction, signal, startTime, errorNotice: err.message});
+      yield* this._mockStream({prompt, systemInstruction, signal, startTime, errorNotice: err.message, isVoice});
     }
   }
 
   /**
    * Mock streaming generator for tests and offline demonstrations.
    */
-  async * _mockStream({prompt, systemInstruction, signal, startTime, errorNotice}) {
-    let responseText = this._generateSimulatedResponse(prompt, systemInstruction, errorNotice);
+  async * _mockStream({prompt, systemInstruction, signal, startTime, errorNotice, isVoice = false}) {
+    let responseText = this._generateSimulatedResponse(prompt, systemInstruction, errorNotice, isVoice);
     const words = responseText.split(' ');
     let accumulated = '';
     let firstTokenTime = null;
@@ -196,8 +208,27 @@ export class LLMClient {
     };
   }
 
-  _generateSimulatedResponse(prompt, systemInstruction, errorNotice) {
+  _generateSimulatedResponse(prompt, systemInstruction, errorNotice, isVoice = false) {
     const p = (prompt || '').toLowerCase().trim();
+
+    // Voice mode responses: Clean, natural spoken sentences, ZERO markdown or tips
+    if (isVoice) {
+      if (p.includes('hello') || p.includes('hi') || p.includes('chào') || p.includes('say hello') || p.includes('hey')) {
+        return 'Hello Robert! Great to hear from you. How can I help you right now?';
+      }
+      if (p.includes('kế hoạch') || p.includes('plan') || p.includes('today') || p.includes('hôm nay') || p.includes('báo cáo')) {
+        return 'Your top priorities today are completing the Agent Core streaming pipeline and practicing 5 minutes of technical English.';
+      }
+      if (p.includes('english') || p.includes('tiếng anh') || p.includes('speak') || p.includes('luyện nói')) {
+        return 'Let us practice speaking English. Tell me about the system architecture you are working on today.';
+      }
+      if (p.includes('code') || p.includes('system') || p.includes('kiến trúc') || p.includes('task')) {
+        return 'I am ready to analyze system architecture and engineering tasks with you. What module would you like to review?';
+      }
+      return `Hello Robert! I am listening. Let me know what you would like to work on.`;
+    }
+
+    // Text mode responses: Rich, structured layout with tips and formatting
     let prefix = errorNotice ? `*(Offline mode / API Key required for live cloud models)*\n\n` : '';
 
     if (p.includes('hello') || p.includes('hi') || p.includes('chào') || p.includes('say hello') || p.includes('hey')) {

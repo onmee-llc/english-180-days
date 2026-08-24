@@ -34,6 +34,14 @@ vi.mock('./useTranslateHistory.js', () => ({
 const push = vi.fn();
 vi.mock('vue-router', () => ({useRouter: () => ({push})}));
 
+const incrementSpeakCount = vi.fn(async () => {});
+vi.mock('./useProgress.js', () => ({
+  useProgress: () => ({
+    incrementSpeakCount,
+    progress: {value: {}},
+  }),
+}));
+
 const fakeRecording = {blob: new Blob(['audio']), mimeType: 'audio/webm'};
 
 beforeEach(() => {

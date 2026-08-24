@@ -35,26 +35,39 @@ Hệ thống âm thanh của `daily-mastery` được thiết kế theo triết 
 
 ```text
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│ 1. ALEX TRỢ LÝ AI (VOICE TALK & EXECUTIVE BRIEFING)                        │
+│ 1. ALEX TRỢ LÝ AI (VOICE TALK & LIVING VOICE ORB)                          │
 │                                                                             │
-│ • Ngôn ngữ: Tiếng Việt (vi-VN).                                             │
-│ • Giới tính: GIỌNG NAM (Male Baritone Voice).                               │
-│ • Cấu hình Pitch: 0.88 (Độ trầm tự nhiên, điềm tĩnh, ấm áp, chuyên nghiệp).│
-│ • Tốc độ đọc (Rate): 0.95 - 1.0 (Nhịp điệu đàm thoại trôi chảy).           │
-│ • Bộ chuyển đổi thoại: convertTextToNaturalSpokenVietnamese()               │
+│ • Ngôn ngữ thoại: Chuẩn Anh - Mỹ tự nhiên (American English, en-US).        │
+│ • Giới tính: GIỌNG NAM TRẺ TRUNG, NĂNG ĐỘNG (Youthful American Male Voice). │
+│ • Profile Giọng: Guy, Aaron, Daniel, David, sfg, iom, tpd.                  │
+│ • Cấu hình Pitch: 1.08 (Tươi sáng, tràn đầy năng lượng, thân thiện).        │
+│ • Tốc độ đọc (Rate): 1.02 (Nhịp điệu nói chuyện điện thoại nhanh, tự nhiên).│
+│ • Khả năng nghe hiểu: Bóc tách 100% tiếng Việt & tiếng Anh qua Gemini Flash │
+│   và phản hồi trực diện bằng tiếng Anh tự nhiên (1-2 câu, dưới 25 từ).      │
+│ • Bộ chuyển đổi thoại: cleanSpokenDialogue()                                │
 │   -> Bóc tách 100% raw markdown, gạch đầu dòng, số thứ tự, code block.     │
 └─────────────────────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│ 2. CHƯƠNG TRÌNH HỌC TIẾNG ANH (DAILY MASTERY, SHADOWING & SPEAK ROOM)       │
+│ 2. CHƯƠNG TRÌNH HỌC TIẾNG ANH (SPEAK SCREEN & LESSON SHADOWING)             │
 │                                                                             │
 │ • Ngôn ngữ: Chuẩn Anh - Mỹ (en-US).                                         │
-│ • Giới tính: GIỌNG NỮ (Female Native Voice).                                │
+│ • Giới tính: GIỌNG NỮ SƯ PHẠM (Female Native English Coach Voice).          │
 │ • Profile Giọng: Samantha, Google US English, Victoria.                     │
-│ • Cấu hình Pitch: 1.02 (Trong trẻo, chuẩn xác từng âm vị IPA).             │
+│ • Cấu hình Pitch: 1.02 (Trong trẻo, rõ ràng từng âm vị IPA).                │
 │ • Chế độ đọc: Đọc chính xác từng câu văn bản để học viên luyện phát âm.    │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
+
+### 2.1 Kiến trúc Web Audio API VAD (Voice Activity Detection)
+- Đo RMS (cường độ âm lượng) trực tiếp từ micro theo thời gian thực (100ms interval).
+- Tự động nhận diện khi người dùng nói xong và ngừng 1.2 giây -> Tự động gửi audio lên Gemini 2.5 Flash bóc tách chữ trong < 300ms.
+- Hoàn toàn rảnh tay, không cần chạm nút dừng thủ công.
+
+### 2.2 Kiến trúc Sentence-Streaming TTS Queue
+- Hàng đợi `SentenceAudioQueue`: Bóc tách từng câu hoàn chỉnh (`. ! ? \n`) ngay khi Gemini vừa stream ra.
+- Native TTS cất tiếng nói câu đầu tiên chỉ trong **< 400ms**, các câu sau nối tiếp mượt mà.
+- Ngắt lời tức thì (Instant Barge-In) < 20ms khi chạm màn hình hoặc nói câu mới.
 
 ---
 

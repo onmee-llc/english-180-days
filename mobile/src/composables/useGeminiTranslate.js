@@ -140,7 +140,7 @@ export async function fastTranscribeAudio(audioBlob, mimeType, apiKey) {
           parts: [
             {inlineData: {mimeType: baseMimeType, data}},
             {
-              text: 'Transcribe the spoken Vietnamese audio verbatim into plain text only. Do not add markdown, quotes, explanations or extra words. If silent or empty, return empty string.',
+              text: 'Listen to the audio recording carefully. Transcribe the spoken speech verbatim in the exact language it was spoken (Vietnamese or English). Return ONLY the plain transcribed words. Do not add markdown, quotes, conversational replies, or explanations. If completely silent, return empty string.',
             },
           ],
         },

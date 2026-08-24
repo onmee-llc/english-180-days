@@ -47,4 +47,23 @@ describe('LLMClient', () => {
     const result = await streamPromise;
     expect(result.length).toBeLessThan(10);
   });
+
+  it('produces clean conversational responses in voice mode without markdown', async () => {
+    const client = new LLMClient({mockMode: true});
+    let voiceOutput = '';
+
+    for await (const chunk of client.stream({
+      prompt: 'Hello Alex',
+      interactionMode: 'voice',
+    })) {
+      if (chunk.isFinal) {
+        voiceOutput = chunk.accumulated;
+      }
+    }
+
+    expect(voiceOutput).toContain('Hello Robert');
+    expect(voiceOutput).not.toContain('**');
+    expect(voiceOutput).not.toContain('💡');
+    expect(voiceOutput).not.toContain('###');
+  });
 });

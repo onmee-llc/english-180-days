@@ -152,4 +152,18 @@ describe('useSpeechAudio', () => {
     expect(currentSentenceIndex.value).toBe(-1);
     expect(global.window.speechSynthesis.cancel).toHaveBeenCalled();
   });
+
+  it('enqueues and plays sentences via SentenceAudioQueue for real-time sentence streaming', async () => {
+    const {createSentenceAudioQueue} = await import('./useSpeechAudio.js');
+    const queue = await createSentenceAudioQueue({
+      lang: 'en-US',
+      gender: 'male',
+    });
+
+    queue.enqueue('Hello Robert.');
+    queue.enqueue('How are you doing today?');
+    queue.close();
+
+    expect(global.window.speechSynthesis.speak).toHaveBeenCalled();
+  });
 });

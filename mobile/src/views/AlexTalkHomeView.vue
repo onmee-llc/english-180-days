@@ -7,6 +7,7 @@ import {useMasteryPoints, XP_REWARDS} from '../composables/useMasteryPoints.js';
 import {useAudioRecorder} from '../composables/useAudioRecorder.js';
 import {useProgress} from '../composables/useProgress.js';
 import {playTtsAudio, stopTtsAudio} from '../composables/useSpeechAudio.js';
+import {useAlexLiveCall} from '../composables/useAlexLiveCall.js';
 import content from '../content/lessons.json';
 
 import SvgIcon from '../components/base/SvgIcon.vue';
@@ -15,6 +16,7 @@ import RobertLifeContextModal from '../components/agent/RobertLifeContextModal.v
 import '../styles/agent-polaris.css';
 
 const router = useRouter();
+const {openFullScreenCall, startListening: startAlexLiveListening} = useAlexLiveCall();
 const {apiKey, init: initApiKey} = useApiKey();
 const {totalXp, currentLevel, addXp} = useMasteryPoints();
 const {progress} = useProgress();
@@ -107,32 +109,8 @@ function toggleAudioMute() {
 }
 
 async function handleVoicePress() {
-  if (isRecording.value) {
-    await handleStopRecording();
-  } else {
-    await handleStartRecording();
-  }
-}
-
-async function handleStartRecording() {
-  try {
-    await startRecording();
-  } catch (err) {
-    console.error('Audio record start error:', err);
-  }
-}
-
-async function handleStopRecording() {
-  try {
-    const audioBlob = await stopRecording();
-    if (audioBlob) {
-      handleSendPrompt({
-        prompt: 'Tôi vừa gửi một đoạn ghi âm giọng nói. Hãy lắng nghe, tóm tắt và phản hồi hỗ trợ tôi.',
-      });
-    }
-  } catch (err) {
-    console.error('Stop audio error:', err);
-  }
+  openFullScreenCall();
+  startAlexLiveListening(router);
 }
 
 async function playSpokenBriefing() {

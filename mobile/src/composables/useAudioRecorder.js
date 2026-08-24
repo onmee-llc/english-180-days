@@ -22,8 +22,12 @@ let recorder = null;
 let chunks = [];
 let startedAt = 0;
 let startPromise = null;
+let audioContext = null;
+let analyserNode = null;
+let vadTimer = null;
+let silenceCallback = null;
 
-async function doStart() {
+async function doStart(options = {}) {
   try {
     stream = await navigator.mediaDevices.getUserMedia({
       audio: {
@@ -59,8 +63,66 @@ async function doStart() {
     recorder.ondataavailable = onData;
 
     startedAt = Date.now();
-    // Continuous recording ensures valid headers and complete audio frames in WebView
-    recorder.start();
+    // Continuous 250ms timeslices ensure valid audio packets on Android WebView
+    recorder.start(250);
+
+    // Setup Web Audio API VAD (Voice Activity Detection)
+    silenceCallback = options.onSilence || null;
+    const silenceTimeoutMs = options.silenceTimeoutMs || 1200;
+    const minSpeechMs = options.minSpeechMs || 500;
+
+    if (silenceCallback && typeof window !== 'undefined') {
+      try {
+        const AudioCtxClass = window.AudioContext || window.webkitAudioContext;
+        if (AudioCtxClass) {
+          audioContext = new AudioCtxClass();
+          const source = audioContext.createMediaStreamSource(stream);
+          analyserNode = audioContext.createAnalyser();
+          analyserNode.fftSize = 512;
+          source.connect(analyserNode);
+
+          const bufferLength = analyserNode.frequencyBinCount;
+          const dataArray = new Uint8Array(bufferLength);
+          let hasDetectedVoice = false;
+          let lastVoiceAt = Date.now();
+
+          vadTimer = setInterval(() => {
+            if (!analyserNode) return;
+            analyserNode.getByteTimeDomainData(dataArray);
+
+            // Compute RMS (Root Mean Square) volume level
+            let sum = 0;
+            for (let i = 0; i < bufferLength; i++) {
+              const val = (dataArray[i] - 128) / 128;
+              sum += val * val;
+            }
+            const rms = Math.sqrt(sum / bufferLength);
+
+            // Audio threshold: > 0.02 means user is actively speaking
+            if (rms > 0.02) {
+              hasDetectedVoice = true;
+              lastVoiceAt = Date.now();
+            } else if (hasDetectedVoice) {
+              const silenceElapsed = Date.now() - lastVoiceAt;
+              const totalElapsed = Date.now() - startedAt;
+              if (silenceElapsed >= silenceTimeoutMs && totalElapsed >= minSpeechMs) {
+                if (vadTimer) {
+                  clearInterval(vadTimer);
+                  vadTimer = null;
+                }
+                if (silenceCallback) {
+                  const cb = silenceCallback;
+                  silenceCallback = null;
+                  cb();
+                }
+              }
+            }
+          }, 100);
+        }
+      } catch (vadErr) {
+        console.warn('VAD initialization warning:', vadErr);
+      }
+    }
   } catch (err) {
     if (stream) {
       stream.getTracks().forEach((track) => track.stop());
@@ -72,15 +134,29 @@ async function doStart() {
 }
 
 export function useAudioRecorder() {
-  async function startRecording() {
+  async function startRecording(options = {}) {
     if (startPromise || recorder) {
       await stopRecording().catch(() => {});
     }
-    startPromise = doStart();
+    startPromise = doStart(options);
     return startPromise;
   }
 
   async function stopRecording() {
+    if (vadTimer) {
+      clearInterval(vadTimer);
+      vadTimer = null;
+    }
+    silenceCallback = null;
+
+    if (audioContext) {
+      try {
+        audioContext.close().catch(() => {});
+      } catch (_) {}
+      audioContext = null;
+      analyserNode = null;
+    }
+
     if (startPromise) {
       await startPromise.catch(() => {});
       startPromise = null;

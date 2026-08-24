@@ -109,6 +109,7 @@ export class AgentRuntime {
     prompt = '',
     audioPart = null,
     mode = 'stream', // 'stream' | 'background'
+    interactionMode = 'text', // 'text' | 'voice'
     onToken,
     onThinking,
     onTool,
@@ -143,6 +144,7 @@ export class AgentRuntime {
             prompt: trimmedPrompt,
             systemInstruction: persona.systemPrompt,
             signal,
+            interactionMode,
           })) {
             if (chunk.text) accumulated += chunk.text;
           }
@@ -191,7 +193,7 @@ export class AgentRuntime {
     this.isStreaming = true;
 
     // Detect if prompt implies automatic tool execution
-    const detectedTools = this._detectToolTriggers(trimmedPrompt, channelId);
+    const detectedTools = interactionMode === 'voice' ? [] : this._detectToolTriggers(trimmedPrompt, channelId);
 
     // Initial placeholder message for the model
     const modelMsg = this.memory.addMessage(channelId, {
@@ -225,11 +227,14 @@ export class AgentRuntime {
       // Ingest interaction into adaptive learning engine
       this.adaptiveEngine.ingestInteraction(trimmedPrompt);
 
-      // Prepare context: System instruction + User Profile + Adaptive Style + Past Decisions + History
+      // Prepare context: Base system instruction (voice vs text) + User Profile + Style
+      const baseInstruction = (interactionMode === 'voice' && persona.voiceCallSystemPrompt)
+        ? persona.voiceCallSystemPrompt
+        : persona.systemPrompt;
       const profile = this.memory.getProfile();
       const styleAugmentation = this.adaptiveEngine.generateStyleAugmentation();
-      const decisionsContext = this.decisionJournal.formatDecisionsForContext(trimmedPrompt);
-      const systemInstruction = `${persona.systemPrompt}\n\n[USER CONTEXT]\nUser Name: ${profile.name}\nRole: ${profile.title}\nActive Goals: ${profile.goals.join(', ')}${styleAugmentation}${decisionsContext}`;
+      const decisionsContext = interactionMode === 'voice' ? '' : this.decisionJournal.formatDecisionsForContext(trimmedPrompt);
+      const systemInstruction = `${baseInstruction}\n\n[USER CONTEXT]\nUser Name: ${profile.name}\nRole: ${profile.title}\nActive Goals: ${profile.goals.join(', ')}${styleAugmentation}${decisionsContext}`;
 
       // Fetch recent messages for context
       const threadHistory = this.memory.getThreadMessages(channelId)
@@ -248,6 +253,7 @@ export class AgentRuntime {
         systemInstruction,
         history: threadHistory,
         signal: this.activeController.signal,
+        interactionMode,
       })) {
         if (chunk.text) {
           accumulated += chunk.text;

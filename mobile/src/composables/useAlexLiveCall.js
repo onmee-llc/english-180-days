@@ -1,25 +1,28 @@
 import {ref} from 'vue';
 import {AgentRuntime} from '../agent-core/AgentRuntime.js';
-import {playTtsAudio, stopTtsAudio} from './useSpeechAudio.js';
+import {createSentenceAudioQueue, playTtsAudio, stopTtsAudio, detectLanguage} from './useSpeechAudio.js';
 import {useAudioRecorder} from './useAudioRecorder.js';
 import {useApiKey} from './useApiKey.js';
+import {fastTranscribeAudio} from './useGeminiTranslate.js';
 
 // Global Singleton State for Alex Live Call & Co-Pilot
 const isFullScreen = ref(true); // Full screen live call by default upon app open
 const isAudioMuted = ref(false); // Unmuted for natural conversational voice interaction
 const callState = ref('idle'); // 'idle' | 'listening' | 'thinking' | 'speaking'
 const currentTranscript = ref('');
-const alexResponseText = ref('Hello Robert! I am Alex, your AI Co-pilot and English Speaking Coach. How can I help you today?');
+const alexResponseText = ref('Hello Robert! I am Alex, your AI Co-pilot. How can I help you today?');
 const isKeyboardOpen = ref(false);
 const runtimeInstance = ref(null);
 
 let speechRecognitionInstance = null;
+let silenceTimer = null;
+let activeAudioQueue = null;
 
 /**
- * Extracts ONLY natural English speech for TTS audio playback.
- * Strips all Vietnamese translation notes, parentheses, brackets, markdown tokens, and code.
+ * Cleans conversational text for natural spoken dialogue (subtitles & TTS).
+ * Strips all markdown markers, code blocks, bullet points, and headers.
  */
-export function extractSpokenEnglishOnly(text) {
+export function cleanSpokenDialogue(text) {
   if (!text) return '';
   return text
     // 1. Remove markdown links [text](url) -> text
@@ -27,42 +30,29 @@ export function extractSpokenEnglishOnly(text) {
     // 2. Remove code blocks ```...``` and inline `code`
     .replace(/```[\s\S]*?```/g, '')
     .replace(/`([^`]+)`/g, '$1')
-    // 3. Remove bold / italic markup **text** -> text
+    // 3. Remove bold / italic markup **text** -> text, *text* -> text
     .replace(/\*\*([^*]+)\*\*/g, '$1')
     .replace(/\*([^*]+)\*/g, '$1')
     // 4. Remove headings ### Heading -> Heading
     .replace(/#{1,6}\s*([^\n]+)/g, '$1')
-    // 5. Remove bullet markers
+    // 5. Remove bullet markers & numbering (- item, * item, 1. item)
     .replace(/^\s*[-*+]\s+/gm, '')
     .replace(/^\s*\d+\.\s+/gm, '')
-    // 6. Remove explicit Vietnamese translation blocks e.g. (Tiếng Việt: ...) or (Dịch: ...)
+    // 6. Remove explicit tip prefixes
+    .replace(/💡\s*(?:In natural English|English Speaking Tip|Pronunciation Tip|Natural English Phrasing):?/gi, '')
+    // 7. Remove remaining bracketed notes e.g. (kế hoạch), (vi-VN)
     .replace(/\((?:Tiếng Việt|Dịch|Nghĩa là|Bản dịch|Gợi ý)[^)]*\)/gi, '')
-    .replace(/\[(?:Tiếng Việt|Dịch|Nghĩa là|Bản dịch|Gợi ý)[^\]]*\]/gi, '')
-    // 7. Filter out Vietnamese-only lines from audio playback
-    .split('\n')
-    .filter((line) => {
-      const trimmed = line.trim();
-      if (!trimmed) return false;
-      if (/^(?:tiếng việt|dịch nghĩa|nghĩa tiếng việt|lưu ý|chú thích|hướng dẫn):/i.test(trimmed)) {
-        return false;
-      }
-      return true;
-    })
-    .join('. ')
-    // 8. Strip any remaining Vietnamese accented characters so TTS only pronounces English
-    .replace(/[àáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]/gi, '')
-    // 9. Remove remaining special characters and normalize whitespace
+    .replace(/[:;]\s*\./g, '.')
     .replace(/[>~|_#^]/g, ' ')
     .replace(/\s+/g, ' ')
-    .replace(/[:;]\s*\./g, '.')
-    .replace(/(\.\s*)+/g, '. ')
     .trim();
 }
 
 /**
  * Backward compatibility alias for existing tests
  */
-export const convertTextToNaturalSpokenVietnamese = extractSpokenEnglishOnly;
+export const extractSpokenEnglishOnly = cleanSpokenDialogue;
+export const convertTextToNaturalSpokenVietnamese = cleanSpokenDialogue;
 
 function getSpeechRecognition() {
   if (typeof window === 'undefined') return null;
@@ -120,9 +110,6 @@ export function useAlexLiveCall() {
 
   function openFullScreenCall() {
     isFullScreen.value = true;
-    if (!isAudioMuted.value && callState.value === 'idle') {
-      speakAlexResponse(alexResponseText.value);
-    }
   }
 
   function minimizeToTopDock() {
@@ -140,6 +127,14 @@ export function useAlexLiveCall() {
   }
 
   async function stopAlexSpeaking() {
+    if (silenceTimer) {
+      clearTimeout(silenceTimer);
+      silenceTimer = null;
+    }
+    if (activeAudioQueue) {
+      activeAudioQueue.cancel();
+      activeAudioQueue = null;
+    }
     try {
       await stopTtsAudio();
     } catch (_) {}
@@ -154,9 +149,8 @@ export function useAlexLiveCall() {
       return;
     }
 
-    // Extract ONLY fluent English sentences for TTS audio output
-    const spokenEnglish = extractSpokenEnglishOnly(text);
-    if (!spokenEnglish) {
+    const spokenText = cleanSpokenDialogue(text);
+    if (!spokenText) {
       callState.value = 'idle';
       return;
     }
@@ -164,8 +158,8 @@ export function useAlexLiveCall() {
     callState.value = 'speaking';
     try {
       await playTtsAudio(
-        spokenEnglish,
-        1.0,
+        spokenText,
+        1.02,
         () => {
           if (callState.value === 'speaking') {
             callState.value = 'idle';
@@ -182,7 +176,7 @@ export function useAlexLiveCall() {
     }
   }
 
-  async function handleSendPrompt(promptText, router = null, audioPart = null) {
+  async function handleSendPrompt(promptText, router = null, audioPart = null, interactionMode = 'voice') {
     if (!promptText && !audioPart) return;
     const trimmed = (promptText || '').trim();
     if (trimmed) {
@@ -190,10 +184,10 @@ export function useAlexLiveCall() {
     }
     callState.value = 'thinking';
 
-    // Stop ongoing speech before processing new user turn
+    // Stop ongoing speech before processing new turn
     await stopAlexSpeaking();
 
-    // Check for explicit navigation keywords
+    // Check for navigation commands
     const lower = trimmed.toLowerCase();
     if (router && trimmed) {
       if (lower.startsWith('mở màn hình bài học') || lower.startsWith('chuyển sang bài học') || lower.includes('open lesson')) {
@@ -222,31 +216,107 @@ export function useAlexLiveCall() {
       runtimeInstance.value.setApiKey(effectiveKey);
     }
 
+    if (!effectiveKey) {
+      callState.value = 'idle';
+      if (interactionMode === 'voice') {
+        const noKeyMsg = 'Robert, bạn chưa nhập Gemini API Key trong Cài đặt. Vui lòng mở Cài đặt để nhập key miễn phí và trò chuyện cùng Alex nhé.';
+        alexResponseText.value = noKeyMsg;
+        if (!isAudioMuted.value) {
+          speakAlexResponse(noKeyMsg);
+        }
+      } else {
+        alexResponseText.value = 'Chào Robert! Bạn chưa cấu hình Gemini API Key. Vui lòng vào Cài đặt để nhập API Key miễn phí và kích hoạt trợ lý AI nhé.';
+      }
+      return;
+    }
+
+    // Sentence-streaming buffer setup for Voice Mode (Alex always uses young American male voice)
+    let sentenceBuffer = '';
+    const isVoice = interactionMode === 'voice';
+
+    if (isVoice && !isAudioMuted.value) {
+      activeAudioQueue = await createSentenceAudioQueue({
+        lang: 'en-US',
+        gender: 'male',
+        rate: 1.02,
+        onSentenceStart: () => {
+          callState.value = 'speaking';
+        },
+        onComplete: () => {
+          if (callState.value === 'speaking') {
+            callState.value = 'idle';
+          }
+        },
+        onError: () => {
+          if (callState.value === 'speaking') {
+            callState.value = 'idle';
+          }
+        },
+      });
+    }
+
     try {
       await runtimeInstance.value.sendPrompt({
         channelId: 'companion',
         prompt: trimmed,
         audioPart,
+        interactionMode,
         onToken: (token) => {
-          if (token && token.accumulated) {
-            alexResponseText.value = token.accumulated;
+          if (token && token.text) {
+            sentenceBuffer += token.text;
+
+            // In voice mode, update clean conversational text on screen
+            const cleanAcc = cleanSpokenDialogue(token.accumulated);
+            alexResponseText.value = cleanAcc;
+
+            // Detect sentence boundary (. ! ? \n) for real-time sentence streaming TTS
+            if (isVoice && activeAudioQueue) {
+              const match = sentenceBuffer.match(/^(.*?[.!?\n])\s*(.*)$/s);
+              if (match) {
+                const completeSentence = cleanSpokenDialogue(match[1]);
+                sentenceBuffer = match[2] || '';
+                if (completeSentence && completeSentence.length > 2) {
+                  activeAudioQueue.enqueue(completeSentence);
+                }
+              }
+            }
           }
         },
         onComplete: (msg) => {
-          alexResponseText.value = msg.content;
-          speakAlexResponse(msg.content);
+          const finalClean = cleanSpokenDialogue(msg.content);
+          alexResponseText.value = finalClean;
+
+          if (isVoice && activeAudioQueue) {
+            if (sentenceBuffer.trim()) {
+              const remaining = cleanSpokenDialogue(sentenceBuffer);
+              if (remaining && remaining.length > 1) {
+                activeAudioQueue.enqueue(remaining);
+              }
+            }
+            activeAudioQueue.close();
+          } else if (!isVoice) {
+            callState.value = 'idle';
+          }
         },
         onError: () => {
           callState.value = 'idle';
+          if (activeAudioQueue) {
+            activeAudioQueue.cancel();
+            activeAudioQueue = null;
+          }
         },
       });
     } catch (_) {
       callState.value = 'idle';
+      if (activeAudioQueue) {
+        activeAudioQueue.cancel();
+        activeAudioQueue = null;
+      }
     }
   }
 
-  async function startListening() {
-    // If Alex is speaking, immediately interrupt/stop speech
+  async function startListening(router = null) {
+    // If Alex is speaking, immediately interrupt/stop speech (Instant Barge-In)
     await stopAlexSpeaking();
 
     // Engaging in voice talk enables audio response
@@ -254,7 +324,7 @@ export function useAlexLiveCall() {
     callState.value = 'listening';
     currentTranscript.value = 'Listening to Robert...';
 
-    // 1. Try Web SpeechRecognition for live real-time transcription
+    // 1. Web SpeechRecognition for live real-time transcription if supported
     speechRecognitionInstance = getSpeechRecognition();
     if (speechRecognitionInstance) {
       speechRecognitionInstance.onresult = (event) => {
@@ -264,6 +334,12 @@ export function useAlexLiveCall() {
         }
         if (transcript) {
           currentTranscript.value = transcript;
+
+          // Silence timeout: auto-send after 800ms of user silence
+          if (silenceTimer) clearTimeout(silenceTimer);
+          silenceTimer = setTimeout(() => {
+            stopListeningAndSend(router);
+          }, 800);
         }
       };
       speechRecognitionInstance.onerror = () => {};
@@ -272,15 +348,30 @@ export function useAlexLiveCall() {
       } catch (_) {}
     }
 
-    // 2. Also start AudioRecorder for high-fidelity audio capture
+    // 2. High-fidelity audio recorder with Web Audio VAD for auto-send on silence
     try {
-      await startRecording();
-    } catch (_) {}
+      await startRecording({
+        onSilence: () => {
+          if (callState.value === 'listening') {
+            stopListeningAndSend(router);
+          }
+        },
+        silenceTimeoutMs: 1200,
+        minSpeechMs: 500,
+      });
+    } catch (err) {
+      console.warn('Audio recorder start error:', err);
+    }
   }
 
   async function stopListeningAndSend(router = null) {
     if (callState.value !== 'listening') return;
     callState.value = 'thinking';
+
+    if (silenceTimer) {
+      clearTimeout(silenceTimer);
+      silenceTimer = null;
+    }
 
     if (speechRecognitionInstance) {
       try {
@@ -295,38 +386,41 @@ export function useAlexLiveCall() {
     } catch (_) {}
 
     let capturedText = '';
-    if (currentTranscript.value && currentTranscript.value !== 'Listening to Robert...') {
+    if (currentTranscript.value &&
+        currentTranscript.value !== 'Đang lắng nghe Robert...' &&
+        currentTranscript.value !== 'Listening to Robert...') {
       capturedText = currentTranscript.value.trim();
     }
 
-    // Direct single-roundtrip multimodal streaming:
-    // If text was recognized, stream directly with text.
-    // If text was empty but audio exists, stream directly with audioPart in a single request!
+    // Direct voice turn execution if speech recognition captured text
     if (capturedText) {
-      await handleSendPrompt(capturedText, router);
+      await handleSendPrompt(capturedText, router, null, 'voice');
       return;
     }
 
+    // High accuracy Gemini 2.5 Flash direct audio transcription (works 100% on Android WebView)
     if (recording && recording.blob && recording.blob.size > 200) {
-      currentTranscript.value = 'Understanding Robert...';
+      currentTranscript.value = 'Processing audio...';
+      const effectiveKey = await getEffectiveApiKey();
       try {
-        const base64Audio = await blobToBase64(recording.blob);
-        await handleSendPrompt('', router, {
-          mimeType: recording.mimeType || 'audio/webm',
-          data: base64Audio,
-        });
-        return;
+        const transcribedText = await fastTranscribeAudio(recording.blob, recording.mimeType, effectiveKey);
+        if (transcribedText) {
+          currentTranscript.value = transcribedText;
+          await handleSendPrompt(transcribedText, router, null, 'voice');
+          return;
+        }
       } catch (err) {
-        console.warn('Direct multimodal audio streaming error:', err);
+        console.warn('Audio transcription error:', err);
       }
     }
 
-    // If still no speech detected, prompt Robert
+    // If no speech detected at all, prompt Robert
     callState.value = 'idle';
     currentTranscript.value = '';
-    alexResponseText.value = 'I did not catch that, Robert. Please tap the mic again to speak, or type a message.';
+    const notCatchMsg = 'I did not catch that, Robert. Please tap the mic to speak to Alex.';
+    alexResponseText.value = notCatchMsg;
     if (!isAudioMuted.value) {
-      speakAlexResponse(alexResponseText.value);
+      speakAlexResponse(notCatchMsg);
     }
   }
 

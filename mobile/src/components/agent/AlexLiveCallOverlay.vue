@@ -1,10 +1,12 @@
 <script setup>
-import {ref, computed, nextTick} from 'vue';
+import {ref, computed, nextTick, onMounted} from 'vue';
 import {useRouter} from 'vue-router';
 import SvgIcon from '../base/SvgIcon.vue';
-import {useAlexLiveCall, convertTextToNaturalSpokenVietnamese} from '../../composables/useAlexLiveCall.js';
+import {useAlexLiveCall, cleanSpokenDialogue} from '../../composables/useAlexLiveCall.js';
+import {useApiKey} from '../../composables/useApiKey.js';
 
 const router = useRouter();
+const {apiKey, init: initApiKey} = useApiKey();
 const {
   isFullScreen,
   isAudioMuted,
@@ -24,6 +26,10 @@ const textDraft = ref('');
 const textInputRef = ref(null);
 const isFeaturesDrawerOpen = ref(false);
 
+onMounted(async () => {
+  await initApiKey();
+});
+
 const featureShortcuts = [
   {id: 'today', label: 'Bài học hôm nay', sub: 'Lộ trình Daily Mastery & Streak', icon: 'spark', route: '/today-lesson'},
   {id: 'speak', label: 'Luyện nói tiếng Anh', sub: 'Thực hành phát âm & hội thoại AI', icon: 'voice', route: '/speak'},
@@ -33,7 +39,8 @@ const featureShortcuts = [
 ];
 
 const displayResponse = computed(() => {
-  return alexResponseText.value || 'Hello Robert! I am Alex, your AI Co-pilot and English Speaking Coach. How can I help you today?';
+  const raw = alexResponseText.value || 'Hello Robert! I am Alex, your AI Co-pilot. How can I help you today?';
+  return cleanSpokenDialogue(raw);
 });
 
 const displayLiveSpeech = computed(() => {
@@ -46,7 +53,7 @@ function handleOrbClick() {
   } else if (callState.value === 'listening') {
     stopListeningAndSend(router);
   } else {
-    startListening();
+    startListening(router);
   }
 }
 
@@ -72,7 +79,7 @@ function handleSendText() {
   const prompt = textDraft.value.trim();
   textDraft.value = '';
   isKeyboardOpen.value = false;
-  handleSendPrompt(prompt, router);
+  handleSendPrompt(prompt, router, null, 'text');
 }
 </script>
 
@@ -120,6 +127,13 @@ function handleSendText() {
         </div>
       </header>
 
+      <!-- Optional API Key setup notice banner if not set -->
+      <div v-if="!apiKey" class="alex-live-call__key-notice" @click="handleNavigateToFeature('/settings')">
+        <SvgIcon name="gear" :size="14" color="#f59e0b" />
+        <span>Chưa nhập Gemini API Key · Chạm để cấu hình miễn phí</span>
+        <SvgIcon name="arrow-right" :size="12" color="#f59e0b" />
+      </div>
+
       <!-- 3. Center Living Voice Orb (Gemini Live / ChatGPT Voice Aesthetic) -->
       <main class="alex-live-call__stage">
         <div class="alex-live-call__orb-wrap">
@@ -157,7 +171,7 @@ function handleSendText() {
             <span v-if="callState === 'idle'">Chạm Mic để nói chuyện với Alex</span>
             <span v-else-if="callState === 'listening'">Đang nghe... Chạm lại khi nói xong</span>
             <span v-else-if="callState === 'thinking'">Alex đang phản hồi...</span>
-            <span v-else-if="callState === 'speaking'">Alex đang trả lời bằng tiếng Anh • Chạm để ngắt lời</span>
+            <span v-else-if="callState === 'speaking'">Alex đang trò chuyện • Chạm để ngắt lời</span>
           </div>
 
           <!-- Explicit Stop Speech Pill When Alex Is Speaking -->
@@ -321,6 +335,28 @@ function handleSendText() {
   padding: 16px 20px;
   padding-top: calc(16px + env(safe-area-inset-top));
   z-index: 10;
+}
+
+.alex-live-call__key-notice {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 0 20px 8px;
+  padding: 8px 14px;
+  border-radius: 12px;
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  color: #fbbf24;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  z-index: 15;
+  transition: all 0.15s ease;
+}
+
+.alex-live-call__key-notice:hover {
+  background: rgba(245, 158, 11, 0.25);
 }
 
 .alex-live-call__identity {

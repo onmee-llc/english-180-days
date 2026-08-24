@@ -26,6 +26,15 @@ export function splitIntoSentences(text) {
     .filter((s) => s.length > 2);
 }
 
+/**
+ * Detects if text is primarily Vietnamese or English for TTS language selection.
+ */
+export function detectLanguage(text) {
+  if (!text) return 'en-US';
+  const viRegex = /[àáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđĐ]/i;
+  return viRegex.test(text) ? 'vi-VN' : 'en-US';
+}
+
 // Global utterance counter to handle interruptions cleanly
 let currentUtteranceId = 0;
 let cachedNativeVoices = null;
@@ -47,13 +56,13 @@ async function findNativeVoiceIndex(lang, gender) {
 
     if (lang && lang.startsWith('vi')) {
       if (gender === 'male') {
-        // Find index of Vietnamese male voice (vic, vid, male, nam)
+        // Prioritize younger, clearer Vietnamese male voices: vic, vid, nam, male
         const idx = cachedNativeVoices.findIndex((v) => {
           const l = (v.lang || '').toLowerCase();
           const n = (v.name || '').toLowerCase();
           const uri = (v.voiceURI || '').toLowerCase();
           const isVi = l.startsWith('vi') || n.includes('viet') || uri.includes('vi-vn');
-          const isMale = n.includes('vic') || n.includes('vid') || n.includes('male') || n.includes('nam') || uri.includes('vic') || uri.includes('vid');
+          const isMale = n.includes('vic') || uri.includes('vic') || n.includes('vid') || uri.includes('vid') || n.includes('male') || n.includes('nam');
           return isVi && isMale;
         });
         if (idx !== -1) return idx;
@@ -64,13 +73,14 @@ async function findNativeVoiceIndex(lang, gender) {
 
     if (lang && lang.startsWith('en')) {
       if (gender === 'male') {
+        // Prioritize youthful, natural, energetic modern English male voices: guy, aaron, daniel, sfg, iom, tpd, alex, david
         const maleEnIdx = cachedNativeVoices.findIndex((v) => {
           const l = (v.lang || '').toLowerCase();
           const n = (v.name || '').toLowerCase();
           const uri = (v.voiceURI || '').toLowerCase();
           const isEn = l === 'en-us' || l.startsWith('en') || uri.includes('en-us');
-          const isMale = n.includes('male') || n.includes('david') || n.includes('guy') || n.includes('mark') || n.includes('aaron') || n.includes('daniel') || n.includes('iom') || n.includes('sfg') || uri.includes('iom') || uri.includes('sfg');
-          return isEn && isMale;
+          const isYouthfulMale = n.includes('guy') || n.includes('aaron') || n.includes('daniel') || n.includes('sfg') || n.includes('iom') || n.includes('tpd') || n.includes('alex') || n.includes('david') || n.includes('mark') || n.includes('male') || uri.includes('sfg') || uri.includes('iom') || uri.includes('tpd');
+          return isEn && isYouthfulMale;
         });
         if (maleEnIdx !== -1) return maleEnIdx;
       } else {
@@ -102,13 +112,17 @@ export function getPreferredVoice(lang = 'en-US', gender = 'female') {
 
     if (lang.startsWith('vi')) {
       if (gender === 'male') {
-        const maleVi = voices.find((v) => {
-          const n = (v.name || '').toLowerCase();
-          const l = (v.lang || '').toLowerCase();
-          return (l.startsWith('vi') || n.includes('vietnam')) &&
-            (n.includes('male') || n.includes('nam') || n.includes('vic') || n.includes('vid') || n.includes('man') || n.includes('boy'));
-        });
-        if (maleVi) return maleVi;
+        const preferredMaleVi = ['Google Tiếng Việt', 'vic', 'vid', 'Nam', 'Male', 'Viet'];
+        for (const name of preferredMaleVi) {
+          const match = voices.find((v) => {
+            const n = (v.name || '').toLowerCase();
+            const l = (v.lang || '').toLowerCase();
+            return (l.startsWith('vi') || n.includes('vietnam')) && n.includes(name.toLowerCase());
+          });
+          if (match) return match;
+        }
+        const anyVi = voices.find((v) => v.lang.startsWith('vi'));
+        if (anyVi) return anyVi;
       }
       const anyVi = voices.find((v) => v.lang.startsWith('vi'));
       if (anyVi) return anyVi;
@@ -116,7 +130,8 @@ export function getPreferredVoice(lang = 'en-US', gender = 'female') {
 
     if (lang.startsWith('en')) {
       if (gender === 'male') {
-        const preferredMaleEn = ['David', 'Mark', 'Guy', 'Alex', 'Aaron', 'James', 'Daniel', 'Tom', 'George', 'Google US English'];
+        // Preferred younger energetic male voices
+        const preferredMaleEn = ['Guy', 'Aaron', 'Daniel', 'Alex', 'David', 'Mark', 'Tom', 'George', 'Google US English'];
         for (const name of preferredMaleEn) {
           const match = voices.find((v) => {
             const n = v.name.toLowerCase();
@@ -174,24 +189,25 @@ export async function stopTtsAudio() {
 }
 
 /**
- * Universal Text-To-Speech function:
- * 1. Uses Native Android/iOS TTS via Capacitor TextToSpeech plugin (100% reliable on mobile).
- * 2. Falls back to Web Speech Synthesis on browsers.
- * - Alex uses Male Voice ('male', pitch 0.72, 'vi-VN').
- * - English Lessons use standard Native English Female Voice ('female', pitch 1.0, 'en-US').
+ * Single utterance speaker without stopping global queue (used by SentenceAudioQueue and playTtsAudio)
  */
-export async function playTtsAudio(text, rate = 1.0, onEnd = null, onError = null, lang = 'en-US', gender = 'female') {
+export async function speakSingleUtterance({
+  text,
+  rate = 1.02,
+  pitch = 1.08,
+  lang = 'en-US',
+  gender = 'male',
+  utteranceId = currentUtteranceId,
+  onEnd = null,
+  onError = null,
+}) {
   if (!text || typeof window === 'undefined') {
     if (onEnd) onEnd();
     return;
   }
-
-  await stopTtsAudio();
-  const thisId = currentUtteranceId;
   const cleanText = text.trim();
-
-  // Pitch: Normal pitch 1.0 for natural human tone across all voices
-  const pitch = 1.0;
+  // Younger, brighter male pitch default
+  const effectivePitch = gender === 'male' ? Math.max(pitch, 1.06) : pitch;
 
   // 1. Check if running in native Capacitor (Android/iOS)
   const isNative = typeof Capacitor !== 'undefined' && Capacitor.isNativePlatform && Capacitor.isNativePlatform();
@@ -202,7 +218,7 @@ export async function playTtsAudio(text, rate = 1.0, onEnd = null, onError = nul
         text: cleanText,
         lang: lang || 'en-US',
         rate: Math.min(Math.max(rate, 0.5), 2.0),
-        pitch: pitch,
+        pitch: effectivePitch,
         volume: 1.0,
         category: 'ambient',
       };
@@ -211,7 +227,7 @@ export async function playTtsAudio(text, rate = 1.0, onEnd = null, onError = nul
       }
 
       await TextToSpeech.speak(speakOptions);
-      if (thisId === currentUtteranceId && onEnd) {
+      if (utteranceId === currentUtteranceId && onEnd) {
         onEnd();
       }
       return;
@@ -236,14 +252,14 @@ export async function playTtsAudio(text, rate = 1.0, onEnd = null, onError = nul
       }
 
       utterance.onend = () => {
-        if (thisId === currentUtteranceId && onEnd) onEnd();
+        if (utteranceId === currentUtteranceId && onEnd) onEnd();
       };
 
       utterance.onerror = (event) => {
         if (event && (event.error === 'canceled' || event.error === 'interrupted')) {
           return;
         }
-        if (thisId === currentUtteranceId) {
+        if (utteranceId === currentUtteranceId) {
           if (onError) onError(event);
           else if (onEnd) onEnd();
         }
@@ -253,14 +269,137 @@ export async function playTtsAudio(text, rate = 1.0, onEnd = null, onError = nul
       return;
     } catch (synthErr) {
       console.warn('SpeechSynthesis error:', synthErr);
-      if (thisId === currentUtteranceId) {
+      if (utteranceId === currentUtteranceId) {
         if (onError) onError(synthErr);
         else if (onEnd) onEnd();
       }
     }
   } else {
-    if (thisId === currentUtteranceId && onEnd) onEnd();
+    if (utteranceId === currentUtteranceId && onEnd) onEnd();
   }
+}
+
+/**
+ * SentenceAudioQueue manages sentence-streaming playback.
+ * Sentences can be enqueued as they arrive from token streaming and will play sequentially.
+ */
+export class SentenceAudioQueue {
+  constructor({
+    lang = 'en-US',
+    gender = 'male',
+    rate = 1.0,
+    onSentenceStart = null,
+    onComplete = null,
+    onError = null,
+  } = {}) {
+    this.lang = lang;
+    this.gender = gender;
+    this.rate = rate;
+    this.onSentenceStart = onSentenceStart;
+    this.onComplete = onComplete;
+    this.onError = onError;
+    this.queue = [];
+    this.isPlaying = false;
+    this.isClosed = false;
+    this.utteranceId = currentUtteranceId;
+  }
+
+  enqueue(sentence) {
+    if (this.utteranceId !== currentUtteranceId) return;
+    const clean = (sentence || '').trim();
+    if (!clean) return;
+    this.queue.push(clean);
+    if (!this.isPlaying) {
+      this._playNext();
+    }
+  }
+
+  close() {
+    this.isClosed = true;
+    if (!this.isPlaying && this.queue.length === 0) {
+      if (this.onComplete) this.onComplete();
+    }
+  }
+
+  cancel() {
+    this.isClosed = true;
+    this.queue = [];
+    this.isPlaying = false;
+    stopTtsAudio();
+  }
+
+  async _playNext() {
+    if (this.utteranceId !== currentUtteranceId) {
+      this.isPlaying = false;
+      return;
+    }
+    if (this.queue.length === 0) {
+      this.isPlaying = false;
+      if (this.isClosed && this.onComplete) {
+        this.onComplete();
+      }
+      return;
+    }
+
+    this.isPlaying = true;
+    const sentence = this.queue.shift();
+    if (this.onSentenceStart) {
+      this.onSentenceStart(sentence);
+    }
+
+    await speakSingleUtterance({
+      text: sentence,
+      rate: this.rate,
+      lang: this.lang,
+      gender: this.gender,
+      utteranceId: this.utteranceId,
+      onEnd: () => {
+        if (this.utteranceId === currentUtteranceId) {
+          this._playNext();
+        }
+      },
+      onError: (err) => {
+        if (this.utteranceId === currentUtteranceId) {
+          if (this.onError) this.onError(err);
+          this._playNext();
+        }
+      },
+    });
+  }
+}
+
+/**
+ * Starts a new SentenceAudioQueue after stopping any ongoing speech.
+ */
+export async function createSentenceAudioQueue(options = {}) {
+  await stopTtsAudio();
+  return new SentenceAudioQueue(options);
+}
+
+/**
+ * Universal Text-To-Speech function:
+ * 1. Uses Native Android/iOS TTS via Capacitor TextToSpeech plugin (100% reliable on mobile).
+ * 2. Falls back to Web Speech Synthesis on browsers.
+ * - Alex uses Male Voice ('male', pitch 1.0, 'vi-VN' / 'en-US').
+ * - English Lessons use standard Native English Female Voice ('female', pitch 1.0, 'en-US').
+ */
+export async function playTtsAudio(text, rate = 1.0, onEnd = null, onError = null, lang = 'en-US', gender = 'female') {
+  if (!text || typeof window === 'undefined') {
+    if (onEnd) onEnd();
+    return;
+  }
+
+  await stopTtsAudio();
+  const thisId = currentUtteranceId;
+  return speakSingleUtterance({
+    text,
+    rate,
+    lang,
+    gender,
+    utteranceId: thisId,
+    onEnd,
+    onError,
+  });
 }
 
 export function useSpeechAudio() {

@@ -57,4 +57,19 @@ describe('useAlexLiveCall', () => {
     await stopAlexSpeaking();
     expect(callState.value).toBe('idle');
   });
+
+  it('cleans raw markdown, hashes, bullet points and bold markers for spoken dialogue', () => {
+    const raw = `### Priorities for today:
+- **Priority 1**: Build streaming TTS.
+- **Priority 2**: Optimize latency.
+💡 In natural English: "Let us optimize the pipeline."`;
+
+    const cleaned = convertTextToNaturalSpokenVietnamese(raw);
+    expect(cleaned).not.toContain('###');
+    expect(cleaned).not.toContain('**');
+    expect(cleaned).not.toContain('- ');
+    expect(cleaned).not.toContain('💡');
+    expect(cleaned).toContain('Priorities for today');
+    expect(cleaned).toContain('Build streaming TTS');
+  });
 });
