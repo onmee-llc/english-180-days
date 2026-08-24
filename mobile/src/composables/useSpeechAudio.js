@@ -28,6 +28,54 @@ export function splitIntoSentences(text) {
 
 // Global utterance counter to handle interruptions cleanly
 let currentUtteranceId = 0;
+let cachedNativeVoices = null;
+
+/**
+ * Finds index of native voice on Android/iOS Capacitor TTS
+ */
+async function findNativeVoiceIndex(lang, gender) {
+  if (typeof TextToSpeech === 'undefined' || typeof TextToSpeech.getSupportedVoices !== 'function') {
+    return undefined;
+  }
+  try {
+    if (!cachedNativeVoices) {
+      const res = await TextToSpeech.getSupportedVoices().catch(() => ({voices: []}));
+      cachedNativeVoices = res?.voices || [];
+    }
+
+    if (!cachedNativeVoices.length) return undefined;
+
+    if (lang && lang.startsWith('vi')) {
+      if (gender === 'male') {
+        // Find index of Vietnamese male voice (vic, vid, male, nam)
+        const idx = cachedNativeVoices.findIndex((v) => {
+          const l = (v.lang || '').toLowerCase();
+          const n = (v.name || '').toLowerCase();
+          const uri = (v.voiceURI || '').toLowerCase();
+          const isVi = l.startsWith('vi') || n.includes('viet') || uri.includes('vi-vn');
+          const isMale = n.includes('vic') || n.includes('vid') || n.includes('male') || n.includes('nam') || uri.includes('vic') || uri.includes('vid');
+          return isVi && isMale;
+        });
+        if (idx !== -1) return idx;
+      }
+      const viIdx = cachedNativeVoices.findIndex((v) => (v.lang || '').toLowerCase().startsWith('vi'));
+      if (viIdx !== -1) return viIdx;
+    }
+
+    if (lang && lang.startsWith('en')) {
+      const enIdx = cachedNativeVoices.findIndex((v) => {
+        const l = (v.lang || '').toLowerCase();
+        const n = (v.name || '').toLowerCase();
+        return (l === 'en-us' || l.startsWith('en')) && (n.includes('samantha') || n.includes('female') || n.includes('google'));
+      });
+      if (enIdx !== -1) return enIdx;
+    }
+
+    return undefined;
+  } catch {
+    return undefined;
+  }
+}
 
 /**
  * Find best voice available in browser (for web fallback)
@@ -40,7 +88,12 @@ export function getPreferredVoice(lang = 'en-US', gender = 'female') {
 
     if (lang.startsWith('vi')) {
       if (gender === 'male') {
-        const maleVi = voices.find((v) => v.lang.startsWith('vi') && (v.name.toLowerCase().includes('male') || v.name.toLowerCase().includes('nam') || v.name.toLowerCase().includes('vic')));
+        const maleVi = voices.find((v) => {
+          const n = (v.name || '').toLowerCase();
+          const l = (v.lang || '').toLowerCase();
+          return (l.startsWith('vi') || n.includes('vietnam')) &&
+            (n.includes('male') || n.includes('nam') || n.includes('vic') || n.includes('vid') || n.includes('man') || n.includes('boy'));
+        });
         if (maleVi) return maleVi;
       }
       const anyVi = voices.find((v) => v.lang.startsWith('vi'));
@@ -97,8 +150,8 @@ export async function stopTtsAudio() {
  * Universal Text-To-Speech function:
  * 1. Uses Native Android/iOS TTS via Capacitor TextToSpeech plugin (100% reliable on mobile).
  * 2. Falls back to Web Speech Synthesis on browsers.
- * - Alex uses Male Voice ('male', pitch 0.88, 'vi-VN').
- * - English Lessons use standard Native English Female Voice ('female', pitch 1.02, 'en-US').
+ * - Alex uses Male Voice ('male', pitch 0.72, 'vi-VN').
+ * - English Lessons use standard Native English Female Voice ('female', pitch 1.0, 'en-US').
  */
 export async function playTtsAudio(text, rate = 1.0, onEnd = null, onError = null, lang = 'en-US', gender = 'female') {
   if (!text || typeof window === 'undefined') {
@@ -110,21 +163,27 @@ export async function playTtsAudio(text, rate = 1.0, onEnd = null, onError = nul
   const thisId = currentUtteranceId;
   const cleanText = text.trim();
 
-  // Pitch calculation: Male voice for Alex uses pitch 0.88; English lesson female voice uses 1.02
-  const pitch = gender === 'male' ? 0.88 : 1.02;
+  // Pitch: Male voice for Alex uses pitch 0.72 (deep, warm, masculine baritone); English lesson female voice uses 1.0
+  const pitch = gender === 'male' ? 0.72 : 1.0;
 
   // 1. Check if running in native Capacitor (Android/iOS)
   const isNative = typeof Capacitor !== 'undefined' && Capacitor.isNativePlatform && Capacitor.isNativePlatform();
   if (isNative) {
     try {
-      await TextToSpeech.speak({
+      const nativeVoiceIndex = await findNativeVoiceIndex(lang, gender);
+      const speakOptions = {
         text: cleanText,
         lang: lang || 'en-US',
         rate: Math.min(Math.max(rate, 0.5), 2.0),
         pitch: pitch,
         volume: 1.0,
         category: 'ambient',
-      });
+      };
+      if (typeof nativeVoiceIndex === 'number') {
+        speakOptions.voice = nativeVoiceIndex;
+      }
+
+      await TextToSpeech.speak(speakOptions);
       if (thisId === currentUtteranceId && onEnd) {
         onEnd();
       }
